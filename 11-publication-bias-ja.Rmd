@@ -1,0 +1,2169 @@
+# 出版バイアス  {#pub-bias}
+
+---
+
+<img src="_figs/pub_bias.jpg" />
+
+<br></br>
+
+<span class="firstcharacter">前</span>
+章を振り返ってみると、私たちはすでにメタ分析の幅広い技術をカバーしていることがわかる。効果量をプールする方法を学んだだけでなく、知見の頑健性を評価する方法、異質性のパターンを検査する方法、効果に差がある理由についての仮説を検証する方法についても学びることとした。
+
+これらのアプローチはすべて、私たちのメタ分析から有効な結論を引き出すのに役立つ。しかし、これはデータの性質に関する暗黙の前提の上に成り立っており、私たちはまだそれに挑戦していない。メタ分析を行う際、私たちは収集したデータが**包括的**であること、あるいは少なくとも調査中の研究分野を**代表**するものであることを前提としている。 
+
+ Chapter \@ref(study-search)  で、メタ分析は通常、研究分野を適切に説明する単一の効果量を導き出すために、利用可能な**すべての**エビデンスを含めようとすることを述べることとした。統計学的な観点からは、分析にいくつかの研究が欠けていることを許容することができるだろうが、それはこれらの研究が偶然に「省かれた」場合のみである。
+
+残念ながら、メタ分析では既存のエビデンスをすべて網羅することはできないことが多い。さらに悪いことに、いくつかの研究は、収集したデータから完全に「ランダム化」して欠落しているわけではないと考える十分な理由もある。私たちの世界は不完全であり、科学的実践を支配するインセンティブや「ルール」もまた不完全である。つまり、ある研究がメタ分析に含まれるかどうかを決定するシステム的なバイアスが存在するのである。
+
+この問題の良い例が、あまり知られていない薬物療法研究の逸話にある。1990年代には、抗うつ薬（**選択的セロトニン再取り込み阻害薬**、SSRIなど）がうつ病患者に有効であることは周知の事実と考えられていた。このエビデンスの多くは、抗うつ薬とプラセボを比較した薬物療法の臨床試験のメタ分析によって得られている。抗うつ薬の市場は何十億ドルもの価値があり、着実に成長していることを考えると、抗うつ薬の効果に関する疑問は重要なものである。 
+
+このことは、Irving Kirsch ら [-@kirsch2002emperor] が書いた「**The Emperor's New Drugs**」という論文が引き起こした、結局、物事はそれほど明るくないのではないかという論争を理解するのに役立つだろう。 
+
+Kirsch らは、「情報公開法」を利用して、製薬会社が米国食品医薬品局に提供していた未発表の抗うつ剤試験データを入手した。そして、この未発表のデータも考慮すると、プラセボと比較した抗うつ薬の効果はせいぜいわずかであり、臨床的には無視しうるものであることを発見した。カーシュらは、企業が好ましい知見を持つ研究のみを発表し、「期待はずれ」のエビデンスを持つ研究は非公開にしたためだと主張した [@kirschemperorbook]。
+
+\index{Publication Bias}
+
+その後、論争が起こり、Kirsch の主張は今日に至るまで論争の的となっている。私たちがこの例を選んだのは、どちらかを選ぶためではなく、欠落した研究がメタ分析の推論の妥当性にもたらす潜在的な脅威を説明するためである。メタ分析の文献では、このような問題は通常、**出版バイアス** (publication bias) という用語で要約されている。 
+
+\index{File Drawer Problem}
+
+出版バイアスの問題は、メタ分析におけるすべての知見が、その根拠となるデータと同程度のものでしかないことを明確に示している。メタ分析の技術は、手元にあるデータでしか機能しない。したがって、収集したデータに歪みがあると、どんなに優れた統計モデルでも固有のバイアスを再現してしまうだけなのである。もしかしたら、この基本的な注意点については、本書の一番最初に「ファイルの引き出し」問題（Chapter \@ref(pitfalls)）を取り上げたときに、すでに取り上げていたことを思い出すだろう。実際、「ファイルの引き出し問題」と「出版バイアス」という言葉は、しばしば同義的に使われる。
+
+出版バイアスや関連する問題がメタ分析の結果に及ぼす影響は甚大である。治療の効果を過大評価したり、否定的な副作用を見落としたり、実際には無効である理論の信奉を強めたりする原因となり得るのである。 
+
+そこで本章では、出版バイアスが私たちの知見を歪めてしまう様々な形について議論した。また、メタ分析担当者として、データにおける出版バイアスのリスクを調査するために使用できるいくつかのアプローチ、およびそもそも出版バイアスをどのように軽減できるかを見ていく。
+
+<br></br>
+
+## 出版バイアスとは何か？  {#types-of-pub-biases}
+
+---
+
+ある研究が出版される確率がその結果に影響される場合、出版バイアスが存在する [@duval2005publication, chapters 2 and 5]。研究結果が統計的に有意である場合、あるいは初期仮説を確認する場合、その研究が世に出る可能性が高いというエビデンスが広く存在する [@schmucker2014extent; @scherer2018full; @chan2014increasing; @dechartres2018association]。 
+
+適格な研究を検索する場合、通常、何らかの形で公表されているエビデンス、例えば、査読付き論文、プレプリント、書籍、その他のアクセス可能な報告書などに制約されることになる。出版バイアスがある場合、これはデータセットに含まれていない研究があることを意味するだけでなく、含まれていない研究が好ましくない知見を持つものである可能性が高いことを意味した。 
+
+メタ分析の手法を用いれば、母集団における平均的な効果量の偏りのない推定値を求めることが可能である。しかし、サンプルそのものが歪んでいれば、統計学的に「正しい」効果推定値であっても、現実を代表するものではない。これは、氷山の大きさを推し量るのに、その先端しか測っていないようなもので、たとえ水面からの高さを完璧に測ることができたとしても、その結果は必然的に間違っているのである。
+
+\index{Reporting Bias}
+\index{Citation Bias}
+\index{Time-Lag Bias}
+\index{Multiple Publication Bias}
+\index{Language Bias}
+\index{Outcome Reporting Bias}
+
+出版バイアスは、実は多くの**報告バイアス**のうちの1つに過ぎない。メタ分析 [@page2020investigating] で得られるエビデンスを歪める要因も、他にもいくつかある。
+
+* **引用バイアス**: たとえ出版されたとしても、否定的な結果や結論の出ていない研究は、関連する文献に引用される可能性が低くなる。そのため、例えば参考文献検索などで発見することが難しくなる。
+
+* **タイムラグバイアス**: 肯定的な結果を得た研究は、好ましくない結果を得た研究よりも早く発表されることが多い。つまり、最近行われた研究で肯定的な結果を得たものはすでに入手可能であることが多いが、有意でない結果を得たものはそうでないことが多い。
+
+* **Multiple publication bias**: 「成功した」研究の結果は、複数の論文で報告される可能性が高く、そのうちの少なくとも1つを見つけることが容易になる。複数の論文にまたがって研究結果を報告するやり方は、「サラミスライス」とも呼ばれる。
+
+* **言語バイアス**: ほとんどの分野で、エビデンスが発表される主な言語は英語である。他の言語による出版物は、特に研究者自身が翻訳しなければ内容を理解できない場合、発見されにくい。英語の研究が他の言語で発表されたものと系統的に異なる場合、これもまたバイアスを引き起こす可能性がある。
+
+* **アウトカムバイアス**: 多くの研究、特に臨床試験では、関心のあるアウトカムを複数測定する。これを悪用して、肯定的な結果が得られたアウトカムだけを報告し、仮説を確認できなかったアウトカムは削除する研究者もいる。これもバイアスにつながる。厳密に言えば、研究は発表されているのに、その（好ましくない）結果は報告されていないため、メタ分析ではまだ見落とされていることになる。
+
+\index{Questionable Research Practice (QRP)}
+
+非報告バイアスは、既存のエビデンスを見つけにくくするシステム的な要因として捉えることができる。しかし、たとえ関連する知見をすべて含めることができたとしても、私たちの結果には欠陥があるだろう。また、研究者が知見を分析・報告する際に適用した**疑問のある研究手法**（QRP）により、バイアスが存在する可能性もある[@simonsohn2020specification]。 
+
+
+\index{P-Hacking}
+
+「研究者の自由度」という概念については、以前すでに触れた（ Chapter \@ref(pitfalls)  ）。QRP は、研究者がこの自由度を乱用して、結果を望ましい方向に「曲げる」行為と定義することができる。残念ながら、何がQRPを構成するのかについて明確なコンセンサスはない。しかし、一般的に提案されているいくつかの例がある。 
+
+最も顕著な QRP のひとつが **p-hacking** で、従来の有意水準である $p<$  0.05 に達するまで分析を微調整するものである。これには、外れ値の除去方法、サブグループの分析、欠損データの処理などが含まれる。 
+
+\index{HARKing}
+
+もう一つの QRP は **HARKing**  [@kerr1998harking] で、これは**結果が判明した後に仮説を立てること**の略称である。HARKing の1つの方法は、探索的分析における発見が、ずっと研究の先験的仮説であったかのように装うことである。例えば、ある研究者は、データセットに対して様々なテストを実行し、有意であったすべてのテストについて仮説を「発明」することがある。これは重大な欠陥のあるアプローチで、研究の偽発見率を高め、偽の発見のリスクを増加させます（いくつかの問題を挙げてみよう）。もう一つのタイプの HARKing は、データによってサポートされなかったすべての仮説を取り下げることであり、これは最終的にアウトカム報告バイアスにつながる可能性がある。
+
+<br></br>
+
+## メタ分析における出版バイアス  {#addressing-pubbias}
+
+---
+
+出版バイアス、その他の報告バイアス、QRP がメタ分析の妥当性に強く有害な影響を与えることは明らかである。バイアスの正確な大きさ、あるいはバイアスが存在するかどうかを知ることは、通常、事実上不可能であるため、これらは大きな課題となっている。 
+
+\index{Study Search}
+\index{Open Science Framework (OSF)}
+
+メタ分析では、QRP と同様に、出版・報告バイアスによる歪みのリスクをある程度軽減することができる手法を適用することが可能である。これらのアプローチの中には、研究探索に関連するものもあれば、統計的な手法もある。 
+
+* **研究検索**: Chapter \@ref(study-search)  で、適格な研究を検索するプロセスについて説明してきた。出版バイアスが存在する場合、このステップは非常に重要である。なぜなら、出版された文献を検索しても、すべてのエビデンスを完全に代表していないデータが得られる可能性があることを意味することがある。学位論文、プレプリント、政府報告書、会議録などを含む**灰色文献**も検索することで、これに対抗することが可能である。幸いなことに、事前登録も多くの分野で一般的になってきている。これにより、ICTRP や **OSF Registries** などの研究登録（ Chapter \@ref(study-search)  の Table \@ref(tab:bibdatabases)  を参照）を検索して、未発表データのある研究を探し、著者に（まだ）公開されていないデータを提供してもらえるか尋ねることが可能である^[Mahmood and colleagues [-@mahood2014searching] には、包括的なグレー文献検索の方法とそれに伴う課題の詳細説明が掲載されている。この論文は、オンラインでオープンにアクセスすることができる]。灰色文献検索は退屈で苛立たしいものであるが、努力する価値はある。ある大規模な研究では、灰色文献や未発表の文献を含めることで、真の効果の過大評価を避けることができることが分かっている [@mcauley2000does]。
+
+* **統計的手法**: 統計的手法によって出版物の有無を調べることも可能である。これらの方法はいずれも出版バイアスを直接同定することはできないが、それを示すと思われるデータのある種の特性を調べることが可能である。また、出版バイアスを補正した場合の真の全体効果を定量化するために使用できる手法もある。 
+
+\index{Small-Study Effect}
+
+本章では、出版バイアスを評価・制御するための一般的な**統計的**手法を紹介する。まず、**小規模研究効果**に着目した方法から始める [@sterne2000publication; @schwarzer2015meta, chapter 5; @duval2005publication, chapter 5]。これらのアプローチに共通するのは、研究の精度と観察された効果量の関係を見ることで、出版バイアスの指標を見つけるという点である。
+
+
+<br></br>
+
+### 小規模研究効果測定法  {#small-study-effects}
+
+---
+
+メタ分析における出版バイアスを評価・補正する方法として、様々な小規模研究効果法がある。その多くは、長年にわたり従来からある手法である。名前にあるように、これらの手法は特に**小規模研究**に関係している。統計学的な観点からは、これは標準誤差が大きい研究に相当する。小規模研究効果法は、小規模な研究は出版バイアスの餌食になりやすいと仮定している。 
+
+この前提は、3つの核となる考えに基づいている［@borenstein2011introduction、第30章参照］。
+
+\index{File Drawer Problem}
+
+1. 大規模な研究は、多くの資源と時間を投入するため、結果が有意であろうとなかろうと、出版される可能性が高い。
+
+2. 中程度の規模の研究は、発表されないリスクが高くなる。しかし、統計的検出力が中程度であっても、有意な結果を得るには十分であることが多い。つまり、「好ましくない」（つまり有意でない）結果を出したために、出版されない研究もあるということである。
+
+3. 小規模な研究は、有意でない所見を生み出すリスクが最も高く、そのため「ファイルの引き出し」に入ったままとなる。小規模な研究では、非常に大きな効果だけが有意となる。つまり、非常に大きな効果量を持つ小規模な研究のみが発表されることになる。
+
+これらの仮定の背後にあるとされるメカニズムは、非常に単純であることがわかる。本質的には、有意な効果のみが公表されるため、出版バイアスが存在するということである。サンプルサイズが大きいほど有意な結果が得られる確率が高くなるので、出版バイアスは小規模な研究に不釣り合いに影響することになる。
+
+
+<br></br>
+
+#### ファネルプロット  {#funnel-plot}
+
+---
+
+\index{Funnel Plot}
+
+このガイドの前半（ Chapter \@ref(what-is-es)  ）で、研究のサンプルサイズと標準誤差が密接に関係していることを学びることとした。効果量の標準誤差が大きいと、信頼区間が広くなり、効果が統計的に有意でない可能性が高くなる。したがって、小さな研究の効果は、大きな標準誤差を持つ研究に大きく影響すると仮定するのは賢明なことである。 
+
+私たちが収集したデータが出版バイアスによって負担されているとした。この場合、大きな標準誤差を持つ研究は、低い標準誤差を持つ研究よりも効果量が大きいと仮定することが可能である。これは、効果の小さい研究は有意でなかったため、出版物として考慮されることがなかったことがある。その結果、メタ分析にそれらを含めることはなかった。
+
+小規模研究の効果を調べるには、**ファネルプロット**が一般的である。ファンネルプロットは、x軸に観察された効果量を、y軸に標準誤差の指標をとって散布したものである。通常、ファンネルプロットのy軸は反転している（y軸上の「高い」値は、**低い**標準誤差を表していることを表す）。 
+
+出版バイアスがない場合、このようなプロットのデータポイントは、ほぼ対称的な逆さ漏斗を形成するはずである。これがファンネルプロットと呼ばれる所以である。プロットの上部にある研究（標準誤差が小さいもの）は、密接に並んでおり、プールされた効果量からそれほど離れていないはずである。プロットの下部では、標準誤差が大きくなるにつれて、漏斗が「開き」、効果量がプールされた効果量の左右に大きく散らばることが予想される。 
+
+ Chapter \@ref(what-is-es)  で効果量について学んだことや、Chapter \@ref(fem)  ( Figure \@ref(fig:funnel1) ) で固定効果モデルについて議論したことを思い出すと、なぜ研究が漏斗を形成する必要があるのかがわかりやすくなる。標準誤差は、研究の**精度を示している**：標準誤差が小さくなればなるほど、観察された効果量は、真の効果量のますます良い推定量になると予想される。標準誤差が大きい場合、効果量は精度が低く、したがって母集団における実際の効果から大きく外れている可能性が高くなる。
+
+ここでは、自分自身でファネルプロットを生成することによって、これをより具体的にしていく。メタ分析オブジェクトのファネルプロットを表示すには、 **{meta}** パッケージの  `funnel.meta`  関数を使用することが可能である。ここでは、メタ分析オブジェクト  `m.gen`  に対してファネルプロットを生成している。さらに2つの引数、  `xlim`  と  `studlab`  を指定した。最初の引数はプロットにおけるX軸の限界をコントロールし、後者は研究ラベルを含めるようにこの関数に指示した。`funnel` を実行した後に `title` 関数を呼び出すと、プロットにタイトルが追加される。 
+
+私たちのコードは次のようになる。
+
+\vspace{2mm}
+
+
+
+```{r, message=F, fig.width=8, fig.height=6, out.width="85%", collapse = TRUE, results='hold', fig.align='center', eval = F}
+# 'meta' パッケージをロード
+library(meta)
+
+# ファンネルプロットを作成
+funnel.meta(m.gen,
+            xlim = c(-0.5, 2),
+            studlab = TRUE)
+
+# タイトルを追加
+title("Funnel Plot (Third Wave Psychotherapies)")
+
+```
+
+
+```{r, message=F, fig.width=8, fig.height=6, out.width="85%", collapse = TRUE, results='hold', fig.align='center', echo=F}
+# Load 'meta' package
+library(meta)
+
+par(bg="#FFFEFA")
+# Produce funnel plot
+funnel.meta(m.gen,
+            xlim = c(-0.5, 2),
+            studlab = TRUE)
+
+# Add title
+title("Funnel Plot (Third Wave Psychotherapies)")
+
+```
+
+説明したように、得られたファネルプロットは、x軸に各研究の効果量（標準化平均差として表現）、y軸に標準誤差（大から小へ）を示している。解釈を容易にするため、このプロットには、私たちの研究が従うと思われる理想的なファネルの形も含まれている。ファンネルの真ん中の縦線は、平均効果量を示している。`m.gen` を生成する際にランダム効果モデルを使用したので、ファネルプロットもランダム効果推定値を使用している。
+
+少人数研究の影響がなければ、プロットに表示される漏斗で描かれる形状にほぼ沿うはずである。この例では、そうなっているだろうか？そうではない。標準誤差が小さい研究ほど、推定された真の効果の周りに集中していることがわかるが、パターンは全体的に非対称に見える。これは、プロットの右下に非常に高い効果量を持つ3つの小さな研究（Shapiro、Kang、Danitz-Orsillo によるもの）があるためである。 
+
+しかし、これらの研究は、プロットの左下隅に相当するものがない。非常に高い効果を持つ研究と「釣り合う」ような、非常に低い効果量や負の効果量を持つ小規模な研究は存在しないのである。もう一つ気になるのは、サンプルの中で最も精度の高い、de Vibeによる研究が、漏斗パターンにうまく従っていないように見えることである。その効果量は、予想よりもかなり小さい。
+
+全体として、このデータセットは、出版バイアスを示すかもしれない非対称のパターンをファネルプロットに示している。3つの小さな研究は、運良く有意になるのに十分な効果を見出したものであり、一方、同様の標準誤差を持ちながら、より小さく、したがって有意でない効果を持つ未発表の研究が存在し、それらはカットに至らなかったのだろう。
+
+
+非対称パターンと統計的有意性の関係を調べるには、**contour-enhanced funnel plots**  [@peters2008contour] を作成するのが良い方法である。このプロットは、出版バイアスと他の非対称性を区別するのに役立つ。Contour-enhanced funnel plots は、プロット内の各研究の有意水準を示す色を含んでいる。`funnel.meta` 関数では、`contour` 引数に希望の有意閾値を与えることで等高線を追加することが可能である。通常は、` 0.9 `, ` 0.95 `, ` 0.99 `で、それぞれ $p$  &lt; 0.1, 0.05, 0.01 に相当した。また、 `col.contour` 引数を使用すると、輪郭の色を指定することが可能である。最後に、プロットに凡例を追加するために、 `legend` 関数を使用することができ、異なる色の意味を指定することが可能である。`x`  と  `y`  引数を使用してプロット上に凡例を配置し、  `legend`  でラベルを指定し、  `fill`  引数を使用して塗りつぶしの色を追加することが可能である。 
+
+この結果、以下のようなコードになる。 
+
+```{r, fig.width=8, fig.height=6, out.width="82%", collapse=TRUE, fig.align='center', eval=F}
+# contour の塗りつぶし色を定義
+col.contour = c("gray75", "gray85", "gray95")
+
+# ファンネルプロットを生成 (研究ラベルはなし)
+funnel.meta(m.gen, xlim = c(-0.5, 2),
+            contour = c(0.9, 0.95, 0.99),
+            col.contour = col.contour)
+
+# 凡例を追加
+legend(x = 1.6, y = 0.01, 
+       legend = c("p < 0.1", "p < 0.05", "p < 0.01"),
+       fill = col.contour)
+
+# タイトルを追加
+title("Contour-Enhanced Funnel Plot (Third Wave Psychotherapies)")
+
+```
+
+
+```{r, fig.width=8, fig.height=6, out.width="75%", collapse=TRUE, fig.align='center', echo=F}
+# Define fill colors for contour
+col.contour = c("gray75", "gray85", "gray95")
+
+
+par(bg="#FFFEFA")
+# Generate funnel plot (we do not include study labels here)
+funnel.meta(m.gen, xlim = c(-0.5, 2),
+            contour = c(0.9, 0.95, 0.99),
+            col.contour = col.contour)
+
+# Add a legend
+legend(x = 1.6, y = 0.01, 
+       legend = c("p < 0.1", "p < 0.05", "p < 0.01"),
+       fill = col.contour)
+
+# Add a title
+title("Contour-Enhanced Funnel Plot (Third Wave Psychotherapies)")
+
+```
+
+ファネルプロットは、3つの陰影領域を含んでいることがわかる。 $p<$  0.05 と $p<$  0.01 の領域に特に興味がある。なぜなら、この領域に入る効果量は、伝統的に有意とみなされることがある。 
+
+等高線領域を追加すると、3つの小さな研究は、大きな標準誤差があるにもかかわらず、すべて有意な効果を示していることがわかる。同じような標準誤差を持つ研究で、有意でないものが1つだけある。対称性を高めるためにプロットの左下隅にある欠落した研究を「インプット」すると、これらの研究はプロットの非有意領域に位置することになる。 
+
+大規模な研究については、少しパターンが異なるようである。 $p>$  0.05の研究がいくつかあり、効果の分布はあまり偏っていないことがわかる。しかし問題なのは、厳密には有意ではないものの、1つの研究を除くすべての研究が有意性閾値に非常に近い（すなわち、0.1 $> p >$  0.05の領域にある）ことである。これらの研究は、元の論文では単に効果量の計算が違っていて、それが有意な結果につながった可能性がある。あるいは、傾向レベルで有意な効果を見出すことが、すでに研究を発表するのに十分な説得力を持っていたのだろう。
+
+まとめると、contour-enhanced funnel plot の検査は、funnel plot に非対称性があり、これが出版バイアスによって引き起こされているのではないかという私たちの最初の直感を裏づけるものであった。しかし、結論を急がず、funnel plot を慎重に解釈することが肝要である。出版バイアスは、ファネルプロットの非対称性の原因として考えられる多くの理由のうちの1つに過ぎないことを念頭に置かなければならない。
+
+\index{Fidelity, Treatment}
+
+```{block, type='boxinfo'}
+**ファネルプロットの非対称性とは**
+
+\vspace{2mm}
+
+出版バイアスは非対称のファネルプロットにつながるが、同様のパターンを生み出す他の、むしろ「良性」の原因もある [@page2020investigating] 。
+
+\vspace{2mm}
+
+* 非対称性は、研究間の異質性によって引き起こされることもある。ファネルプロットは、効果量の分散が研究のサンプリング誤差によって引き起こされると仮定しているが、研究が異なる真の効果の推定者である可能性を制御することはできない。
+
+\vspace{2mm}
+
+* 小規模な研究では、研究の手順が異なり、その結果、効果が高くなった可能性がある。例えば、臨床研究では、サンプルサイズが小さいと、すべての参加者が意図したとおりに治療を受けていることを確認するのが容易である。大規模な研究ではそうではないため、**治療忠実度**が低くなり、その結果、効果も低くなる可能性がある。このような代替説明が妥当かどうかを評価するために、対象研究の特徴を検査することは意味がある。
+
+\vspace{2mm}
+
+* 質の低い研究では、バイアスのリスクが高いため、効果量が大きくなる傾向があることは一般的な知見である。大規模な研究はより多くの投資を必要とするため、その方法論もより厳密なものになる可能性がある。これは、出版バイアスがない場合でも、ファネルプロットの非対称性につながる可能性がある。
+
+\vspace{2mm}
+
+* 最後に、ファネルプロットの非対称性は、単に偶然に起こる可能性も十分にある。
+
+```
+
+
+\index{Egger's Test}
+
+私たちは、（輪郭を強調した）ファンネルプロットの視覚的検査によって、私たちの結果が出版バイアスの影響を受けている可能性を示すいくつかの「赤旗」がすでに提供されていることを確認してきた。 
+
+しかし、ファネルプロットをはっきり見ただけで解釈することにも限界がある。結果が「非対称すぎる」場合の明確なルールはなく、ファネルプロットからの推論は常にやや主観的であることを意味した。したがって、定量的な方法でファネルプロットの非対称性の存在を評価することが有用である。これは通常、次に説明する**Egger の回帰検定**によって達成される。
+
+<br></br>
+
+#### Egger の回帰検定  {#eggers-test}
+
+---
+
+Egger の回帰検定 [@egger1997bias] は、ファネルプロットの非対称性を検定する定量的手法としてよく利用されている。ファネルプロットの目視検査と同様に、小規模研究の効果を識別するだけで、出版バイアスが存在するかどうかを直接教えてくれるわけではない。この検定は、単純な線形回帰モデルに基づいており、その式は次のようになる。
+
+\begin{equation}
+\frac{\hat\theta_k}{SE_{\hat\theta_k}} = \beta_0 + \beta_1 \frac{1}{SE_{\hat\theta_k}}
+(\#eq:pub1)
+\end{equation}
+
+この式における回答 $y$  は、私たちのメタ分析で観測された効果量 $\hat\theta_k$  を、その標準誤差で割ったものである。結果の値は、$z$ -スコアと同等である。これらのスコアは、効果サイズが有意であるかどうかを直接教えてくれる。 $z \geq$  1.96 または $\leq$  -1.96 のとき、その効果は有意であることがわかる ( $p<$  0.05)。この応答は、研究の標準誤差の逆数に回帰され、それは研究の精度に相当する。 
+
+しかし、Eggerの検定を用いる場合、回帰重み  $\beta_1$ の大きさや有意性には関心がなく、**切片** $\beta_0$  に関心がある。ファネルの非対称性を評価するために、私たちは $\hat\beta_0$ のサイズを検査し、それがゼロから有意に異なるかどうかを調べる。この場合、Egger の検定は、ファネルプロットの非対称性を示した。
+
+回帰切片の大きさが、なぜファネルプロットの非対称性について何かを伝えるのかを理解するために、少し時間をとりよう。すべての線形回帰モデルにおいて、切片は他のすべての予測変数がゼロのときの $y$  の値を表した。私たちのモデルの予測変数は研究の精度なので、切片は精度がゼロの時（すなわち、研究の標準誤差が無限に大きい時）に期待される $z$ -スコアを示した。 
+
+出版バイアスがない場合、期待される $z$ -スコアはゼロ付近に散らばっているはずである。これは、標準誤差が極端に大きい研究は信頼区間も極端に大きくなり、$|z| \geq$  1.96という値になることはほぼ不可能だことがある。しかし、出版バイアスの影響などでファンネルプロットが非対称になると、効果量が非常に大きい小規模な研究がかなり多くなり、$z$  1.96以上の値を持つ精度の低い研究が驚くほど多くなることが予想される。この歪みにより、精度がゼロの時の $y$  の予測値はゼロよりずっと大きくなり、結果として有意な切片となる。 
+
+以下のプロットは、Egger の検定の基礎となる回帰の勾配と切片に対するファネルプロットの非対称性の影響を示している。
+
+
+
+```{r eggers_alt, echo=F, out.width="50%", message=F, warning=F, fig.width=6, fig.height=5, eval=F}
+library(ggplot2)
+
+load("data/m.egdat.rda")
+load("data/m.egdat.bias.rda")
+
+funnel(m.egdat, xlab = "Effect Size")
+title("Funnel Plot (No Asymmetry)")
+
+m.egdat$data %>% 
+  mutate(y = .TE/.seTE, x = 1/.seTE) %>% 
+  ggplot(aes(y = y, x = x)) + 
+  xlim(c(0, 110)) +
+  #ylim(c(0, 110)) +
+  geom_point(fill = "grey", pch=21) + 
+  geom_smooth(method = "lm", se = F, fullrange = T, color = "black") + 
+  theme_minimal() +
+  ylab("Scaled Effect Size (z)") +
+  xlab("Inverse Standard Error (Precision)") +
+  annotate("text", x = 3, y = 33, label = bquote(hat(beta)[0]~"="~0.21), hjust = "left",
+           cex = 6) +
+  annotate(geom = "curve", x = 0, y = 0.21, xend = 5, yend = 30, 
+           curvature = .3, arrow = arrow(length = unit(2, "mm")), linetype = "dashed") +
+  ggtitle("Regression Line (No Asymmetry)") + 
+  theme(plot.title = element_text(color="black", size=14, face="bold",
+                                  hjust = 0.5),
+        plot.margin = margin(1.08, 1, 1.08, 1, "cm"),
+        plot.background = element_rect(fill = "#FFFEFA", color = "#fbfbfb"),
+        panel.background = element_rect(fill = "#FFFEFA")) # 'nearly-white' used to keep knitr from cropping
+
+
+meta::funnel.meta(m.egdat.bias, xlab = "Effect Size")
+title("Funnel Plot (Asymmetry)")
+
+m.egdat.bias$data %>% 
+    mutate(y = .TE/.seTE, x = 1/.seTE) %>% 
+    ggplot(aes(y = y, x = x)) + 
+    xlim(c(0, 9)) +
+    ylim(c(0,6)) +
+    geom_point(fill = "grey", pch=21) + 
+    geom_smooth(method = "lm", se = F, fullrange = T, color = "black") + 
+    theme_minimal() +
+    ylab("Scaled Effect Size (z)") +
+    xlab("Inverse Standard Error (Precision)") +
+    annotate("text", x = 0.8, y = 0.5, label = bquote(hat(beta)[0]~"="~2.85), hjust = "left",
+             cex = 6) +
+    annotate(geom = "curve", x = 0, y = 2.85, xend = 0.7, yend = 0.7, 
+             curvature = .3, arrow = arrow(length = unit(2, "mm")), linetype = "dashed") +
+    ggtitle("Regression Line (Asymmetry)") +
+    theme(plot.title = element_text(color="black", size=14, face="bold",
+                                hjust = 0.5),
+      plot.margin = margin(1.08, 1, 1.08, 1, "cm"),
+      plot.background = element_rect(fill = "#feffff", color = "#fbfbfb"),
+      panel.background = element_rect(fill = "#feffff")) # 'nearly-white' used to keep knitr from cropping
+
+
+
+```
+
+
+```{r eggers, echo=F, out.width="50%", message=F, warning=F, fig.width=6, fig.height=5}
+library(OpenImageR)
+knitr::include_graphics('images/eggers-1_sep.png')
+knitr::include_graphics('images/eggers-2_sep.png')
+knitr::include_graphics('images/eggers-3_sep.png')
+knitr::include_graphics('images/eggers-4_sep.png')
+```
+
+
+\index{tidyverse Package}
+
+このような回帰モデルを  `m.gen`  のデータに当てはめると、どのような結果が得られるか見てみよう。 _R_  を使って、 `m.gen`  の元データを取り出し、応答  `y`  と予測変数  `x`  を計算することが可能である。以下のコードでは、パイプ( Chapter \@ref(data-transform) )と  **{tidyverse}**  の一部である  `mutate`  関数を使用してこれを行う。その後、**l**linear **m**odel function  `lm`  を使って、$z$  のスコア  `y`  を精度  `x`  に回帰している。パイプの最後の部分では、結果の  `summary`  を要求している。
+
+```{r, eval = F}
+# パッケージをロード
+library(tidyverse)
+
+m.gen$data %>% 
+  mutate(y = TE/seTE, x = 1/seTE) %>% 
+  lm(y ~ x, data = .) %>% 
+  summary()
+
+```
+
+```
+## [...]
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   4.1111     0.8790   4.677 0.000252 ***
+## x            -0.3407     0.1837  -1.855 0.082140 .  
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+## 
+## [...]
+```
+
+結果、私たちの回帰モデルの切片は、$\hat\beta_0$  = 4.11であることがわかる。これはゼロより有意に大きく（ $t$  = 4.677, $p<$  0.001）、ファネルプロットのデータが実際に非対称であることを示している。全体として、これは小規模研究の効果があるという私たちの最初の発見を裏づけるものである。しかし、繰り返しになるが、このパターンが出版バイアスに起因しているかどうかは不明である。
+
+Egger の切片検定を行うより便利な方法は、 **{meta}** にある  `metabias`  関数を使用することである。この関数はメタ分析オブジェクトを入力として必要とし、  `method.bias`  引数を  `"linreg"`  に設定する必要がある。この関数を  `m.gen`  に適用すると、以前と同じ結果が得られる。
+
+```{r}
+metabias(m.gen, method.bias = "linreg")
+```
+
+```{block2, type='boxreport'}
+**Egger 検定の結果を報告**
+
+\vspace{2mm}
+
+Egger の検定では、通常、切片の値、その95%信頼区間、$t$ と $p$ の値を報告すれば十分である。**{dmetar}**パッケージでは、`eggers.test` という便利な関数が含まれている。この関数は `metabias` のラッパーであり、Eggerの検定の結果をレポートに適した形式で提供する。**{dmetar}** がインストールされていない場合は、この関数のソースコード [online](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/eggers.test.R) を参照。以下はその例である。
+
+`eggers.test(m.gen)`
+
+$~$            | `Intercept` | `ConfidenceInterval` | `t`        | `p`
+-------------- | ----------- | -------------------- | ---------- | ---
+`Egger's test` | `4.111`     | `2.347-5.875`        | `4.677`    | `0.00025`
+
+```
+
+
+
+\index{Standardized Mean Difference}
+
+`m.gen` で使われている効果サイズの指標は、small sample bias-corrected SMD (Hedges' $g$ )である。SMDでEggerのテストを実行すると、偽陽性の結果が膨らむ可能性があると議論されている[@pustejovsky2019testing]。これは、研究の標準化平均差と標準誤差が独立していないためである。 
+
+このことは、群間 SMD の標準誤差を計算するための式（式3.18、Chapter \@ref(b-group-smd)  ）を見れば、簡単にわかる。この式はSMDそのものを含んでおり、観察された効果の値が小さくても大きくても研究の標準誤差が変化することを意味した（つまり、SMDとその標準誤差の間には人為的な相関があるのです）。 
+
+Pustejovsky and Rodgers [-@pustejovsky2019testing] は、標準化平均差のファネルプロットの非対称性を検定する際に、標準誤差の修正版を使用することを提案している。標準誤差の式の最初の部分だけが使用され、それは、観察された効果サイズが式から脱落することを意味する。したがって、式は次のようになる。
+
+
+\begin{equation}
+SE^*_{\text{SMD}_{\text{between}}}= \sqrt{\frac{n_1+n_2}{n_1n_2}}
+(\#eq:pub2)
+\end{equation}
+
+ここで、$SE^*_{\text{SMD}_{\text{between}}}$  は標準誤差の改良版である。この改良版を使ったときに、Egger の検定が同じ結果を与えるかどうかを確認するのはよい考えだろう。次のコードでは、最初のデータセットに各研究の各群のサンプルサイズを追加し、適合された標準誤差を計算し、それを使って分析を再実行する。 
+
+```{r}
+# Add experimental (n1) and control group (n2) sample size
+n1 <- c(62, 72, 44, 135, 103, 71, 69, 68, 95, 
+        43, 79, 61, 62, 60, 43, 42, 64, 63)
+
+n2 <- c(51, 78, 41, 115, 100, 79, 62, 72, 80, 
+        44, 72, 67, 59, 54, 41, 51, 66, 55)
+
+# Calculate modified SE
+ThirdWave$seTE_c <- sqrt((n1+n2)/(n1*n2))
+
+# Re-run 'metagen' with modified SE to get meta-analysis object
+m.gen.c <- metagen(TE = TE, seTE = seTE_c,
+                   studlab = Author, data = ThirdWave, sm = "SMD", 
+                   fixed = FALSE, random = TRUE, 
+                   method.tau = "REML", hakn = TRUE, 
+                   title = "Third Wave Psychotherapies")
+
+# Egger's test
+metabias(m.gen.c, method = "linreg")
+
+```
+
+
+正確な数値は異なるものの、結果の解釈は同じであることがわかる。このことは、私たちが以前発見したことの確からしさを示している。
+
+
+```{block2, type='boxinfo'}
+**Using the Pustejovsky-Rodgers Approach Directly in `metabias`**
+
+最新の **{meta}** では、 `metabias` 関数に、Pustejovsky and Rodgers によって提案された補正標準誤差の式で Eggers の検定を行うオプションも用意されている。このオプションは `method.bias` を `"Pustejovsky"` に設定することで使用でる。
+
+ただし、これは **{meta}** メタ解析オブジェクトが、実験グループとコントロールグループのサンプルサイズをそれぞれ `n.e` と `n.c` という要素で既に含んでいる場合にのみ可能である。`metagen` オブジェクトを使用する場合（上記の例のように）、通常はこのようなことはないため、手動で追加する必要がある。例として、再び `m.gen` メタ解析オブジェクトを使用してみよう。
+
+`m.gen$n.e = n1; m.gen$n.c = n2`
+
+`metabias(m.gen, method.bias = "Pustejovsky")`
+
+なお、この設定では、`metabias` は Egger の検定を行うために式 \@ref(eq:pub5) を使用するが、これは先に示した式 \@ref(eq:pub1) と等価である。主な違いは、`metabias` がモデルの予測因子として補正標準誤差を用い、重みとして含まれる効果量の逆分散を用いる点である。
+
+しかし、今回の例では、式 \@ref(eq:pub1) の両辺に補正された標準誤差を使用している。つまり、上記のようなアプローチと `method.bias` を `"Pustejovsky"` に設定した場合の結果は完全に一致するわけではない。
+
+```
+
+<br></br>
+
+#### Peters の回帰検定  {#peters-test}
+
+---
+
+\index{Peter's Test}
+
+効果量と標準誤差の依存性は、標準化された平均差にのみ適用されるわけではない。この数学的な関連性は、（対数）オッズ比 (Chapter \@ref(or))、リスク比 (Chapter \@ref(rr))、または割合（Chapter \@ref(props)）などの二値アウトカムデータに基づく効果量にも存在した。 
+
+二値効果量データを使用したときの偽陽性のリスクの増大を避けるために、Peters ら [@peters2006comparison] が提案した別のタイプの回帰検定を使用することが可能である。Peters の検定の結果を得るために、対数変換された効果量をサンプルサイズの逆数に回帰させる。
+
+\begin{equation}
+\log\psi_k =  \beta_0 + \beta_1\frac{1}{n_k}
+(\#eq:pub3)
+\end{equation}
+
+この式において、$\log\psi_k$  は二値アウトカムデータに基づく任意の対数変換効果サイズ（例えば、オッズ比）を表し、$n_k$  は研究 $k$  の総サンプルサイズである。
+
+\index{Weighted Least Squares (WLS)}
+
+重要なことは、回帰モデルを当てはめるとき、各研究 $k$  には、そのサンプルサイズとイベントカウントに応じて、異なる重み $w_k$   が付けられることである。この結果、**重み付け**線形回帰となり、メタ回帰モデル（ Chapter \@ref(metareg-model-fit)  ）と似ている（同一ではない）。重みの式 $w_k$  は次のようなものである。
+
+\begin{equation}
+w_k = \frac{1}{\left(\dfrac{1}{a_k+c_k}+\dfrac{1}{b_k+d_k}\right)}
+(\#eq:pub4)
+\end{equation}
+
+ここで、$a_k$  は処置群でのイベントの数、$c_k$  は対照群でのイベントの数である。 $b_k$  と $d_k$  はそれぞれ処置群と対照群での非イベントの数である（ Chapter \@ref(rr)  を参照)。Eggersの回帰検定とは対照的に、Petersの検定は、切片の代わりに $\beta_1$  を使って、ファネルプロットの非対称性を検定した。統計的検定が $\beta_1 \neq 0$  を明らかにするとき、私たちはデータに非対称性が存在すると仮定することが可能である。
+
+`metabin ` ( Chapter \@ref(pooling-or-rr) ) または ` metaprop` ( Chapter \@ref(pooling-props) ) 関数を用いて二値アウトカムに基づくメタ分析を計算した場合、 `metabias` 関数を用いて Peters' test を実施することが可能である。フィットするメタ分析オブジェクトを用意し、 `method.bias` の引数に `"peters"` を指定するだけでよい。Chapter \@ref(pooling-or-rr)  で作成した `m.bin` オブジェクトで、ファネルプロットの非対称性を確認してみよう。 
+
+覚えているだろうが、このメタ分析ではリスク比を要約の指標として使った。
+
+```{r}
+metabias(m.bin, method.bias = "peters")
+```
+
+出力の構造は、Eggers の検定と同じであることがわかる。出力は、結果が  `サンプルサイズに基づく回帰検定`  のものであることを示し、Peters の方法が使用されたことを意味した。検定は有意ではない ( $t$  = -0.08, $p$  = 0.94) Funnel plotの非対称性がないことを示している。
+
+```{block, type='boximportant'}
+**ファネルプロット非対称性検定の統計的検出力**
+
+\vspace{2mm}
+
+メタ分析に十分な数の研究が含まれている場合のみ、ファネルプロットの非対称性を検定することが推奨される。研究数が少ない場合、Eggersの検定やPetersの検定の統計的検出力が、実際の非対称性を検出するのに十分でないことがある。一般に、$K \geq 10$ のときだけ検定を行うことが推奨されている [@sterne2011recommendations] 。
+
+デフォルトでは、メタアナリシスの研究数がこれより少ないと `metabias` はエラーを出す。しかし、関数内の `k.min` 引数をより小さい数字に設定することで、これを防ぐことができる（推奨はしないが）。
+
+```
+
+
+<br></br>
+
+#### Duval & Tweedie トリム＆フィル方式  {#duval-and-tweedie}
+
+---
+
+\index{Trim and Fill Method}
+
+メタ分析において、小規模研究の効果を調べる（そして検定する）方法をいくつか学びることとした。私たちのデータに出版バイアスが存在する可能性があることを知ることは良いことであるが、私たちが主に関心を持っているのは、そのバイアスの**大きさ**である。私たちは、出版バイアスが私たちの推定値をわずかに歪めただけなのか、それとも私たちの知見の解釈を変えるほど大規模なものなのかを知りたいのである。
+
+つまり、真の効果量の**バイアス補正**推定値を算出する方法が必要なのである。しかし、私たちは出版バイアスを直接測定することができないことをすでに学びることとした。私たちは、出版バイアスを**指摘**する可能性のある代理として、小規模研究の効果を使うことしかできない。 
+
+したがって、出版バイアス**そのもの**ではなく、補正された効果推定値を得るために小規模研究の影響を補正することができるだけである。効果量の非対称性が実際に出版バイアスによって引き起こされた場合、この不均衡を補正することで、**すべての**エビデンスを考慮したときに真の効果をよりよく表す推定値が得られる。
+
+ファネルプロットの非対称性を調整する最も一般的な方法の1つが、**Duval &amp; Tweedie trim and fill method** [@duval2000trim] である。この方法の背後にある考え方は単純で、ファネルプロットが対称になるまで "欠損 "効果を埋め込むというものである。そして、得られた「拡張」データセットのプールされた効果量は、小規模研究の効果を補正する際の推定値を表した。これは、効果の「トリミング」と「充填」を含む簡単なアルゴリズムによって達成される [@schwarzer2015meta、5.3.1章]。
+
+* **トリミング**. まず、このメソッドはファネルプロット内のすべてのoutlying studiesを識別した。先ほどの例では、これらはプロットの右側に散在しているすべての小規模な研究である。いったん識別されると、これらの研究は**トリミング**される：分析から取り除かれ、プールされた効果は、それらを除いて再計算される。このステップは、通常、固定効果モデルを使用して実行される。
+
+* **充填**. 次のステップでは、再計算されたプール効果が、すべての効果量の中心と仮定される。トリムされた各研究について、漏斗の反対側でその結果を反映するように、1つの効果量が追加される。たとえば、再計算された平均効果が0.5で、トリムされた研究の効果が0.8であれば、ミラーされた研究は0.2の効果を与えられる。これをすべてのトリムされた研究で行うと、ファネルプロットはほぼ対称的に見える。トリムされた効果量と帰属された効果量を含むすべてのデータに基づいて、平均効果量が再計算される（通常、ランダム効果モデルを使用した）。その結果は、補正されたプール効果量の推定値として使用される。
+
+trim-and-fill法に関する重要な注意点は、研究間の異質性が大きい場合、信頼できる結果が得られないことである [@peters2007performance; @terrin2003adjusting; @simonsohn2014p]。研究が1つの真の効果を共有していない場合、大規模な研究でも平均的な効果から大きく乖離している可能性がある。つまり、出版バイアスの影響を受けている可能性が低いにもかかわらず、そのような研究もトリミングされて埋められることになる。これでは、無効な結果になることは容易に想像がつく。 
+
+**{meta}** にある  `trimfill`  関数を使用すると、trim and fill アルゴリズムをデータに適用することが可能である。この関数は非常にわかりやすいデフォルト値を持っているので、メタ分析オブジェクトと一緒に提供するだけで十分である。この例では、再び  `m.gen`  オブジェクトを使用した。しかし、その前に、まず、このメタ分析で観察された $I^2$  異質性の量を確認してみよう。
+
+```{r}
+m.gen$I2
+```
+
+
+$I^2$  = 63%で、私たちの分析における異質性はかなりのものであることがわかる。異質なデータセットにおけるtrim and fill法の限界を考慮すると、これは問題であることがわかる。 
+
+そのため、2つのtrim and fill分析を行う。1つは全研究を対象とした分析で、もう1つは   Chapter \@ref(outliers)  (すなわち、研究3と16)。その結果を  `tf`  と  `tf.no.out`  に保存した。
+
+
+
+```{r}
+# Using all studies
+tf <- trimfill(m.gen)
+
+# Analyze with outliers removed
+tf.no.out <- trimfill(update(m.gen, 
+                             subset = -c(3, 16)))
+
+```
+
+まず、全研究を対象とした1つ目の分析を見てみよう。
+
+```{r, eval=F}
+summary(tf)
+```
+
+```
+## Review:     Third Wave Psychotherapies
+##                              SMD             95%-CI %W(random)
+## [...]
+## Filled: Warnecke et al.   0.0520 [-0.4360;  0.5401]        3.8
+## Filled: Song & Lindquist  0.0395 [-0.4048;  0.4837]        4.0
+## Filled: Frogeli et al.    0.0220 [-0.3621;  0.4062]        4.2
+## Filled: Call et al.      -0.0571 [-0.5683;  0.4541]        3.8
+## Filled: Gallego et al.   -0.0729 [-0.5132;  0.3675]        4.0
+## Filled: Kang et al.      -0.6230 [-1.2839;  0.0379]        3.3
+## Filled: Shapiro et al.   -0.8277 [-1.4456; -0.2098]        3.4
+## Filled: DanitzOrsillo    -1.1391 [-1.8164; -0.4618]        3.3
+## 
+## Number of studies combined: k = 26 (with 8 added studies)
+## 
+##                         SMD           95%-CI    t p-value
+## Random effects model 0.3428 [0.1015; 0.5841] 2.93  0.0072
+## 
+## Quantifying heterogeneity:
+##  tau^2 = 0.2557 [0.1456; 0.6642]; tau = 0.5056 [0.3816; 0.8150];
+##  I^2 = 76.2% [65.4%; 83.7%]; H = 2.05 [1.70; 2.47]
+## 
+## [...]
+## 
+## Details on meta-analytical method:
+## - Inverse variance method
+## - Restricted maximum-likelihood estimator for tau^2
+## - Q-profile method for confidence interval of tau^2 and tau
+## - Hartung-Knapp adjustment for random effects model
+## - Trim-and-fill method to adjust for funnel plot asymmetry
+```
+
+トリムとフィルの手順で、合計8件の研究が追加されたことがわかる。トリムとフィルの研究には、私たちが検出した外れ値だけでなく、比較的高い効果を持つ他のいくつかの小さな研究も含まれている。移植された効果量はすべて非常に低く、いくつかは非常に負であることがわかる。出力はまた、補正された効果の推定値を提供し、それは $g=$  0.34である。これはまだ有意であるが、私たちが最初に `m.gen` に対して計算した $g=$  0.58という効果よりはるかに低いものである。 
+
+では、外れ値を取り除いた解析結果と比較してみよう。
+
+```{r, eval=F}
+summary(tf.no.out)
+```
+
+```
+## Review:     Third Wave Psychotherapies
+## [...]     
+## 
+## Number of studies combined: k = 22 (with 6 added studies)
+## 
+##                         SMD           95%-CI    t p-value
+## Random effects model 0.3391 [0.1904; 0.4878] 4.74  0.0001
+## 
+## Quantifying heterogeneity:
+##  tau^2 = 0.0421 [0.0116; 0.2181]; tau = 0.2053 [0.1079; 0.4671];
+##  I^2 = 50.5% [19.1%; 69.7%]; H = 1.42 [1.11; 1.82]
+## [...]
+```
+
+ $g=$  0.34では、結果はほぼ同じである。全体として、trim and fill 法は、私たちのメタ分析における $g=$  0.58 のプール効果は、小規模研究の効果により過大評価されていることを示している。実際には、効果はかなり小さいと思われる。この過大評価は出版バイアスに起因する可能性が高いが、確実ではない。他の説明も可能であり、このことはtrim and fill推定が無効であることを意味する可能性がある。
+
+最後に、インプットされた研究を含むファネルプロットを作成することも可能である。`funnel.meta ` 関数を `trimfill` の出力に適用するだけである。以下のコードでは、trimとfillの両方の分析（外れ値あり、なし）に対して、輪郭強調ファネルプロットを作成している。`par`   関数を使用すると、両方のプロットを並べて表示すことが可能である。
+
+\vspace{4mm}
+
+```{r, fig.width=12, fig.height=5, eval=F}
+
+# Define fill colors for contour
+contour <- c(0.9, 0.95, 0.99)
+col.contour <- c("gray75", "gray85", "gray95")
+ld <- c("p < 0.1", "p < 0.05", "p < 0.01")
+
+# Use 'par' to create two plots in one row (row, columns)
+par(mfrow=c(1,2))
+
+# Contour-enhanced funnel plot (full data)
+funnel.meta(tf, 
+            xlim = c(-1.5, 2), contour = contour,
+            col.contour = col.contour)
+legend(x = 1.1, y = 0.01, 
+       legend = ld, fill = col.contour)
+title("Funnel Plot (Trim & Fill Method)")
+
+# Contour-enhanced funnel plot (outliers removed)
+funnel.meta(tf.no.out, 
+            xlim = c(-1.5, 2), contour = contour,
+            col.contour = col.contour)
+legend(x = 1.1, y = 0.01, 
+       legend = ld, fill = col.contour)
+title("Funnel Plot (Trim & Fill Method) - Outliers Removed")
+
+```
+
+```{r, fig.width=12, fig.height=5, echo=F}
+
+# Define fill colors for contour
+contour <- c(0.9, 0.95, 0.99)
+col.contour <- c("gray75", "gray85", "gray95")
+ld <- c("p < 0.1", "p < 0.05", "p < 0.01")
+
+# Use 'par' to create two plots in one row (row, columns)
+par(mfrow=c(1,2),
+    bg="#FFFEFA")
+
+# Contour-enhanced funnel plot (full data)
+funnel.meta(tf, 
+            xlim = c(-1.5, 2), contour = contour,
+            col.contour = col.contour)
+legend(x = 1.1, y = 0.01, 
+       legend = ld, fill = col.contour)
+title("Funnel Plot (Trim & Fill Method)")
+
+# Contour-enhanced funnel plot (outliers removed)
+funnel.meta(tf.no.out, 
+            xlim = c(-1.5, 2), contour = contour,
+            col.contour = col.contour)
+legend(x = 1.1, y = 0.01, 
+       legend = ld, fill = col.contour)
+title("Funnel Plot (Trim & Fill Method) - Outliers Removed")
+
+```
+
+これらのファネルプロットでは、インプットされた研究は塗りつぶしの色がない円で表されている。
+
+
+<br></br>
+
+#### PET-PEESE  {#pet-peese}
+
+---
+
+\index{PET-PEESE}
+\index{Standardized Mean Difference}
+
+Duval &amp; Tweedieのtrim and fill法は比較的古く、間違いなく小規模研究の効果を調整する最も一般的な方法の1つである。しかし、前述したように完璧とは言い難いアプローチであり、プール効果のバイアス補正版を推定する唯一の方法というわけではない。近年、**PET-PEESE** [@stanley2014meta; @stanley2008meta] という手法が、特にSMDがアウトカムとして頻繁に使われる研究分野（例えば、心理学や教育研究）で、ますます人気が出てきている。これまでのすべての手法と同様に、PET-PEESE は、出版バイアスの潜在的な指標とみなされる小規模研究の効果に狙いを定めている。
+
+PET-PEESE は、実際には、**精密効果検定**（PET）と**標準誤差付き精密効果推定**（PEESE）の2つの手法を組み合わせたものである。まず、前者から説明しよう。PET 法は、研究の効果量をその標準誤差に回帰させるという単純な回帰モデルに基づいている。
+
+
+\begin{equation}
+\theta_k =  \beta_0 + \beta_1SE_{\theta_k}
+(\#eq:pub5)
+\end{equation}
+
+
+Peters の検定と同じように、重み付き回帰を使用した。研究の重み $w_k$  は、分散の逆数として計算される--通常の（固定効果）メタ分析と同じように。
+
+\begin{equation}
+w_k = \frac{1}{s_k^2} 
+(\#eq:pub6)
+\end{equation}
+
+
+注目すべきは、PET 法で使用される回帰モデルは、Eggers の検定のものと同等であることである。主な違いは、PET 式では、$\beta_1$  係数がファネルの非対称性を定量化し、Eggers の検定では、これが切片によって示されることである。 
+
+\index{Limit}
+
+しかし、PET 法を用いる場合、$\beta_1$  で測定されるファネルの非対称性には関心がなく、切片 $\beta_0$  に関心がある。これは、上の式で、切片がいわゆる**限界効果**を表していることがある。この限界効果は、**標準誤差が0**の研究の期待効果量である。これは、サンプル誤差なしに測定された観察された効果量に相当した。すべてが同じであれば、サンプリング・エラーなしで測定された効果サイズ $\epsilon_k$  は、真の全体的な効果そのものを表すことが分かっている。 
+
+PET 法の背後にある考え方は、予測因子として標準誤差を含めることによって、小規模研究の効果を**制御**することである。理論的には、これは、すべての小規模研究の効果に対する補正後のメタ分析における真の効果を表す切片 $\beta_0$  につながるはずである。
+
+\begin{equation}
+\hat\theta_{\text{PET}} = \hat\beta_{0_{\mathrm{PET}}}
+(\#eq:pub7)
+\end{equation}
+
+PEESE 法の式は、非常によく似ている。唯一の違いは、**2乗** 標準誤差を予測変数として使用することである（すなわち、効果量の分散 $s_k^2$  ）。
+
+\begin{equation}
+\theta_k =  \beta_0 + \beta_1SE_{\theta_k}^2
+(\#eq:pub8)
+\end{equation}
+
+
+研究ウエイトの計算式 $w_k$  は変わらないが。標準誤差の二乗の背後にある考え方は、小規模の研究は、特に**非常に**過剰に推定された効果を報告しやすいということである。この問題は、高い統計的検出力を持つ研究では、それほど顕著にはならないことが推測される。 
+
+PET 法は、$\beta_0$  が捉えた真の効果が**ゼロ**のときに最もよく機能するのに対し、PEESE は真の効果が**ゼロでない**ときによりよい性能を示す。Stanley and Doucouliagos  [-@stanley2014meta] は、それぞれの長所をバランスさせるために、両方の方法を結合することを提案してきた。その結果生まれたアプローチがPET-PEESE 法である。PET-PEESE は、PET または PEESE の切片 $\beta_0$  を、補正された真の効果の推定値として使用する。 
+
+PET と PEESE のどちらを使用するかは、PET 法で計算された切片のサイズに依存する。 $\beta_{0_{\text{PET}}}$  が、$\alpha$  = 0.05 の片側検定で、ゼロより有意に大きい場合、私たちはPEESE の切片を真の効果量推定値として使用した。PET の切片が0より有意に大きくない場合、私たちはPET 推定値のままである。 
+
+ _R_ で回帰モデルを実装する場合、ほとんどの場合、両側検定で係数の有意性を検定するのが通例である（つまり、$\beta$  の重みが0と有意に異なるかどうかを、方向に関係なく検定した）。 $\alpha$  = 0.05で片側検定を仮定すると、$p$  &lt; 0.1、および $\beta_0$  の推定値がゼロより大きいとき、すでに切片が有意であるとみなす^[後者の条件 ( $\hat\beta_0$  &gt; 0) は、正の効果量が好ましい結果（たとえば、正の効果量は介入が有効だったことを意味する）である場合にのみ適用される。負の効果量（たとえば、SMD = -0.5）が有利なアウトカムを表す場合、私たちのワンサイドテストは反対方向になるはずである。これは、PETの切片の $p$ -値が0.1より小さく、切片推定値が0より**小さい**とき、PEESEが使用されることを意味する]。
+
+
+したがって、PET-PEESEによって推定される真の効果量を求めるルールは次のようになる。  
+
+
+\begin{equation}
+  \hat\theta_{\text{PET-PEESE}}=\begin{cases}
+    \mathrm{P}(\beta_{0_{\text{PET}}} = 0) <0.1~\mathrm{and}~\hat\beta_{0_{\text{PET}}} > 0: & \hat\beta_{0_{\text{PEESE}}}\\
+    \text{else}: & \hat\beta_{0_{\text{PET}}}.
+  \end{cases}
+  (\#eq:pub9)
+\end{equation}
+
+この if-else のロジックを理解するのはやや難しいが、実際の例で説明すると分かりやすいだろう。`m.gen` メタ分析オブジェクトを使用して、PET-PEESEの真の効果量の推定値を見てみよう。
+
+現在、 **{meta}** におけるPET-PEESEの素直な実装はないので、線形モデル関数  `lm`  を使用して独自のコードを記述した。しかし、PETとPEESEモデルを適合させる前に、まず、データフレームに必要なすべての変数を準備する必要がある。このデータフレームを  `dat.petpeese`  と呼ぶ。最も重要な変数は、もちろん、標準化平均差である。最初に  `metacont`  または  `metagen`  を使用してメタ分析を実行しても、各研究の計算されたSMDは、常にメタ分析オブジェクトの  `TE`  の下に格納される。
+
+```{r}
+# Build data set, starting with the effect size
+dat.petpeese <- data.frame(TE = m.gen$TE)
+```
+
+\index{Standardized Mean Difference}
+
+次に、効果量の標準誤差が必要である。PET-PEESEでは、PustejovskyとRodgersが提案した修正標準誤差[-@pustejovsky2019testing, see Chapter \@ref(eggers-test) ]^[James Pustejovskyもこの方法を[ブログ記事](https://www.jepusto.com/pet-peese-performance/)で推奨していて、この代替方法を「SPET-SPEESE」と呼んでいる]を使用するとよい。 
+
+そこで、効果量そのものと相関がないように、修正標準誤差  `seTE_c`  を算出するために適応された式を使用した。また、この変数を  `dat.petpeese`  に保存した。さらに、PEESEの予測因子として必要なので、**2乗**標準誤差を含む変数  `seTE_c2` を追加した。
+
+
+```{r}
+# Experimental (n1) and control group (n2) sample size
+n1 <- c(62, 72, 44, 135, 103, 71, 69, 68, 95, 
+        43, 79, 61, 62, 60, 43, 42, 64, 63)
+
+n2 <- c(51, 78, 41, 115, 100, 79, 62, 72, 80, 
+        44, 72, 67, 59, 54, 41, 51, 66, 55)
+
+# Calculate modified SE
+dat.petpeese$seTE_c <- sqrt((n1+n2)/(n1*n2))
+
+# Add squared modified SE (= variance)
+dat.petpeese$seTE_c2 <- dat.petpeese$seTE_c^2
+```
+
+最後に、各研究の逆分散重み付け `w_k` を計算する必要がある。ここで、分散の推定値を得るために、2乗修正標準誤差も使用した。
+
+```{r}
+dat.petpeese$w_k <- 1/dat.petpeese$seTE_c^2
+```
+
+これで、  `dat.petpeese`  には、PET と PEESE の重み付き線形回帰モデルを適合させるために必要なすべての変数が含まれるようになりることとした。次のコードでは、両方のモデルをフィットし、  `summary`  関数を使用して推定係数を直接表示した。これが得られた結果である。
+
+
+```{r}
+# PET
+pet <- lm(TE ~ seTE_c, weights = w_k, data = dat.petpeese)
+summary(pet)$coefficients
+
+# PEESE
+peese <- lm(TE ~ seTE_c2, weights = w_k, data = dat.petpeese)
+summary(peese)$coefficients
+```
+
+PET と PEESE のどちらを使うべきかを判断するために、まず PET 法の結果を見る必要がある。限界推定値は、$g$  = -1.35であることがわかる。この効果は有意であるが ( $p$  &lt; 0.10) 、ゼロよりかなり小さいので、PET 推定値を使用すべきことがわかる。 
+
+しかし、$g$  = -1.35、バイアス補正効果のPETの推定値はあまり信頼できない。これは、現実には、研究対象の介入タイプは関心のあるアウトカムに対して非常に負の効果を持つ；つまり、実際には非常に有害であることを示す。これは非常に考えにくいことである。善意の "介入に効果がないことはありうるが、本当に危険な介入を見つけることは非常にまれである。 
+
+実は、この結果に見られるのは、PET-PEESE の一般的な限界である。観測された効果量はすべて正符号であるにもかかわらず、補正された効果量は大きく負になっている。出力の2番目の部分を見ると、PEESE についても同じことが言えますが、その推定値はわずかに負であることがわかる（ $g=$  -0.44）。 
+
+このような場合、切片を真の効果量の点推定値として解釈しないことが最善である。PET-PEESE は、スモールサンプル効果を補正した場合、研究中の介入タイプは**効果なし**であることを示すと簡単に言うことが可能である。これは基本的に、実際に推定された負の効果量を解釈するのではなく、$\hat\theta_{\mathrm{PET-PEESE}}$  をゼロに設定することを意味した。 
+
+```{block, type='boximportant'}
+**Limitations of PET-PEESE**
+
+\vspace{2mm}
+
+PET-PEESE can not only systematically over-correct the pooled effect size--it also sometimes **overestimates** the true effect, even when there is no publication bias at all. Overall, the PET-PEESE method has been found to perform badly when the number of included studies is small (i.e. $K$ < 20), and the between-study heterogeneity is very high, i.e. $I^2$ > 80% [@stanley2017limitations]. 
+
+Unfortunately, it is common to find meta-analyses with a small number of studies and high heterogeneity. This restricts the applicability of PET-PEESE, and we do not recommend its use as the **only** method to adjust for small-study effects. Yet, it is good to know that this method exists and how it can be applied since it has become increasingly common in some research fields. 
+
+```
+
+
+```{block2, type='boxinfo'}
+**Using `rma.uni` Instead of `lm` for PET-PEESE**
+
+In our hands-on example, we used the `lm` function together with study weights to implement PET-PEESE. This approach, while used frequently, is not completely uncontroversial. 
+
+There is a minor, but crucial difference between weighted regression models implemented via `lm`, and meta-regression models employed by, for example, `rma.uni`. While `lm` uses a **multiplicative error model**, meta-analysis functions typically employ an **additive error model**. We will not delve into the technical minutiae of this difference here; more information can be found in an excellent [vignette](https://www.metafor-project.org/doku.php/tips:rma_vs_lm_lme_lmer) written by Wolfgang Viechtbauer on this topic.
+
+The main takeaway is that `lm` models, by assuming a proportionality constant for the sampling error variances, are not perfectly suited for meta-analysis data. This means that implementing PET-PEESE via, say, `rma.uni` instead of `lm` is indicated, at least as a sensitivity analysis. Practically, this would mean running `rma.uni` with $SE_{\theta_k}^{(2)}$ added as a moderator variable in `mods`; e.g. for PET:
+
+`rma.uni(TE, seTE^2, mods = ~seTE, data = dat, method = "FE")`.
+
+```
+
+<br></br>
+
+#### リュッカーの極限メタ分析法  {#rucker-ma}
+
+---
+
+\index{Limit}
+
+調整効果量の推定値を算出するもう一つの方法は、Rückerらが提案した**限界メタ分析**を行うことである[-@rucker2011treatment]。この方法は、PET-PEESEよりも高度で、より複雑な計算を必要とした。そのため、ここではこの方法の背景にある一般的な考え方を理解することに重点を置き、その後の重い作業は _R_ に任せることにした。 
+
+Rückerの方法の背後にある考え方は、小規模研究の効果によるバイアスを明示的に考慮したメタ分析モデルを構築することである。ちなみに、（ランダム効果）メタ分析の式は、次のように定義可能である。
+
+\begin{equation}
+\hat\theta_k = \mu + \epsilon_k+\zeta_k
+(\#eq:pub10)
+\end{equation}
+
+ここで、$\hat\theta_k$  は研究 $k$  の観察された効果サイズ、$\mu$  は真の全体効果サイズ、$\epsilon_k$  はサンプル誤差、$\zeta_k$  は研究間異質性による偏差を定量化したものである。 
+
+限界メタ分析では、このモデルを拡張する。私たちは、小規模研究の効果がある場合、研究の効果量と標準誤差は独立していないという事実を考慮する。これは、出版バイアスが特に小規模な研究に影響すること、そして、小規模な研究は大規模な研究よりも大きな効果量を持つことを知っているため、仮定されている。Rückerの方法では、このバイアスは、新しい項（ $\theta_{\text{Bias}}$  ）を導入することによって、私たちのモデルに追加される。これは、$\theta_{\text {Bias}}$  が $\epsilon_k$  および $\zeta_k$  と相互作用すると仮定している。それは、$\epsilon_k$  が増加するにつれて、より大きくなる。適応された式は次のようになる。
+
+
+\begin{equation}
+\hat\theta_k = \mu_* + \theta_{\text{Bias}}(\epsilon_k+\zeta_k)
+(\#eq:pub11)
+\end{equation}
+
+この式では、$\mu_*$  はもはや全体的な真の効果量を表すのではなく、「標準的な」ランダム効果メタ分析では直接的に相当するものがないグローバル平均であることに注意することが重要である（ $\theta_{\text{Bias}} =$  0 以外の場合）。 
+
+次のステップは、PET-PEESE（前章参照）の背後にある考え方に似ている。上の式を使って、研究の効果サイズの推定がだんだん正確になり、個々のサンプル誤差 $\epsilon_k$  がゼロに近づくと仮定した。これは、$\epsilon_k$  が最終的に方程式から脱落することを意味した。
+
+\begin{equation}
+\mathrm{E}(\hat\theta_k) \rightarrow \mu_{*} + \theta_{\text{Bias}}\zeta_k ~ ~ ~ ~ \text{as} ~ ~ ~ ~ \epsilon_k \rightarrow 0.
+(\#eq:pub12)
+\end{equation}
+
+この式では、$\mathrm{E}(\hat\theta_k)$ stands for the **expected value** of $\hat\theta_k$ as $\epsilon_k$ approaches zero. The formula we just created is the one of a "limit meta-analysis". It provides us with an adjusted estimate of the effect when removing the distorting influence of studies with a large standard error. Since $\zeta_k$ is usually expressed by the between-study heterogeneity variance $\tau^2$ (or its square root, the standard deviation $ \tau$) を使って式中の $\zeta_k$  を置き換えれば、この式となるわけである。
+
+\begin{equation}
+\hat\theta_{*} =  \mu_* + \theta_{\mathrm{Bias}}\tau
+(\#eq:pub13)
+\end{equation}
+
+ここで、$\hat\theta_*$  は、小規模研究の影響を調整した後の**プールされた**効果量の推定値を表した。Rückerの方法は、最尤法を用いている。 
+を使って、真の効果量の「縮小」推定値など、この式のパラメータを推定することが可能である $\hat\theta_*$  。さらに、この式を用いて、個々の研究ごとに縮約した効果量推定値 $\hat\theta_{{ **{}** _ **{k}** $  を得ることも可能である $k$  。
+
+\begin{equation}
+\hat\theta_{{*}_k} =  \mu_* + \sqrt{\dfrac{\tau^2}{SE^2_k + \tau^2}}(\hat\theta_k - \mu_*)
+\end{equation}
+
+ここで、$SE^2_k$  は、$k$  の二乗標準誤差（すなわち、観察された分散）を表し、$\hat\theta_k$  は、もともと観察された効果量である^[この式は、式 9.11 のより単純化したバージョンから導き出すことができる。この方法の技術的な説明は、Rückerら[-@rucker2011treatment]の式2.4から式2.6にある]。 
+
+\index{metasens Package}
+
+PET-PEESEと比較したRückerのリミットメタ分析法の利点は、異質性分散 $\tau^2$  が明示的にモデルに含まれていることである。もう一つのより実用的な利点は、 _R_ で  `limitmeta`  関数を使用して、この方法を直接適用できることである。この関数は  **{metasens}**  パッケージに含まれている [@metasens]。 
+
+ **{metasens}** と **{meta}** は同じ研究者グループによって開発されたので、通常は非常にシームレスに連携して動作した。例えば、 `m.gen` メタ分析のリミットメタ分析を行うには、 `limitmeta` の呼び出しの最初の引数としてそれを与えるだけでよいのである。 
+
+```{r, echo=F, message=F}
+library(metasens)
+```
+
+```{r, message=F, eval=F}
+# Install 'metasens', then load from library
+library(metasens)
+
+# Run limit meta-analysis
+limitmeta(m.gen)
+```
+
+```
+## Results for individual studies 
+## (left: original data; right: shrunken estimates)
+## 
+##                           SMD        95%-CI      SMD        95%-CI
+## Call et al.              0.70 [ 0.19; 1.22]    -0.05 [-0.56; 0.45]
+## Cavanagh et al.          0.35 [-0.03; 0.73]    -0.09 [-0.48; 0.28]
+## DanitzOrsillo            1.79 [ 1.11; 2.46]     0.34 [-0.33; 1.01]
+## de Vibe et al.           0.18 [-0.04; 0.41]     0.00 [-0.22; 0.23]
+## Frazier et al.           0.42 [ 0.13; 0.70]     0.13 [-0.14; 0.42]
+## Frogeli et al.           0.63 [ 0.24; 1.01]     0.13 [-0.25; 0.51]
+## Gallego et al.           0.72 [ 0.28; 1.16]     0.09 [-0.34; 0.53]
+## Hazlett-Stevens & Oren   0.52 [ 0.11; 0.94]    -0.00 [-0.41; 0.40]
+## Hintz et al.             0.28 [-0.04; 0.61]    -0.05 [-0.38; 0.26]
+## Kang et al.              1.27 [ 0.61; 1.93]     0.04 [-0.61; 0.70]
+## Kuhlmann et al.          0.10 [-0.27; 0.48]    -0.29 [-0.67; 0.08]
+## Lever Taylor et al.      0.38 [-0.06; 0.84]    -0.18 [-0.64; 0.26]
+## Phang et al.             0.54 [ 0.06; 1.01]    -0.11 [-0.59; 0.36]
+## Rasanen et al.           0.42 [-0.07; 0.93]    -0.25 [-0.75; 0.25]
+## Ratanasiripong           0.51 [-0.17; 1.20]    -0.48 [-1.17; 0.19]
+## Shapiro et al.           1.47 [ 0.86; 2.09]     0.26 [-0.34; 0.88]
+## Song & Lindquist         0.61 [ 0.16; 1.05]     0.00 [-0.44; 0.44]
+## Warnecke et al.          0.60 [ 0.11; 1.08]    -0.09 [-0.57; 0.39]
+## 
+## Result of limit meta-analysis:
+## 
+##  Random effects model     SMD            95%-CI     z     pval
+##     Adjusted estimate -0.0345 [-0.3630; 0.2940] -0.21   0.8367
+##   Unadjusted estimate  0.5771 [ 0.3782; 0.7760] -0.21 < 0.0001
+## [...]
+```
+
+出力は、まず、各研究の元の推定値（左）と縮小された推定値（右）を示した。修正された効果量は、観察された効果量よりもかなり小さくなっていることがわかる；いくつかは、現在ではマイナスになっている。出力の第2部では、調整されたプール効果推定値が表示されている。これは、$g=$  -0.03、小規模研究の影響を補正した場合、全体的な効果がほぼゼロであることを示している。 
+
+もし、小規模研究の効果が本当に出版バイアスによるものであるなら、この結果はがっかりするものである。私たちの最初の発見は完全に偽りで、選択的な出版によって治療が実際には有効でないという事実が隠されていたことを意味するからである。しかし、繰り返しになるが、出版バイアスが私たちのデータにおける小規模研究の効果の唯一の原動力であったと証明することは難しい。
+
+\index{Funnel Plot}
+
+limitメタ分析のファネルプロットを作成することも可能である。 `limitmeta` の結果を  `funnel.limitmeta`  関数に渡すだけである。これは、 `funnel.meta` によって生成されたものと全く同じように見えるファネルプロットを作成した。唯一の違いは、プロットに**グレーカーブ**が追加されることである。この曲線は、Y軸の標準誤差がゼロのときの調整済み平均効果量を示しているが、標準誤差が増加するにつれて、小規模研究の効果によるバイアスが増加することを象徴している。 
+
+`limitmeta` オブジェクトのファンネルプロットを生成する際に、 `shrunken` 引数を `TRUE` に設定することで、縮約した研究レベルの効果量推定値を含めることも可能である。以下は、これらのプロットを生成するコードである。 
+
+
+```{r, fig.width=6, fig.height=5, out.width="50%", collapse=TRUE, results='hold', eval = F}
+# Create limitmeta object
+lmeta <- limitmeta(m.gen)
+
+# Funnel with curve
+funnel.limitmeta(lmeta, xlim = c(-0.5, 2))
+
+# Funnel with curve and shrunken study estimates
+funnel.limitmeta(lmeta, xlim = c(-0.5, 2), shrunken = TRUE)
+```
+
+
+```{r, fig.height=5, fig.width = 13, collapse=TRUE, results='hold', echo=F}
+# Create limitmeta object
+lmeta <- limitmeta(m.gen)
+
+par(mfrow = c(1,2),
+    bg="#FFFEFA")
+# Funnel with curve
+funnel.limitmeta(lmeta, xlim = c(-0.5, 2))
+
+# Funnel with curve and shrunken study estimates
+funnel.limitmeta(lmeta, xlim = c(-0.5, 2), shrunken = TRUE)
+```
+
+limitmeta ` は標準化平均差を用いたメタ分析にのみ適用できるわけではなく、  **{meta}**  メタ分析オブジェクトであればどのようなものでも使用できることに注意してみよう。例として、リスク比を要約指標とする ` m.bin` の修正効果量を確認してみよう。
+
+```{r, eval=F}
+limitmeta(m.bin)
+```
+
+```
+## Result of limit meta-analysis:
+## 
+##  Random effects model     RR           95%-CI    z     pval
+##     Adjusted estimate 2.2604 [1.8066; 2.8282] 7.13 < 0.0001
+##   Unadjusted estimate 2.0217 [1.5786; 2.5892] 7.13 < 0.0001
+```
+
+この分析では、元の推定値と修正後の推定値はほぼ同じであることがわかる。これは、Petersの検定( Chapter \@ref(peters-test) )で、このメタ分析では小規模研究の効果は小さいとされていることを考えると、あまり驚くことではない。
+
+<br></br>
+
+### Pカーブ  {#p-curve}
+
+---
+
+\index{P-Curve}
+
+前回は、小規模研究の効果を見ることで出版バイアスのリスクを評価する様々なアプローチについて説明してきた。実施方法は異なるが、これらの方法はすべて、選択的な報告によって研究の効果量がそのサンプルサイズに依存するという考えに基づいている。標準誤差が大きい（つまり精度が低い）研究は、大規模な研究よりも平均効果量が大きいと仮定する。これは、非常に高い効果量を持つ小規模な研究だけが発表され、その他の研究はファイルの引き出しに入ったままになっていることがある。
+
+この「理論」は確かに直感的に聞こえますが、やや的外れであるという意見もある。小規模研究法は、出版バイアスが**効果量**によって引き起こされると仮定している。しかし、より現実的なスタンスは、$p$ -**値**によって作動すると言うことだろう。実際には、研究結果は、$p<$  0.05である場合にのみ、出版する価値があるとみなされる。 
+
+先に述べたように、研究は**人間**によって行われるため、私たちの生活の他の多くの部分と同様に、お金と名声に影響される。significant $p$ , or no PhD」という悪名高い諺は、この問題を非常によく捉えている。研究者はしばしば、$p$ - 0.05より小さい値を「出す」ようにという大きな外圧にさらされている。研究者は、この有意水準が、自分の研究が出版されるかどうか、また、それが「成功」したとみなされるかどうかを決定することができることを知っているのである。このようなインセンティブは、ネガティブで有意でない知見が出版された文献からますます消えていく理由を説明するだろう[@fanelli2012negative]。
+
+小規模研究法は、出版バイアスの背後にあるメカニズムを**間接的に**捉えていると言えるだろう。確かに、選択的な報告によって、より小さな研究がより高い効果を持つようになることがある。しかし、これは、非常に高い効果によって、$p<$  0.05の検定統計量を得る機会が増えるから正しいだけである。小規模研究の効果測定法では、$p=$  0.049 の研究と、$p$ -値が0.051 の研究の間にはほとんど差がない。しかし、実際には、この小さな違いが、研究者にとって大きな意味を持ちる。 
+
+\index{P-Value}
+\index{P-Hacking}
+\index{Questionable Research Practice (QRP)}
+\index{Small-Study Effect}
+
+以下では、出版バイアスの主な要因として $p$ -values に着目した **p-curve** という手法を紹介した [@simonsohn2014p; @simonsohn2014es; @simonsohn2015better]。この方法の特徴は、**有意な**効果量と、その $p$ -値がどのように分布しているかに限定されていることである。これにより、メタ分析データの背後に真の効果があるかどうかを評価することができ、それがどの程度大きいかを推定することが可能である。重要なのは、$p$ -hackingのような疑わしい研究手法も明示的にコントロールできることで、small-study effect methodではそれができないことである。 
+
+\index{Trim and Fill Method}
+
+Pカーブは比較的新しい手法である。これは、近年社会科学に影響を与えた「複製の危機」に対応して開発された[@ioannidis2005most; @open2015estimating; @mcnutt2014reproducibility].この危機は、一見確立されたように見える研究結果の多くが、実は系統的に再現できないという不都合なものであるという観察に端を発している。このため、出版バイアスを検出する方法に新たな関心が寄せられるようになりることとした。メタ分析では、選択的な報告を適切にコントロールできないため、すでに出版された文献に存在するバイアスを単純に再現している可能性がある。 
+
+P-curveは、標準的な出版バイアス法、特にDuval &amp; Tweedie trim-fill-methodの欠点に対応して開発されたものでもある。Simonsohnら[-@simonsohn2014es]は、trim-and-fill法は通常**小さな**下方修正をもたらすだけで、分析データの背後に真の効果が全くないという事実をしばしば見過ごすことを発見してきた。
+
+P曲線はその名の通り、$p$ -値の曲線に基づくものである。 $p$ -曲線はヒストグラムのようなもので、メタ分析において、$p<$  0.05, $p<$  0.04, $p<$  0.03, というような研究数を示している。p-曲線法は、この $p$ -値のヒストグラムの形状は、研究のサンプルサイズに依存するという考えに基づいており、さらに重要なことは、私たちのデータの背後にある**真の**効果量に依存していることである。 
+
+これを説明するために、9つのメタ分析の結果をシミュレートしてみた。パターンを明確にするために、これらの架空のメタ分析には、それぞれ膨大な数の $K=$  10 $^{\text **{5}**  **{}** $  研究が含まれている。9つのシミュレーションのそれぞれで、個々の研究に対して異なるサンプルサイズ（ $n=$  20から $n=$  100の範囲）と、異なる真の効果量（ $\theta=$  0から0.5の範囲）を仮定してきた。メタ分析では、すべての研究が1つの真の効果量を共有し、効果が固定効果モデルに従うと仮定してきた。そして、シミュレーションで有意なすべての効果量の $p$ -値を取り、ヒストグラムを作成してきた。その結果は、以下のプロットで見ることが可能である。
+
+\vspace{2mm}
+
+```{r pcurve, fig.width=12, fig.height=9, message=F, echo=F, out.width="80%", fig.align="center", fig.cap="P-curves for varying study sample size and true effect."}
+library(dplyr)
+library(rlang)
+
+# Define helpers
+pdist = function(x, lower.tail) pnorm(x, lower.tail=lower.tail)
+
+plotter = function(x, var){
+  
+  x %>% filter(!!enquo(var) < 0.05) %>% pull(!!enquo(var)) %>% 
+    hist(breaks = 20, plot = F) -> h
+  h$density = h$counts/sum(h$counts)*100
+  plot(h, freq = F, main = NULL, ylab = "Percentage", 
+       xlab = bquote(italic("p")~"value"), col = "gray")
+  
+  d = strsplit(deparse(substitute(var)), "_") %>% unlist() %>% nth(2)
+  n = strsplit(deparse(substitute(var)), "_") %>% unlist() %>% nth(3)
+  d = as.numeric(d)/10
+  title(bquote(theta~"="~.(d)~~~"n = "~.(n)))
+  
+} 
+
+
+# # Simulate
+# dat = list()
+# for (i in 1:1e5){
+#   
+#   dat.inner = list()
+#   for (n in c(20, 50, 100)){
+#   
+#   z = mean(rnorm(n, 0, 1))*sqrt(n)
+#   dat.inner[[paste0("s_0_", n)]] = z
+#   
+#   z = mean(rnorm(n, .2, 1))*sqrt(n)
+#   dat.inner[[paste0("s_2_", n)]] = z
+#   
+#   z = mean(rnorm(n, .5, 1))*sqrt(n)
+#   dat.inner[[paste0("s_5_", n)]] = z
+#   }
+#   
+#   dat[[i]] = unlist(dat.inner)
+# }
+# 
+# do.call(rbind, dat) %>% 
+#   apply(., 2, function(x) 2*pmin(pdist(x, TRUE), pdist(x, FALSE))) %>% 
+#   data.frame() -> simdat.p
+
+load("data/simdat.p.rda")
+
+
+par(mfrow = c(3,3), cex.main = 2, bg="#FFFEFA")
+simdat.p %>% plotter(s_0_20)
+simdat.p %>% plotter(s_0_50)
+simdat.p %>% plotter(s_0_100)
+simdat.p %>% plotter(s_2_20)
+simdat.p %>% plotter(s_2_50)
+simdat.p %>% plotter(s_2_100)
+simdat.p %>% plotter(s_5_20)
+simdat.p %>% plotter(s_5_50)
+simdat.p %>% plotter(s_5_100)
+
+```
+
+\vspace{2mm}
+
+最初の行は、真の効果がない場合の有意な $p$ -値の分布を示している。このパターンは、個々の研究のサンプルサイズがどんなに大きくても、すべてのシミュレーションで同じであることがわかる。 $p$   $p=$  0.04というかろうじて有意な値は、$p=$  0.01と同じぐらいありそうである。このような平坦な $p$ -曲線は、私たちのデータに基礎的な効果がないとき、すなわち、$\theta = 0$  の**帰無仮説**が真であるときに出現した。 
+
+この場合、$p$ -値は**一様**分布に従うと仮定される：すべての $p$ -値は他のものと同じように可能性がある。帰無仮説（ $\theta = 0$  ）が真であるとき、偶然に有意な効果量を見つけることは可能である。これは、**偽陽性**、つまり、$\alpha$  エラーになる。しかし、これはありえないことで、私たちは**どのようにありえないか**を正確に知っている。効果サイズがゼロの時は一様に分布しているので、$p$ -値の5%は0.05より小さいと予想される。これはまさに、帰無仮説を棄却するための仮説検定でよく使われる $\alpha=$  0.05の有意性閾値なのである。
+
+ $p$ -曲線は、2行目と3行目で全く違って見える。これらの例では、帰無仮説は偽であり、私たちのデータには真の効果が存在する。このため、$p$ -値の分布は**右肩上がり**になる。私たちのデータが真の効果を捉えている場合、非常に有意な（例えば、$p=$  0.01）効果サイズは、ほとんど有意でない効果（例えば、$p=$  0.049）よりも可能性が高くなる。この右傾化は、真の効果サイズと研究サンプルサイズが大きくなるにつれて、ますます顕著になる。 
+
+しかし、私たちのメタ分析では、検出力が極端に低い研究（すなわち、$\theta=$  0.2の小さな効果を検出することを目的としながら、$n=$  20人の参加者しか含まない）でも、右肩上がりの $p$ -カーブが出現することがわかる。このことから、$p$ -曲線は、真の効果量の変化に対して非常に敏感であることが明らかになりることとした。真の効果サイズが存在する場合、$p$ -value が有意である分布を見るだけで、それを検出できることがよくある。
+
+さて、研究者が $p$ -hack したとき、$p$ -curve がどのように見えるか想像してみてみよう。通常、アナリストが $p$ -hacking を使い始めるのは、結果が有意ではないが、それに **近い** と判断されたときである。そして、$p$ -値が0.05より小さくなるまで分析の詳細が調整される。それはすでに結果を公表するのに十分な値なので、それ以降、$p$ -hackingは行われない。 $p$ -ハッキングが広く行われると、$p$ -カーブが**左に傾く**ことになるのは想像に難くない。 $p$ -0.05をわずかに下回る値が過剰に表現され、非常に有意な結果が過小に表現される。 
+
+まとめると、$p$ -曲線は、出版バイアスと $p$ -ハッキングの存在を評価するための診断ツールとして使用できることがわかる。次に、経験的な $p$ -曲線に基づく統計検定のコレクションであるp-curve **analysis**について説明した。重要なのは、これらのテストはどれも出版バイアスそのものに焦点を当てていないことである。その代わりに、この方法は、私たちのデータに**明らかな価値**があるかどうかを見つけ出そうとするものである。これは間違いなく、メタ分析で最も関心のあることである。私たちは、推定した効果が偽りのものでなく、選択的な報告によって引き起こされた人工物であることを確認したいのである。P-curveは、まさにこの懸念に対応するものである。P-curveは、私たちの発見が現実に存在する効果によってもたらされているのか、あるいは、大げさに言えば、「音と怒りの物語、何の意味もない」のかをチェックすることを可能にした。 
+
+<br></br>
+
+#### 証拠能力のテスト
+
+---
+
+\index{Power}
+
+証拠能力の有無を評価するために、p-curveは2種類の検定を用いる：右歪度の検定**と33%検出力の検定**（後者は $p$ -曲線の平坦性の検定と見なすことができる）。まず、右歪度の検定から始める。私たちが学んだように、$p$ -曲線の右歪度は、研究のサンプルサイズとその真の根本的な効果の関数である。したがって、メタ分析の $p$ -曲線が有意に右肩上がりであることを確認できるテストは非常に有用である。有意な $p$ -値の分布に有意な右傾化が見られる場合、これは私たちの結果が本当に真の効果によって駆動されていることを示すだろう。 
+
+<br></br>
+
+##### 右歪度の検定
+
+---
+
+\index{Binomial Test}
+
+右肩上がりを検定するために、p-curve法ではまず**二項検定**を用いる。これらの検定は、二項分布に従うデータに対して使用することが可能である。二項分布は、2つのカテゴリに分けられるデータ（例：成功/失敗、ヘッド/テール、イエス/ノー）に対して仮定することができ、$p$  は結果の1つの確率を示し、$q = 1-p$  は他の結果の確率を示した。 
+
+二項検定を使用するために、私たちは $p$ -カーブを2つのセクションに分割しなければならない。これは、&lt;0.025である $p$ -値の数と、次に&gt;0.025である有意な $p$ -値の数をカウントすることによって行う。 $p$ -curveの値は0から0.05の範囲にあるので、基本的には**x**-軸の中央をカットオフとして使用した。 $p$ -曲線が確かに右肩上がりの場合、2つのグループの $p$ -値の数が異なることが予想される。これは、0.025より小さい結果を得る確率 $p$  は、0.025より大きい値を得る確率 $q$  よりもかなり高いからである。 
+
+ $p$ -曲線に8つの値があり、そのうちの7つが0.025以下であると想像してみよう。 _R_  の  `binom.test`  関数を使って、$p$ -値の小ささと高さが等しく起こりうるという帰無仮説のもとで、そのようなデータを見つけることがどの程度可能かをテストすることが可能である^[帰無仮説のもとでは、&lt; 0.025 という結果を得る真の確率 $p$  は $\pi=$  0.5 だと仮定している。私たちの目標は、$k=$  8 件の有意な研究があるときに、$n=$  7 件以上の高い有意な研究が得られる確率を計算することである。この確率、片側二項検定の $p$ -値は、この公式を使って求めることが可能である。  $$\text{P}(X\geq k) = \sum_{k=7}^{8}\frac{n!}{k!(n-k)!}p^k(1-p)^{n-k}$$ Where $p=$ 0.5, and the exclamation mark stands for the factorial. The sum symbol tells us that we have to sum up everything to the right for values of $k=$ 7 or higher, until $k=n$.].
+ 
+
+小さい $p$ -値は大きい $p$ -値よりも頻度が高いと仮定しているので、  `alternative`  引数を  `"greater"`  に設定することで、片側検定を使用することが可能である。
+
+```{r}
+k <- 7   # number of studies p<0.025
+n <- 8   # total number of significant studies
+p <- 0.5 # assumed probability of k (null hypothesis)
+
+binom.test(k, n, p, alternative = "greater")$p.value
+```
+
+二項検定が有意であることがわかる( $p<$  0.05)。これは、この例では、$p$ -value が、低い値より高い値の方が有意に多いことを意味した。全体として、これは $p$ -曲線が右肩上がりであり、真の効果があることを示した。
+
+二項検定の欠点は、$p$ -値が実際には連続的であるにもかかわらず、二項化することを要求することである。情報の損失を避けるために、私たちは、データをビンに変換することを必要としない検定が必要である。 
+
+P-curve は、各 $p$ -値に対して $p$ -値を計算することによってこれを実現し、各研究のいわゆる $pp$ -値が得られる。 $pp$ -値は、$p$ -曲線が平坦なとき（すなわち、真の効果がないとき）、$p$  と少なくとも同じ高さの値を得る可能性を示している。これは、有意な値のみを考慮した場合の $p$  の値の確率を示す。 $p$ -値は一様分布に従うので、$\theta = 0$ , $pp$ -値は、$[0,1]$  の範囲に投影する有意な $p$ -値にほかならない。連続アウトカム尺度の場合、これは $p$ -値に20を乗じることで達成される。例えば、$p = 0.023\times20 = 0.46 \rightarrow pp$  。
+
+\index{Fisher's Method}
+\index{Stouffer's Method}
+\index{History of Meta-Analysis}
+
+ $k$  メタ分析で有意な各研究の $pp_k$ -値を用いて、**Fisherの方法**で右歪度を検定することが可能である。この方法は、<sup>20</sup>世紀初頭にR. A. Fisherによって開発されたメタ分析の「古風な」タイプである（ Chapter \@ref(history)  を参照）。Fisherの方法は、いくつかの研究からの $p$ -値を集約し、それらの少なくとも1つが真の効果を測定しているかどうかをテストすることが可能である（すなわち、提出された $p$ -値の分布が右肩上がりであるかどうかをテストした）。これは、$pp$ -値を対数変換し、すべての研究 $k$  の結果を合計し、-2 を掛けることを必要とした。 
+
+結果として得られる値は、$2\times K$  の自由度を持つ $\chi^2$  分布 ( Chapter \@ref(cochran-q)  参照) に従う検定統計量となる ( $K$  は $pp$ -値の総数)^[新しいバージョンの p-curve では、右歪度の検定に Fisher による方法 [@simonsohn2015better] の代わりに **Stouffer' method** が使われている。両方の方法は密接に関連しているが、Stoufferの方法は $p$ -valuesの代わりに $z$ -scoreに基づいている]:
+
+
+\begin{equation}
+\chi^2_{2K} = -2 \sum^K_{k=1} \log(pp_k)
+(\#eq:pub14)
+\end{equation}
+
+Fisherの方法を簡単な例で試してみよう。 $p$ -曲線が5つの $p$ -値を含んでいると想像してみよう。  $p=$  0.001, 0.002, 0.003, 0.004 および 0.03.右歪みを検定するために、私たちはまず、これらの $p$ -値を $pp$ -値に変換しなければならない。
+
+```{r}
+p <- c(0.001, 0.002, 0.003, 0.004, 0.03)
+pp <- p*20
+
+# Show pp values
+pp
+```
+
+式9.15を用いると、このコードで $\chi^2$  の値を算出することができる。
+
+
+```{r}
+chi2 <- -2*sum(log(pp))
+chi2
+```
+
+この結果、$\chi^2=$  25.96 となる。5 件の研究が含まれているので、自由度は $\text **{d.f.}** =2\times5=10$  となる。この情報を使って、効果がない/右肩下がりがないという帰無仮説のもとで、私たちのデータがどれだけの確率で成り立っているかをチェックすることが可能である。これは _R_ で  `pchisq`  関数を用いて行うことが可能である。 $\chi^2$  の値とd.f.の数を指定する必要がある。
+
+```{r}
+pchisq(26.96, df = 10, lower.tail = FALSE)
+```
+
+これは、$p$ -value が 0.0026 であることを意味する。これは、帰無仮説が非常にありそうにないことを意味し、したがって棄却される。 $\chi^2$  検定の有意な値は、この例では、$p$ -値が実際に右肩上がりであることを教えてくれる。これは、私たちのデータの背後に証拠能力があるという仮定の証拠と見ることが可能である。 
+
+
+<br></br>
+
+##### 平坦度テスト
+
+---
+
+\index{Power}
+
+私たちは、右肩上がりの検定が、有意な $p$ -値の分布が真の全体効果を表しているかどうかを決定するために使用できることを見てきることとした。問題は、この検定が私たちのデータの**統計的検出力**に依存することである。したがって、右肩上がりの検定が**有意でない**とき、これは自動的に証拠能力がないことを意味するわけではない。2つのことが考えられる：本当に効果がないのか、あるいは、$p$ -カーブにおける値の数が、$\chi^2$  テストを有意にするには単に少なすぎるのか、たとえデータが実際に右肩上がりであってもである。  
+
+したがって、右肩上がりの検定が有意でないことの説明として、検出力の欠如を除外しなければならない。右肩上がりの検定の帰無仮説は、「証拠能力がない」というものである。検定では、基本的に、私たちの経験的な $p$ -曲線が **平坦でない** ことを示すことによって、この帰無仮説を棄却しようとした。 
+
+ここで、この論理を逆転させて、$p$ -曲線が **平坦である** ことを示さなければならない。これは帰無仮説を変更することで可能である。効果がないのではなく、新しい帰無仮説は、$p$ -曲線は**小さい**効果を含み、結果として**わずかに**右傾していると仮定した。平坦性の検定では、私たちの $p$ -曲線が**わずかに右傾していない**ことを示すことが目標になる。あるいは、別の言い方をすれば、$p$ -curveが、非常に、非常に小さな効果に対して私たちが期待するものよりも、著しく平坦であることを確認したいのである。このような場合、手元のデータでは非常に小さな効果さえも否定され、証拠能力が全くない可能性が高いと言える。
+
+\index{t-Distribution}
+
+Pカーブ解析は、33%の検出力のテストを通してこれを達成した。このアイデアは、真の効果が非常に小さい場合の各有意な研究 $k$  の**期待** $pp$ -値（すなわち、$p$  の確率）を構築することである。非常に小さいというのは、研究のサンプルサイズを用いて、33%の検出力で検出できる効果サイズという意味である。 
+
+この33％という閾値はある程度恣意的なもので、p-curveの発明者が実質的に無視できる程度の効果を示す大まかな指標として選んだものである。33% power $pp$ -values がどのように決定されるかの統計的な詳細は割愛したが、アウトカム尺度によって非中心分布 $F$ , $t$ , $\chi^2$  などの**非中心**分布の使用を伴うことは知っておく必要がある^[本書で使用する p-curve  _R_ 関数では、効果量はまず $z$  スコアに変換される（式 $z = \frac{\hat\ **{theta}** {SE_{\hat\ **{theta}**  **{}** $  を使用した）。33% の検出力検定の期待値 $pp$ -値を計算するために、 d.f. = 1 の非心分布 $\chi^2$  が使用される。これは、$\chi^2_1$  と $z$  (より正確には: $z^2$ )の分布が等しいので可能なのである]。
+
+
+以下、p曲線( Chapter \@ref(p-curve-es) )を用いた効果量推定について、非心分布の概念をより詳細に説明する。
+
+要約すると、平坦性検定では、まず、有意な $p$ -値ごとに、33%の検出力で検出できる効果に基づく $pp$ -値を計算した。もし、33%検出力の推定値が私たちの $p$ -値の分布によく合うなら、33%検出力の $pp$ -値は一様分布になる。ちょうど、$p$ -値が、データが帰無仮説 $\theta = 0$  によく合うとき、一様分布に従うのと同じである。したがって、私たちは、右歪度検定で使ったのと同じ方法を適用できるが、今回は、私たちの計算に33% の検出力 $pp$ -値を使用する。 
+
+唯一の違いは、帰無仮説を棄却することに特に熱心でないことである。これは、少なくとも小さな効果がデータに存在するという概念を否定することを意味した。これは、少なくとも小さな効果がデータに存在するという考え方を否定することを意味した。私たちは、無視できるほど小さな効果があるか、あるいは全く効果がないかのどちらかを言わざるを得なくなる。 
+
+<br></br>
+
+##### P-Curveの結果の解釈  {#interpretation-p-curve-results}
+
+---
+
+ここまで、経験的に $p$ -カーブを分析することができるいくつかのテストを取り上げた。統計的な概念のいくつかが理解しにくいと感じても、あまり心配しないでみよう。p-curveの背後にある方法論を把握するのに時間がかかるが、次の実践的な例はこの点で必ず役に立つ。最も重要なのは、p-curve検定の背後にある**アイデア**と、その結果がどのように解釈されるかを理解することである。このセクションでは、後者に焦点を当てる。
+
+p-curveを解釈するとき、私たちは4つの検定結果を意味づけしなければならない：二項右歪度検定と平坦度検定、および $pp$ -値に基づく右歪度検定と平坦度検定のものである。さらに悪いことに、p-curve解析は、まだカバーしていない2つの追加検定を含みます： **half** $p$  _curve_に基づく右歪度検定と平坦度検定である。これらのテストは、前にカバーした $pp$ -値に基づくテストと同じであるが、それらは高い $p$ -値（すなわち、$p<$  0.025）にのみ適用されている。 
+
+\index{P-Hacking}
+
+half $p$ -curveテストは、**ambitious** $p$ **-hacking** [@simonsohn2015better]に対するセーフガードとして導入されたものである。可能性は低いが、研究者が $p$ -有意性が高くなるまで結果をハッキングしている可能性もある。しかし、この場合、$p$ -曲線の形状が歪む可能性がある：真の効果がない場合でも、左寄りではなく、わずかに右寄りに見えるだろう。半分の $p$ -曲線に基づく検定は、これを制御することが可能である。なぜなら、野心的な $p$ -ハッカーでさえ、真の効果がない限り、非常に**高い $p$ -値（たとえば $p<$  0.01）を得ることはますます困難になることがある。定義上、半分の $p$ -曲線は0.025より小さい値しか含まないので、二項検定は実行されない。
+
+p-curveの結果を解釈するとき、私たちは本質的に2つの質問に答えようとする。1つ目は、私たちの $p$ -曲線は、証拠能力の存在を示しているか？これは、右肩上がりの検定を使用して評価することが可能である。証拠能力の存在を確認できない場合、私たちは2番目の質問に移る。これは、平坦度検定で評価することができる。実際には、このガイドラインを用いることができる[@simonsohn2015better]。
+
+* **固有値の存在**。右歪度検定が半分の $p$ -曲線で有意である ( $p<$  0.05) **または**右歪度検定の $p$ -値が半分と完全な曲線の両方**で&lt;0.1&gt;である。
+
+* **証拠となる値がない、または不十分である**。完全曲線に対する平坦度検定は $p<$  0.05 で有意である **または** 半曲線に対する平坦度検定 **および** 二項検定は $p<$  0.1 で有意である。
+
+```{block, type='boxinfo'}
+**How to Interpret a "No-No" Case**
+
+\vspace{2mm}
+
+Every p-curve analysis eventually ends up with one of three outcomes. When the right-skewness test is significant, we conclude that evidential value is present. When the right-skewness test is not significant, but the flatness test is, this indicates that evidential value is absent (or the effect is very, very small). 
+
+The third and last outcome is the trickiest. For lack of a better word, we call it a "no-no" case. It arises when we can neither verify that evidential value is present, nor that it is absent (i.e. neither the right-skewness test, nor the flatness test is significant). 
+
+\vspace{2mm}
+
+In terms of interpretation, a "no-no" case means that we can not confirm that a true effect is present, but that we are not able to rule out a relatively small effect either. 
+
+This third outcome frequently occurs when the $p$-curve only contains a few studies and is admittedly somewhat disappointing. This result often communicates that we do not know if a true effect exists when looking a the $p$-curve, and that more evidence is needed to clarify things.
+
+```
+
+<br></br>
+
+#####  _R_ のPカーブ解析
+
+---
+
+ここまでで、私たちはp-curve分析の背後にある理論について多くを学びめたので、そろそろ実世界の例でこの技術を適用し始める時期が来ている。幸運なことに、p-curveの発明者であるSimonsohn、Simmons、Nelsonは、以前に説明したすべてのテストを自動的に行い、関連する結果を返すアプリケーションを開発してきた。この**p-curveアプリ**は、[オンライン](http://p-curve.com/)でも見ることが可能である。 
+ _R_ でp-curveを使用するには、 `pcurve` 関数に頼ることが可能である。この関数はアプリの動作をエミュレートするもので、特に  **{meta}**  パッケージで作成されたメタ分析オブジェクトのために設計されている。 
+
+```{block, type='boxdmetar'}
+**"pcurve" 関数**
+
+\vspace{2mm}
+
+\index{dmetar Package}
+
+`pcurve` 関数は、**{dmetar}** パッケージに含まれている。**{dmetar}** がインストールされ、コンピュータに読み込まれると、この関数を使用できるようになる。もし、**{dmetar}** をインストールして**いない**場合は、以下の手順でインストールできる。
+
+\vspace{2mm}
+
+1. 関数のソースコードにアクセスする [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R). 
+2. ソースコード全体をコンソール（R Studio の左下ペイン）にコピー＆ペーストし、Enterキーを押して、 _R_ に関数を「学習」させる。
+3. **{stringr}** と **{poibin}** パッケージがインストールされ、ロードされていることを確認する。
+
+```
+
+
+\index{Outlier}
+
+関数  `pcurve`  の使い方は簡単である。この関数に、以前に作成した  **{meta}**  メタ分析オブジェクトを渡すだけでよいのである。この例では、  `metagen`  関数 ( Chapter \@ref(pre-calculated-es) ) で作成した  `m.gen`  メタ分析オブジェクトを再び使用した。 
+
+しかし、分析を実行する前に、以前に特定した2つの外れ研究（研究3と研究16、Chapter \@ref(outliers)  参照）を削除している。これがなぜ良いアイデアなのかは後で説明した。
+
+```{r, fig.align="center", fig.width=6, fig.height=5, out.width="70%", eval=F}
+library(dmetar)
+library(meta)
+
+# Update m.gen to exclude outliers
+m.gen_update <- update.meta(m.gen, subset = -c(3, 16))
+
+# Run p-curve analysis
+pcurve(m.gen_update)
+
+```
+
+\vspace{4mm}
+
+```
+## P-curve analysis 
+##  ----------------------- 
+## - Total number of provided studies: k = 16 
+## - Total number of p<0.05 studies included into the 
+##   analysis: k = 9 (56.25%) 
+## - Total number of studies with p<0.025: k = 8 (50%) 
+##    
+## Results 
+##  ----------------------- 
+##                     pBinomial  zFull pFull  zHalf pHalf
+## Right-skewness test     0.020 -3.797 0.000 -2.743 0.003
+## Flatness test           0.952  1.540 0.938  3.422 1.000
+## Note: p-values of 0 or 1 correspond to p<0.001 and p>0.999, 
+## respectively.   
+##
+## Power Estimate: 66% (31.1%-87.8%)
+##    
+## Evidential value 
+##  ----------------------- 
+## - Evidential value present: yes 
+## - Evidential value absent/inadequate: no
+```
+
+\vspace{4mm}
+
+```{r, echo=F, fig.align="center", fig.width=7, fig.height=6, out.width="68%"}
+library(poibin)
+library(stringr)
+
+source("data/pcurve.bw.R")
+
+par(bg="#FFFEFA")
+p <- pcurve(m.gen_update)
+
+```
+
+pカーブ解析の結果と、観測された $p$ -curveのプロットの2つが出力される。 
+
+出力は、メタ分析が $k=$  9つの有意な効果を含み、それが $p$ -曲線に含まれることを教えてくれる。これらの研究（ $k=$  8）のほとんどは、非常に有意な結果（すなわち、$p<$  0.025）であった。結果」セクションには、分析の主なアウトカムが記載されている。3つの右肩下がりの検定すべてが有意であることがわかる：二項検定 ( `pBinom` ; $p=$  0.02), 完全な $p$ -曲線 $pp$ -値の検定 ( `pFull` ; $p<$  0.001) と半分の $p$ -曲線に基づく検定 ( `pHalf` ; $p=$  0.003)^[In the output, also we see that the test statistics associated with the full and half $p$  curve test is a $z$  score.出力では、完全および半分の の曲線に基づく検定統計量も有意であることがわかる。これは、 `pcurve` 関数がFisherの方法ではなくStoufferの方法を用いて結果を集計しているためである。この章の脚注6で述べたように、両手法は密接に関連している]. 
+
+ Chapter \@ref(interpretation-p-curve-results)  で設定した基準を適用すると、このデータには証拠能力があることがわかる。次の行では、$p$ sが0.938から1までで、3つの平坦性検定が**有意でない**ことがわかる。これは、非常に論理的に、証拠能力がないわけでも不十分なわけでもないことを教えてくれる。同じ解釈は、出力の  `Evidential value`  セクションでも提供されている。 
+
+ $p$ 実線は私たちのデータに基づく経験的な $p$ -曲線、破線は33%の検出力を仮定して期待される $p$ -値の分布、点線は効果がないときに期待される一様な分布を表している。実線は目に見えて右肩上がりで、ちょうど研究が真の効果を測定しているときに期待されるようなものである。 
+
+全体として、これらの結果は、証拠能力の存在を示し、真の非ゼロ効果があることを示している。出版バイアスがメタ分析の結果に影響を及ぼしていることは、まだ否定できない。しかし、p-curveの結果に基づいて、私たちが見つけたプール効果は完全に偽りのものではなく、選択的な報告によって生み出された単なる「蜃気楼」でもないと結論づけることができる。 
+
+興味深いことに、この知見は、いくつかの少量調査効果法を用いて得られた結果とあまり一致していない。PET-PEESE ( Chapter \@ref(pet-peese) ) と限界メタ分析法 ( Chapter \@ref(rucker-ma) ) はともに、補正平均効果を約0と推定してきた^[注意深い読者は、小規模試験効果法では外れ値が除去されず、これが異なる結果の原因となっている可能性があることを認識されただろう。この可能性を確認するために、統計的外れ値を除いたPET-PEESEと限界メタ分析を再実行したところ、以前とほぼ同じ結果になりることとした。もしよろしければ、 _R_ .でご自身で検証してみてみよう]。 
+
+<br></br>
+
+#### Pカーブ効果量推定値  {#p-curve-es}
+
+---
+
+メタ分析に証拠能力があるかどうかを判断するために、経験則に基づく $p$ -カーブの分析がどのように利用できるかを発見してきた。しかし、この方法を用いて決定的な結果を得ても、私たちの洞察はやや限定的なものにとどまるだろう。データに真の効果があることを知ることは非常に有用であるが、この真の効果がどの程度大きいかを知ることができれば、さらによいだろう。幸いなことに、p-curveはこの問題にも役立ってくれる。研究のサンプルサイズがわかっていれば、$p$ -曲線の形状に最も合う真の効果サイズを探すことが可能である。 
+
+\index{t-Distribution}
+
+これがどのように実現可能なのかを理解するために、まず、非心分布**の概念と、それが効果量にどのように関係するかを議論する必要がある。非心分布とは何かを例証するために、間違いなく最も一般的な統計的検定である2標本 $t$ -検定から始める。 $t$ -test は、2つのグループの平均が異なるかどうかを調べるためによく使われる。 
+
+ $t$ -検定における帰無仮説は、両平均値 $\mu_1$  と $\mu_2$  は同一であり、したがって、それらの差はゼロであるということである。帰無仮説が真であるとき、$t$  統計量は、**中央** $t$ -分布に従うと仮定する。中心 $t$ -distributionは、標準正規分布に似ている。帰無仮説は差がないと仮定しているので、$t$ -distributionはゼロを中心とする。
+
+\index{Non-Centrality Parameter}
+
+帰無仮説が正しくないとき、この中心 $t$ -distributionは、現実をよく表していないことになる。平均値の間に真の差があるとき、$t$ -values がゼロの周りに中心を持つことは期待できない。その代わりに、$t$  統計は、**非中心** $t$ -分布に従いる。この非中心分布は通常非対称であり、より広い広がりを持つ傾向がある。 
+
+しかし、最も重要なことは、その中心がゼロから「シフト」していることである。このシフトの大きさは、**非中心性パラメータ** $\delta$  によって制御される。 $\delta$  が高いほど、非中心分布のピークがゼロから離れることになる。 
+
+下のグラフはこの挙動を表している。左側には、$t$ -distributionの中心、$\delta=$  0が表示されている。右側には、$t$ -distributionの非中心、$\delta=$  5が表示されている。右の曲線は対称性が低く、5付近でピークになることがわかるが、対称的で中心的な $t$ -distributionの中心は0になっている。
+
+\vspace{8mm}
+
+```{r, echo=F, message=F, warning=F, out.width="70%", fig.align="center", fig.width=6, fig.height=3}
+library(ggplot2)
+bw = function(b, x) { b/bw.nrd0(x) }
+set.seed(123)
+
+df = data.frame(type = rep(c("ncp0", "ncp2"), each = 1e4),
+                value = c(rt(1e4, 9, 0), rt(1e4, 9, 5)))
+
+ggplot(df, aes(x = value, fill = type, color = type)) + 
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  geom_density(alpha = 0.5, adjust=bw(1.5, df$value)) +
+  xlim(c(-5,13)) +
+  xlab(bquote(italic(t)["d.f. = 9"])) +
+  ylab(bquote("P("~italic(t)~")")) +
+  theme_classic() +
+  theme(legend.position = "none") +
+  scale_fill_manual(values=c("gray40", "gray77")) +
+  scale_color_manual(values=c("gray30", "gray67")) +
+  annotate("text", x = 2, y = 0.33, 
+           label = bquote("Central"~italic(t)~"distribution ("~delta~"= 0 )"), 
+           hjust = "left") +
+  annotate(geom = "curve", x = 1.9, y = 0.32, xend = 0.9, yend = 0.28, 
+           curvature = .1, arrow = arrow(length = unit(2, "mm"))) +
+  annotate("text", x = 5.8, y = 0.23, 
+           label = bquote("Non-central"~italic(t)~"distribution ("~delta~"= 5 )"), 
+           hjust = "left") +
+  annotate(geom = "curve", x = 8, y = 0.22, xend = 6.5, yend = 0.16, 
+           curvature = .1, arrow = arrow(length = unit(2, "mm"))) +
+  theme(panel.background = element_rect(fill = "#FFFEFA",
+                                        size = 0),
+        plot.background = element_rect(fill = "#FFFEFA",
+                                       size = 0))
+
+
+
+```
+
+
+\vspace{4mm}
+
+左の中心分布は帰無仮説が正しい場合の期待値 $t$ -値を示しているのに対し、右は **対立仮説** が正しい場合の期待値 $t$ -値を示している。 
+
+別の考え方として、左の曲線は効果が**ない**ときの $t$ -distributionを、右の曲線は効果が**ある**ときの分布を表していると言うことが可能である。中央の分布は、たとえばSMDが0であることを表し、中央でない分布は、SMD = 1.3 の効果に対する期待値 $t$ -値の分布を表した（この値はでっち上げです）。効果サイズが大きいと（つまり、2つのサンプル間の差が大きいと）、非心パラメータ $\delta$  は高くなり、非心分布は0からますます離れていくだろう。 
+
+先ほど述べたように、非心 $t$ -分布は、$t$ -検定において対立仮説をモデル化するために用いることが可能である。しかし、統計の教科書に非心分布が載っているのは珍しいことで、それは通常、非心分布は **必要** ないことがある。統計的仮説検定では、通常、対立仮説は**非特異的**である。2サンプル $t$ -testを計算するとき、私たちは帰無仮説（「グループ間に差がない」）にしか興味がない。データが帰無仮説にうまく当てはまらないとき、私たちはそれを棄却し、**何らかの**効果が存在すると結論づける。 
+
+このような検定における対立仮説は、帰無仮説の反対で、2つのサンプル間の平均差が**ゼロではない**ことであり、効果がこのサイズまたはこのサイズであることではないのである。
+
+\index{Power}
+
+具体的な対立仮説が必要になるのは、通常、統計的検定の**検出力**を計算するときだけである。実験を行う場合、**偽陰性**の確率が20％以下になるように十分なサンプルサイズを計画するのが通例である。適切なサンプルサイズを用いることで、真の効果が存在する場合に、それを確実に検出できるようにしたいのである。このように、統計的検定が真の効果を発見する確率が、その統計的検出力である。これは、1マイナス偽陽性の確率と定義され、$\beta$  としても知られている。 
+
+ $t$ -検定に必要なサンプルサイズを計算するために、非心分布 $t$ -が必要で、それは効果があるときの $t$ -値の期待される振る舞いを示すからである。サンプルサイズを計算するために、私たちはまた、真の効果量について値を仮定する必要がある。なぜなら、それは非心パラメータ $\delta$  に影響し、したがって非心分布の形状に影響を与えるからである。 
+
+
+これらの断片をまとめると、非心 $t$ -分布の形状、したがって統計的検出力は、2つのものだけで制御されることがわかる：私たちのサンプルのサイズと、真の根本的な効果である。同じことが、$p$ -曲線の形状にも当てはまる。その右歪度は、サンプルサイズとデータの真の効果に依存した。これは重要な観察で、$p$ -曲線内の研究のサンプルサイズがわかれば、その真の効果量も推定できることを意味した。 
+
+p-curveがどのようにこれを実現するかを見るために、小さな例を見てみよう。独立2サンプル $t$ -検定（両群の分散が等しいと仮定）の場合、$t$  の値は、群間平均差 $\text **{MD}** _{\text **{between}**  **{}** $  をその標準誤差 $SE_{\text **{MD}** _{\text **{between}**  **{}**  **{}** $  で割ったものに等しくなる。
+
+
+\begin{equation}
+t_{\text{d.f.}}= \frac{\text{MD}_{\text{between}}}{SE_{\text{MD}_{\text{between}}}}
+(\#eq:pub15)
+\end{equation}
+
+グループ間平均差と標準誤差の式（ Chapter \@ref(b-group-md)  の式 3.14 と式 3.15 参照）を入れると、次の式になる。
+
+\begin{equation}
+t_{n_{1}+n_{2}-2} = \frac{\hat\mu_{1}-\hat\mu_{2}}{s_{\text{pooled}}\sqrt{\dfrac{1}{n_1}+\dfrac{1}{n_2}}}
+(\#eq:pub16)
+\end{equation}
+
+この式から、$t$  の自由度は、両群のサンプルサイズを合わせたもの( $n_1+n_2$ )から2を引いたものと定義されることがわかる。 
+
+この式を使って、一次研究で報告されたデータから $t$ -値を計算することが可能である。ある研究で、実験群に $n_1=$  30人、対照群に $n_2=$  20人の参加者がいたとした。この研究では、第1群と第2群の平均がそれぞれ13と10で、両群の標準偏差が5であったと報告されている。このデータに基づいて、次のコードを使って $t$  を計算することができる。 
+
+
+```{r}
+# Calculate mean difference
+md <- 13-10
+
+# Calculate SE of mean difference
+n1 <- 30
+n2 <- 20
+s1 <- s2 <- 5
+s_pooled <- sqrt((((n1-1)*s1^2) + ((n2-1)*s2^2))/
+                   ((n1-1)+(n2-1)))
+
+se <- s_pooled*sqrt((n1+n2)/(n1*n2))
+
+# Calculate t-value (equivalent to 2-sample t-test with equal variance)
+md/se
+
+```
+
+結果は、$t_ **{48}** =$  2.078 である。この結果は、両者の平均が同一であり、影響がないという帰無仮説を支持するか？ 
+
+この質問に答えるには、 `pt` 関数を使用することができる。この関数は、帰無仮説が真であると仮定して、d.f. = 48 **and**のとき、$t$ -value が2.078より大きいことを発見する確率を与える。 $t$ この確率は、片側検定の $p$ -値に等しい。 
+
+```{r}
+pt(2.078, df = 48, lower.tail = F)
+```
+結果は、$p=$  0.02 で、検定が有意であることを意味した。したがって、私たちは、実験グループの効果がゼロ（または負）であるという帰無仮説を棄却した。その結果、対立仮説を受け入れる：実験グループに有利な正の効果がある（より高いスコアがより良いアウトカムを表すと仮定）。 
+
+ $t$  検定の帰無仮説の基礎となる中心 $t$ -distributionは、私たちの経験的データにはあまり合わないことがわかりることとした。また、非中心 $t$ -distributionが私たちのデータによく合うことも分かっている。しかし、どちらなのかは分からない。今のところ、私たちは、どの真の効果量、したがって、どの非心パラメータ $\delta$  、私たちの経験的な $t$ -値が引き出された母集団を本当に表しているかを推測することができるだけである。 
+
+最初の推測として、私たちの発見の背後にある真の効果量は、標準化平均差 $\theta=$  0.6であると仮定することが可能である。これは、私たちが $t=$  2.078を発見したことを意味した。この $\theta$  の値に基づいて、非中心性パラメータは次の式で計算される。
+
+\begin{equation}
+\delta = \frac{\theta}{\sqrt{\dfrac{n_{1}+n_{2}}{n_{1}n_{2}}}}
+(\#eq:pub15)
+\end{equation}
+
+ここで、$n_1$  と $n_2$  は両グループのサンプルサイズである。この例では、非心性パラメータ $\delta$  を次のコードで計算することができる。
+
+
+```{r}
+theta <- 0.6
+delta <- theta/sqrt((n1+n2)/(n1*n2))
+
+# Show delta
+delta
+```
+
+非心分布 $t$ -distribution with $\delta=$  2.078 がどのように見えるかを見るために、少しシミュレーションをしてみよう。rt` 関数を用いて、自由度48の100万個のランダムな $t$ -値を2回描く。1回は非心パラメータを0と仮定したとき（これは効果がないというヌル値に等しい）、もう1回は先ほど計算した $\delta$  の値（つまり、真の効果は SMD = 0.6 ）を用いて描く。 
+
+次に、パイプと  `hist`  関数を使って、 _R_  に両シミュレーションのヒストグラムを描かせる。 
+
+
+```{r, eval=F, fig.align="center", fig.width=6, fig.height=4, out.width="75%"}
+# '1 with 6 zeros' can also be written as '1e6' in R
+rt(n = 1e6, df = 48, ncp = 0) %>% 
+  hist(breaks = 100, 
+       col = "gray50",
+       xlim = c(-4,8), 
+       ylim = c(0, 40000),
+       xlab = "t-value",
+       main = NULL)
+
+rt(n = 1e6, df = 48, ncp = delta) %>% 
+  hist(breaks = 100, 
+       col = "gray95",
+       xlim = c(-4,8), 
+       ylim = c(0, 40000), 
+       add = T)
+```
+
+これが結果のプロットである。
+
+```{r, echo=F, fig.align="center", fig.width=6, fig.height=4, out.width="75%"}
+
+par(bg="#FFFEFA")
+# '1 with 6 zeros' can also be written as '1e6' in R
+rt(n = 1e6, df = 48, ncp = 0) %>% 
+  hist(breaks = 100, 
+       col = "gray50",
+       xlim = c(-4,8), 
+       ylim = c(0, 40000),
+       xlab = "t-value",
+       main = NULL)
+
+rt(n = 1e6, df = 48, ncp = delta) %>% 
+  hist(breaks = 100, 
+       col = "gray95",
+       xlim = c(-4,8), 
+       ylim = c(0, 40000), 
+       add = T)
+```
+
+
+その中で、左側に中央の $t$ -distribution（効果なし）、右側に非中央の分布（ $\theta=$  0.6）を見ている。すでに適度な大きさのサンプル（ $N=$  50 ）があるので、非中心分布は、前の可視化よりも右傾化していないように見える。それでも、私たちの仮定した対立仮説の分布は右にシフトし、$\delta$  の値でピークになることがはっきりわかる。 
+
+もちろん、中心的な疑問は、この代替分布が本当に正しい分布であり、真の効果が実際には $\theta=$  0.6 であるとき、$t_ **{48}** =$  2.078 より大きい値を得る可能性はどの程度あるのだろうかということである。この質問を検証するために、再び  `pt`  関数を使用することがでくが、今回は想定した非心性パラメータ $\delta$  も提供した。この情報は  `ncp`  引数を用いて追加することが可能である。どのような結果が得られるか、確認してみよう。
+
+```{r}
+# Remember that t=2.078
+pt(2.078, df = 48, ncp = delta, lower.tail = FALSE)
+```
+
+指定された対立仮説のもとで、私たちの結果より大きな値を得る確率は、およそ50％であることがわかる。これは、約半分の値が、私たちが見つけた $t$ -値より高く、残りの半分は低いと予想されることを意味した。全体として、これは自由度48と真の効果0.6を仮定した非心 $t$ -distributionが、私たちの発見を非常によく近似していることを示した。この研究の真の母集団効果は、SMD = 0.6である可能性が非常に高いと思われる。
+
+今行ったステップは、本質的に、p-curve が真の効果量を決定するために使用するものでもある。 $p$ -曲線におけるすべての有意な $p$ -値について、$t$  より大きい値を得る確率を計算した。 
+
+1.ある効果量／非中心性パラメータ。 
+
+2. $p$ -値は、$x$  自由度（これは研究のサンプルサイズから導き出せる）に基づくこと。  
+
+3. 有意な値( $p<$  0.05 )のみが $p$ -曲線に含まれることを知る。
+
+この結果、重要な研究ごとに $pp$ -値が設定されることになる。 $k$  。先ほど説明したことに基づいて、研究の $pp$ -value の式は次のように表すことが可能である $k$ : 
+
+\begin{equation}
+pp(t_k) = \mathrm{P}(t>t_k~\vert~\delta,~\text{d.f.},~p<0.05)
+(\#eq:pub16)
+\end{equation}
+
+\index{Kolmogorov-Smirnov Test}
+
+研究の自由度は通常知られているので、式中の唯一の未知数は、$\delta$  、したがって真の効果量 $\theta$  である。しかし、正しい真の効果量/ $\delta$ -値を仮定すると、$pp$ -値の分布が**一様**になることが分かっているので、この真の効果量を**見つけることが可能である**。私たちの知見が帰無仮説に合致するとき $p$ -値が一様分布に従うように、結果が **正しい**非心分布（すなわち、点対立仮説）に合致するとき $pp$ -値は一様に分布するのである。 
+
+したがって、私たちは、たくさんの可能な**効果サイズの候補**を試し、得られた $\delta$ -値を上記の式に差し込み、得られた $pp$ -値の歪度を評価すればよいのである。そして、$pp$ -値の一様分布に最も近い効果サイズ候補が、真の効果の推定値を表した。P-curve は、いわゆる Kolmogorov-Smirnov (KS) 検定の $D$  距離メトリックを使用して、$pp$  分布が一様分布からどのくらい逸脱しているかを把握する。 
+
+\index{Cohen's \textit{d}}
+
+P-curve の効果推定法は  `pcurve`  関数にも実装されている。これを利用するには、  `effect.estimation`  引数を  `TRUE`  に設定する必要がある。また、各研究のサンプルサイズである  `N`  を指定する必要がある。最後に、効果量の候補の探索空間を  `dmax`  と  `dmin`  を用いて制御することが可能である。ここでは、Cohen's $d=$  0 と 1 の間の効果量を検索するように  `pcurve`  に指示した。  `dmin`  は常に 0 以上でなければならないことに注意してみよう--p-curve が検出できる最小値は効果なしである。 
+
+
+```{r, eval=F}
+# Add experimental (n1) and control group (n2) sample size
+# Sample sizes of study 3 and 16 removed
+n1 <- c(62, 72, 135, 103, 71, 69, 68, 95, 
+        43, 79, 61, 62, 60, 43, 64, 63)
+
+n2 <- c(51, 78, 115, 100, 79, 62, 72, 80, 
+        44, 72, 67, 59, 54, 41, 66, 55)
+
+# Run p-curve analysis with effect estimation
+pcurve(m.gen_update, 
+       effect.estimation = TRUE,
+       N = n1+n2, 
+       dmin = 0,
+       dmax = 1)
+
+```
+
+
+```
+## P-curve analysis 
+##  ----------------------- 
+## [...]
+##    
+## P-curve's estimate of the true effect size: d=0.389  
+```
+
+
+\vspace{4mm}
+
+```{r, echo=F, fig.width=6, fig.height=5, fig.align="center", out.width="45%"}
+source("data/pcurve.bw.es.R")
+
+
+m.gen_update <- update.meta(m.gen, subset = -c(3, 16))
+
+n1 <- c(62, 72, 135, 103, 71, 69, 68, 95, 
+        43, 79, 61, 62, 60, 43, 64, 63)
+
+n2 <- c(51, 78, 115, 100, 79, 62, 72, 80, 
+        44, 72, 67, 59, 54, 41, 66, 55)
+
+par(bg="#FFFEFA")
+pcurve.bw.es(m.gen_update, 
+             effect.estimation = TRUE,
+             N = n1+n2, 
+             dmin = 0,
+             dmax = 1) -> d
+```
+
+出力には、真の効果サイズの推定値と効果サイズ探索の結果を示すプロットという2つの新しい要素が含まれる。プロットでは、効果サイズの候補が滑らかなV字型の勾配を形成し、それは効果サイズ $d=$  0.389でピークに達した。この時点で、計算された $pp$  分布と一様分布（Y軸の $D$  の値で表される）との差は最小であり、これは真の効果の最良推定値を表していることを意味する。 
+
+重要なことは、p-curveの効果量の推定は、このプロットのようなV字型のときだけ信頼できるということである。他の不規則な形状は、p-curveが最小値を発見していない可能性を示している。滑らかな下降線を持つプロットは、探索空間が単に狭すぎることを示すだろう。この場合、より高いdmax`値で分析を再実行することは理にかなっている。
+
+全体として、p-curveの推定値 $d=$  0.389は、私たちがメタ分析で見つけたプール効果（外れ値を除くと $g=$  0.45）よりもいくらか低い。しかし、それでも十分に大きく、私たちの前回の発見、すなわち、研究には証拠能力があるということと一致する。 
+
+```{block, type='boxreport'}
+**Reporting P-Curve Analysis Results**
+
+\vspace{4mm}
+
+When we report the results of a p-curve analysis, it is a good idea to at least include the $p$-values of the three right-skewness and flatness tests, as well as how these results are interpreted. When the true effect size was estimated, this should also be included. All of these results can be combined in a table that looks somewhat like this:
+```
+
+```{r, echo=F}
+library(kableExtra)
+
+dat = data.frame(pBinomial = c("0.020", "0.952"),
+                 zFull = c(-3.797, 1.540),
+                 pFull = c("<0.001", "0.938"),
+                 zHalf = c(-2.743, 3.422),
+                 pHalf = c("0.003", ">0.999"),
+                 present = c("yes", "yes"),
+                 absent = c("no", "no"),
+                 d = c(0.39, 0.39))
+
+rownames(dat) = c("Right-Skewness Test", "Flatness Test")
+colnames(dat) = c("$p_{\\text{Binomial}}$", "$z_{\\text{Full}}$", "$p_{\\text{Full}}$", "$z_{\\text{Half}}$",
+                  "$p_{\\text{Half}}$", "present", "absent", "$\\hat{d}$")
+
+kable(dat, booktabs = T, digits = 2, escape = FALSE) %>% 
+  kable_styling(latex_options = c("scale_down"), 
+                bootstrap_options = c("condensed")) %>% 
+  add_header_above(c(" " = 2, "Full Curve" = 2, "Half Curve" = 2, "Evidential Value" = 2, " ")) %>% 
+  collapse_rows(columns = c(7:9), latex_hline = "major", valign = "middle") %>%
+kable_styling(font_size = 14)
+
+
+```
+
+```{block, type='boxempty'}
+The developers of p-curve also highly recommend to create a **disclosure table** for each analysis, describing from which part of an article the result was extracted, and how it was originally reported. An example for such a disclosure table, along with several other practical guidelines, can be found in Simonsohn et al. [-@simonsohn2014p].
+
+```
+
+
+```{block, type='boximportant'}
+**P-Curve & Between-Study Heterogeneity**
+
+\vspace{4mm}
+
+We still owe you an explanation of why we excluded outlying studies from the p-curve analysis. With outliers included, our meta-analysis had a between-study heterogeneity of $I^2=$ 63%, which is quite substantial. This is problematic because it has been found that p-curve is not a robust method to estimate the true effect size when the between-study heterogeneity of our data is high. 
+
+\vspace{2mm}
+
+Van Aert and colleagues [-@aert2016conducting] have therefore proposed to only use p-curve when the heterogeneity is small to moderate. They proposed a threshold of $I^2=$ 50% as rule of thumb to determine if p-curve can be applied. When the between-study heterogeneity in our meta-analysis is higher than that, one workaround is to p-curve effect sizes without outliers, like we did in the example. An even better solution is to perform a separate analysis in sensible subgroups of studies, provided they exist.
+
+```
+
+
+<br></br>
+
+### 選択モデル  {#selection-models}
+
+---
+
+\index{Selection Model}
+
+最後に取り上げるのは、いわゆる**選択モデル**と呼ばれる出版バイアスの手法である。選択モデルは以前から選択的出版の影響を調べるために提案されていたが [@hedges1992modeling; @iyengar1988selection; @hedges1996estimating; @hedges1984estimation] 、特にここ数年でその適用への関心が高まっている [@mcshane2016adjusting; @carter2019correcting] 。  
+
+前回取り上げた出版バイアス法は、すべて何らかの「理論」に基づいており、選択的出版がメタ分析の結果になぜ、どのように影響するかを説明するために使用される。例えば、Small-study Effect法は、研究の非出版リスクはサンプルサイズと効果サイズに比例すると仮定した。Pカーブは、$p$ -value of 0.05 が「魔法の閾値」として機能するという考えに基づいている。 $p \geq$  0.05 の結果は、一般的に統計的に有意な発見よりも、私たちのデータで見つからない可能性がはるかに高いのである。 
+
+Selectionモデルは、これらの方法を一般化したものと見ることが可能である。このモデルは、出版バイアスが結果に影響を与えたと考えられるあらゆる種類のプロセスをモデル化することが可能である。つまり、選択モデルは、出版バイアスの発生に関する非常に単純な仮説、または非常に洗練された仮説に基づいてデータをモデル化するために使用することができるのである。 
+
+すべての選択モデルの背後にある考え方は、ある研究がその結果に応じて出版（すなわち「選択」）される確率を、多くの場合非常に理想化された方法で予測する分布を指定することである。通常、この結果は研究の $p$ -値で、選択モデルは、$p$  の値を変化させたときの出版確率を返す関数のように見ることが可能である。いったんこのような選択関数が定義されると、選択的出版による想定バイアスを「除去」して、真の効果量の補正推定値を導き出すために使用することが可能である。 
+
+しかし、この補正された効果は、私たちが定義した選択モデルが本当に正しい場合にのみ、適切なものとなる。私たちは常に、私たちのモデルがデータにうまく適合しているように見えても、選択過程を説明する多くの方法のうちの一つに過ぎないことを心に留めておかなければならない。出版バイアスがどのような過程を経て私たちの結果を形成したかは、必然的に未知のままである。しかし、選択モデルは、出版がデータに影響を与えたかどうか、そしてより重要なことに、出版がどのようにデータに影響を与えたかを広く評価するために非常に役立つ。 
+
+\index{Step Function}
+
+この章では、**ステップ関数**に基づく2種類の（かなり単純な）選択モデルを取り上げる。そこで、まずステップ関数とは何かを明らかにする。 
+
+
+<br></br>
+
+#### ステップ関数選択モデル  {#step-function-selmodels}
+
+---
+
+選択モデル分析を行うには、**効果量モデル**と**選択モデル**の2つの要素が必要である。この2つのモデルは、ある入力値 $x$  を使って、その値の確率を返す **関数** と考えることができる。
+
+関数 $f(x_k) $, is identical to the random-effects model. It assumes that the observed effect sizes $ \hattheta_k $ are normally distributed around an average effect $ \mu $, and deviate from $ \mu $ due to sampling error and between-study heterogeneity variance $ \tau^2 $. Knowing $ \mu $, $ \tau^2 $, a study's standard error, and that effect sizes are normally distributed, the function $ f(x_k) $ predicts how likely it is to observe some effect size value $ x_k$--出版バイアスがないと仮定して記述する効果量モデルである。 
+
+しかし、出版バイアスがある場合、この効果量分布、つまり$f(x) $ itself, is an incorrect representation of reality. Due to selective publication, some studies are over-represented in our data--presumably those with surprisingly high effect sizes and small samples. This means that we have, without knowing, given these studies a higher weight in our pooling model. We, therefore, need to derive a more "realistic" version of $ f(x)$は、ある結果が他の結果よりも含まれる可能性が高いという事実、より高い「重み」が与えられたという事実を組み込んでいる。 
+
+\index{Weight}
+
+これは、**重み関数** $w(p_k) $. The weight function tells us the selection probability of a study $ k $, depending on its $ p $-value. Based on this, we can  define an adapted version of $ f(x_k) $, which also incorporates the publication bias mechanism. This function $ f^*(x_k)$ は、この式で記号化される [@vevea2005publication]:
+
+
+\begin{equation}
+f^*(x_k) = \frac{w(p_k)f(x_k)}{\int w(p_k) f(x_k) dx_k}
+(\#eq:pub17)
+\end{equation}
+
+ここで、分母は $w(p_k) f(x_k) $. The weight function $ w(p_k)$ の積分を表し、この式は私たちが想定している選択モデルを表している。 
+
+\index{Step Function}
+
+w(p_k) $ can technically have any shape, it is often implemented as a **step function** [@hedges1996estimating]. When $ w(p_k) $ is a step function, this means that values $ p_k $ which fall into the same interval (e.g. all $ p$-values smaller than 0.05) は同じ確率で選択されるが、$w(p_k) w(p_k) p$-values smaller than 0.05) は同じ確率で選択される。この区間ごとの選択確率は、$\omega_i$  で表し、区間ごとに異なることがある。基本的には、$p$ -値の取りうる範囲（0から1）を異なる区間に分割し、各区間に独自の選択確率を与える $\omega_1$ , $\omega_2$ , ..., $\omega_c$ ...。 
+
+セグメントの大きさは、いくつかの **カットポイント** (ここでは $a_i$  で示す) によって決定される。カットポイントの数は、その正確な値だけでなく、私たちが選ぶことが可能である。例えば、$w(p_k)$が4つのセグメント(従って4つのカットポイント)を含むとき、その内部構造を次のように定義することができる。
+
+\begin{equation}
+  w(p_k) =\begin{cases}
+    \omega_1~~~\text{if}~~~0 \leq p_k \leq a_1 \\
+    \omega_2~~~\text{if}~~~a_1 \leq p_k \leq a_2 \\
+    \omega_3~~~\text{if}~~~a_2 \leq p_k \leq a_3 \\
+    \omega_4~~~\text{if}~~~a_3 \leq p_k \leq a_4~~~(\text{where}~~~a_4=1).
+  \end{cases}
+  (\#eq:pub18)
+\end{equation}
+
+ $p$  の任意の値に対して、上記の関数は、私たちの値が入る $p$ -値の区間に基づいて、特定の選択確率 $\omega$  を返すことがわかる。これをより具体的にするために、カットポイント $a_i$  と選択確率 $\omega_i$  に実際の値を記入した選択モデルを定義してみる。 
+
+例えば、私たちのメタ分析における出版バイアスのメカニズムは、3つのカットポイントで記述できると仮定可能である。まず、$a_1=$  0.025がある。この値は、片側 $p$ -値が0.025、両側 $p$ -値が0.05に相当した。 $\omega_1$  これはほとんどの研究で使われている従来の有意水準なので、$p$ -values smaller $a_1=$  0.02の選択確率はすべて100％であると仮定するのは理にかなっている。結局のところ、結果が陽性だった研究をファイルの引き出しに入れる理由はないのである。次に定義するカットポイントは、$a_2=$  0.05である。この範囲の結果については、選択確率を80%とした。それでもまだ高いが、明らかに有意な結果と比べると低くなる。次に、$a_2=$  0.05 から $a_3=$  0.5 までの大きな区間を指定し、この区間では選択確率が60%になるようにした。最後に、$p$ -value が $\geq$  0.5 と非常に高い研究については、$\omega_4=$  35% とさらに低い確率を定義した。 
+
+その結果、以下の Figure \@ref(fig:stepcurve)  に描かれているような選択モデルが生まれる。 
+
+
+\vspace{2mm}
+
+```{r stepcurve, warning = FALSE, message=F, echo=F, fig.align="center", out.width="56%",fig.cap="Selection model based on a step function.", fig.width=6, fig.height=4.5}
+library(ggplot2)
+
+df = data.frame(x = c(0, 0.025, 0.05, 0.5, 1),
+                y = c(1, 0.8, 0.6, 0.35, 0.35))
+
+
+ggplot(data = df, aes(x = x, y = y)) +
+  geom_step(cex = 1) +
+  geom_vline(xintercept = 0.025, linetype = "dotted", color = "gray30") +
+  geom_vline(xintercept = 0.05, linetype = "dotted", color = "gray30") +
+  geom_vline(xintercept = 0.5, linetype = "dotted", color = "gray30") +
+  geom_vline(xintercept = 1, linetype = "dotted", color = "gray30") +
+  annotate("text", x = 0.10, y = 1.03, label = bquote(a[1]~"="~0.025), hjust = "left",
+           color = "gray30") +
+  annotate(geom = "curve", x = 0.095, y = 1.04, xend = 0.025, yend = 1.05, 
+           curvature = .2, arrow = arrow(length = unit(2, "mm")), linetype = "solid",
+           color = "gray30") +
+  annotate("text", x = 0.15, y = 0.76, label = bquote(a[2]~"="~0.05), hjust = "left",
+           color = "gray30") +
+  annotate(geom = "curve", x = 0.145, y = 0.77, xend = 0.05, yend = 0.85, 
+           curvature = .2, arrow = arrow(length = unit(2, "mm")), linetype = "solid",
+           color = "gray30") +
+  annotate("text", x = 0.6, y = 0.80, label = bquote(a[3]~"="~0.50), hjust = "left",
+           color = "gray30") +
+  annotate(geom = "curve", x = 0.59, y = 0.79, xend = 0.5, yend = 0.73, 
+           curvature = .2, arrow = arrow(length = unit(2, "mm")), linetype = "solid",
+           color = "gray30") +
+  annotate("text", x = 0.86, y = 0.62, label = bquote(a[4]~"="~1), hjust = "right",
+           color = "gray30") +
+  annotate(geom = "curve", x = 0.87, y = 0.61, xend = 1, yend = 0.55, 
+           curvature = .2, arrow = arrow(length = unit(2, "mm")), linetype = "solid",
+           color = "gray30") +
+  theme_classic() +
+  ylab(bquote("Probability of Selection ("~omega~")")) +
+  xlab("p-value") + 
+  scale_x_continuous(breaks = c(0, 0.025, 0.05, 0.5, 1), expand = c(0, 0), limits = c(0, 1.05),
+                     labels = c("0", "0.025", "0.05", "0.5", "1")) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 1.1), 
+                     labels = c("0%", "25%", "50%", "75%", "100%")) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        plot.background = element_rect(fill = "#FFFEFA", color = "#fbfbfb"),
+        panel.background = element_rect(fill = "#FFFEFA"))
+  
+```
+
+
+ステップ関数に基づく選択モデルを定義する場合、通常、カットポイント $a_i$  のみを指定した。これがこのモデルにおける唯一の固定パラメータで、選択確率 $\omega = \omega_1, \omega_2, \dots, \omega_c$  はデータから推定した。そして、式9.20の式に基づいて、選択モデルをデータに当てはめることが可能である。このとき、最尤法を使って、$\omega$  を共同で推定し、さらに、$\mu$  と $\tau^2$  の補正推定値（異なる選択確率を考慮したもの） $\omega$  を推定する。その結果、$\mu$  の補正された推定値は、想定される出版バイアスのメカニズムを制御した場合の真の平均効果量を表している。 
+
+以前は、選択確率 $\omega$  を0%から100%までのパーセンテージで表現していた。しかし、選択モデルをあてはめるときには、$\omega_i$  は絶対的な選択確率としてではなく、選択の**相対的な尤度** という観点から推定される。これは、ステップ関数の最初の区間に基準値1を与えて、$\omega$  の他のすべての値は、この基準群との関係で**選択の尤度を表すということである。たとえば、2番目の区間で $\omega_2$ =0.5と推定すると、この区間の研究は、最初の区間（ $\omega_1 = 1$  ）と比較して、選択される可能性が半分しかなかったことを意味した。 
+
+もちろん、真の平均効果 $\mu$  の補正された推定値は、選択モデル自体が適切である場合にのみ正確となる。その目安は、選択モデル・パラメーターの尤度比検定（LRT）が有意であることである。この検定は、選択がなく、相対選択尤度がすべての区間で同一である（すなわち、$\omega_1 = \omega_2 = \dots = \omega_c$  ）という帰無仮説に基づく。しかし、この有意性検定は、しばしば反保守的な結果を出すことが分かっている[@hedges1996estimating]ことに注意しなければならない。つまり、その結果は慎重に解釈されるべきである。 
+
+理論的には、私たちの選択モデルで使用するカットポイント $a_i$  の数は **ad libitum**で選択することが可能である。しかし、カットポイントを追加するごとに、$\omega_i$  の値を追加で推定しなければならない。メタ分析の規模にもよるが、これはすぐに、各区間で利用可能な研究がわずかである、という問題につながる。これは、各 $\omega_i$  を適切に推定することをますます困難にしている。したがって、多くのカットポイントを持つ複雑な選択モデルは、研究の数が多いときにのみ適用できる（つまり、$K \geq$  100）。 
+
+\index{Three-Parameter Selection Model}
+
+残念ながら、ほとんどのメタ分析では、少数の研究しか含まれていない。これは、非常に少ないカットポイントを持つ単純な選択モデルしか適用できないことを意味した。このような単純なモデルの1つの変形が、次に説明する**3パラメータ選択モデル**である。このモデルは、含まれる研究の数が少ない場合にも適用できるという利点がある（例： $K=$  15--20）。 
+
+
+<br></br>
+
+##### 3パラメータ選択モデル  {#three-param-selmodel}
+
+---
+
+3パラメータモデルは、カットポイントが1つしかない選択モデルである[@mcshane2016adjusting]。真の効果 $\mu$  、研究間異質性分散 $\tau^2$  、第2区間の相対尤度 $\omega_2$ ^[この区間は、選択尤度を1に固定した参照区分として機能するので、$\omega_1$  を推定する必要はない]の3パラメータだけを推定する必要があるので、 **3パラメータ** モデルと呼ばれている。
+
+3パラメータ選択モデルにおいて、単一のカットポイント $a_1$  は0.025に設定され、これは片側 $p$ -値が0.05であることと等しくなっている。これは、$p$ -値の範囲を、統計的に有意とみなせるものと、有意でないものの2つのビンに分割するものである。したがって、$\omega_2$  は、有意でない結果が出版用に選択される確率を表している^[P曲線( Chapter \@ref(p-curve) )は、特殊なタイプの3パラメータ選択モデルとして見ることが可能である。これも $p$ -値0.05を選択のカットポイントとして使用したが、有意な結果（選択確率が100％と仮定される）にのみ焦点を当てる。また、$\tau^2$  はゼロであると仮定される。これは、p-curveでは、データから実際に推定されるパラメータは1つだけであることを意味した：真の効果量 $\mu$ .].
+
+
+\index{metafor Package}
+
+ **{metafor}** パッケージの  `selmodel`  関数を使うと、 _R_  に様々な種類の選択モデルを当てはめることが可能である^[この文章を書いている時点では、  `selmodel`  関数は  **{metafor}**  の **開発版** からしか利用することができない。開発版の **{metafor}** は、まず **{remotes}** パッケージをインストールし、次のコードを実行することでダウンロード可能である。remotes::install_github("wviechtb/metafor") `.その後、ライブラリから **{metafor}** を呼び出すと、` selmodel `関数が使用できるようになる。なお、これを読んでいる頃には、すでに ` selmodel ` 関数は  **{metafor}**  の標準バージョンに統合されている可能性が高いので、開発版のインストールは必要ない].また、3パラメータの選択モデルにも使用することが可能であるので、これから試してみよう。前回と同様に、例として ` ThirdWave` データセットを使用した。 
+
+selmodel ` 関数は  **{metafor}**  の ` rma ` 関数によって作成されたメタ分析オブジェクトのみを受け付けます（ Chapter \@ref(multiple-metareg-R)  を参照してみよう）。したがって、まずこのようなオブジェクトを作成する必要がある。rma`  の呼び出しでは、  **{meta}**  の  `metagen`  関数 ( Chapter \@ref(pre-calculated-es) ) で使用したものと同じ設定を使用した。 
+
+
+```{r, message=F}
+library(metafor)
+
+# We name the new object 'm.rma'
+m.rma <- rma(yi = TE,        
+             sei = seTE,
+             data = ThirdWave,
+             slab = Author,
+             method = "REML",
+             test = "knha")
+```
+
+m.rma ` オブジェクトを使用して、` selmodel ` を使用して 3 パラメータの選択モデルを適合させることが可能である。関数にステップ関数を適用することを伝えるために、 ` type ` 引数を ` "stepfun" ` に設定する必要がある。引数 ` steps` にはカットポイントを指定した。このモデルでは $a_1$ =0.025 となる。結果を見てみよう。
+
+\vspace{4mm}
+
+```{r, eval=F}
+selmodel(m.rma,
+         type = "stepfun",
+         steps = 0.025)
+```
+
+```
+## [...]
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.5893  0.1274  4.6260  <.0001  0.3396  0.8390  *** 
+## 
+## Test for Selection Model Parameters:
+## LRT(df = 1) = 0.0337, p-val = 0.8544
+## 
+## Selection Model Results:
+## 
+##                      k  estimate      se    pval   ci.lb   ci.ub 
+## 0     < p <= 0.025  11    1.0000     ---     ---     ---     ---    
+## 0.025 < p <= 1       7    1.1500  0.8755  0.8639  0.0000  2.8660    
+## 
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+モデル結果」の下で、選択モデルの真の平均効果量の推定値が $g=$  0.59 (95%CI: 0.34-0.84) であることを見ることが可能である。興味深いことに、この推定値は、私たちが以前に得たプールされた効果量( $g=$  0.58)とほぼ同じである。 
+
+全体として、これは私たちのメタ分析が有意でない結果の低い選択確率によって実質的にバイアスされたことを **示さない** ことを示している。この結果は、 `Test of Selection Model Parameters` によって裏付けられ、有意ではない（ $\chi^2_1=$  0.034, $p=$  0.85 ）ことから、$\omega_1$  と $\omega_2$  は互いに有意な差がないことを物語っている。 
+
+Selection Model Results`の下に、両方のビンにおける相対的な選択尤度の推定値が表示されている。 $\omega_2=$  1.15で、2番目のセグメントの選択確率が1番目のセグメントよりわずかに高いことがわかる。実質的な出版バイアスがある場合は、その逆で、有意でない結果の相対選択尤度は、有意な発見と比較してかなり**低く**なることが予想される。
+
+感度分析として、$a_1$  を 0.025 から 0.05 に変更し、分析を再実行することが可能である。カットポイントを0.05に設定するということは、0.05と0.10の間の両側 $p$ -値は、0.05以下の値と同様に「出版可能」であると仮定することである。例えば、「傾向レベル」で有意な結果が選ばれる可能性がある、あるいは、元の研究の中には、研究グループの違いを評価するために片側検定を使っているものがある、などの可能性がある。このカットポイントの変更で結果が変わるかどうか見てみよう。
+
+```{r, eval=F}
+selmodel(m.rma,
+         type = "stepfun",
+         steps = 0.05)
+```
+
+
+```
+## [...]
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.3661  0.1755  2.0863  0.0370  0.0222  0.7100  * 
+## 
+## Test for Selection Model Parameters:
+## LRT(df = 1) = 3.9970, p-val = 0.0456
+## 
+## Selection Model Results:
+## 
+##                    k  estimate     se   pval   ci.lb   ci.ub 
+## 0    < p <= 0.05  15    1.0000    ---    ---     ---     ---      
+## 0.05 < p <= 1      3    0.1786 0.1665 <.0001  0.0000  0.5050  *** 
+## 
+## ---
+## Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+\vspace{2mm}
+
+興味深いことに、現在では異なるパターンが見られる。新しい平均効果量推定値は、$g=$  0.37で、以前より小さくなっている。さらに、尤度検定は有意で、区間が異なることを示している。私たちは、$\omega_2=$  0.18、値 $p>$  0.1（両側）の選択尤度が、（僅かに）有意な $p$ -値のものよりもずっと低いことを見ることが可能である。 
+
+このことは、プールされた効果が選択的な報告によってわずかに歪められている可能性を示している。特に、**明らかに**有意でない結果を示した研究がファイル引き出しに収められたためである。
+
+
+<br></br>
+
+##### 固定ウェイト選択モデル  {#fixed-weights-selmodel}
+
+---
+
+先ほど説明した3パラメータ選択モデルでは、カットポイント $a_1$  を1つだけ指定し、選択尤度はモデルによって自由に推定することが可能である。前述したように、3パラメータ・モデルが1つのカットポイントしか使わないということは、比較的少ない研究のメタ分析にも適用可能である。これは、モデルがいくつかのビンにおいて「研究を使い果たす」可能性が低いことがある。 
+
+しかし、選択尤度 $\omega_i$  をデータから推定する必要がなければ、選択モデルの大きなサンプルサイズの必要性を回避することができる。私たちは、単に各区間の固定値 $\omega_i$  を与えて、課されたモデルのもとで $\mu$  の推定値がどうなるかをチェックすればよいのである。このアプローチは、より複雑な選択モデル（つまり、より多くのカットポイントを持つモデル）を適合させることができる一方で、欠点もある。 
+
+このような**固定重み選択モデル**を課す場合、あらかじめ指定された $\omega_i$  の値がすべて正しいと単純に仮定することになる。しかし、モデルが適切でない場合、平均効果の推定値が信用できなくなることを意味した。したがって、固定ウェイトモデルは、想定した選択プロセスが適用された場合、真の効果量がどのように見えるか**を確認する方法と見なすべきである。 
+
+Vevea と Woods [-@vevea2005publication] は、このようなマルチカットポイント、固定重みの選択モデルがどのように見えるかの例をいくつか示している。下のプロットは、中程度の選択と厳しい選択を表すステップ関数の2つの例を示している。 
+
+\vspace{4mm}
+
+```{r, echo=F, fig.width=4, fig.height=4, fig.align="center", out.width="55%"}
+df = data.frame(x = rep(c(0.005, 0.01, 0.05, 0.10, 0.25, 0.35, 0.50, 0.65, 0.75, 0.90, 0.95, 0.99, 0.995, 1), 2),
+                y = c(1, 0.99, 0.95, 0.80, 0.75, 0.65, 0.60, 0.55, 0.50, 0.50, 0.50, 0.50, 0.50, 0.50, 1, 
+                      0.99, 0.90, 0.75, 0.60, 0.50, 0.40, 0.35, 0.30, 0.25, 0.10, 0.10, 0.10, 0.10),
+                Selection = c(rep("moderate", 14), rep("severe", 14)))
+
+
+ggplot(data = df, aes(x = x, y = y, fill = Selection, color = Selection, linetype = Selection)) +
+  geom_step(cex = 1) +
+  theme_classic() +
+  scale_color_manual(values = c("gray15", "gray60")) +
+  ylab(bquote("Probability of Selection ("~omega~")")) +
+  xlab("p-value") + 
+  scale_x_continuous(breaks = 1:20/20, expand = c(0, 0), limits = c(0, 1.05)) +
+  scale_y_continuous(expand = c(0,0), limits = c(0, 1), 
+                     labels = c("0%", "25%", "50%", "75%", "100%")) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  theme(legend.position="top",
+        plot.background = element_rect(fill = "#FFFEFA", color = "#fbfbfb"),
+        panel.background = element_rect(fill = "#FFFEFA"))
+```
+
+感度分析として、これらの選択モデルが私たちのメタ分析に適切であると仮定したときに、$\mu$  の推定値がどのように変化するかを確認することが可能である。これを行うには、上に表示されたモデルで使われたすべてのカットポイント、および各区間に与えられた尤度 $\omega_i$  を定義する必要がある。
+
+
+```{r}
+# Define the cut-points
+a <- c(0.005, 0.01, 0.05, 0.10, 0.25, 0.35, 0.50, 
+       0.65, 0.75, 0.90, 0.95, 0.99, 0.995)
+
+# Define the selection likelihood for each interval 
+# (moderate/severe selection)
+w.moderate <- c(1, 0.99, 0.95, 0.80, 0.75, 0.65, 0.60, 
+                0.55, 0.50, 0.50, 0.50, 0.50, 0.50, 0.50)
+w.severe <- c(1, 0.99, 0.90, 0.75, 0.60, 0.50, 0.40, 0.35, 
+              0.30, 0.25, 0.10, 0.10, 0.10, 0.10)
+
+```
+
+これらのパラメータが定義されると、  `selmodel`  を呼び出す際に使用することが可能である。新しいカットポイントは  `steps`  引数に、固定尤度は  `delta`  に与える必要がある。
+
+
+```{r, eval=F}
+# Fit model assuming moderate selection
+selmodel(m.rma, type = "stepfun", steps = a, delta = w.moderate)
+```
+
+```
+## [...]
+## 
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.5212  0.0935  5.5741  <.0001  0.3380  0.7045  *** 
+##
+## [...]
+```
+
+
+```{r, eval=F}
+# Fit model assuming severe selection
+selmodel(m.rma, type = "stepfun", steps = a, delta = w.severe)
+```
+
+```
+## [...]
+## Model Results:
+## 
+## estimate      se    zval    pval   ci.lb   ci.ub 
+##   0.4601  0.1211  3.8009  0.0001  0.2229  0.6974  *** 
+## [...]
+```
+
+中程度の選択を代表する選択モデルを課した場合、プールされた効果量の推定値は $g=$  0.52であることがわかる。厳しい選択過程を仮定すると、$g=$  0.46という少し低い効果が得られる。 
+
+これらの結果は、選択的出版をコントロールした場合でも、観察された効果がかなり頑健であることを示している。しかし、重要なのは、これらの推定値が有効なのは、私たちが規定した選択モデルが現実を代表している場合のみであるということである。 
+
+```{block, type='boxinfo'}
+**Other Selection Model Functions**
+
+\vspace{2mm}
+
+In the examples, we only discussed step functions as the basis of selection models. It should noted, however, that this is not the only type of function one can use to model the selection process. The `selmodel` function also contains several functions based on **continuous** distributions, for example the half-normal, logistic, or negative-exponential selection model. These models can be chosen by changing the specification of the `type` argument. 
+
+It is beyond the scope of this guide to discuss all of these models, but the documentation of the `selmodel` function provides an excellent introduction. You can access the documentation by running `?selmodel` in _R_ once **{metafor}** is loaded.
+
+```
+
+<br></br>
+
+## どの方法を使うべきですか？  {#pub-bias-which-method}
+
+---
+
+以上で、出版バイアスの統計的手法に関する考察を終わる。この章はかなり長くなってしまいたが、なぜこれほど多くの異なるアプローチについて議論したのかと聞かれるだろう。1つの方法を選び、その方法で出版バイアスのリスクを評価し、次に進むだけでは十分ではないのだろうか？ 
+
+短い答えは「ノー」である。出版バイアスの手法は依然として非常に活発な研究テーマであり、多くの研究が長年にわたってさまざまなアプローチの性能を評価してきました [例： @simonsohn2014es; @stanley2017limitations; @aert2016conducting; @mcshane2016adjusting; @rucker2011treatment; @terrin2003adjusting; @peters2007performance]。残念なことに、まだ明確な勝者は現れていない。それどころか、どの出版バイアス法も他のすべての方法を一貫して凌駕しているというエビデンスもある[@carter2019correcting]。 
+
+出版バイアスの方法が異なると、結果が大きく異なることはよくあることで、実際によくあることである。この章の実践的な演習は、その好例である。毎回同じデータセットを使用してきたが、真のバイアス補正効果の推定値は、実質的にゼロから $g=$  0.59まで幅があった。このことは、手法の選択が結果、ひいては結論に大きな影響を与える可能性があることを強調している。いくつかの方法は、小規模研究の影響をコントロールするとプール効果が完全に消失することを示したが、他の方法は、私たちの最初の発見をほぼ裏付けるものであった。
+
+この問題に対処するため、出版バイアスを評価する際には、常に**複数の**手法を用いることを勧める。どの方法が私たちのデータに最も適しているか、その結果が信頼に足るかどうかを知ることは、不可能ではないにしても、しばしば困難なことである。前述したように、選択的な報告がどの程度結果に影響を及ぼしているのか、正確なところは常に不明である。しかし、いくつかの出版バイアスの手法を適用することで、信頼できる真の効果の**範囲**に近いものを作り出すことが可能である。 
+
+\index{PET-PEESE}
+\index{P-Curve}
+\index{Three-Parameter Selection Model}
+
+この範囲の大きさは、私たちの解釈を導くために使用することが可能である。例えば、PET-PEESE、p-curve、3パラメータ選択モデルの両方が、最初のプール効果に近い推定値を得た場合、私たちの発見の頑健性に対する信頼性が高まる。しかし、各手法が一致しないことが判明した場合は、そうではない。これは、出版バイアスや小規模研究の影響がより不確実であることを意味し、プールされた効果の信頼性も同様に不確実である。
+
+いずれにせよ、出版バイアス法の結果は、常に慎重に解釈されるべきである。出版バイアス分析の結果が論争に発展した例もある--たとえば、「自我消耗」文学 [@friese2019ego]などで。出版バイアスをコントロールする最善の方法は、未出版のエビデンスを適切に検索し、出版方法を全面的に変更することであることを心に留めておくことが重要である。私たちメタ分析者が思いつく出版バイアスの統計的「証明」は、どれもせいぜい弱いものである。
+
+どの方式を適用するかを決定しやすくするために、各方式のメリットとデメリットの簡単な概要を作成してきた（ Table \@ref(tab:pubtab)  参照）。 
+
+```{r pubtab, echo=F, message=F}
+library(kableExtra)
+library(dplyr)
+library(stringr)
+
+dat = readxl::read_excel("data/pubbias_procon.xlsx")
+
+dat$Advantages = str_replace_all(dat$Advantages, "BREAK", "")
+dat$Disadvantages = str_replace_all(dat$Disadvantages, "BREAK", "")
+
+colnames(dat)[1] = " "
+dat[1,1]<- c("Duval & Tweedie  Trim-and-Fill")
+
+kable(dat %>% mutate_all(linebreak), "html", booktabs = T, escape = FALSE, 
+      align = "l", longtable = T, 
+      caption = "Methods to estimate the true effect size corrected for publication bias: Overview of advantages and disadvantages.") %>% 
+  kable_styling(latex_options = c("repeat_header"), 
+                bootstrap_options = c("condensed", "striped"),
+                font_size = 15) %>% 
+  row_spec(0, bold=TRUE) %>% 
+  column_spec(1, width = "2cm", bold = T) %>% 
+  column_spec(2, width = "4cm") %>% 
+  column_spec(3, width = "5cm") %>%
+  column_spec(1, italic= FALSE) 
+
+```
+
+
+この表には統計的な考察と実際的な考察の両方が含まれており、包括的でも最終的でもないと見るべきだろう。出版バイアスの方法は現在進行中の研究分野であり、より多くのエビデンスが確立されれば、状況は違ってくる可能性がある。 
+
+\index{Outlier}
+\index{Heterogeneity}
+\index{I$^2$, Higgins \& Thompson's}
+
+最後に、研究間異質性が高い場合に許容できる結果を提供する方法は、現在のところ存在しないことに留意が必要です[@aert2016conducting、すなわち $I^2 \approx$  75%]。つまり、異質性が非常に高いメタ分析の出版バイアス分析は、せいぜい完全に避けるべきである。外れ値を含まない解析やより均質なサブグループでの解析は、しばしば実用的な回避策として使用でくが、一般的な問題を解決するものではない。 
+
+$$\tag*{$\blacksquare$}$$
+
+<br></br>
+
+#Q&amp;A（質問と回答
+
+```{block, type='boxquestion'}
+**Test your knowledge!**
+
+\vspace{4mm}
+
+1. How can the term "publication bias" be defined? Why is publication bias problematic in meta-analyses?
+
+\vspace{-2mm}
+
+2. What other reporting biases are there? Name and explain at least three.
+
+\vspace{-2mm}
+
+3. Name two questionable research practices (QRPs), and explain how they can threaten the validity of our meta-analysis.
+
+\vspace{-2mm}
+
+4. Explain the core assumptions behind small-study effect methods.
+
+\vspace{-2mm}
+
+5. When we find out that our data displays small-study effects, does this automatically mean that there is publication bias?
+
+\vspace{-2mm}
+
+6. What does p-curve estimate: the true effect of all studies included in our meta-analysis, or just the true effect of all **significant** effect sizes?
+
+\vspace{-2mm}
+
+7. Which publication bias method has the best performance?
+
+
+\vspace{4mm}
+
+
+
+**Answers to these questions are listed in [Appendix A](#qanda9) at the end of this book.**
+
+```
+
+<br></br>
+
+## 要約
+
+* 出版バイアスは、ある研究が出版された文献の中で体系的に欠落している場合に発生し、その結果、私たちのメタ分析においても発生した。厳密には、出版バイアスは、ある研究が出版される確率がその結果に依存する場合に発生した。しかし、その他にも様々な**報告バイアス**が存在した。これらの報告バイアスも、ある知見がメタ分析に採用される可能性に影響を及ぼした。例えば、引用バイアス、言語バイアス、アウトカムバイアスなどである。
+
+* また、例えば疑わしい研究の実施（QRP）などにより、**発表**されたエビデンスに偏りがある可能性もある。よくあるQRPは、$p$ -hackingとHARKingの2つで、どちらもメタ分析で効果を過大評価するリスクを高める可能性がある。
+
+* 多くの出版バイアス法は、**小規模研究効果**という考えに基づいている。これらのアプローチは、驚くほど高い効果量を持つ小規模な研究だけが有意な結果を得て、それゆえ出版用に選択されると仮定している。これは、非対称のファンネルプロットをもたらし、出版バイアスの徴候となり得る。しかし、そうである必要はない。小規模研究の効果には、さまざまな「良性」の原因が考えられる。
+
+* 比較的新しい手法である**p-curve**は、データ中の有意な効果( $p<$  0.05 )のパターンを見るだけで、証拠能力をコントロールできるという考えに基づいている。これは、真の効果の有無の検定に使用でき、その大きさを推定することができる。 
+
+* **選択モデル**は非常に汎用性の高い手法で、様々な出版バイアスのプロセスをモデル化するために使用することが可能である。しかし、想定したモデルが適切である場合にのみ有効な結果が得られ、しばしば非常に多くの研究を必要とした。非常にシンプルな選択モデルである3パラメータモデルも、小規模なデータセットに使用することが可能である。
+
+* 出版バイアスの手法は、他の手法を常に凌駕するものではない。したがって、常に**複数の**手法を適用し、補正後の効果量を慎重に解釈することが推奨される。未発表のエビデンスの徹底的な検索は、現在の統計的アプローチよりもはるかに優れた方法で出版バイアスのリスクを軽減する。 

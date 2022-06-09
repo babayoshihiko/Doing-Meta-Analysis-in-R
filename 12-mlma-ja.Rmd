@@ -1,0 +1,875 @@
+# (PART) 高度な分析  {-}
+
+# 「マルチレベル」メタ分析  {#multilevel-ma}
+
+---
+
+<img src="_figs/multilevel_felder.jpg" />
+
+<br></br>
+
+\index{Multilevel Meta-Analysis}
+
+<span class="firstcharacter">高</span>
+度な分析へようこそ。このガイドの前のパートでは、ほとんどすべてのメタ分析に非常に関連すると思われるトピックに深く潜ってみよう。この背景を踏まえて、より高度なテクニックに進む。
+
+以下の方法は、数学的な基礎がより複雑である、あるいは _R_ での実装であるため、「高度」であるとみなした。しかし、このガイドの前の章を読んでいれば、この後に続く内容を理解し、実装するのに十分な能力を備えているはずである。以下のトピックの多くは、それ自身の本に値するものであり、ここで取り上げるものは、簡単な紹介としてのみ考慮されるべきである。ここで取り上げた内容は、あくまでも簡単な紹介と考えていただきたい。 
+
+この第1章では、「マルチレベル」メタ分析（訳注：「レベル」は「レベル」と訳している箇所もある、。）というトピックを扱う。なぜ「マルチレベル 」という言葉をカギカッコで囲むのか、不思議に思われるだろう。ある研究を「マルチレベル」メタ分析と表現することは、暗に「標準的な」メタ分析に比べて特別なものであることを示している。 
+
+しかし、これは正しくはない。あらゆるメタ分析モデルは、結果をプールするために、データのマルチレベル構造を前提にしている [@pastor2018multilevel]。前の章で、私たちはすでに何度かマルチレベル（メタ分析）モデルを、知らないうちに使っている。 
+
+マルチレベルメタ分析というと、すぐに思いつくのは**３レベルメタ分析モデル**ではないだろうか。このモデルは、確かに私たちが既に知っている固定効果モデルやランダム効果モデルとは多少異なる。そこで、この章では、まず、なぜメタ分析が自然にデータのマルチレベル構造意味をするのか、そして、従来のメタ分析をどのようにして3レベルモデルに拡張できるのかを説明する。また、いつものように、このようなモデルを _R_ でどのようにフィットさせることができるかを、実際の例を使って見ていく。 
+
+<br></br>
+
+## メタ分析の多階層性  {#multilevel-nature}
+
+---
+
+メタ分析がなぜデフォルトで多段階になるのかを知るために、Chapter \@ref(rem)  で説明したランダム効果モデルの式に戻ってみよう。
+
+\begin{equation}
+\hat\theta_k = \mu + \epsilon_k + \zeta_k
+(\#eq:mlm1)
+\end{equation}
+
+\index{Sampling Error}
+
+ランダム効果モデルで $\epsilon_k$  と $\zeta_k$ （「ゼータ」と読む） という項が導入されているのは、2つの変動源があると仮定しているからだと説明してきた。1つ目は、個々の研究のサンプルエラー( $\epsilon_k$ )によるもので、これにより効果量推定値が真の効果量から乖離することになる $\theta_k$ . 
+
+2つ目の $\zeta_k$  は、研究間の異質性を表している。この異質性は、ある研究の真の効果量 $k$  が、やはり真の効果量**の包括的な**分布の一部に過ぎないという事実によって引き起こされる。この分布は、個々の真の効果量 $\theta_k$  が引き出されたところことがある。したがって、ランダム効果モデルにおける私たちの目的は、$\mu$  で示される真の効果サイズの分布の平均を推定することである。
+
+ $\epsilon_k$  と $\zeta_k$  の2つの誤差項は、メタ分析データにおける「参加者」レベル（レベル1）と「研究」レベル（レベル2）の2つのレベルに対応している。以下の Figure \@ref(fig:multilevel1)  は、この構造を象徴している。 
+
+\vspace{2mm}
+
+```{r multilevel1, message = F, out.width = '100%', echo = F, fig.align='center', fig.cap="Multilevel structure of the conventional random-effects model."}
+library(OpenImageR)
+knitr::include_graphics('images/multilevel-model_col_sep.png')
+```
+
+\vspace{2mm}
+
+最下層（レベル1）には、参加者（研究分野によっては、患者、検体など）がいる。これらの参加者は、より大きな単位であるメタ分析に含まれる研究の一部である。この上にある研究の層は、私たちの第２レベルを構成している。 
+
+メタ分析を行う場合、レベル1のデータは通常すでに「プール」された形で届く（例えば、論文の著者は生データの代わりに研究サンプルの平均と標準偏差を提供してくれる）。しかし、レベル2（研究レベル）のプールは、メタ分析の一部として実行されなければならない。伝統的に、このようなタイプのデータは**ネスト**と呼ばれ、参加者が研究内に「ネスト」されていると言うことが可能である。
+
+\index{Random-Effects Model}
+
+ここで、ランダム効果モデルの式 \@ref(eq:mlm1) に戻ってみよう。この式は暗黙のうちにメタ分析データのマルチレベル構造を記述している。これをより明確にするために、式を2つに分割し、それぞれが2つのレベルのうちの1つに対応するようにする必要がある。そうすると、次のような結果が得られる。 
+
+
+\vspace{4mm}
+
+**レベル1（参加者）モデル：**
+
+\begin{equation}
+\hat\theta_k = \theta_k + \epsilon_k 
+(\#eq:mlm2)
+\end{equation}
+
+\vspace{2mm}
+
+**レベル2（研究）モデル：**
+
+\begin{equation}
+\theta_k = \mu + \zeta_k
+(\#eq:mlm3)
+\end{equation}
+
+\vspace{2mm}
+
+すでにお気づきかもしれないが、最初の式の $\theta_k$  を2番目の式の定義に置き換えればよい。そうすると、先ほどのランダム効果モデルの式とまったく同じ式が得られる。固定効果モデルもこのように書くことが可能である。 $\zeta_k$  をゼロに設定するだけである。明らかに、私たちのメタ分析モデルは、すでにマルチレベルの特性を "内蔵 "している。これは、私たちのデータでは、参加者が研究内でネストされていると仮定しているので、この特性を示している。
+
+このように、メタ分析には多階層構造が備わっていることがわかる。データを生成した特定のメカニズムをよりよく捉えるために、この構造をさらに拡張することが可能である。そこで、**３レベルモデル** [@cheung2014modeling; @assink2016fitting] の出番となる。
+
+\index{Unit-of-Analysis Problem}
+
+統計的独立性は、メタ分析で効果量をプールするときの中心的な前提条件の一つである。効果量の間に依存関係がある（効果量に相関がある）場合、異質性を人為的に減少させ、その結果、偽陽性の結果につながる可能性がある。この問題は**解析単位エラー**として知られており、以前すでに取り上げた（Chapter \@ref(unit-of-analysis)  参照）。効果量の依存性は、様々な原因から生じる可能性がある [@cheung2014modeling]。
+
+* **個々の研究の著者によって導入された依存性**: 例えば、研究を実施する科学者が複数のサイトからデータを収集したり、複数の介入を一つの対照群と比較したり、同じアウトカムを測定するために異なる質問票を使用したりすることがある。これらのシナリオのすべてにおいて、報告されたデータには何らかの依存性があると考えることが可能である。
+
+* **メタ分析者自身によって導入される依存性**: 例として、ある心理メカニズムに注目したメタ分析を考えてみよう。このメタ分析には、世界の異なる文化圏（例えば、東アジアと西欧社会）で行われた研究が含まれている。心理メカニズムの種類によっては、同じ文化圏で行われた研究の方が、異なる文化圏で行われた研究よりも結果が似ていることもあり得る。
+
+メタ分析モデルの構造に第3の層を組み込むことで、このような依存性を考慮することがでく。例えば、異なる質問票に基づく効果量が研究内でネストされているモデルが考えられる。あるいは、研究が文化圏にネストされているモデルを作成することもできる。これにより、次の図に示すような3階層のメタ分析モデルが構築される。
+
+\vspace{2mm}
+
+```{r multilevel2, message = F, out.width = '100%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/multilevel-model2_col_sep.png')
+```
+
+\vspace{2mm}
+
+\index{Cluster Effect}
+
+３レベルのモデルには3つのプール段階があることがわかる。まず、研究者自身が、一次研究の個々の参加者の結果を「プール」し、集約した効果量を報告する。次に、レベル2において、これらの効果量は、$\kappa$（「カッパ」と読む）で示されるいくつかの**クラスター**内にネストされている。これらのクラスタは、個々の研究（すなわち、多くの効果サイズが1つの研究にネストされている）、または研究のサブグループ（すなわち、多くの研究が1つのサブグループにネストされており、各研究は1つの効果サイズにのみ寄与する）のいずれかである可能性がある。 
+
+最後に、集計されたクラスタ効果をプールすると、全体の真の効果量 $\mu$  になる。概念的には、この平均効果は、固定効果モデルまたはランダム効果モデルでプールされた真の効果 $\mu$ （「ミュー」と読む）に非常に近いものである。しかし、その違いは、私たちのデータにおける依存効果量を明示的に考慮したモデルに基づいている点にある。 
+
+３レベルモデルの式は、これまでと同じレベル表記で書き表すことができる。最大の違いは、2つの数式ではなく、3つの数式を定義する必要があることだ。
+
+\vspace{4mm}
+
+**レベル1モデル：**
+
+\begin{equation}
+\hat\theta_{ij} = \theta_{ij} + \epsilon_{ij}
+(\#eq:mlm4)
+\end{equation}
+
+\vspace{2mm}
+
+**レベル2モデル：**
+
+\begin{equation}
+\theta_{ij} = \kappa_{j} + \zeta_{(2)ij}
+(\#eq:mlm5)
+\end{equation}
+
+\vspace{2mm}
+
+**レベル3モデル：**
+
+\begin{equation}
+\kappa_{j} = \mu + \zeta_{(3)j}
+(\#eq:mlm6)
+\end{equation}
+
+\vspace{2mm}
+
+ここで、$\hat\theta_{ij}$  は、真の効果量 $\theta_{ij}$  の推定値である。 $ij$  という用語は、「クラスタ $j$  にネストされているある効果量 $i$  」と読み替えることができる。パラメータ $\kappa_{j}$  はクラスタ $j$  の平均効果量であり、$\mu$  は全体的な平均母集団効果である。前と同じように、これらの数式をつなぎ合わせて、数式を1行に減らすことができる。
+
+\begin{equation}
+\hat\theta_{ij} = \mu + \zeta_{(2)ij} + \zeta_{(3)j} + \epsilon_{ij}
+(\#eq:mlm7)
+\end{equation}
+
+ランダム効果モデルとは異なり、この式には**2つの**不均質性項が含まれていることがわかる。一つは $\zeta_{(2)ij}$で、これはレベル２の**クラスタ内** (within-cluster) 異質性である（つまり、 クラスタ $j$ 内の**真の**効果量は、平均 $\kappa_j$ の分布に従う）。もう一つは $\zeta_{(3)j}$ で、これはレベル３の**クラスタ間** (within-cluster) 異質性である。結果、３レベルメタ分析適合モデルでは、異質性分散 $\tau^2$ は一つではなく、レベル2用とレベル3用の２つ推計しなければならない。 
+
+\index{meta Package}
+\index{metafor Package}
+
+ **{metafor}** パッケージは、特にメタ分析的な３レベルモデルの適合に適している。これは、（制限付き）最尤法を用いて行う。以前は、メタ分析の実行に主に **{meta}** パッケージの関数を使用していた。なぜなら **{meta}**  の方が若干専門的でなく、初心者に適しているためである。しかし、Chapter \@ref(multiple-metareg-R)  で見たように、 **{metafor}**  パッケージも、データを正しく準備すればかなり使いやすくなっている。具体的にどのように **{metafor}** を使って _R_ の３レベルモデルに適合させるかは、次のセクションのトピックになる。 
+
+
+<br></br>
+
+##  _R_ で３レベルのメタ分析モデルを適合  {#multilevel-R}
+
+---
+
+前述したように、３レベルのメタ分析モデルを適合させるためには、 **{metafor}** パッケージが必要である。そのため、まずライブラリからロードする必要がある。
+
+
+```{r, message=F, warning=F}
+library(metafor)
+```
+
+
+この例では、 `Chernobyl` データセットを使用する。このデータセットは、[1986年のチェルノブイリ原発事故 ](https://www.britannica.com/event/Chernobyl-disaster) [@moller2015strong] によって引き起こされた電離放射線（「核汚染」）とヒトの突然変異率の相関を調べた実際のメタ分析に緩く基づいている。 
+
+\index{dmetar Package}
+
+```{block, type='boxdmetar'}
+**"Chernobyl" データセット**
+
+\vspace{2mm}
+
+`Chernobyl` データセットは **{dmetar}** パッケージに含まれている。**{dmetar}** をインストールし、ライブラリからロードした後、 `data(TherapyFormats)` を実行すると、自動的に _R_ 環境にデータセットが保存される。これでデータセットが使用できるようになる。
+
+\vspace{2mm}
+
+**{dmetar}** がインストールされていない場合は、[Internet](https://www.protectlab.org/meta-analysis-in-r/data/Chernobyl.rda) から _.rda_ ファイルとしてデータセットをダウンロードし、作業ディレクトリに保存してから、R Studio ウィンドウでクリックしてインポートすることが可能である。
+
+```
+
+```{r, message=F, warning=F}
+# Load data set from 'dmetar'
+library(dmetar)
+data("Chernobyl")
+```
+
+
+データの一般的な構造を見るために、  `head`  関数を使用すよう。これは、先ほどグローバル環境にロードしたデータフレームの最初の6行を表示する。
+
+```{r, message=F, warning=F, eval=F}
+head(Chernobyl)
+```
+```
+##                       author  cor   n    z se.z var.z radiation es.id
+## 1 Aghajanyan & Suskov (2009) 0.20  91 0.20 0.10  0.01       low  id_1
+## 2 Aghajanyan & Suskov (2009) 0.26  91 0.27 0.10  0.01       low  id_2
+## 3 Aghajanyan & Suskov (2009) 0.20  92 0.20 0.10  0.01       low  id_3
+## 4 Aghajanyan & Suskov (2009) 0.26  92 0.27 0.10  0.01       low  id_4
+## 5     Alexanin et al. (2010) 0.93 559 1.67 0.04  0.00       low  id_5
+## 6     Alexanin et al. (2010) 0.44 559 0.47 0.04  0.00       low  id_6
+```
+
+\index{Fisher's \textit{z}}
+
+このデータセットには8つの列がある。最初の列は  `author`  で、研究の名前が表示されている。`cor` 列は放射線被曝と突然変異率の（未変換の）相関を示し、`n` はサンプルサイズを示す。`z` ,  `se.z` ,  `var.z`  列は Fisher- $z$  で変換した相関（ Chapter \@ref(pearson-cors)  ）とその標準誤差および分散である。`radiation` 列はモデレーターとして機能し、効果量を全体的に放射線被曝量の低い (low) サブグループと高いサブグループに分割する。`es.id` 列には、各効果量（すなわち、データフレームの各行）の識別用 ID を格納している。 
+
+このデータセットで特徴的なことは、 `author` に繰り返し入力されていることである。これは、このメタ分析におけるほとんどの研究が、1つ以上の観察された効果量に貢献しているからである。いくつかの研究では、突然変異を測定するためにいくつかの方法を用いたり、複数のタイプの指標となる人物（例えば、被曝した両親とその子孫）を用いたりしており、これらすべてが研究ごとに複数の効果をもたらす。 
+
+この構造を見ると、私たちのデータセットの効果量が独立していないことは明らかである。これらはネスト構造になっており、様々な効果量が1つの研究にネストされている。したがって、私たちのデータにおけるこれらの依存性を適切にモデル化するために、３レベルのメタ分析に適合させることは良いアイデアだろう。
+
+<br></br>
+
+### モデルの適合
+
+---
+
+３レベルのメタ分析モデルは、 **{metafor}** の  `rma.mv`  関数を使用して適合させることが可能である。以下は、この関数の最も重要な引数のリストと、それらの引数の指定方法である。
+
+* **`yi`**. 計算された効果量を含むデータセットの列の名前。この例では、これは  `z`  である。Fisher- $z$  で変換された相関は、"未変換 "の相関よりも数学的特性が優れていることがある。
+
+* **`V`**. 計算された効果量の **分散** を含む、データセットの列の名前。この場合、 `var.z` となる。また、効果量の**2乗**標準誤差を使用することも可能である。 $SE_k^2 = v_k$  。 
+
+* **`slab`**. **{meta}** の  `studlab`  と同様に、研究ラベルを含むデータセットの列の名前。
+
+* **`data`**. データセットの名前。
+
+* **`test`**. 回帰係数に適用する検定。`"z"` (デフォルト) と `"t"` （推奨; Knapp-Hartung 法に類似した検定を使用）から選択することが可能である。
+
+* **`method`**. モデルのパラメータを推定するために用いる手法。REML（推奨；制限付き最尤法）とML（最尤法）の両方が利用可能。他のタイプの研究間不均一性推定量（例えば Paule-Mandel）はここでは適用できないことに注意しておこう。
+
+しかし、最も重要な議論は、**`random`**である。間違いなく、最も厄介なものでもある。この引数では、（ネストされた）ランダム効果を定義する数式を指定する。3レベルモデルの場合、式は常に  `~ 1`  で始まり、縦棒  `|`  が続く。縦棒の後ろでは、グループ化変数（研究、測定、地域など）に**ランダム効果**を割り当てる。このグルーピング変数は、各グループに異なる効果（すなわち切片）を仮定するようにモデルに指示すので、しばしば **ランダム化切片** と呼ばれる。 
+
+3レベルモデルでは、2つのグループ化変数がある。1つはレベル2で、もう1つはレベル3である。私たちは、これらのグルーピング変数がネストになっていると仮定する。すなわち、レベル2でのいくつかの効果が一緒になって、レベル3でのより大きなクラスタを構成している。 
+
+このようなネストしたランダム効果を仮定するために、 `rma.mv` に特別な方法を指示すことが可能である。これは、スラッシュ（ `/` ）を使用して、上位と下位のグループ化変数を分離するものである。の左側には、レベル3（クラスタ）変数を入れる。右側には、大きなクラスタにネストされた低次の変数を入れる。したがって、式の一般的な構造は次のようになる: `~ 1 | cluster/effects_within_cluster` . 
+
+この例では、個々の効果量（レベル2； `es.id` で定義）は、研究（レベル3； `author` で定義）内にネストされていると仮定している。この結果、以下の式が得られる: `~ 1 | author/es.id`。完全な  `rma.mv`  関数呼び出しは次のようになる。
+
+\vspace{2mm}
+
+```{r}
+full.model <- rma.mv(yi = z, 
+                     V = var.z, 
+                     slab = author,
+                     data = Chernobyl,
+                     random = ~ 1 | author/es.id, 
+                     test = "t", 
+                     method = "REML")
+```
+
+出力には  `full.model`  という名前を付けることとした。結果の概要を表示すには、 `summary`  関数を使用する。
+
+```{r, eval=F}
+summary(full.model)
+```
+```
+## Multivariate Meta-Analysis Model (k = 33; method: REML)
+## [...]   
+## Variance Components:
+## 
+##             estim    sqrt  nlvls  fixed        factor 
+## sigma^2.1  0.1788  0.4229     14     no        author 
+## sigma^2.2  0.1194  0.3455     33     no  author/es.id 
+## 
+## Test for Heterogeneity:
+## Q(df = 32) = 4195.8268, p-val < .0001
+## 
+## Model Results:
+## 
+## estimate      se    tval    pval   ci.lb   ci.ub 
+##   0.5231  0.1341  3.9008  0.0005  0.2500  0.7963  *** 
+## [...]
+```
+
+まず、「分散成分」 (Variance Components) を見てみよう。ここでは、モデルの各レベルについて計算されたランダム効果分散を見ることが可能である。最初の  `sigma^2.1`  は、レベル3の**クラスタ間**分散 (**between** cluster variance) を示している 。この例では、これは従来のメタ分析における研究間異質性分散 $\tau^2$  に相当する（クラスタがこのモデルにおける研究を表しているため）。 
+
+2番目の分散成分  `sigma^2.2`  は、**クラスタ内**の分散 (**within** cluster variance)  （レベル2）を示している。`nlvls` の列では、各レベルのグループの数を示している。レベル3は14グループあり、$K=$  14件の研究に相当する。2行目に示すように、これらの14の研究は、33の効果量を含む。 
+
+\index{esc Package}
+
+`Model Results` の下に、プール効果の推定値がある。 $z=$  0.52 (95%CI: 0.25--0.80)である。解釈を容易にするために、効果を正規の相関に変換することが推奨される。これは、 **{esc}**  パッケージの  `convert_z2r`  関数を使用して行うことが可能である。
+
+```{r}
+library(esc)
+convert_z2r(0.52)
+```
+この結果、約 $r \approx$  0.48 の相関が得られることがわかる。これは大きいといえるだろう。チェルノブイリの放射線被曝と突然変異率の間には、かなりの相関があるようだ。 
+
+出力された「異質性の検定」は、私たちのデータにおける真の効果量の差を指摘している（ $p<$  0.001）。しかし、この結果は、あまり有益ではない。私たちは、私たちのモデルの各レベルによって捕捉された異質性の分散の正確な量に、より興味がある。異質性のどれだけが**研究内**の差（レベル2）に起因し、どれだけが**研究間**の差（レベル3）に起因しているかを知ることは良いことだろう。
+
+
+<br></br>
+
+### レベル間の分散分布
+
+---
+
+\index{I$^2$, Higgins \& Thompson's}
+
+ $I^2$  [@cheung2014modeling] のマルチレベル版を計算することでこの疑問に答えることができる。従来のメタ分析では、$I^2$  はサンプリングエラーに起因しない変動量を表した（Chapter \@ref(i-squared) ;すなわち、研究間異質性）。3レベルモデルでは、この異質性の分散は2つの部分に分けられる：1つは**クラスタ内の**真の効果量の差に起因し、もう1つは**クラスタ間の**変動に起因するものである。したがって、レベル2またはレベル3のいずれかに関連する全変動のパーセンテージを定量化する2つの値（$I^2$）が存在する。 
+
+\index{dmetar Package}
+
+```{block, type='boxdmetar'}
+**"var.comp" 関数**
+
+\vspace{4mm}
+
+`var.comp` 関数は、**{dmetar}** パッケージに含まれている。**{dmetar}** がインストールされ、コンピュータに読み込まれると、この関数を使用できるようになる。もし、**{dmetar}** をインストールして**いない**場合は、以下の手順でインストールできる。
+
+\vspace{2mm}
+
+1. 関数のソースコードにアクセスする [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R). 
+2. ソースコード全体をコンソール（R Studio の左下ペイン）にコピー＆ペーストし、Enterキーを押して、 _R_ に関数を「学習」させる。
+3. **{ggplot2}** パッケージがインストールされ、ロードされていることを確認する。
+
+```
+
+
+`var.comp`  関数は、フィットした  `rma.mv`  モデルのみを入力として必要とする。出力を  `i2`  に保存し、 `summary`  関数で結果を表示する。 
+
+```{r}
+i2 <- var.comp(full.model)
+summary(i2)
+```
+
+出力では、3つのレベルのそれぞれに起因する全分散のパーセンテージが表示される。レベル1のサンプル誤差の分散は非常に小さく、およそ1％を占めるだけである。クラスタ内の異質性の分散である $I^2_{\text{Level 2}}$ の値ははるかに高く、合計で約40%になる。しかし、最も大きな割合を占めるのはレベル3である。クラスタ間（ここでは研究間）の異質性は、私たちのデータにおける全変動のうち、$I^2_{\text{Level 3}}=$ 59% を占めている。 
+
+全体として、3番目のレベルではかなりの研究間異質性があることを示している。しかし、全体の分散の3分の1以上という大きな割合が、**研究内**の差によって説明できることもわかる。
+
+また、この全分散の分布を視覚化することも可能である。`var.comp` の出力を `plot` 関数に代入するだけである。 
+
+
+```{r, warning=F, message=F, fig.width=5, fig.height=5, out.width="55%", fig.align='center'}
+plot(i2)
+```
+
+<br></br>
+
+### モデルの比較
+
+---
+
+\index{Occam's Razor}
+
+3レベルモデルの適合は、2レベルモデルよりもデータの変動をよりよく表す場合にのみ意味がある。２レベルモデルが３レベルモデルに匹敵する適合度を示すことがわかったら、**オッカムのカミソリ**を適用すべきである。というのも、３レベルモデルより２レベルモデルの方が複雑でなく、かつデータをうまく説明できることがある。
+
+幸運なことに、 **{metafor}** パッケージは、３レベルモデルと1レベルを取り除いたモデルを比較することが可能である。これを行うには、再び  `rma.mv`  関数を使用した。しかし、今回は、1つのレベルの分散成分をゼロに設定した。これは、  `sigma2`  パラメータを指定することにより可能である。`c(level 3, level 2)`という一般的な形式のベクトルを用意する必要がある。このベクトルには、分散成分をゼロにする場合は `0` を記入し、データからパラメータを推定する場合は `NA` を使用する。 
+
+この例では、個々の効果量を研究に入れ込むことでモデルが改善されたかどうかを確認することは理にかなっている。したがって、私たちは、研究間の異質性を表すレベル3分散がゼロに設定されたモデルを適合させる。これは、すべての効果量が独立であると仮定する（独立でないことは分かっている）単純なランダム効果モデルの適合と同じである。レベル3はゼロで一定なので、  `sigma2`  の入力は  `c(0, NA)`  となる。この結果、以下のように  `rma.mv`  が呼び出され、その出力が  `l3.removed`  という名前で保存される。
+
+\vspace{2mm}
+
+
+```{r, echo=F}
+l3.removed <- rma.mv(yi = z, 
+                     V = var.z, 
+                     slab = author,
+                     data = Chernobyl,
+                     random = ~ 1 | author/es.id, 
+                     test = "t", 
+                     method = "REML",
+                     sigma2 =  c(0, NA))
+
+```
+
+
+```{r,eval=F}
+l3.removed <- rma.mv(yi = z, 
+                     V = var.z, 
+                     slab = author,
+                     data = Chernobyl,
+                     random = ~ 1 | author/es.id, 
+                     test = "t", 
+                     method = "REML",
+                     sigma2 =  c(0, NA))
+
+summary(l3.removed)
+```
+
+```
+## [...]
+## Variance Components:
+## 
+##             estim    sqrt  nlvls  fixed        factor 
+## sigma^2.1  0.0000  0.0000     14    yes        author 
+## sigma^2.2  0.3550  0.5959     33     no  author/es.id 
+## 
+## Test for Heterogeneity:
+## Q(df = 32) = 4195.8268, p-val < .0001
+## 
+## Model Results:
+## 
+## estimate      se    tval    pval   ci.lb   ci.ub 
+##   0.5985  0.1051  5.6938  <.0001  0.3844  0.8126  *** 
+## [...]
+```
+
+\index{Analysis of Variance}
+
+出力では、 `sigma^2.1` がゼロに設定されていることがわかる。全体の効果も変化している。しかし、この結果は3レベルモデルのものよりも良いのだろうか？これを評価するために、  `anova`  関数を使って両モデルを比較することが可能である。
+
+```{r, eval=F}
+anova(full.model, l3.removed)
+```
+
+```
+##         df   AIC   BIC  AICc logLik   LRT   pval      QE 
+## Full     3 48.24 52.64 49.10 -21.12              4195.82 
+## Reduced  2 62.34 65.27 62.76 -29.17 16.10 <.0001 4195.82
+```
+
+
+２レベルの「縮小」モデルに比べ、「完全」（３レベル）モデルはより適合度が高いことがわかる。赤池情報量規準（Akaike Information Criterion, AIC）とベイズ情報量規準（Bayesian Information Criterion, BIC）は、このモデルの方が低く、良好な性能を示している。両モデルを比較した尤度比検定 (Likelihood Ratio Test, `LRT`) は有意であり ( $\chi^2_1=$  16.1, $p<$  0.001) 、同じ方向を向いている。 
+
+3レベルモデルは、1つの追加パラメータを導入したが（すなわち、自由度が2ではなく3）、この追加された複雑さは正当化されるようだと言える。ネストのデータ構造のモデリングは、おそらく良いアイデアで、プール効果の推定値を改善してきた。
+
+しかし、3階層構造を維持することには、たとえそれが有意に優れた適合性を提供しない場合であっても、しばしば正当な理由があることに留意してみよう。特に、3階層モデルが確かな理論的根拠に基づいていると考えられる場合には、3階層モデルを維持することは理にかなっている。 
+
+例えば、複数の効果量を持つ研究がデータに含まれている場合、これらの効果が独立していることはありえないということが**わかる**。したがって、ネスティッドモデルを維持することは、データがどのように「生成」されたかをより適切に表現しているため、理にかなっている。もし、この例の anova の結果が2レベル解を支持していたなら、私たちは研究内の効果は**大きく**均質であると結論付けたことだろう。しかし、いずれにせよ、3レベルモデルの結果を報告しただろう。これは、3レベルモデルがデータ生成過程をよりよく表現していることを知っていることがある。 
+
+クラスタ変数の重要性が不明確な場合、状況は多少異なる。たとえば、３レベル・モデルにおいて、レベル3のクラスタが異なる文化圏を表すとした。研究対象の現象が文化間の変化を示さないことがわかったら、3番目のレベルを削除して、代わりに２レベル・モデルを使用してもまったく問題ない。 
+
+<br></br>
+
+## 三階層モデルにおけるサブグループ分析  {#three-level-subgroup}
+
+---
+
+\index{Subgroup Analysis}
+\index{Moderator Analysis}
+
+３レベルモデルが設定されると、全体効果の推定モデレータを評価することも可能になる。このガイドの前では、サブグループ分析が、ダミー・コード化された予測変数（ Chapter \@ref(the-metareg-model)  ）のメタ回帰モデルとして表現できることを発見してきた。同様にして、私たちは 「マルチレベル」モデルに回帰項を追加することができ、これは **３レベル混合効果モデル** につながる。
+
+
+\begin{equation}
+\hat\theta_{ij} = \theta + \beta x_i + \zeta_{(2)ij} + \zeta_{(3)j} + \epsilon_{ij}
+(\#eq:mlm8)
+\end{equation}
+
+ここで、$\theta$  は切片、$\beta$  は予測変数 $x$  の回帰重みである。 $x_i$  をダミー ( Chapter \@ref(the-metareg-model) ) に置き換えると、サブグループ分析に使用できるモデルが得られる。 $x$  が連続的であるとき、上記の式は３レベルのメタ回帰モデルを表す。   
+
+カテゴリまたは連続の予測変数は、  `rma.mv`  で  `mods`  引数を用いて指定することが可能である。この引数には、チルダ（ `~` ）で始まる数式と、その後に予測変数の名前を指定した。複数の予測変数（例：  `~ var1 + var2` ）を指定することで、多重メタ回帰を行うことも可能である。 
+
+チェルノブイリの例では、サンプルに含まれる放射線の量（低、中、高）によって相関が異なるかどうかを確認したい。この情報は、データセットの  `radiation`  列で提供されている。このコードを使って3レベルモデレータモデルを適合させることがでく。
+
+\vspace{2mm}
+
+```{r, message=F, warning=F, eval=F}
+mod.model <- rma.mv(yi = z, V = var.z, 
+                    slab = author, data = Chernobyl,
+                    random = ~ 1 | author/es.id, 
+                    test = "t", method = "REML",
+                    mods = ~ radiation)
+
+summary(mod.model)
+```
+
+```
+## [...]
+## Test of Moderators (coefficients 2:3):
+## F(df1 = 2, df2 = 28) = 0.4512, p-val = 0.6414
+## 
+## Model Results:
+##                 estimate    se   tval  pval  ci.lb ci.ub 
+## intrcpt             0.58  0.36   1.63  0.11  -0.14  1.32    
+## radiationlow       -0.19  0.40  -0.48  0.63  -1.03  0.63    
+## radiationmedium     0.20  0.54   0.37  0.70  -0.90  1.31    
+## [...]
+```
+
+最初の重要な出力は  `Test of Moderators`  である。 $F_{2,28}=$  0.45、$p=$  0.64であることがわかる。これは、サブグループ間に有意な差がないことを意味した。 
+
+`Model Results` はメタ回帰の枠組みで表示される。これは、サブグループ内のプールされた効果量を得るために、推定値を直接抽出することができないことを意味した。 
+
+ $z$  最初の値である切片（ `intrcpt` ）は、全体の放射線被曝量が高い場合（ $z=$  0.58）の値を示している。低線量群および中線量群における効果は、切片の値にそれらの推定値を加えることによって求めることがでく。したがって、低線量被曝群における効果は $z$  = 0.58 - 0.19 = 0.39 であり、中線量被曝群における効果は $z$  = 0.58 + 0.20 = 0.78 である。 
+
+```{block2, type='boxreport'}
+**Reporting the Results of Three-Level (Moderator) Models**
+
+\vspace{2mm}
+
+When we report the results of a three-level model, we should at least mention the estimated variance components alongside the pooled effect. The `rma.mv` function denotes the random-effects variance on level 3 and 2 with $\sigma^2_1$ and $\sigma^2_2$, respectively. 
+
+When we report the estimated variance, however, using $\tau^2_{\text{Level 3}}$ and $\tau^2_{\text{Level 2}}$ may be preferable since this makes it clear that we are dealing with variances of **true (study) effects** (i.e. heterogeneity variance). Adding the multilevel $I^2$ values also makes sense, since they are easier for others to interpret--provided we first explain what they represent. 
+
+\vspace{2mm}
+
+When you conducted a model comparison using `anova`, you may at least report the results of the likelihood ratio test. Results of moderator analyses can be reported in a table such as the one presented in Chapter \@ref(subgroup-R). Here is one way to report the results in our example:
+
+> _"The pooled correlation based on the three-level meta-analytic model was $r=$ 0.48 (95%CI: 0.25-0.66; $p$ < 0.001). The estimated variance components were $\tau^2_{\text{Level 3}}=$ 0.179 and $\tau^2_{\text{Level 2}}=$ 0.119. This means that $I^2_{\text{Level 3}}=$ 58.22% of the total variation can be attributed to between-cluster, and $I^2_{\text{Level 2}}=$ 31.86% to within-cluster heterogeneity. We found that the three-level model provided a significantly better fit compared to a two-level model with level 3 heterogeneity constrained to zero ($\chi^2_1=$ 16.10; $p$< 0.001)."_
+
+```
+
+<br></br>
+
+## ロバスト分散推定  {#rve}
+
+---
+
+前章では、**3階層メタ分析モデル**を紹介し、のデータにおける**効果量間の依存性**をモデル化するために、どのように使用できるかを説明してきた。前章で取り入れた階層型モデルは、効果量が完全に独立しているとする「従来の」メタ分析よりも、明らかに私たちのデータセットを**より良く表現**している。しかし、これはまだ**現実の単純化**である。実際には、効果量間の依存関係は、現在のネストモデルで捉えられるものよりも複雑であることが多いのである。
+
+チェルノブイリのデータセットに戻ると、すでにこのことがわかる。このデータでは、ほとんどの研究が**複数の効果量**を提供しているが、その**理由**は研究によって異なっている。いくつかの研究では、**異なる対象集団**における放射線の影響を比較しており、そのため複数の効果量を報告している。また、**同じサンプル**に対して異なる方法を用いた研究もあり、これも複数の効果サイズが報告されていることを意味する。 
+
+一つの研究の複数の効果サイズが同じサンプルに基づいている場合、それらの**サンプリングエラー**（Chapter \@ref(multilevel-nature) と Chapter \@ref(three-level-subgroup) の 式 10.7 and 10.8 における $\epsilon_ {ij}$）には**相関がある**と期待される。しかし、このことは、今回の３レベルモデルではまだ捉えられていない。上記のモデルは、クラスタ/研究内では、サンプル誤差の相関（つまり共分散）がゼロであることを仮定している。つまり、1つのクラスタまたは研究内では、効果量の推定値は**独立である**と仮定している。 
+
+```{r multilevel3, message = F, out.width = '100%', echo = F, fig.align='center', fig.cap="In its original form, the three-level (hierarchical) model assumes that effect size estimates within studies or clusters are independent."}
+library(OpenImageR)
+knitr::include_graphics('images/multilevel-model3_col_sep.png')
+```
+
+
+このセクションでは、拡張された３レベル構造、いわゆる**相関・階層効果** (Correlated and Hierarchical Effects, CHE) モデル [@pustejovsky2021meta]に時間を割くこととする。以前の（階層的）3レベルモデルと同様に、CHEモデルは、ある共通点（例えば、同じ研究、作業グループ、文化的地域などに由来する）に基づいて、いくつかの効果量を**大きなクラスタ**に**結合**することが可能である。 
+
+しかし、それに加えて、このモデルでは、クラスタ内のいくつかの効果サイズが同じサンプル**に基づいており（例えば、複数の測定が行われたため）、したがってそれらのサンプル誤差は**相関している**ことを明示的に考慮しているのである。特に、データの依存性構造が**複雑**であったり、**部分的にしか知られていない場合、[@pustejovsky2021meta]^[Pustejovsky and Tipton [-@pustejovsky2021meta] も CHE モデルが適切か、いつ適切かを決定するための決定木を提供している(【図1】( https://link.springer.com/content/pdf/10.1007/s11121-021-01246-3.pdf) 参照)。CHE モデルがデータに対して最適な仮定を提供するか、あるいは他の作業モデルがより合理的かどうかをチェックする方法として、このヒューリスティックを使用することが可能である]。
+
+CHE モデルとともに、メタ分析の文脈における**ロバスト分散推定** (Robust Variance Estimation, RVE) についても説明する [@hedges2010robust; @tipton2015small; @tipton2015small2]。これは、過去にメタ分析で従属効果量を扱うために頻繁に使用されてきた一連の方法である。RVEの中核は、いわゆる**サンドイッチ推定量**を中心に展開されている。この推定量は、CHEモデル（および他のメタ分析モデル）と組み合わせて、ロバストな信頼区間と $p$ -値を得るために使用することが可能である。選択したモデルが、データの複雑な**依存構造**を完全に**うまく捉えていない**場合でも、である。
+
+そこで、最初のCHEモデルのフィッティングの前に、**メタ分析 RVE の概要**と **Sandwich estimator** について、後者がなぜそのような魅力的な名前を持っているのかを探ってみよう。 
+
+<br></br>
+
+### サンドイッチ型分散推定量  {#sandwich}
+
+---
+
+発表されたメタ分析では、「ロバスト分散推定」という言葉が**特殊な使われ方**をしていることがあり、これが依存効果量を持つメタ分析データに**のみ適用できる**特殊な方法であると思われることがある。その逆である。ロバスト分散推定量は、もともと**従来の回帰モデル**のための手法として開発されたもので、**回帰重みの分散**を計算するために使われる $\hat\beta$  [@aronow2019foundations, chapter 4.2.2 など参照]. 
+
+この推定量は、線形モデルの通常の仮定が満たされない場合でも、漸近的な標準誤差の推定値が得られるため、「ロバスト」推定量と呼ばれる。ホモスケダスティシティは、係数分散の「古典的」推定値が有効であるために必要な他の仮定のうちの1つである]。回帰モデルにおける係数分散のロバスト推定は非常に重要である。分散推定値^[あるいはむしろその**平方根**で、これは係数の**標準誤差**を表すので： $\sqrt{V_{\hat\ **{beta}**  **{}** = **{SE}** _{\hat\ **{beta}** $ .] は、$p$ -値と同様に、推定回帰重量の周りの**信頼区間** を計算するために使われ、したがってモデルから引き出す推測に直接影響を持つ。 
+
+ここで取り上げるロバスト分散推定量は、「通常の」回帰モデルで使用されるオリジナルの手法の**特別バージョン** に過ぎないのである。Hedges, Tipton and Jackson [-@hedges2010robust] は、**依存効果量** のある**メタ回帰** モデルに使用できる**適応型** のRVEを発表し、このアプローチはここ数年で拡張されている。 
+
+これを理解するためには、まずメタ回帰の**式**をもう一度見てみる必要がある。概念的には、この式は Chapter \@ref(the-metareg-model)  で紹介した式 8.2 と非常によく似ている。それを単に**行列表記**で表示すだけですある^[本章では、メタ分析的 RVE を論じる際に、Hedges, Tipton and Jackson [-@hedges2010robust] とそのフォローアップ論文の表記法をほぼ踏襲した]。
+
+\begin{equation}
+\boldsymbol{T}_{j}=\boldsymbol{X}_{j}\boldsymbol{\beta} + \boldsymbol{u}_j +\boldsymbol{e}_j
+(\#eq:mlm9)
+\end{equation}
+
+
+この式は、単純に、$\boldsymbol{T}$  のある **effect size** が、$\boldsymbol{X}$  のある **共変量** と関連した **回帰の重み** $\beta$  によって予測されることを教えてくれる。また、**サンプルエラー**（$\boldsymbol{e}_j$  で記号化）以外に、各研究の**ランダム効果**（$\boldsymbol{u}_j$  で表記）があり、それによって（混合効果）メタ回帰モデルを生成していることも教えてくれる。 
+
+特別なのは、この式の添え字 $j$ である。これは、式中の**文字**が**太字** であることとともに、データセット中の各研究またはクラスタ $j$  が**複数の効果量** を提供する、または提供できることを示している。 $n_j$  は、ある研究 $j$  における効果量の数であるとする。そして、$j$  の効果量は、式で見る列ベクトルとして書き下すことが可能である。$\boldsymbol{T}_j = (T_{j,1}, \dots, T_{j,{n_j}})^\top$. 同様に、 $\boldsymbol{X}_j$ は $j$ の共変量を含む**デザイン行列**であり、
+
+\begin{equation}
+\boldsymbol{X}_j =
+\begin{bmatrix}
+ x_{1,1}    & \cdots & x_{1,p}    \\ 
+ \vdots     & \ddots & \vdots     \\
+ x_{n_j,1}  & \cdots & x_{n_j,p}
+\end{bmatrix}
+(\#eq:mlm10)
+\end{equation}
+
+
+ここで $p-1$ は共変量の総数である。^[In a linear regression model, a **design matrix** (or **model matrix**) contains all **covariate values** used to estimate the regression coefficients. In its easiest form, the design matrix can be seen like a **data frame of covariates**, with a **column of 1's** added to the first column. This first column is used to model the regression **intercept**. Imagine that, in our meta-regression, there are three covariates. If the fourth study in our dataset contributes three effect sizes, its design matrix could look like this: $$\boldsymbol{X}_4 = \begin{bmatrix} 1  & 4.5 & 0 & 2  \\  1  & 7.3 & 1 & 2 \\ 1  & 2.4 & 0 & 2 \end{bmatrix}.$$]. 推定したい回帰係数のベクトル $\boldsymbol{\beta} = (\beta_1, \dots, \beta_{p})^\top$ には、**添字　$j$　は含まれていない**。なぜなら、回帰係数は全ての研究で同じと仮定されているからである。 
+
+全体として、この表記は、研究が複数の効果量に貢献できる場合、私たちのデータは、いくつかの小さなデータセットを**積み重ねたように見える**ことを強調している。 $J$  は、私たちのデータにおける研究またはクラスターの合計数である。
+
+\begin{equation}
+\begin{bmatrix}
+ \boldsymbol{T}_1 \\
+ \boldsymbol{T}_2 \\
+ \vdots \\
+ \boldsymbol{T}_J
+\end{bmatrix}
+=
+\begin{bmatrix}
+ \boldsymbol{X}_1 \\
+ \boldsymbol{X}_2 \\
+ \vdots \\
+ \boldsymbol{X}_J
+\end{bmatrix}
+\boldsymbol{\beta}
++
+\begin{bmatrix}
+ \boldsymbol{u}_1 \\
+ \boldsymbol{u}_2 \\
+ \vdots \\
+ \boldsymbol{u}_J
+\end{bmatrix}
++
+\begin{bmatrix}
+ \boldsymbol{e}_1 \\
+ \boldsymbol{e}_2 \\
+ \vdots \\
+ \boldsymbol{e}_J 
+\end{bmatrix}.
+(\#eq:mlm11)
+\end{equation}
+
+この式に基づいて、メタ回帰の係数 $\boldsymbol{\hat\beta}$ を推定することができる。信頼区間を計算し、係数の有意性検定を行うには、その**分散**の推定が必要である。これはロバストサンプリング分散推定量 $\boldsymbol{V_{\hat\beta}}$ を使って実現可能である。その式は次のようになる [@hedges2010robust; @pustejovsky2021meta, suppl. S1]。
+
+\begin{equation}
+\scriptsize\boldsymbol{V}^{\text{R}}_{\boldsymbol{\hat\beta}} =
+\left(\sum^J_{j=1}\boldsymbol{X}_j^\top\boldsymbol{W}_j\boldsymbol{X}_j \right)^{-1} 
+\left(\sum^J_{j=1}\boldsymbol{X}_j^\top\boldsymbol{W}_j \boldsymbol{A}_j\Phi_j \boldsymbol{A}_j \boldsymbol{W}_j \boldsymbol{X}_j \right)
+\left(\sum^J_{j=1}\boldsymbol{X}_j^\top\boldsymbol{W}_j\boldsymbol{X}_j \right)^{-1} 
+(\#eq:mlm12) 
+\end{equation}
+
+
+この式はかなり複雑に見えるので、細部まで理解する必要はないだろう。今重要なのは、**形式**と、その**「成分」**の一部である。
+
+まず、この式が**三分木構造**であることがわかる。左右の括弧で囲まれた部品は、真ん中の部品を取り囲むように同じものが並んでいる。これは、外側の部分が「パン」で内側の部分が「肉」であるサンドイッチのように見え、**「サンドイッチ推定量」**と名付けられた所以である。この式の重要な「材料」は、$\boldsymbol{\Phi}_j$,  $\boldsymbol{W}_j$ and $\boldsymbol{A}_j$ の行列である。
+
+- まず1つ目。$\boldsymbol{\Phi}_j=\text{Var}(\boldsymbol{u}_j +\boldsymbol{e}_j)$, は、$ n_j $ 行と $ n_j $ 列の**分散共分散行列** (variance-covariance matrix) である。これは、研究 $j$ の**真の依存構造**を表している [@pustejovsky2021meta, Suppl. S1]。残念ながら、効果量が研究内でどのように、どの程度相関しているかはほとんど知られておらず、私たちのメタ分析で**すべての**研究に関してこれを知ることはさらに困難である。したがって、このモデルでは、いくつかの単純化した仮定を置く必要がある^[Hedges, Tipton and Jacksonによるオリジナルのアプローチ [-@hedges2010robust] では、 $\boldsymbol{\Phi}_j$ は **cross-product of the model residuals** $\boldsymbol{\Phi}_j=\boldsymbol{e}_j{\boldsymbol{e}_j}^\top$ に置き換えられる。これはすぐに使うことができるからである。これは真の依存構造の粗い推定値であるが、メタアナリシスにおける研究数が多い場合には「最良の推定値」として機能する。]。CHE モデルは、例えば、効果量間の**既知の相関** (known correlation) $ \rho $ があり、 $\rho$ は**全ての研究で同じ値**という仮定がある [pustejovsky2021meta]。
+
+- $\boldsymbol{W}_j$  行列には、各効果量の **重み** が含まれている。前の章（ \@ref(fem) and \@ref(metareg-model-fit) 参照）で、効果量推定値の **精度** を考慮に入れてからプールする必要があることを既に学びんだ。これを行う最適な方法は、**分散の逆数**を取ることであり、これは、$\boldsymbol{W}_j = \boldsymbol{\Phi}^{-1}_j$   を意味する。先ほど述べたように、$\boldsymbol{\Phi}_j$  の真の値はほとんど知られていないので、私たちのモデルに基づく推定値、$(\boldsymbol{\hat\Phi}_j)^{-1}$ が使われる^[Hedges、Tipton、Jackson によるオリジナルのアプローチ [-@hedges2010robust] では、単純化対角重み行列を用いた別の方法を採用しているので、おおむね効率が良い].
+
+- 最後の $\boldsymbol{A}_j$  は**調整行列**で、**メタ分析の研究数が少ない** [例えば40以下, @hedges2010robust; @tipton2015small] でも推定量が有効な結果を提供できるようにするものである。推奨されるアプローチは、bias-reduced linearization、つまり**"CR2" 法**に基づく行列を使うことである[@tipton2015small]^[CR2調整行列は次のようなものである。$$\scriptsize \boldsymbol{A}^{\text{CR2}}_j = \boldsymbol{W}_j^{-1/2}\left\{\boldsymbol{W}_j^{-1/2} \left[\boldsymbol{W}_j^{-1}-\boldsymbol{X}_j \left(\sum^J_{j=1}\boldsymbol{X}_j^\top\boldsymbol{W}_j\boldsymbol{X}_j \right)^{-1} \boldsymbol{X}_j^\top \right] \boldsymbol{W}_j^{-1/2}\right\}^{-1/2} \boldsymbol{W}_j^{-1/2}.$$ It entails taking the symmetric square root of the weight matrix $\boldsymbol{W}_j$.]。
+
+<br></br>
+
+### ロバスト分散推定を用いたCHEモデルの適合  {#fit-rve}
+
+---
+
+それでは、最初の相関・階層効果モデルを*R*で**適合**させ、同時に**ロバスト分散推定**を採用し、モデルの**誤指定**を防ぐ。前回と同様に、 **{metafor}** の  `rma.mv`  関数を使用してモデルを実行した。今回は、 **{clubSandwich}** パッケージ [@clubSandwich]が提供するいくつかの追加関数も必要である。そのため、必ずパッケージを**インストール**し、ライブラリから**ロード**してみよう。
+
+```{r, eval=F}
+library(clubSandwich)
+```
+
+上記のように、CHEモデルは、研究またはクラスター内の効果量が**相関**しており、この相関は研究内および研究間で同一であると仮定している。 
+
+したがって、モデル内で使用する**相関係数**を定義する必要がある。今回のチェルノブイリのデータでは、相関が大きいと仮定して、$\rho$ =0.6としよう。これは推測に過ぎず、$\rho$  の値を変えながら**複数の感度分析**を行うことを強く勧める。
+
+```{r, eval=F}
+# constant sampling correlation assumption
+rho <- 0.6
+```
+
+さて、この相関を利用して、各研究の仮定された**分散共分散行列**を計算することが可能である。これは、 **{clubSandwich}** の  `impute_covariance_matrix`  関数を使用して行う。
+
+- `vi`の引数には、各効果量の*分散*（すなわち、標準誤差の二乗）を含むデータセットの変数名を指定した。
+- `cluster` 引数は、各効果量を **study** または **cluster** に関連付ける変数を定義する。`Chernobyl` データセットでは、これは `author` である。 
+- 引数  `r`  は、効果量間の**定数相関係数**を想定している。
+
+```{r, eval=F}
+# constant sampling correlation working model
+V <- with(Chernobyl, 
+          impute_covariance_matrix(vi = var.z,
+                                   cluster = author,
+                                   r = rho))
+```
+
+`V` で準備した分散共分散行列を用いて、`rma.mv` モデルの適合を行うことができるようになる。 Chapter \@ref(three-level-subgroup)  と同じメタ回帰モデルで、共変量として `radiation` を用いて解析するとする。 
+
+最初の引数は  `formula`  オブジェクトで、効果量  `z`  が切片 ( `1` ) と共変量  `radiation`  によって予測されることを関数に渡した。`V` 引数には、先ほど作成した分散共分散行列のリストを渡す。また、 `sparse` 引数を `TRUE` に設定することで、計算を高速化することが可能である。 
+
+引数  `random`  と  `data`  だけが同じである。結果は  `che.model`  という名前で保存される。
+
+```{r, eval=F}
+che.model <- rma.mv(z ~ 1 + radiation,
+                    V = V,
+                    random = ~ 1 | author/es.id,
+                    data = Chernobyl,
+                    sparse = TRUE)
+```
+
+メタ回帰係数の**信頼区間** を計算するために、 **{clubSandwich}**  の  `conf_int`  関数を使用することが可能である。フィットしたモデルを指定し、 `vcov` で使用する**小サンプル調整** を指定するだけである。推奨通り、 `"CR2"` 調整を使用する ( Chapter \@ref(sandwich)  参照)。
+
+
+```{r, eval=F}
+conf_int(che.model, 
+         vcov = "CR2")
+```
+
+```
+##            Coef. Estimate    SE d.f. Lower 95% CI Upper 95% CI
+##          intrcpt    0.584 0.578 1.00        -6.76         7.93
+##     radiationlow   -0.190 0.605 1.60        -3.52         3.14
+##  radiationmedium    0.207 0.603 1.98        -2.41         2.83
+```
+
+`Estimate` の点推定値は、Chapter \@ref(three-level-subgroup)  で得たものと同様であることがわかる。しかし、推定された標準誤差と信頼区間は、はるかに大きくなっている。また、`coef_test`関数を用いて、回帰重みの $p$ **値** を計算することが可能である。
+
+```{r, eval=F}
+coef_test(che.model, 
+          vcov = "CR2")
+```
+
+```
+##            Coef. Estimate    SE t-stat d.f. (Satt) p-val (Satt) Sig.
+##          intrcpt    0.584 0.578  1.010        1.00        0.497     
+##     radiationlow   -0.190 0.605 -0.315        1.60        0.789     
+##  radiationmedium    0.207 0.603  0.344        1.98        0.764 
+```
+
+ロバスト分散推定を用いた場合、どの係数も有意ではないことがわかる^[デフォルトでは、  `cont_int`  と  `coef_test`  関数は **Satterthwaite-corrected** 自由度 [@tipton2015small2] を用いている。このデフォルト設定を維持することが推奨される]。 
+
+```{block2, type='boxinfo'}
+**ロバスト分散推定とモデルの誤同定**
+
+読者の中には、なぜ私たちがロバスト分散推定を使ったモデルに大騒ぎするのか不思議に思われるかもしれない。その主な理由は、多変量・マルチレベルのモデルは、**簡単に誤った仕様になりうる**からである。CHE モデルでさえ、相関が研究内と研究間で同一であると仮定することで、やや粗雑なモデルであることをすでに学んだ。モデルがデータ中の複雑な依存関係を**適切に近似している**かどうかが**不明確**なことがよくある。
+
+この点、ロバスト分散推定は、モデルの潜在的な**誤記定**に対して、私たちの**推論**（すなわち、我々が計算する信頼区間と$p$値）を**保護する**ことができるため、有用である。
+
+```
+
+
+```{block2, type='boxinfo'}
+**{robumeta} パッケージ**
+
+このセクションでは、相関・階層効果モデルと組み合わせたロバスト分散推定を取り上げた。このモデルは、他のいくつかの革新的な技術とともに、Pustejosky and Tiptonによって提案されている [-@pustejovsky2021meta]。
+
+Hedges, Tipton and Jackson [-@hedges2010robust] による **"original" RVE approach** と、いくつかの小サンプルの拡張は、 **{robumeta}** パッケージ [@robumeta] を使って適用することができる。このパッケージは、Hedges, Tipton and Jackson　が最初に提案した2種類のモデル、**階層的**モデルと**相関効果**モデル（ただし両方を組み合わせたモデルは不可）を使ってメタ回帰を適合させることができる。 
+
+```
+
+
+<br></br>
+
+## クラスターワイルドブートストラップ  {#cwb}
+
+---
+
+前章では、相関効果モデルと階層効果モデルの適合方法、ロバスト分散推定を用いた信頼区間と係数検定の計算方法について学んだ。 
+
+もう一つの、そして時には私たちのモデルの係数を検定するのに有利な方法は、**ブートストラップ法**で、その特別な変種がいわゆる**クラスターワイルドブートストラップ**  [@joshi2021clusterwild] である。この方法は、メタ分析における**研究の総数** $J$  が**小さい**場合に適している。特に、（私たち自身の `チェルノブイリ` の例で見たように）小さなサンプルで**過度に保守的な結果**につながる可能性があるRVEと比較して、この方法は適している。
+
+この方法は、いわゆる**多重対比仮説** を検定したいときにも有効である。多重対比仮説は、たとえば、ダミー・コード化されたカテゴリ共変量の全体効果を検定したい場合に必要である。 
+
+
+```{block2, type='boxinfo'}
+**Cluster Wild Bootstrapping Algorithm**
+  
+ワイルドブートストラップは、Null モデル（共変量を追加せずにフィットさせたモデル）の残差に基づく方法である。クラスターワイルドブートストラップでは、依存効果量を扱うために、例えば CR2 法に基づく調整行列 $\boldsymbol{A}_j$ を用いて残差を変換する（Chapter \@ref(sandwich) 参照）。Wild Boostrapping の一般的なアルゴリズムは以下のようなものである [@joshi2021clusterwild]。
+  
+1. 元のデータからフルモデルを計算し、目的の検定統計量 (e.g. a $t$ or $F$ value) を導出する。
+2. 元のデータに基づいてヌルモデルを適合し、その残差 $\boldsymbol{e}$ を抽出する。
+3. 各研究またはクラスター $j$ について、分布^[本ガイドで使用している **R** パッケージの **{wildmeta}** では、このために **Rademacher** 分布を使用しています]からランダムな値を引き、$j$ の残差にこのランダムな値をかけます。
+4. 元のデータに基づく Null モデルの予測値に変換された残差を加えることで、新しいブートストラップされた効果量を生成する。
+5. ブートストラップされた効果量値を用いて，再度フルモデルを適合させ，再度検定統計量を計算する。
+
+そして、ステップ3から5を $R$ 回繰り返す。Boostrap $p$値は、boostrap検定統計量が元データに基づくものより**極端**であった回数の**割合**として導出される。
+
+```
+
+
+ブートストラップを用いて多重対比仮説を検定するには、 **{wildmeta}**  パッケージ [@wildmeta]を使用することが可能である。このパッケージは、次の例のためにインストールし、ライブラリからロードする必要がある。さらに、 **{tidyverse}** の関数を用いて、 `Chernobyl` データセットに新しい変数を生成し、そこに各研究の年号を保存した。
+
+
+```{r, eval=F}
+# Make sure {wildmeta} and {tidyverse} is loaded
+library(wildmeta)
+library(tidyverse)
+
+# Add year as extra variable
+Chernobyl$year <- str_extract(Chernobyl$author, 
+                              "[0-9]{4}") %>% as.numeric()
+```
+
+次に、この変数をメタ回帰モデル  `rma.mv`  の **新しい予測変数** として使用した。これは、単に最初の引数で  `year`  を数式に追加し、共変数をセンタリング、スケールするために  `scale`  関数を適用した。また、この式ではもう一つ、切片の  `1`  を  `0`  に変更している。これは切片がないことを意味し、「年」の予測値は放射線のレベルごとに **層別** される^[この変更は、放射線のレベルごとの **表示** に影響を与える：一つのレベルを基準群として回帰重みを得るのではなく、各レベルについて3つの別々の効果量推定値がプールされる]。この結果を  `che.model.bs`  として保存する。
+
+```{r, eval=F}
+che.model.bs <- rma.mv(z ~ 0 + radiation + scale(year),
+                       V = V,
+                       random = ~ 1 | author/es.id,
+                       data = Chernobyl,
+                       sparse = TRUE)
+```
+
+
+ブートストラップを始める前に、実施したい検定について**線形対比**を定義する必要がある。例えば、変数  `radiation`  の **全体的なモデレーション効果** を検定したいとする。これを行うには、 **{clubSandwich}** の  `constrain_equal`  関数を使用して、検定のための制約行列を作成する必要がある。帰無仮説は、変数  `radiation`  の3つのレベルの間で効果が等しいというもので、 `constraints`  引数を  `1:3`  にセットする。さらに、 `coefs`  引数には先ほどフィットしたモデルの係数を指定した。結果は  `rad.constraints`  という名前で保存される。
+
+```{r, eval=F}
+rad.constraints <- constrain_equal(constraints = 1:3,
+                                   coefs = coef(che.model.bs))
+rad.constraints
+```
+```
+##      [,1] [,2] [,3] [,4]
+## [1,]   -1    1    0    0
+## [2,]   -1    0    1    0
+```
+
+
+ **{Wildmeta}** の  `Wald_test_cwb`  関数を用いて、多重対比仮説のブートストラップ $p$ -値を計算することができる。フィットしたフルモデル、制約行列、使用したいスモールサンプル調整の種類、そしてブートストラップ複製の数である  `R`  を指定する必要がある。検出力が向上するため、**高い複製数**（例：1000以上）を使用することを勧める。この例では、2000回を使用し、結果を `cw.boot` として保存する。繰り返しの回数にもよるが、この処理は終了までに**数分かかることがある**。
+
+```{r, eval=F}
+cw.boot <- Wald_test_cwb(full_model = che.model.bs,
+                         constraints = rad.constraints,
+                         adjust = "CR2",
+                         R = 2000)
+cw.boot
+```
+
+```
+##           Test Adjustment CR_type Statistic    R  p_val
+## 1 CWB Adjusted        CR2     CR0   Naive-F 2000 0.3595
+```
+
+モデレータの検定の結果、$p$ -値は0.36で、**有意ではない**ことがわかる。私たちは以前、Chapter \@ref(three-level-subgroup)  の放射強度のモデレータ分析でも同様の所見を得た。
+
+`plot` 関数を使用すると、すべてのブートストラップ複製における検定統計量の**密度** を可視化することも可能である。 
+
+
+```{r, eval=F}
+plot(cw.boot, 
+     fill = "lightblue", 
+     alpha = 0.5)
+```
+
+```{r, fig.width=5, fig.height=3, out.width="75%", fig.align='center', echo=F, message=FALSE, warning=FALSE}
+library(wildmeta)
+load("data/cw.boot.rda")
+plot(cw.boot, fill = "lightblue", alpha = 0.5) +
+  ggplot2::theme(plot.background = element_rect(fill = "#FFFEFA",
+                                                color = "#FFFEFA"),
+                 panel.background = element_blank(),
+                 panel.border = element_blank())
+```
+
+
+
+\qed
+
+<br></br>
+
+## Questions and Answers
+
+```{block, type='boxquestion'}
+**Test your knowledge!**
+
+\vspace{4mm}
+
+1. Why is it more accurate to speak of "three-level" instead of "multilevel" models? 
+
+\vspace{-2mm}
+
+2. When are three-level meta-analysis models useful?
+
+\vspace{-2mm}
+
+3. Name two common causes of effect size dependency.
+
+\vspace{-2mm}
+
+4. How can the multilevel $I^2$ statistic be interpreted?
+
+\vspace{-2mm}
+
+5. How can a three-level model be expanded to incorporate the effect of moderator variables?
+
+\vspace{4mm}
+
+
+**Answers to these questions are listed in [Appendix A](#qanda10) at the end of this book.**
+
+```
+
+
+$$\tag*{$\blacksquare$}$$
+
+<br></br>
+
+## 要約
+
+* すべてのランダム効果メタ分析は、多階層モデルに基づいている。3層目が追加された場合、3層メタ分析モデルと呼ばれる。このようなモデルは、**クラスター化**した効果量データの取り扱いに適している。 
+
+* 3レベルモデルは、従属効果量に使用することがでく。例えば、1つの研究が複数の効果量に寄与している場合、これらの結果が独立しているとは通常仮定できない。3レベルモデルは、効果量がより大きなクラスタ（研究など）に **ネスト** されていると仮定することで、この問題を制御する。
+
+* 従来のメタ分析とは異なり、３レベルモデルでは、クラスタ内のランダム効果分散と、クラスタ間の不均一分散の2つの不均一性分散を推定することが可能である。
+
+* 3レベルモデルを用いて、カテゴリまたは連続予測変数を検定することも可能である。これは、3レベル混合効果モデルをもたらす。 

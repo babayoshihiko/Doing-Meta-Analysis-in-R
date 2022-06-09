@@ -1,0 +1,106 @@
+--- 
+title: "Doing Meta-Analysis in R"
+subtitle: "A Hands-on Guide"
+author: 
+- Mathias Harrer 
+- Pim Cuijpers
+- Toshi A. Furukawa
+- David D. Ebert
+github-repo: "MathiasHarrer/Doing-Meta-Analysis-in-R"
+site: bookdown::bookdown_site
+output: 
+  bookdown::gitbook:
+    config: 
+      toc:
+       collapse: section
+      search: yes
+      fontsettings:
+        size: 2
+    split_by: section
+    includes:
+      after_body: banner.html
+    df_print: paged
+    theme: !expr bslib::bs_theme()
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+twitter-handle: MathiasHarrer
+description: "This is a guide on how to conduct Meta-Analyses in R."
+favicon: "favicon.ico"
+---
+
+
+
+# ようこそ！ {-}
+
+---
+
+<a href="https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074" target="_blank"><img src="images/cover.png" width="250" align="right" alt="" class="cover" /></a> Welcome to the online version of **"Doing Meta-Analysis with R: A Hands-On Guide"**. 
+
+本書は、 _R_ でメタ分析を行う方法について、わかりやすく紹介するものである。メタ分析の基本的な手順として、アウトカム指標のプール、フォレストプロット、異質性診断、サブグループ分析、メタ回帰、出版バイアスの制御方法、バイアスリスク評価、プロットツールなどを網羅している。
+
+また、ネットワークメタ分析、多段/三段メタ分析、ベイズメタ分析アプローチ、SEMメタ分析など、高度でありながら関連性の高いトピックも取り上げる。
+
+本書で扱うプログラミングや統計的背景は、**非専門家レベル**にとどめている。本書の**印刷版**は、[Chapman & Hall/CRC Press](https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074) (Taylor & Francis) から出版されている。
+
+
+<br></br>
+
+## ソースレポジトリ {-}
+
+---
+
+本書は、[**{rmarkdown}**](https://rmarkdown.rstudio.com/docs/) および [**{bookdown}**](https://bookdown.org/) を使用して構築した。数式は [MathJax](http://docs.mathjax.org/en/latest/index.html) を使ってレンダリングしている。このガイドの編集に使用したすべての資料とソースコードは **GitHub** で見ることができる。フォーク、共有、再利用は自由である。ただし、このリポジトリは主に「読むだけ」を想定しており、基本的に PR は考慮されていない（連絡方法については、以下のセクションと前書きを参照）。  
+
+[![GitHub followers](https://img.shields.io/badge/View Repository-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MathiasHarrer/Doing-Meta-Analysis-in-R)
+
+
+
+<br></br>
+
+## Contributing {-}
+
+---
+
+本ガイドはオープンソースプロジェクトであり、本ガイドのいくつかのセクションで追加コンテンツを提供してくれた専門家の貢献者に特別な感謝を捧げる。
+
+* [**Luke A. McGuinness**](https://twitter.com/mcguinlu), University of Bristol: Chapter 15, Risk of Bias Plots.
+
+本書に貢献したい方は、**Mathias** (mathias.harrer@fau.de) にメールを送り、提案する追加事項を伝えていただきたい。
+
+<br></br>
+
+## 本書を引用 {-}
+
+---
+
+本書の原著を引用する際には、以下のようにされたい。
+
+```{block, type='boxempty'}
+Harrer, M., Cuijpers, P., Furukawa, T.A., & Ebert, D.D. (2021). _Doing Meta-Analysis with R: A Hands-On Guide_. Boca Raton, FL and London: Chapman & Hall/CRC Press. ISBN 978-0-367-61007-4.
+```
+
+引用は [BibTeX](https://www.protectlab.org/meta-analysis-in-r/data/citation.bib) または [.ris](https://www.protectlab.org/meta-analysis-in-r/data/citation.ris) でもダウンロード可能。
+
+
+<br></br>
+
+
+## パッケージを引用 {-}
+
+---
+
+このガイドでは、様々な _R_ パッケージを紹介し、使用していく。こうしたパッケージが誰でも無料で使えるのは、世界中の専門家が膨大な時間と労力を費やして、通常は無報酬で開発してきたからに他ならない。本書で紹介されているパッケージを使ってメタ分析する場合は、レポートの中で引用することも強く推奨する。
+
+このガイドでは、新しいパッケージが紹介されるたびに、それを引用するためのリファレンスも提供していく。また、`citation("package")` を実行することで、適切な引用方法を取得することが可能である。感謝！
+
+
+<br></br>
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```

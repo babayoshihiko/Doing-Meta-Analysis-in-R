@@ -1,0 +1,311 @@
+# 報告の再現性  {#reporting-reproducibility}
+
+---
+
+<img src="_figs/reporting.jpg" />
+
+
+<br></br>
+
+
+
+<span class="firstcharacter">前</span>
+の章では、 _R_ でメタ分析を行うために使用できる様々なテクニック、アプローチ、戦略について説明してきた。しかし、統計解析の実行は、実際にはメタ分析「プロセス」全体のごく一部の割合を占めるに過ぎない。「野放し」では、よくあることである。
+
+* _R_ のコードにエラーが見つかったため、解析の一部を変更してやり直さなければならない。
+
+* 共同研究者や査読者は、別のアプローチやモデルの使用、あるいは追加の感度分析を行うことを提案している。
+
+* 分析作業の一部を共同研究者の一人に委任する必要があり、現在の作業状況を送らなければならない。
+
+* 私たちのプロジェクトはしばらく中断していたため、再開するころにはいろいろなことを忘れてしまっている。
+
+* 解析結果をプロジェクトの共同研究者と共有したいが、共同研究者は _R_ を知らず、R Studioもインストールされていない。
+
+これらはほんの一部のシナリオであるが、 _R_ でメタ分析を行う際の**再現可能なワークフロー**が、あなたや一緒に働く人々にとって有益であることを説明している。また、再現性を目指すことは、**オープンサイエンス**の実践の基礎でもある。完全に再現可能なメタ分析は、私たちがどのように結果に至ったかを他の人に可能な限り明らかにするものである。 
+
+\index{Markdown, _R_}
+\index{Open Science Framework (OSF)}
+
+
+R Studio は、再現性のあるワークフローを作成し、協力を得るために最適なツールである。本章では、分析の再現、報告、普及のための3つのツールを紹介する _R_  Projects、**R Markdown** および **Open Science Framework** である。
+
+<br></br>
+
+
+## _R_ プロジェクトの利用
+
+---
+
+\index{Project, _R_}
+
+
+解析を始めるには、まずR Studioで _R_ **プロジェクト**を立ち上げるのがよいだろう _R_ プロジェクトは、コンピュータ上のフォルダーに新しい環境を作成した。このフォルダには、分析に必要なすべてのデータと _R_ コードが保存される _R_  プロジェクトで分析を行うということは、作成したすべてのオブジェクトがプロジェクト環境に一時的に保存され、次に開いたときにアクセスできるようになることを意味した。新しい _R_ プロジェクトを作成するには、R Studio ウィンドウの右上にある **R project** フィールドをクリックし、ドロップダウンメニューから **New Project...** を選択した。
+
+```{r, message = F, out.width = '60%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rproj1_col.png')
+```
+
+
+次に、コンピュータ上に新しいフォルダである**New Directory**を作成し、これがプロジェクトの作業ディレクトリとなる。
+
+```{r, message = F, out.width = '45%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rproj2_col.png')
+```
+
+
+そして、**New Project** をクリックする。
+
+```{r, message = F, out.width = '45%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rproj3_col.png')
+```
+
+
+新しいプロジェクトに「メタ分析プロジェクト」という名前をつける。プロジェクトフォルダは、**~Documents/R**に格納される。
+
+```{r, message = F, out.width = '45%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rproj4_col.png')
+```
+
+**プロジェクトの作成**をクリックすると、 _R_ プロジェクトが設定される _R_ プロジェクトの大きな特徴は、参照したいファイルへの**絶対パス**を使用する必要がないことである。ファイル名、またはファイルが（サブ）フォルダーにある場合は、フォルダー名とファイル名だけを使用した。例えば、データセット **data.xlsx** をサブフォルダー "data" に格納したとした。**{openxlsx}** パッケージ( Chapter \@ref(data-prep-R) )を使用すると、相対パスでデータセットをインポートすることが可能である。
+
+```{r, eval=F}
+read_excel("data/data.xlsx")
+```
+
+<br></br>
+
+
+## R Markdownで再現性のあるレポートを作成する
+
+---
+
+\index{Markdown, _R_}
+
+
+**Markdown** はテキストフォーマットのためのシンプルなマークアップ言語である。**R Markdown** [@xie2018r]はMarkdownの拡張機能で、プレーンテキスト、 _R_ コード、 _R_ 出力を1つのドキュメントに簡単にまとめることができるようになっている。このため、R Markdownは非常に便利なレポート作成ツールとなっている。R Markdownを使用すると、分析で使用したすべてのコード、コードによって生成された出力を含むHTMLまたはPDFファイルを作成でき、各分析ステップで行ったことに関する詳細な情報を追加することが可能である。 
+
+R MarkdownファイルをR Studioで構築するのはとても簡単である。R Studioウィンドウの左上隅にある、緑色の "プラス "記号のついた白いシンボルをクリックすればよいのである。そして、ドロップダウンメニューから、**R Markdown...**をクリックする。
+
+\vspace{2mm}
+```{r, message = F, out.width = '35%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rmd1_col.png')
+```
+\vspace{2mm}
+
+
+新しいR Markdownドキュメントの名前を定義すると、R Studioウィンドウの左上隅にポップアップ表示されるはずである。
+
+\vspace{2mm}
+```{r, message = F, out.width = '55%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rmd2_col.png')
+```
+\vspace{2mm}
+
+
+このファイルには、すでにいくつかの例示的な内容が含まれているので、最初の6行を除いて削除することが可能である。
+
+```
+---
+title: "Analysis"
+author: "Author Name"
+date: "10/16/2020"
+output: html_document
+---
+```
+
+
+この部分はいわゆる **YAML** ヘッダーである。これは、ドキュメントのタイトル、著者、日付、エクスポート形式を対照した。私たちが選んだ出力形式は  `html_document`  で、これはドキュメントがレンダリングされるとHTMLページとしてエクスポートされることを意味した。 
+
+すべての_R Markdownドキュメント_は2つの部分から構成されている: 普通のMarkdownテキスト、そして、グレーで示されたいわゆる**Rチャンク**である。R Markdownドキュメントのテキスト部分がどのようにフォーマットされるかについては詳しく説明しないが、オンラインの[cheat sheet](https://rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf)があり、Markdown構文を学び始めるには素晴らしいリソースである（これは20分程度で終わるはずです）。一方、 _R_ コードのチャンクは、私たちが通常コンソールに入力するすべてのコードを含んでいるだけである。ドキュメントの右上にある **Insert** フィールドをクリックすることで、新しいコードチャンクを追加することが可能である。各チャンクの上にある小さな緑の三角形をクリックすると、コードを実行することが可能である。
+
+\vspace{2mm}
+```{r, message = F, out.width = '25%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rmd3_col.png')
+```
+\vspace{2mm}
+
+
+文書を書き終えたら、左上の**編み目**のマークをクリックして、HTML、PDF、MS Word文書として書き出すことが可能である。これにより、すべてのテキスト、コード、出力を含む文書がレンダリングされ、定義されたフォーマットでエクスポートされる。最終的な文書は、自動的にプロジェクトフォルダに保存される。
+
+\vspace{2mm}
+```{r, message = F, out.width = '40%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/rmd4_col.png')
+```
+<br></br>
+
+
+## OSFレポジトリ {#osf}
+
+---
+
+\index{Open Science Framework (OSF)}
+
+**オープンサイエンス・フレームワーク**（[OSF]（https://www.osf.io））は、研究におけるコラボレーションと再現性を促進するためのオープンソースのオンラインプラットフォームである。OSFにはオンライン**リポジトリ**があり、研究者が研究資料を預けて共同研究を行い、研究プロセスのすべてのステップを（より）透明化することが可能である。OSFは、過去10年間に大きな勢いを得たオープンサイエンス運動の急先鋒である。 
+
+すべてのメタ分析者は、収集したデータと分析に使用した _R_ コードにオープンアクセスすることで、研究と分析プロセスを一般に公開することが推奨される。OSFはこれを行うための素晴らしいツールである。自分で作成したすべてのリポジトリは、デフォルトで非公開になっており、いつ、何を公開するかは、あなた次第なのである。以下では、_R_でOSFリポジトリを設定する方法、ファイルのアップロードとダウンロード、共同研究者を追加する方法を紹介した。
+
+<br></br>
+
+
+### アクセス・トークン
+
+---
+
+
+OSFを使い始めるには、まず[ウェブサイト](https://osf.io/register)で個人アカウントを作成する必要がある。アカウントが作成されたら、 _R_ を使って直接リポジトリを操作できるように、**アクセストークン**を生成する必要がある。アクセストークンを取得するには、**Profile** &gt; **Settings** &gt; **Personal access tokens**に移動する必要がある。そこで、**Create token** をクリックした。
+
+\vspace{4mm}
+```{r, message = F, out.width = '60%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/osf1_col.png')
+```
+\vspace{4mm}
+
+
+次に、**Scopes**の下にあるすべてのボックスにチェックを入れ、**Create token**を再度クリックする。すると、個人用のアクセストークンが表示されるはずである。このトークンをコピーして保存しておきる。
+
+\vspace{4mm}
+```{r, message = F, out.width = '60%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/osf2_col.png')
+```
+<br></br>
+
+
+### パッケージと認証について
+
+---
+
+**{OSF}** リポジトリに _R_ 経由で直接アクセスするには、 **{osfr}**  パッケージ [@osfr] を使用する。このパッケージの機能を使う前に、まずアクセストークンを使って認証する必要がある。これを行うには、 `osf_auth`  関数を使用して、受け取ったばかりのアクセストークンを渡した (以下に表示されるトークンはデタラメです)。
+
+```{r, eval=F}
+library(osfr)
+osf_auth("AtmuMZ3pSuS7tceSMz2NNSAmVDNTzpm2Ud87")
+```
+
+
+<br></br>
+
+
+### レポジトリの設定
+
+---
+
+**{osfr}** を使うと、 _R_ を使ったOSFリポジトリを初期化することが可能である。新しいメタ分析プロジェクトに取り組んでいて、データとR MarkdownスクリプトをOSFリポジトリにアップロードしたいと想像してみよう。リポジトリの名前は "Meta-Analysis Project" とする。 
+
+新しいリポジトリを作成するには、 `osf_create_project` 関数を使用した。新しい OSF リポジトリを _R_ に  `meta_analysis_project` という名前で保存する。
+
+\vspace{2mm}
+```{r, eval=F}
+meta_analysis_project <- osf_create_project("Meta-Analysis Project")
+```
+
+
+`osf_open` 関数を使用すると、新しく作成したリポジトリにオンラインでアクセスできるようになる。
+
+\vspace{2mm}
+```{r, eval=F}
+osf_open(meta_analysis_project)
+```
+
+
+```{r, message = F, out.width = '60%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/osf3_col.png')
+```
+
+
+リポジトリが作成されたので、次に **コンポーネント**を追加していく。OSFでは、コンポーネントはコンピュータのフォルダのように動作した。例えば、データセット用のコンポーネントとR Markdownスクリプト用のコンポーネントの2つを作成したいとした。これを行うには、 `osf_create_component` 関数を使用することが可能である。この関数に_R_のリポジトリオブジェクト（ `meta_analysis_project` ）を渡し、新しいコンポーネントのタイトルを設定しなければならない。 
+
+```{r, eval=F}
+scripts <- osf_create_component(meta_analysis_project, 
+                                title = "Analysis Scripts")
+datasets <- osf_create_component(meta_analysis_project, 
+                                 title = "Datasets")
+```
+
+
+リポジトリのオンラインページに行くと、2つのコンポーネントが追加されていることがわかる。
+
+<br></br>
+
+
+### アップロードとダウンロード
+
+---
+
+
+OSF リポジトリにデータをアップロードするには、  `osf_upload`  関数を使用した。この関数では、ファイルを追加するコンポーネントと、アップロードするファイルのパスを指定する必要がある。例えば、"Analysis.rmd" というR Markdownスクリプトをアップロードしたい場合、現在 _R_ プロジェクトのサブフォルダ "scripts" に保存されているものとする。アップロードするには、次のコードを使用する。
+
+```{r, eval = F}
+osf_upload(scripts, "scripts/Analysis.rmd")
+```
+
+
+ファイルが正常にアップロードされたかどうかを確認するには、 `osf_ls_files` 関数を使用してコンポーネントのコンテンツにアクセスした。
+
+```{r, eval=F}
+osf_ls_files(scripts)
+```
+```
+## # A tibble: 2 x 3
+##   name            id                       meta            
+##   <chr>           <chr>                    <list>          
+## 1 Analysis.rmd    1db74s7bfcf91f0012567572l <named list [3]>
+```
+
+
+アップロードが成功したことが出力で確認可能である。ファイルをダウンロードするには、 `osf_ls_files` 関数の出力から行を選択し、 `osf_download` 関数でそれを使用して、ファイルをコンピュータのプロジェクトフォルダにダウンロードしなおせばよいだろう。
+
+```{r, eval = F}
+osf_download(osf_ls_files(scripts)[1,])
+```
+<br></br>
+
+
+### コラボレーション、オープンアクセス、事前登録  {#pre-registration}
+
+---
+
+\index{Preregistration}
+
+
+OSFのリポジトリサイトでは、**Contributors**という項目で共同研究者を追加することも可能である。
+
+
+
+```{r, message = F, out.width = '65%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/osf4_col.png')
+```
+
+
+ウェブサイト右上の **Make Public** ボタンをクリックすることで、いつでもリポジトリを **public** にすることが可能である。
+
+```{r, message = F, out.width = '40%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/osf5.png')
+```
+
+
+Chapter \@ref(analysis-plan)  で、解析計画と事前登録が高品質なメタ分析に不可欠な部分であることを説明してきた。OSFでは、私たちのプロジェクトのために、オープンにアクセスできる事前登録を作成することができ、とても便利である。上部にある**登録**ボタンをクリックし、**新規登録**を作成するだけでよいのである。これにより、**OSF Registries** のウェブサイトが表示され、分析計画など、計画中の研究についての詳細情報を提供することが可能である。 
+
+\vspace{2mm}
+```{r, message = F, out.width = '57%', echo = F, fig.align='center'}
+library(OpenImageR)
+knitr::include_graphics('images/osf6_col.png')
+```
+
+
+必要な情報をすべて指定した後、試験を登録することが可能である。これにより、一意のID（例：**osf.io/q2jp7**）でアクセス可能な登録項目が作成される。登録が完了した後は、検索計画、仮説、分析戦略を変更することはできない。
+
+$$\tag*{$\blacksquare$}$$
