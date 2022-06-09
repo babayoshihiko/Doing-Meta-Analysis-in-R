@@ -15,30 +15,31 @@
 
 また、ネットワークメタ解析、多段/3段メタ解析、ベイズメタ解析アプローチ、SEMメタ解析など、高度でありながら関連性の高いトピックも扱う。
 
-本書で扱うプログラミングや統計的背景は、**非専門家レベル**にとどめる。本書の**印刷版**は、 [Chapman & Hall/CRC Press](https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074) (Taylor & Francis) X.M.S.A.と一緒に出版されている（訳注: 英語による原著）。
+本書で扱うプログラミングや統計的背景は、**非専門家レベル**にとどめる。本書の**印刷版**は、 [Chapman & Hall/CRC Press](https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074) (Taylor & Francis) から出版されている（訳注: 英語による原著）。
 
 
 <br></br>
 
-## Open Source Repository 
+## オープンソースレポジトリ
 
 ---
 
 The book has been built using [**{rmarkdown}**](https://rmarkdown.rstudio.com/docs/) and [**{bookdown}**](https://bookdown.org/). Formulas are rendered using [MathJax](http://docs.mathjax.org/en/latest/index.html). All materials and source code we used to compile the guide can be found in this repository. You are free to fork, share and reuse contents. However, the repository is intended to be mainly "read-only"; PRs will generally not be considered (see section below & [preface](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/preface.html#contact-us) of the book for ways to contact us).   
+この本は、[**{rmarkdown}**](https://rmarkdown.rstudio.com/docs/) と [**{bookdown}**](https://bookdown.org/) を使って構築している。数式は [MathJax](http://docs.mathjax.org/en/latest/index.html) を使ってレンダリングしている。このガイドをコンパイルするために使用したすべての資料とソースコードは、このリポジトリで見つけることができる。内容をフォークしたり、共有したり、再利用するのは自由である。ただし、このリポジトリは主に「読むだけ」を目的としており、PRは基本的に考慮されていない（連絡方法については、以下のセクションと書籍の [preface](https://bookdown.org/MathiasHarrer/Doing_Meta_Analysis_in_R/preface.html#contact-us) を参照していただきたい）。  
 
 
 
 <br></br>
 
-## Contributing 
+## 貢献 
 
 ---
 
-This guide is an open source project, and we owe special thanks to our expert contributors who provided additional content in some of the sections of this guide.
+本ガイドはオープンソースプロジェクトであり、本ガイドのいくつかのセクションで追加コンテンツを提供してくれた専門貢献者に特別な感謝を捧げる。
 
 * [**Luke A. McGuinness**](https://twitter.com/mcguinlu), University of Bristol: Chapter 15, Risk of Bias Plots.
 
-Want to contribute to this guide yourself? Feel free to send **Mathias** (mathias.harrer@fau.de) an E-mail and tell us about your proposed additions.
+このガイドに貢献したい？**Mathias** (mathias.harrer@fau.de) にメールを送り、あなたの提案する追加事項を伝えよう。
 
 <br></br>
 
