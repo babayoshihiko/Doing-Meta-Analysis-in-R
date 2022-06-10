@@ -1,4 +1,4 @@
-# 報告の再現性  {#reporting-reproducibility}
+# 報告と再現性  {#reporting-reproducibility}
 
 ---
 
