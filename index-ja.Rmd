@@ -26,13 +26,13 @@ bibliography: [book.bib, packages.bib]
 biblio-style: apalike
 link-citations: yes
 twitter-handle: MathiasHarrer
-description: "This is a guide on how to conduct Meta-Analyses in R."
+description: "This is a guide on how to conduct Meta-Analyses in R. (Japanese version)"
 favicon: "favicon.ico"
 ---
 
 
 
-# ようこそ！ {-}
+# ようこそ！ {- #index}
 
 ---
 
