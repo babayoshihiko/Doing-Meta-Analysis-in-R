@@ -634,7 +634,7 @@ At the first stage, we pool our correlation matrices using the `tssem1` function
 * **`RE.type`**. When a random-effects model is used, this specifies how the random effects should be estimated. The default is `"Symm"`, which estimates all $\tau^2$ values, including the covariances between two variables. When set to `"Diag"`, only the diagonal elements of the random-effects matrix are estimated. This means that we assume that the random effects are independent. Although `"Diag"` results in a strongly simplified model, it is often preferable, because less parameters have to be estimated. This particularly makes sense when the number of variables is high, or the number of studies is low.
 
 In our example, we assume a random-effects model, and use `RE.type = "Diag"`. I will save the model as `cfa1`, and then call the `summary` function to retrieve the output. 
-```{r, eval=F}
+```{r, eval=T}
 cfa1 <- tssem1(SleepProblems$data, 
                SleepProblems$n, 
                method="REM",
@@ -693,7 +693,7 @@ A look at the `OpenMx status` confirms that the model estimates are trustworthy.
 
 \vspace{2mm}
 
-```{r, echo=F}
+```{r, eval=F}
 load("data/cfa1.rda")
 ```
 
@@ -836,16 +836,16 @@ The $\boldsymbol{F}$ matrix, lastly, is easy to specify. In the diagonal element
 
 ```{r}
 # Construct diagonal matrix
-F <- Diag(c(1, 1, 1, 1, 1, 0, 0))
+F1 <- Diag(c(1, 1, 1, 1, 1, 0, 0))
 
 # Only select non-null rows
-F <- F[1:5,]
+F1 <- F1[1:5,]
 
 # Specify row and column labels
-dimnames(F)[[1]] <- dims[1:5]
-dimnames(F)[[2]] <- dims
+dimnames(F1)[[1]] <- dims[1:5]
+dimnames(F1)[[2]] <- dims
 
-F <- as.mxMatrix(F)
+F1 <- as.mxMatrix(F1)
 ```
 
 
@@ -859,11 +859,11 @@ Now, it is time to fit our proposed model to the pooled data. To do this, we use
 
 \vspace{2mm}
 
-```{r, eval=FALSE}
+```{r, eval=T}
 cfa2 <- tssem2(cfa1, 
                Amatrix = A, 
                Smatrix = S, 
-               Fmatrix = F, 
+               Fmatrix = F1, 
                diag.constraints = FALSE)
 summary(cfa2)
 ```
@@ -925,7 +925,7 @@ This is problematic because more than one model can fit well to the same data. T
 \index{Path Diagram}
 \index{semPlot Package}
 
-```{r, echo=FALSE}
+```{r, eval=FALSE}
 load("data/cfa2.rda")
 rm(F)
 ```
