@@ -845,7 +845,7 @@ PET-PEESE は、系統的にプールされた効果量を過剰に修正する�
 
 
 ```{block2, type='boxinfo'}
-**Using `rma.uni` Instead of `lm` for PET-PEESE**
+**PET-PEESE で、`lm` の代わりに `rma.uni` を使う**
 
 この実践例では、PET-PEESE を実装するために、`lm` 関数と研究の重みを使用した。この方法は、頻繁に使用されているが、全く問題がないわけではない。
 
@@ -1116,11 +1116,11 @@ simdat.p %>% plotter(s_5_100)
 
 $p$-曲線は、2段目と3段目で全く違って見える。これらの例では、帰無仮説は否定され、データには真の効果が存在する。このため、$p$ -値の分布は**右に歪んだ**状態になる。このデータが真の効果を捉えている場合、非常に有意な（例えば、$p=$  0.01）効果量は、ほとんど有意でない効果（例えば、$p=$  0.049）よりも可能性が高くなる。この右に歪んだ状態は、真の効果量と研究サンプルサイズが大きくなるにつれて、ますます顕著になる。 
 
-しかし、メタ分析では、検出力が極端に低い研究（すなわち、$\theta=$  0.2の小さな効果を検出することを目的としながら、$n=$  20人の参加者しか含まない）でも、右肩上がりの $p$ -曲線が出現することがわかる。このことから、$p$ -曲線は、真の効果量の変化に対して非常に敏感であることが明らかになった。真の効果量が存在する場合、$p$ -value が有意である分布を見るだけで、それを検出できることがよくある。
+しかし、メタ分析では、検出力が極端に低い研究（すなわち、$\theta=$  0.2の小さな効果を検出することを目的としながら、$n=$  20人の参加者しか含まない）でも、右に歪んだ $p$ -曲線が出現することがわかる。このことから、$p$ -曲線は、真の効果量の変化に対して非常に敏感であることが明らかになった。真の効果量が存在する場合、$p$ -value が有意である分布を見るだけで、それを検出できることがよくある。
 
 さて、研究者が $p$-hack したとき、$p$-曲線がどのように見えるか想像してみてみよう。通常、アナリストが $p$-hacking を使い始めるのは、結果が有意ではないが、それに **近い** と判断されたときである。そして、$p$ -値が0.05より小さくなるまで分析の詳細が調整される。それはすでに結果を公表するのに十分な値なので、それ以降、$p$ -hackingは行われない。 $p$ -ハッキングが広く行われると、$p$ -曲線が**左に歪む**ことになるのは想像に難くない。 $p$ -0.05をわずかに下回る値が過剰に表現され、非常に有意な結果が過小に表現される。 
 
-まとめると、$p$ -曲線は、出版バイアスと $p$ -hacking ßの存在を評価するための診断ツールとして使用できることがわかる。次に、経験的な $p$-曲線に基づく統計検定のコレクションである p-曲線**曲線**について説明する。重要なのは、これらのテストはどれも出版バイアスそのものに焦点を当てていないことである。その代わりに、この方法は、このデータに**明らかな価値**があるかどうかを見つけ出そうとするものである。これは間違いなく、メタ分析で最も関心のあることである。推定した効果が偽りのものでなく、選択的な報告によって引き起こされた人工物であることを確認したいのである。P-曲線は、まさにこの懸念に対応するものである。P-曲線は、発見が現実に存在する効果によってもたらされているのか、あるいは、大げさに言えば、「音と怒りの物語、何の意味もない」のかをチェックすることを可能にした。 
+まとめると、$p$ -曲線は、出版バイアスと $p$ -hacking の存在を評価するための診断ツールとして使用できることがわかる。次に、経験的な $p$-曲線に基づく統計検定のコレクションである p-曲線**曲線**について説明する。重要なのは、これらのテストはどれも出版バイアスそのものに焦点を当てていないことである。その代わりに、この方法は、このデータに**明らかな価値**があるかどうかを見つけ出そうとするものである。これは間違いなく、メタ分析で最も関心のあることである。推定した効果が偽りのものでなく、選択的な報告によって引き起こされた人工物であることを確認したいのである。P-曲線は、まさにこの懸念に対応するものである。P-曲線は、発見が現実に存在する効果によってもたらされているのか、あるいは、大げさに言えば、「音と怒りの物語、何の意味もない」のかをチェックすることを可能にした。 
 
 <br></br>
 
@@ -1212,7 +1212,7 @@ pchisq(26.96, df = 10, lower.tail = FALSE)
 
 \index{Power}
 
-右歪度の検定が、有意な $p$ -値の分布が真の全体効果を表しているかどうかを決定するために使用できることを確認する。問題は、この検定がデータの**統計的検出力**に依存することである。したがって、右肩上がりの検定が**有意でない**とき、これは自動的に証拠能力がないことを意味するわけではない。本当に効果がないのか、あるいは、たとえデータが実際に右に歪んでいても $p$ -曲線における値の数が $\chi^2$  検定を有意にするには少なすぎるのか、という2つのことが考えられる。  
+右歪度の検定が、有意な $p$ -値の分布が真の全体効果を表しているかどうかを決定するために使用できることを確認する。問題は、この検定がデータの**統計的検出力**に依存することである。したがって、右歪度検定が**有意でない**とき、これは自動的に証拠能力がないことを意味するわけではない。本当に効果がないのか、あるいは、たとえデータが実際に右に歪んでいても $p$ -曲線における値の数が $\chi^2$  検定を有意にするには少なすぎるのか、という2つのことが考えられる。  
 
 したがって、右歪度の検定が有意でないことの説明として、検出力の欠如を除外しなければならない。右歪度の検定の帰無仮説は、「証拠能力がない」というものである。検定では、基本的に、経験的な $p$-曲線が平坦で**ない**ことを示すことによって、この帰無仮説を棄却しよう。 
 
@@ -1354,7 +1354,7 @@ p <- pcurve(m.gen_update)
 
 p曲線解析の結果と、観測された $p$ -曲線のプロットの2つが出力される。 
 
-出力は、メタ分析が $k=$ 9件の有意な効果を含み、それが $p$ -曲線に含まれることを教えてくれる。研究（ $k=$  8）のほとんどは、非常に有意な結果（すなわち、$p<$  0.025）であった。`Results` セクションには、分析の主なアウトカムが記載されている。3つの右肩下がりの検定すべてが有意であることがわかる：二項検定 ( `pBinom` ; $p=$  0.02), 完全な $p$-曲線 $pp$ -値の検定 ( `pFull` ; $p<$  0.001) と half $p$-曲線に基づく検定 ( `pHalf` ; $p=$  0.003)^[出力から、 完全および half $p$ の統計出力は、 $z$ スコアと関係があることがわかる。出力では、完全および半分の の曲線に基づく検定統計量も有意であることがわかる。これは、 `pcurve` 関数がFisherの方法ではなく Stouffer の方法を用いて結果を集計しているためである。この章の脚注6で述べたように、両手法は密接に関連している].。
+出力は、メタ分析が $k=$ 9件の有意な効果を含み、それが $p$ -曲線に含まれることを教えてくれる。研究（ $k=$  8）のほとんどは、非常に有意な結果（すなわち、$p<$  0.025）であった。`Results` セクションには、分析の主なアウトカムが記載されている。3つの右歪度検定すべてが有意であることがわかる：二項検定 ( `pBinom` ; $p=$  0.02), 完全な $p$-曲線 $pp$ -値の検定 ( `pFull` ; $p<$  0.001) と half $p$-曲線に基づく検定 ( `pHalf` ; $p=$  0.003)^[出力から、 完全および half $p$ の統計出力は、 $z$ スコアと関係があることがわかる。出力では、完全および半分の の曲線に基づく検定統計量も有意であることがわかる。これは、 `pcurve` 関数が Fisher の方法ではなく Stouffer の方法を用いて結果を集計しているためである。この章の脚注6で述べたように、両手法は密接に関連している].。
 
 Chapter \@ref(interpretation-p-curve-results)  で設定した基準を適用すると、このデータには証拠能力があることがわかる。次の行では、$p$ が 0.938 から 1 までで、3つの平坦性検定が**有意でない**ことがわかる。これは、非常に論理的に、証拠能力がないわけでも不十分なわけでもないことを教えてくれる。同じ解釈は、出力の `Evidential value` セクションでも提供されている。 
 
@@ -1467,10 +1467,10 @@ t_{n_{1}+n_{2}-2} = \frac{\hat\mu_{1}-\hat\mu_{2}}{s_{\text{pooled}}\sqrt{\dfrac
 
 
 ```{r}
-# Calculate mean difference
+# 平均差を計算
 md <- 13-10
 
-# Calculate SE of mean difference
+# 平均差の標準誤差を計算
 n1 <- 30
 n2 <- 20
 s1 <- s2 <- 5
@@ -1479,23 +1479,23 @@ s_pooled <- sqrt((((n1-1)*s1^2) + ((n2-1)*s2^2))/
 
 se <- s_pooled*sqrt((n1+n2)/(n1*n2))
 
-# Calculate t-value (equivalent to 2-sample t-test with equal variance)
+# t-値を計算（分散の等しい２ーサンプル t 検定と同じ）
 md/se
 
 ```
 
-結果は、$t_{48} =$  2.078 である。この結果は、両者の平均が同一であり、影響がないという帰無仮説を支持するか？ 
+結果は、$t_{48} =$ 2.078 である。この結果は、両者の平均が同一であり、影響がないという帰無仮説を支持するか？ 
 
-この質問に答えるには、 `pt` 関数を使用することができる。この関数は、d.f. = 48 **かつ**帰無仮説が真であると仮定するとき、$t$ -value が2.078より大きいことを発見する確率を与える。 $t$ この確率は、片側検定の $p$ -値に等しい。 
+この質問に答えるには、 `pt` 関数を使用することができる。この関数は、d.f. = 48 **かつ**帰無仮説が真であると仮定するとき、$t$-値 が 2.078 より大きいことを発見する確率を与える。この確率は、片側 $t$-検定の $p$ -値に等しい。 
 
 ```{r}
 pt(2.078, df = 48, lower.tail = F)
 ```
 結果は、$p=$  0.02 で、検定が有意であることを意味する。したがって、実験群の効果がゼロ（または負）であるという帰無仮説を棄却する。その結果、対立仮説を受け入れる：実験群に有利な正の効果がある（より高いスコアがより良いアウトカムを表すと仮定）。 
 
- $t$  検定の帰無仮説の基礎となる中心 $t$ -分布は、私たちの経験的データにはあまり合わないことがわかった。また、非心 $t$ -分布が私たちのデータによく合うことも分かっている。しかし、どちらなのかは分からない。今のところ、どの真の効果量、したがって、どの非心パラメータ $\delta$  、私たちの経験的な $t$ -値が引き出された母集団を本当に表しているかを推測することができるだけである。 
+$t$  検定の帰無仮説の基礎となる中心 $t$ -分布は、私たちの経験的データにはあまり合わないことがわかっている。また、非心 $t$ -分布が私たちのデータによく合うことも分かっている。しかし、どちらなのかは分からない。今のところ、どの真の効果量、したがって、どの非心パラメータ $\delta$ が、経験的な $t$ -値が引き出された母集団を本当に表しているかを推測することができるだけである。 
 
-最初の推測として、発見の背後にある真の効果量は、標準化平均差 $\theta=$  0.6であると仮定することが可能である。これは、実験に中程度から大きい効果があったために、 $t=$ 2.078を発見したことを意味する。この $\theta$ の値に基づいて、非心性パラメータは次の式で計算される。
+最初の推測として、発見の背後にある真の効果量は、標準化平均差 $\theta=$  0.6であると仮定することが可能である。これは、中〜大の効果があったために、$t=$ 2.078 となったことを意味する。この $\theta$ の値に基づいて、非心性パラメータは次の式で計算される。
 
 \begin{equation}
 \delta = \frac{\theta}{\sqrt{\dfrac{n_{1}+n_{2}}{n_{1}n_{2}}}}
@@ -1559,9 +1559,9 @@ rt(n = 1e6, df = 48, ncp = delta) %>%
 ```
 
 
-その中で、左側に中央の $t$ -分布（効果なし）、右側に非中央の分布（ $\theta=$  0.6）を見ている。すでに適度な大きさのサンプル（ $N=$  50 ）があるので、非中心分布は、前の可視化よりも右傾化していないように見える。それでも、私たちの仮定した対立仮説の分布は右にシフトし、$\delta$  の値でピークになることがはっきりわかる。 
+その中で、左側に中心の $t$-分布（効果なし）、右側に非心分布（ $\theta=$  0.6）を見ている。すでに適度な大きさのサンプル（ $N=$  50 ）があるので、非心分布は、前の図よりも右に歪んでいないように見える。それでも、私たちの仮定した対立仮説の分布は右にシフトし、$\delta$  の値でピークになることがはっきりわかる。 
 
-もちろん、中心的な疑問は、この代替分布が本当に正しい分布であり、真の効果が実際には $\theta=$  0.6 であるとき、$t_ **{48}** =$  2.078 より大きい値を得る可能性はどの程度あるのだろうかということである。この質問を検証するために、再び  `pt`  関数を使用することがでくが、今回は想定した非心性パラメータ $\delta$  も提供する。この情報は  `ncp`  引数を用いて追加することが可能である。どのような結果が得られるか、確認してみよう。
+もちろん、中心的な疑問は、この代替分布が本当に正しい分布であり、真の効果が実際には $\theta=$  0.6 であるとき、$t_ **{48}** =$  2.078 より大きい値を得る可能性はどの程度あるのだろうかということである。この質問を検証するために、再び  `pt`  関数を使用することができるが、今回は想定した非心性パラメータ $\delta$  も提供する。この情報は  `ncp`  引数を用いて追加することが可能である。どのような結果が得られるか、確認してみよう。
 
 ```{r}
 # Remember that t=2.078
@@ -1653,11 +1653,11 @@ pcurve.bw.es(m.gen_update,
 全体として、p-曲線の推定値 $d=$  0.389 は、メタ分析で見つけたプール効果（外れ値を除くと $g=$  0.45）よりもいくらか低い。しかし、それでも十分に大きく、前回の発見、すなわち、研究には証拠能力があるということと一致する。 
 
 ```{block, type='boxreport'}
-**Reporting P-Curve Analysis Results**
+**P-曲線解析結果の報告**
 
 \vspace{4mm}
 
-When we report the results of a p-curve analysis, it is a good idea to at least include the $p$-values of the three right-skewness and flatness tests, as well as how these results are interpreted. When the true effect size was estimated, this should also be included. All of these results can be combined in a table that looks somewhat like this:
+p 曲線解析の結果を報告する際には、少なくとも3つの右歪度検定と平坦性の検定の$p$値、およびこれらの結果をどのように解釈したかを記載するとよい。真の効果の大きさが推定されたときは、これも含めるべきである。結果は、次のような表にまとめることができる。
 ```
 
 ```{r, echo=F}
@@ -1687,21 +1687,21 @@ kable_styling(font_size = 14)
 ```
 
 ```{block, type='boxempty'}
-The developers of p-curve also highly recommend to create a **disclosure table** for each analysis, describing from which part of an article the result was extracted, and how it was originally reported. An example for such a disclosure table, along with several other practical guidelines, can be found in Simonsohn et al. [-@simonsohn2014p].
+p-曲線の開発者は、各解析について、結果が論文のどの部分から抽出され、どのように報告されたかを記述した**開示表**を作成することを強く推奨している。このような開示表の例は、他のいくつかの実用的なガイドラインと一緒に、Simonsohn ら [-@simonsohn2014p] に記載されている。
 
 ```
 
 
 ```{block, type='boximportant'}
-**P-Curve & Between-Study Heterogeneity**
+**P-曲線と群間異質性**
 
 \vspace{4mm}
 
-We still owe you an explanation of why we excluded outlying studies from the p-curve analysis. With outliers included, our meta-analysis had a between-study heterogeneity of $I^2=$ 63%, which is quite substantial. This is problematic because it has been found that p-curve is not a robust method to estimate the true effect size when the between-study heterogeneity of our data is high. 
+P-曲線解析から外れ値の研究を除外した理由については、まだ説明する義務があります。外れ値も含めたメタ分析では、研究間の異質性が $I^2=$ 63% となり、非常に大きな値となった。これは、研究間の異質性が高い場合、p曲線は真の効果量を推定するのに頑健な方法ではないことが分かっているので問題である。
 
 \vspace{2mm}
 
-Van Aert and colleagues [-@aert2016conducting] have therefore proposed to only use p-curve when the heterogeneity is small to moderate. They proposed a threshold of $I^2=$ 50% as rule of thumb to determine if p-curve can be applied. When the between-study heterogeneity in our meta-analysis is higher than that, one workaround is to p-curve effect sizes without outliers, like we did in the example. An even better solution is to perform a separate analysis in sensible subgroups of studies, provided they exist.
+そこで Van Aert ら [-@aert2016conducting] は、異質性が小から中程度の場合にのみ p-曲線を使用することを提案している。彼らは p 曲線が適用できるかどうかを判断する経験則として、$I^2=$ 50%という閾値を提案した。メタ分析における研究間の異質性がこれよりも高い場合の回避策の一つは、例で行ったように、外れ値を含まない効果量をp曲線で表す。さらに良い解決策は、意味のある研究のサブグループが存在する場合、そのサブグループで別の分析を行うことである。
 
 ```
 
@@ -1737,13 +1737,13 @@ Selectionモデルは、これらの方法を一般化したものと見るこ�
 
 選択モデル分析を行うには、**効果量モデル**と**選択モデル**の2つの要素が必要である。この2つのモデルは、ある入力値 $x$  を使って、その値の確率を返す **関数** と考えることができる。
 
-The effect size model, described by the function $f(x_k)$, is identical to the random-effects model. It assumes that the observed effect sizes $\hat\theta_k$ are normally distributed around an average effect $\mu$, and deviate from $\mu$ due to sampling error and between-study heterogeneity variance $\tau^2$. Knowing $\mu$, $\tau^2$, a study's standard error, and that effect sizes are normally distributed, the function $f(x_k)$ predicts how likely it is to observe some effect size value $x_k$--assuming that there is no publication bias. 
+式 $f(x_k)$ で示される効果量モデルは、ランダム効果モデルに等しい。漢族された効果量 $\hat\theta_k$ は、平均効果 $\mu$ の周りを、サンプリング誤差と群間異質性 $\tau^2$ から偏差した正規分布に従う。$\mu$ と研究の標準誤差 $\tau^2$ と効果量が正規分布に従うことを知っていれば、出版バイアスがないと仮定して、効果量の値 $x_k$ をどの程度かを $f(x_k)$ は予測する。
 
-Yet, when there **is** publication bias, this effect size distribution, and thus $f(x)$ itself, is an incorrect representation of reality. Due to selective publication, some studies are over-represented in our data--presumably those with surprisingly high effect sizes and small samples. This means that we have, without knowing, given these studies a higher weight in our pooling model. We, therefore, need to derive a more "realistic" version of $f(x)$, which incorporates the fact that some results had a greater chance of being included than others; that they were given a higher "weight". 
+しかし、出版バイアスがあるとき、効果量分布と、 $f(x)$ 自体が現実をうまく現さなくなっている。出版の選択により、いくつかの研究はデータの中で過剰に代表されている。おそらく、驚くほど効果量が高く、サンプルサイズは小さい。このため、知らずして、プールモデルに高い重みを与えてしまっている。よって、いくつかの研究は他の研究よりも高い確率で入っていること、そしてその研究には高い「重み」が与えられていることを考慮した、より現実的な $f(x)$ を導き出す必要がある。
 
 \index{Weight}
 
-This is achieved through a **weight function** $w(p_k)$. The weight function tells us the selection probability of a study $k$, depending on its $p$-value. Based on this, we can  define an adapted version of $f(x_k)$, which also incorporates the publication bias mechanism. This function $f^*(x_k)$ is symbolized by this formula [@vevea2005publication]:
+これを、**重み関数** (weight function) $w(p_k)$ で行う。重み関数は、ある研究 $k$ の $p$ 値から選択確率を与える。これを使って、出版バイアスメカニズムを組み込んだ修正版の $f(x_k)$ を定義する。$f^*(x_k)$ は、以下の式で表される [@vevea2005publication]。
 
 
 \begin{equation}
@@ -1751,13 +1751,13 @@ f^*(x_k) = \frac{w(p_k)f(x_k)}{\int w(p_k) f(x_k) dx_k}
 (\#eq:pub17)
 \end{equation}
 
-Where the denominator in the fraction stands for the integral of $w(p_k) f(x_k)$. The weight function $w(p_k)$ in this equation represents our assumed selection model. 
+ここで、分数の分母は $w(p_k) f(x_k)$ の積分である。式中の重み関数 $w(p_k)$ は、仮定選択モデルを表す。
 
 \index{Step Function}
 
-Although $w(p_k)$ can technically have any shape, it is often implemented as a **step function** [@hedges1996estimating]. When $w(p_k)$ is a step function, this means that values $p_k$ which fall into the same interval (e.g. all $p$-values smaller than 0.05) are selected with the same probability. This interval-specific selection probability is denoted with $\omega_i$, and can differ from interval to interval. Essentially, we split up the range of possible $p$-values (0 to 1) into different segments, and give each segment its own selection probability $\omega_1$, $\omega_2$, ..., $\omega_c$. 
+$w(p_k)$ は、技術的にはどのような形式にもなるが、よく現されるのは**ステップ関数**である [@hedges1996estimating]。$w(p_k)$ をステップ関数とすると、同じセグメントに入る $p_k$ 値（例えば 0.05 未満の全ての $p$ 値）は、等しい確率で選択される。この区間別選択確率は $\omega_i$ と現され、区間ごとに変わる。$p$ 値が取りうる値をいくつかのセグメントに分け、それぞれの選択確率を $\omega_1$, $\omega_2$, ..., $\omega_c$ とする。
 
-セグメントの大きさは、いくつかの **カットポイント** (ここでは $a_i$  で示す) によって決定される。カットポイントの数は、その正確な値だけでなく、私たちが選ぶことが可能である。例えば、$w(p_k)$ が4つのセグメント(従って4つのカットポイント)を含むとき、その内部構造を次のように定義することができる。
+セグメントの幅は、**カットポイント**（ここでは $a_i$  で示す）によって決まる。カットポイントの数と正確な値は、自由に選ぶことが可能である。例えば、$w(p_k)$ が4つのセグメント(従って4つのカットポイント)を含むとき、その内部構造を次のように定義することができる。
 
 \begin{equation}
   w(p_k) =\begin{cases}
@@ -1769,7 +1769,7 @@ Although $w(p_k)$ can technically have any shape, it is often implemented as a *
   (\#eq:pub18)
 \end{equation}
 
- $p$  の任意の値に対して、上記の関数は、私たちの値が入る $p$ -値の区間に基づいて、特定の選択確率 $\omega$  を返すことがわかる。これをより具体的にするために、カットポイント $a_i$  と選択確率 $\omega_i$  に実際の値を記入した選択モデルを定義してみる。 
+任意の $p$ 値に対して、上記の関数は、私たちの値が入る $p$ -値の区間に基づいて、特定の選択確率 $\omega$  を返すことがわかる。これをより具体的にするために、カットポイント $a_i$  と選択確率 $\omega_i$  に実際の値を記入した選択モデルを定義してみる。 
 
 例えば、メタ分析における出版バイアスのメカニズムは、3つのカットポイントで記述できると仮定可能である。まず、$a_1=$  0.025がある。この値は、片側 $p$ -値が0.025、両側 $p$ -値が0.05に相当する。 $\omega_1$  これはほとんどの研究で使われている従来の有意水準なので、$p$-値 $a_1=$ 0.0205 未満の選択確率はすべて100％であると仮定するのは理にかなっている。結局のところ、結果が陽性だった研究をファイルの引き出しに入れる理由はないのである。次に定義するカットポイントは、$a_2=$ 0.05である。この範囲の結果については、選択確率を80%とする。それでもまだ高いが、明らかに有意な結果と比べると低くなる。次に、$a_2=$  0.05 から $a_3=$  0.5 までの大きな区間を指定し、この区間では選択確率が60%になるようにする。最後に、非常に高い $\geq$ 0.5 の $p$-値の研究については、$\omega_4=$ 35% とさらに低い確率を定義する。 
 
@@ -1944,7 +1944,7 @@ selmodel(m.rma,
 
 <br></br>
 
-##### 固定ウェイト選択モデル  {#fixed-weights-selmodel}
+##### 固定重み選択モデル  {#fixed-weights-selmodel}
 
 ---
 
@@ -1984,11 +1984,11 @@ ggplot(data = df, aes(x = x, y = y, fill = Selection, color = Selection, linetyp
 
 
 ```{r}
-# Define the cut-points
+# カットポイントを定義
 a <- c(0.005, 0.01, 0.05, 0.10, 0.25, 0.35, 0.50, 
        0.65, 0.75, 0.90, 0.95, 0.99, 0.995)
 
-# Define the selection likelihood for each interval 
+# それぞれの信頼区間の選択尤度を定義
 # (moderate/severe selection)
 w.moderate <- c(1, 0.99, 0.95, 0.80, 0.75, 0.65, 0.60, 
                 0.55, 0.50, 0.50, 0.50, 0.50, 0.50, 0.50)
