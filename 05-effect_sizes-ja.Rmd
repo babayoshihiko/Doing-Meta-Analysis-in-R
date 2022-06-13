@@ -430,7 +430,7 @@ z
 
 点双列相関は、後述する**標準化平均差**とよく似ている（Chapter \@ref(b-group-smd)）。どちらの効果量指標も、連続変数の値が2群間でどれだけ異なるかを定量化するものである。しかし、点双列相関がメタ分析でプールされることはあまり一般的ではない。積率相関と同様に、点双列相関は、群比率が不同の場合に範囲制限を受けるなど、メタ分析には好ましくない統計的性質を持っている [@bonett2019point]。
 
-連続的なアウトカム変数の群間差に興味がある場合、メタ分析のために点双列相関を標準化平均差に変換することが推奨される [@lipsey2001practical, chapter 3]。点双列相関を標準化平均差に変換する公式は、本書の "Helpful Tools" の Chapter \@ref(convert-corr)  に掲載されている。
+連続的なアウトカム変数の群間差に興味がある場合、メタ分析のために点双列相関を標準化平均差に変換することが推奨される [@lipsey2001practical, chapter 3]。点双列相関を標準化平均差に変換する公式は、本書の「各種ツール」の Chapter \@ref(convert-corr)  に掲載されている。
 
 <br></br>
 
@@ -1411,15 +1411,15 @@ se_r_xy_c
 \index{Psychometric Meta-Analysis}
 
 ```{block, type='boxinfo'}
-**Further Reading**
+**更なる学習**
 
 \vspace{2mm}
 
-In this guide, we only cover corrections for unreliability and range restriction, because these problems are most commonly found in practice. However, Hunter and Schmidt have proposed various other kinds of artifact corrections. Along with a few additional methods, these techniques are sometimes called **psychometric meta-analysis**. 
+このガイドでは、信頼性の低さと範囲制限に関する補正のみを取り上げる。なぜなら、これらの問題は実際に最もよく見られるからである。しかし、Hunter and Schmidt は、他にも様々な種類の誤差補正を提案している。いくつかの追加手法とともに、この手法は、**心理測定メタ分析** (psychometric meta-analysis) と呼ばれることもある。
 
-If you want to learn more about the Hunter and Schmidt methods, you can have a look at their book **Methods of Meta-Analysis** [@hunter2004methods], which provides an accessible and comprehensive overview. A shorter introduction can also be found in Borenstein et al. [-@borenstein2011introduction], chapter 38. 
+Hunter and Schmidtの方法について詳しく知りたい方は、彼らの著書である **Methods of Meta-Analysis** [@hunter2004methods] がわかりやすく、包括的な概要を提供しているので、参照されたい。Borenstein et al. [-@borenstein2011introduction] の38章にも、短い紹介がある。
 
-Many of the techniques of Hunter and Schmidt are also implemented in an _R_ package called [**{psychmeta}**](https://psychmeta.com/) [@psychmeta]. 
+Hunter and Schmidtの手法の多くは、[**{psychmeta}**](https://psychmeta.com/) [@psychmeta] と呼ばれる_R_パッケージにも実装されている。
 
 ```
 
@@ -1473,7 +1473,7 @@ Cの二重カウントのため、2つの効果量は**相関**がある。サ�
 
 2. **群を削除する**。非常に腕力を使う手法は、単純に1つの比較、例えば $\hat\theta_{\text{B-C}}$ をメタ分析から完全に削除することである。これは分析単位の問題を解決するものの、新たな問題を引き起こす。効果量を1つ捨てるだけでは、関連する可能性のある情報を失ってしまうのである。
 
-3. **群を合体する**。この手法は、2つの群の結果を組み合わせて、1つの比較しか残らないようにするものである。この例では、AとBのデータを組み合わせて、プールした結果をCと比較することを意味する。これは、両群の参加者数とイベント数を合計すればよい二値アウトカムデータでは比較的簡単なことである。しかし、平均値や標準偏差のような連続的なデータでは、少し複雑になる。"Helpful Tools" の Chapter \@ref(pool-groups) には、このようなデータを結合するための _R_ 関数がある。群を合体することで、二重カウントや効果量の相関を回避することが可能である。そのため、この方法はコクランでも推奨されている  [@higgins2019cochrane, chapter 23.3.4]。とはいえ、この方法にも欠点がある。2群があまりにも異なり、実際には比較できないものを一緒にしてしまう可能性があるのである。Aは最先端の介入、Bはエビデンスベースの乏しい時代遅れのアプローチでなど、A群とB群の治療がまったく異なることもある。この2つの治療を組み合わせても効果が見られない場合、これが両方のタイプの介入に当てはまるのか、Bの効果のなさが単にAの効果を希釈したのかを切り分けるのはほぼ不可能である。したがって、アプローチ（1）と（2）は、2群があまりにも異質な場合に使用される。
+3. **群を合体する**。この手法は、2つの群の結果を組み合わせて、1つの比較しか残らないようにするものである。この例では、AとBのデータを組み合わせて、プールした結果をCと比較することを意味する。これは、両群の参加者数とイベント数を合計すればよい二値アウトカムデータでは比較的簡単なことである。しかし、平均値や標準偏差のような連続的なデータでは、少し複雑になる。「各種ツール」の Chapter \@ref(pool-groups) には、このようなデータを結合するための _R_ 関数がある。群を合体することで、二重カウントや効果量の相関を回避することが可能である。そのため、この方法はコクランでも推奨されている  [@higgins2019cochrane, chapter 23.3.4]。とはいえ、この方法にも欠点がある。2群があまりにも異なり、実際には比較できないものを一緒にしてしまう可能性があるのである。Aは最先端の介入、Bはエビデンスベースの乏しい時代遅れのアプローチでなど、A群とB群の治療がまったく異なることもある。この2つの治療を組み合わせても効果が見られない場合、これが両方のタイプの介入に当てはまるのか、Bの効果のなさが単にAの効果を希釈したのかを切り分けるのはほぼ不可能である。したがって、アプローチ（1）と（2）は、2群があまりにも異質な場合に使用される。
 
 \index{Multilevel Meta-Analysis}
 
