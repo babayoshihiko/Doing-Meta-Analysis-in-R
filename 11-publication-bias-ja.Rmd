@@ -2077,8 +2077,8 @@ library(stringr)
 
 dat = read.csv("data/pubbias_procon-ja.csv")
 
-dat$Advantages = str_replace_all(dat$Advantages, "BREAK", "")
-dat$Disadvantages = str_replace_all(dat$Disadvantages, "BREAK", "")
+dat$長所 = str_replace_all(dat$長所, "BREAK", "")
+dat$短所 = str_replace_all(dat$短所, "BREAK", "")
 
 colnames(dat)[1] = " "
 # dat[1,1]<- c("Duval & Tweedie  Trim-and-Fill")
