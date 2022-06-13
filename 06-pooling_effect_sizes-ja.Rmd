@@ -1,6 +1,6 @@
 # 効果量のプール {#pooling-es}
 
----
+
 
 <img src="_figs/pooling_es.jpg" />
 
@@ -29,7 +29,7 @@ _R_ で効果量をプールすることができるパッケージは数多く�
 
 ## 固定効果モデルとランダム効果モデルの比較 {#fem-rem}
 
----
+
 
 メタ分析モデルを規定する前に、まず統計モデルとは実際にどのようなものかを明らかにする必要がある。統計学には「モデル」がたくさんあり、「モデル」と言う言葉は聞いたことがあるだろう。「線形モデル」「一般化線形モデル」「混合モデル」「ガウス加法モデル」「構造方程式モデル」などがある。
 
@@ -57,7 +57,7 @@ knitr::include_graphics('images/model_concept_sep.png')
 
 ### 固定効果モデルの場合 {#fem}
 
----
+
 \index{Fixed-Effect Model}
 \index{Sampling Error}
 
@@ -241,7 +241,7 @@ pooled_effect
 
 ### ランダム効果モデル {#rem}
 
----
+
 \index{Random-Effects Model}
 
 
@@ -334,7 +334,7 @@ knitr::include_graphics('images/rem_sep2.png')
 
 #### 研究間異質性の推定値 {#tau-estimators}
 
----
+
 \index{Weight}
 
 
@@ -418,7 +418,7 @@ Langan ら [-@langan2019comparison] による最近のシミュレーション�
 
 #### Knapp-Hartung 調整 {#knapp-hartung}
 
----
+
 
 \index{Knapp-Hartung Adjustment}
 \index{Wald-Type Test}
@@ -450,7 +450,7 @@ Knapp-Hartung調整を適用することは通常賢明である。いくつか�
 
 ## _R_ で効果量をプール {#pooling-es-r}
 
----
+
 
 \index{meta Package}
 
@@ -528,7 +528,7 @@ _R_ 関数のもう一つの興味深い点は、ポジション・マッチン�
 
 ### 事前算出された効果量のデータ {#pre-calculated-es}
 
----
+
 
 それでは、メタ分析関数のツアーを `metagen` から始めよう。これまで学んだように、この関数は事前に計算された効果量のデータに使用することが可能である。最初の例では、この関数を使用して `ThirdWave` データセットのメタ分析を実行する。
 
@@ -700,7 +700,7 @@ save(m.gen, file = "path/to/my/meta-analysis.rda") # example path
 
 ### （標準化）平均差 {#pooling-smd}
 
----
+
 
 \index{Standardized Mean Difference}
 \index{Glass' Delta}
@@ -775,11 +775,11 @@ summary(m.cont)
 
 ### 二値アウトカム
 
----
+
 
 #### リスク比とオッズ比 {#pooling-or-rr}
 
----
+
 
 \index{Risk Ratio}
 \index{Odds Ratio}
@@ -797,7 +797,7 @@ Chapter \@ref(fem) と Chapter \@ref(tau-estimators) で取り上げた一般的
 
 ##### Mantel-Haenszel法 {#mantel-haenszel}
 
----
+
 
 \index{Mantel-Haenszel Method}
 
@@ -829,7 +829,7 @@ w_k = \frac{b_kc_k}{n_k}
 
 ##### Peto 法
 
----
+
 
 第二のアプローチは、**Peto** 法 [@yusuf1985beta]である。このアプローチの本質は、私たちがすでに知っている逆分散の原則に基づくものである。ただし、特殊な効果量である**Peto オッズ比**を使用し、ここでは $\hat\psi_k$ （訳注: $\psi$ は「プサイ」と読む）と表記する。
 
@@ -866,7 +866,7 @@ V_k = \frac{(a_k+b_k)(c_k+d_k)(a_k+c_k)(b_k+d_k)}{{(a_k+b_k+c_k+d_k)}^2(a_k+b_k+
 
 ##### Bakbergenuly-サンプルサイズ法
 
----
+
 
 最近、Bakbergenuly ら [-@bakbergenuly2020methods] は、効果の重みが研究のサンプルサイズだけで決まる別の方法を提案し、この方法が Mantel and Haenszel による方法より望ましい可能性があることを示している。これを**サンプルサイズ法**と呼ぶことにする。この方法の計算式はとても簡単である。治療群と対照群のサンプルサイズ $n_{\text{treat}_k}$ と $n_{\text{control}_k}$ だけ分かれば良い。
 
@@ -909,7 +909,7 @@ Peto 法にも限界がある。まず、オッズ比にしか使用できない
 
 ##### _R_ における二値効果量のプール {#ppoolbin}
 
----
+
 
 `metabin` には、8つの重要な関数固有の引数がある。
 
@@ -1111,7 +1111,7 @@ m.bin_or
 
 ##### 事前に計算された二値効果量のプール {#m-gen-bin}
 
----
+
 
 各研究のリスク比やオッズ比を計算するために必要な生の効果量のデータを抽出できないことがある。例えば、主要な研究でオッズ比が報告されていても、この効果量の根拠となるデータがない場合がある。著者が元のデータを提供してくれない場合、事前に計算された効果量のデータに基づいてメタ分析を行う必要が出てくるだろう。学習したように、これを行うために使用できる関数は `metagen` である。
 
@@ -1205,7 +1205,7 @@ summary(m.gen_bin)
 
 #### 発生率比 {#pooling-irr}
 
----
+
 
 \index{Incidence Rate Ratio}
 \index{Person-Time}
@@ -1283,7 +1283,7 @@ summary(m.inc)
 
 ### 相関関係 {#pooling-cor}
 
----
+
 
 \index{Correlation}
 \index{Fisher's \textit{z}}
@@ -1379,7 +1379,7 @@ summary(m.cor)
 
 ### プール平均 {#pooling-mean}
 
----
+
 
 \index{Mean, Arithmetic}
 
@@ -1440,7 +1440,7 @@ summary(m.mean)
 
 ### 割合 {#pooling-props}
 
----
+
 
 \index{Proportion}
 \index{Logit-Transformation}
