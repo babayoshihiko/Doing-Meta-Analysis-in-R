@@ -2110,45 +2110,45 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions and Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. How can the term "publication bias" be defined? Why is publication bias problematic in meta-analyses?
+1. 「出版バイアス」という言葉はどのように定義できるか？なぜメタ分析で問題になるのか？
 
 \vspace{-2mm}
 
-2. What other reporting biases are there? Name and explain at least three.
+2. 他にどのような報告バイアスがあるか？少なくとも3つ挙げて説明しなさい。
 
 \vspace{-2mm}
 
-3. Name two questionable research practices (QRPs), and explain how they can threaten the validity of our meta-analysis.
+3. 疑わしい研究慣行（QRP）を2つ挙げ、どのようにメタ分析の妥当性を脅かすかを説明しなさい。
 
 \vspace{-2mm}
 
-4. Explain the core assumptions behind small-study effect methods.
+4. 小規模研究効果法の基本的な前提を説明しなさい。
 
 \vspace{-2mm}
 
-5. When we find out that our data displays small-study effects, does this automatically mean that there is publication bias?
+5. データが小規模研究の効果を示すことがわかったとき、自動的に出版バイアスがあることを意味するか？
 
 \vspace{-2mm}
 
-6. What does p-curve estimate: the true effect of all studies included in our meta-analysis, or just the true effect of all **significant** effect sizes?
+6. p-曲線は、メタ分析に含まれるすべての研究の真の効果を推定するのか、それとも「有意な」効果量を持つすべての研究の真の効果だけを推定するのか、どちらか？
 
 \vspace{-2mm}
 
-7. Which publication bias method has the best performance?
+7. どの出版バイアス法が一番性能が良いか。
 
 
 \vspace{4mm}
 
 
 
-**Answers to these questions are listed in [Appendix A](#qanda9) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda9) にある。**
 
 ```
 

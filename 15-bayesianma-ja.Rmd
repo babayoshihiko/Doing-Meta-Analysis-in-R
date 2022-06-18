@@ -611,36 +611,36 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions and Answers
+**知識を試そう！**問題
 
 ```{block, type='boxinfo'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. What are the differences and similarities between the "conventional" random-effects model and a Bayesian hierarchical model?
+1. 「従来の」ランダム効果モデルとベイズ型階層モデルの相違点と類似点は何か？
 
 \vspace{-2mm}
 
-2. Name three advantages of Bayesian meta-analyses compared to their frequentist counterpart.
+2. ベイズメタ分析の頻度論的な利点と比較した場合の利点を3つ挙げよ。
 
 \vspace{-2mm}
 
-3. Explain the difference between a weakly informative and uninformative prior.
+3. 弱情報的事前分布と非情報的事前分布の違いを説明しなさい。
 
 \vspace{-2mm}
 
-4. What is a Half-Cauchy distribution, and why is it useful for Bayesian meta-analysis?
+4. Half-Cauchy 分布とは何か、なぜベイズメタ分析に有用なのか。
 
 \vspace{-2mm}
 
-5. What is an ECDF, and how can it be used in Bayesian meta-analyses?
+5. ECDF とは何か、ベイズメタ分析にどう使えるか？
 
 
 \vspace{4mm}
 
 
-**Answers to these questions are listed in [Appendix A](#qanda13) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda13) にある。**
 
 ```
 

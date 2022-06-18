@@ -358,34 +358,35 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions & Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. In the best case, what can a subgroup analysis tell us that influence and outlier analyses cannot?
+1. 影響度分析や異常値分析ではわからないことのうち、何がサブグループ分析ではわかることがあるか？
 
 \vspace{-2mm}
 
-2. Why is the model behind subgroup analyses called the fixed-effects (plural) model?
+2. サブグループ解析の背景にあるモデルが、なぜ固定効果（複数）モデルと呼ばれるのか。
 
 \vspace{-2mm}
 
-3. As part of your meta-analysis, you want to examine if the effect of an educational training program differs depending on the school district in which it was delivered. Is a subgroup analysis using the fixed-effects (plural) model appropriate to answer this question?
+3. メタ分析の一環として、ある教育研修プログラムの効果が、実施された学区によって異なるかどうかを調べたいと考えている。この問いに答えるために、固定効果（複数）モデルを用いたサブグループ解析は適切か？
 
 \vspace{-2mm}
 
-4. A friend of yours conducted a meta-analysis containing a total of nine studies. Five of these studies fall into one subgroup, four into the other. She asks you if it makes sense to perform a subgroup analysis. What would you recommend?
+4. あなたの友人が、合計9つの研究を含むメタ分析を行った。これらの研究のうち5つが1つのサブグループに分類され、4つが他のサブグループに分類されている。彼女は、サブグループ分析を行うことに意味があるかどうかをあなたに尋ねている。あなたならどうするか？
 
 \vspace{-2mm}
 
-5. You found a meta-analysis in which the authors claim that the analyzed treatment is more effective in women than men. This finding is based on a subgroup analysis in which studies were divided into groups based on the **share** of females included in the study population. Is this finding credible, and why (not)? 
+5. メタ分析で、分析した治療法が男性よりも女性でより効果的であると著者が主張しているものがあった。この知見は、研究対象者に含まれる女性の割合に基づいて研究をサブグループに分けたサブグループ分析に基づいている。この知見は信頼できるか、またその理由は？
+
 \vspace{4mm}
 
 
-**Answers to these questions are listed in [Appendix A](#qanda7) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda7) にある。**
 
 ```
 

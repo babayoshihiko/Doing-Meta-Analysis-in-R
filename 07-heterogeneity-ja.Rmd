@@ -1099,40 +1099,40 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions and Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. Why is it important to examine the between-study heterogeneity of a meta-analysis?
+1. なぜメタ分析の研究間異質性を調べることが重要なのか。
 
 \vspace{-2mm}
 
-2. Can you name the two types of heterogeneity? Which one is relevant in the context of calculating a meta-analysis?
+2. 異質性の2つのタイプを挙げられるか？メタ分析の計算にはどちらが関係するか？
 
 \vspace{-2mm}
 
-3. Why is the **significance** of Cochran's $Q$ test not a sufficient measure of between-study heterogeneity?
+3. Cochran's $Q$ の**有意性**が、研究間異質性の十分な指標とならないのはなぜか。
 
 \vspace{-2mm}
 
-4. What are the advantages of using prediction intervals to express the amount of heterogeneity in a meta-analysis?
+4. メタ分析で異質性の大きさを表現するために予測区間を使うメリットは何か。
 
 \vspace{-2mm}
 
-5. What is the difference between statistical outliers and influential studies?
+5. 統計的外れ値と影響力のある研究の違いは何か？
 
 \vspace{-2mm}
 
-6. For what can GOSH plots be used?
+6. GOSH のプロットは何に使えるのか。
 
 
 \vspace{4mm}
 
 
-**Answers to these questions are listed in [Appendix A](#qanda5) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda5) にある。**
 
 ```
 

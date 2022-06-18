@@ -1010,35 +1010,35 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questiond and Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. What is structural equation modeling, and what is used for?
+1. 構造方程式モデリングとは何か、何のために使うのか。
 
 \vspace{-2mm}
 
-2. What are the two ways through which SEM can be represented?
+2. SEM の表現方法として、どのようなものがあるか？
 
 \vspace{-2mm}
 
-3. Describe a random-effects meta-analysis from a SEM perspective.
+3. ランダム効果メタ分析を SEM の観点から説明しなさい。
 
 \vspace{-2mm}
 
-4. What is a multivariate meta-analysis, and when is it useful?
+4. 多変量メタ分析とは何か、どのような場合に有用か。
 
 \vspace{-2mm}
 
-5. When we find that our proposed meta-analytic SEM fits the data well, does this automatically mean that the model is the "correct" one?
+5. 提案したメタ分析 SEM がデータによく適合することがわかったとき、このモデルが自動的に「正しい」モデルであることを意味するのだろうか。
 
 \vspace{4mm}
 
 
-**Answers to these questions are listed in [Appendix A](#qanda11) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda11) にある。**
 
 ```
 

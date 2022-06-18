@@ -293,27 +293,27 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions & Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. What are the key components of a forest plot?
+1. フォレストプロットの主要な構成要素は何か？
 
 \vspace{-2mm}
 
-2. What are the advantages of presenting a forest plot of our meta-analysis?
+2. メタ分析でフォレストプロットを提示するメリットは何か？
 
 \vspace{-2mm}
 
-3. What are the limitations of forest plots, and how do drapery plots overcome this limitation?
+3. フォレストプロットの限界は何か、Drapery プロットはこの限界をどのように克服しているのか。
 
 \vspace{4mm}
 
 
-**Answers to these questions are listed in [Appendix A](#qanda6) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda6) にある。**
 
 ```
 

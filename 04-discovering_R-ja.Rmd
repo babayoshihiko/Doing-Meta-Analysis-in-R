@@ -532,7 +532,7 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions & Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **データ操作の演習**
@@ -568,7 +568,7 @@ data <- data.frame("Author" = c("Jones", "Goldman",
 
 \vspace{-2mm}
 
-2. `subgroup` を因子に変換しなさい。
+2. `subgroup` を因子型 (factor) に変換しなさい。
 
 \vspace{-2mm}
 
@@ -576,19 +576,19 @@ data <- data.frame("Author" = c("Jones", "Goldman",
 
 \vspace{-2mm}
 
-4. スタディ名 "Rose" を "Bloom" に変更しなさい。
+4. 研究名 "Rose" を "Bloom" に変更しなさい。
 
 \vspace{-2mm}
 
-5. `TE` から `seTE` を引いて、新しい変数 `TE_seTE_diff` を作成する。結果を `data` に保存しなさい。
+5. `TE` から `seTE` を引いて、新しい変数 `TE_seTE_diff` を作成し、結果を `data` に保存しなさい。
 
 \vspace{-2mm}
 
-6. パイプを使用して、(1) `subgroup` "one" または "two" に属するすべての研究をフィルタし、(2) 変数 `TE_seTE_diff` を選択し、(3) その変数の平均をとり、それに `exp` 関数を適用しなさい。 _R_ のドキュメントにアクセスして、 `exp` 関数が何をするのか調べてみなさい。
+6. パイプを使用して、(1) `subgroup` が"one" または "two" に属するすべての研究をフィルタし、(2) 変数 `TE_seTE_diff` を選択し、(3) その変数の平均をとり、それに `exp` 関数を適用しなさい。 _R_ のドキュメントにアクセスして、`exp` 関数が何をするのか調べてみなさい。
 
 \vspace{4mm}
 
-**これら問題に対する回答は、巻末の[Appendix A](#qanda2)に掲載している。**
+**問題の解答は、本書の巻末 [Appendix A](#qanda2) にある。**
 
 ```
 

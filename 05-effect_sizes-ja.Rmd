@@ -1489,49 +1489,49 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions & Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. Is there a clear definition of the term "effect size"? What do people refer to when they speak of effect sizes?
+1. 効果量という言葉に明確な定義はあるか？人々は、効果量という言葉で何を指すか？
 
 \vspace{-2mm}
 
-2. Name a primary reason why observed effect sizes deviate from the true effect size of the population. How can it be quantified?
+2. 観測された効果量が母集団の真の効果量から乖離する主な理由を挙げなさい。それはどのように定量化できるのか。
 
 \vspace{-2mm}
 
-3. Why are large studies better estimators of the true effect than small ones?
+3. なぜ大規模な研究は小規模な研究よりも真の効果の推定に優れているのか？
 
 \vspace{-2mm}
 
-4. What criteria does an effect size metric have to fulfill to be usable for meta-analyses?
+4. 効果量の指標は、どのような基準を満たせばメタ分析に使えるのか？
 
 \vspace{-2mm}
 
-5. What does a standardized mean difference of 1 represent?
+5. 標準平均差 (Standardized Mean Difference, SMD) が1であることは何を表しているのか？
 
 \vspace{-2mm}
 
-6. What kind of transformation is necessary to pool effect sizes based on ratios (e.g. an odds ratio) using the inverse-variance method?
+6. 比（オッズ比など）に基づく効果量をプールするためには、どのような変換が必要か。
 
 \vspace{-2mm}
 
-7. Name three types of effect size corrections.
+7. 効果量補正の種類を3つ挙げよ。
 
 \vspace{-2mm}
 
-8. When does the unit-of-analysis problem occur? How can it be avoided?
+8. 分析単位の問題はどのような場合に発生するか？どうすれば回避できるか？
 
 
 \vspace{4mm}
 
 
 
-**Answers to these questions are listed in [Appendix A](#qanda3) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda3) にある。**
 
 ```
 

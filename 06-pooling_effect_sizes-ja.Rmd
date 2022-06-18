@@ -1572,45 +1572,45 @@ summary(m.prop)
 $$\tag*{$\blacksquare$}$$
 <br></br>
 
-## Questions & Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. What is the difference between a fixed-effect model and a random-effects model?
+1. 固定効果モデルとランダム効果モデルの違いは何か？
 
 \vspace{-2mm}
 
-2. Can you think of a case in which the results of the fixed- and random-effects model are identical?
+2. 固定効果モデルとランダム効果モデルの結果が同じになるケースは考えられるか。
 
 \vspace{-2mm}
 
-3. What is $\tau^2$? How can it be estimated?
+3. $\tau^2$  とは何か？どのように推定するのか？
 
 \vspace{-2mm}
 
-4. On which distribution is the Knapp-Hartung adjustment based? What effect does it have?
+4. Knapp-Hartung の調整はどの分布に基づいているか？どのような効果があるか？
 
 \vspace{-2mm}
 
-5. What does "inverse-variance" pooling mean? When is this method **not** the best solution?
+5. 「逆分散」 (inverse-variance) プーリングとはどういう意味か？この方法が最適解でないのはどのような場合か？
 
 \vspace{-2mm}
 
-6. You want to meta-analyze binary outcome data. The number of observations in the study arms is roughly similar, the observed event is very rare, and you do no expect the treatment effect to be large. Which pooling method would you use?
+6. 二値アウトカムデータをメタ分析したい。試験群の観察数はほぼ同じで、観察された事象は非常にまれで、治療効果が大きくなることは期待できない。どのようなプール方法を使用するか？
 
 \vspace{-2mm}
 
-7. For which outcome measures can GLMMs be used? 
+7. GLMM はどのようなアウトカム指標に使用できるのか。
 
 
 \vspace{4mm}
 
 
 
-**Answers to these questions are listed in [Appendix A](#qanda4) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda4) にある。**
 
 ```
 

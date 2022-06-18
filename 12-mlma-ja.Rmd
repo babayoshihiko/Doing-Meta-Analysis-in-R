@@ -827,35 +827,35 @@ plot(cw.boot, fill = "lightblue", alpha = 0.5) +
 
 <br></br>
 
-## Questions and Answers
+**知識を試そう！**問題
 
 ```{block, type='boxquestion'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. Why is it more accurate to speak of "three-level" instead of "multilevel" models? 
+1. なぜ「マルチレベル」モデルではなく「３レベル」モデルと言う方が正確なのか？
 
 \vspace{-2mm}
 
-2. When are three-level meta-analysis models useful?
+2. ３レベルメタ分析モデルはいつ有用か？
 
 \vspace{-2mm}
 
-3. Name two common causes of effect size dependency.
+3. 効果量依存性の一般的な原因を2つ挙げなさい。
 
 \vspace{-2mm}
 
-4. How can the multilevel $I^2$ statistic be interpreted?
+4. マルチレベル $I^2$ の統計量はどのように解釈すればよいか。
 
 \vspace{-2mm}
 
-5. How can a three-level model be expanded to incorporate the effect of moderator variables?
+5. モデレータ変数の効果を取り入れるために、どのように３レベルモデルを拡張することができるのか？
 
 \vspace{4mm}
 
 
-**Answers to these questions are listed in [Appendix A](#qanda10) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda10) にある。**
 
 ```
 

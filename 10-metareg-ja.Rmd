@@ -973,44 +973,44 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-## Questions & Answers
+**知識を試そう！**問題
 
 ```{block, type='boxinfo'}
 **Test your knowledge!**
 
 \vspace{4mm}
 
-1. What is the difference between a conventional regression analysis as used in primary studies, and meta-regression?
+1. 一次研究で用いられる従来の回帰分析と、メタ回帰の違いは何か？
 
 \vspace{-2mm}
 
-2. Subgroup analyses and meta-regression are closely related. How can the meta-regression formula be adapted for subgroup data?
+2. サブグループ解析とメタ回帰は密接な関係がある。メタ回帰の公式をどのようにサブグループデータに適応させることができるか。
 
 \vspace{-2mm}
 
-3. Which method is used in meta-regression to give individual studies a differing weight?
+3. メタ回帰において、個々の研究に異なる重みを与えるためにどのような方法が用いられるか？
 
 \vspace{-2mm}
 
-4. What characteristics mark a meta-regression model that fits our data well? Which index can be used to examine this?
+4. データによく適合するメタ回帰モデルにはどのような特徴があるか？これを調べるには、どのような指標を用いればよいか？
 
 \vspace{-2mm}
 
-5. When we calculate a subgroup analysis using meta-regression techniques, do we assume a separate or common value of $\tau^2$ in the subgroups?
+5. メタ分析の手法でサブグループ分析を計算する場合、$\tau^2$  の値をサブグループで別々にするか、共通にするか。
 
 \vspace{-2mm}
 
-6. What are the limitations and pitfalls of (multiple) meta-regression?
+6. （多重）メタ回帰の限界と落とし穴は何か。
 
 \vspace{-2mm}
 
-7. Name two methods that can be used to improve the robustness of (multiple) meta-regression models, and why they are helpful.
+7. （複数の）メタ回帰モデルの頑健性を向上させるために利用できる方法を2つ挙げ、それが有用である理由を述べよ。
 
 
 \vspace{4mm}
 
 
-**Answers to these questions are listed in [Appendix A](#qanda8) at the end of this book.**
+**問題の解答は、本書の巻末 [Appendix A](#qanda8) にある。**
 
 ```
 
