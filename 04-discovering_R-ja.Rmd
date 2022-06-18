@@ -532,7 +532,7 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-**知識を試そう！**問題
+## 演習問題
 
 ```{block, type='boxquestion'}
 **データ操作の演習**

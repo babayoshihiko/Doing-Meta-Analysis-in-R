@@ -544,10 +544,10 @@ $$\tag*{$\blacksquare$}$$
 
 <br></br>
 
-**知識を試そう！**問題
+## 演習問題
 
 ```{block2, type='boxquestion'}
-**Test your knowledge!**
+**知識を試そう！**
 
   
 \vspace{4mm}
