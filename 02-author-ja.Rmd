@@ -4,26 +4,26 @@
 
 <br></br>
 
-<img src="images/harrer.png" width="130" align="right" alt="" class="cover" /> [**Mathias Harrer**](https://www.protectlab.org/en/author/mathias-harrer-msc/) is a researcher at the Technical University of Munich and the Friedrich-Alexander-University Erlangen-Nuremberg. Mathias' research focuses on statistical and technological methods in psychotherapy research, methods for clinical research synthesis, and on the development of statistical software.
+<img src="images/harrer.png" width="130" align="right" alt="" class="cover" /> [**Mathias Harrer**](https://www.protectlab.org/en/author/mathias-harrer-msc/) は、 ミュンヘン工科大学およびフリードリヒ・アレクサンダー大学エアランゲン-ニュルンベルク校の研究者。マティアスの研究は、心理療法研究における統計的・技術的手法、臨床研究統合のための手法、統計ソフトの開発に重点を置いている。
 
 [![Twitter URL](https://img.shields.io/badge/@MathiasHarrer-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/MathiasHarrer)
 [![GitHub followers](https://img.shields.io/badge/MathiasHarrer-100000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/MathiasHarrer)
 
 ---
 
-<img src="images/cuijpers.jpg" width="130" align="right" alt="" class="cover" /> [**Pim Cuijpers**](https://www.pimcuijpers.com/blog/) is professor of Clinical Psychology at the VU University Amsterdam. He is specialized in conducting randomized controlled trials and meta-analyses, with a focus on the prevention and treatment of common mental disorders. Pim has published more than 800 articles in international peer-reviewed scientific journals; many of which are meta-analyses of clinical trials. 
+<img src="images/cuijpers.jpg" width="130" align="right" alt="" class="cover" /> [**Pim Cuijpers**](https://www.pimcuijpers.com/blog/) は、アムステルダム自由大学の臨床心理学教授。一般的な精神疾患の予防と治療を中心に、無作為化比較試験とメタアナリシスの実施を専門としている。国際的な査読付き科学雑誌に800以上の論文を発表しており、その多くは臨床試験のメタアナリシスである。
 
 [![Twitter URL](https://img.shields.io/badge/@pimcuijpers-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/pimcuijpers)
 
 ---
 
-<img src="images/furukawa.jpg" width="130" align="right" alt="" class="cover" /> [**Toshi A. Furukawa**](http://ebmh.med.kyoto-u.ac.jp/professor.html) is professor of Health Promotion and Human Behavior at the Kyoto University School of Public Health. His seminal research focuses both on theoretical aspects of research synthesis and meta-analysis, as well as their application in evidence-based medicine.
+<img src="images/furukawa.jpg" width="130" align="right" alt="" class="cover" /> [**Toshi A. Furukawa**](http://ebmh.med.kyoto-u.ac.jp/professor.html) は、京都大学公衆衛生大学院のヘルスプロモーションと人間行動学の教授。研究統合とメタアナリシスの理論的側面と、エビデンスに基づく医療への応用の両方に焦点を当てた精力的な研究を行っている。
 
 [![Twitter URL](https://img.shields.io/badge/@Toshi_FRKW-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Toshi_FRKW)
 
 ---
 
-<img src="images/ebert.jpg" width="130" align="right" alt="" class="cover" /> [**David D. Ebert**](https://www.protectlab.org/en/author/prof.-dr.-david-daniel-ebert/) is professor of Psychology and Behavioral Health Technology at the Technical University of Munich. David's research focuses internet-based intervention, clinical epidemiology, as well as applied research synthesis in this field.
+<img src="images/ebert.jpg" width="130" align="right" alt="" class="cover" /> [**David D. Ebert**](https://www.protectlab.org/en/author/prof.-dr.-david-daniel-ebert/) は、ミュンヘン工科大学心理学・行動健康工学部教授。インターネットを利用した介入、臨床疫学、およびこの分野における応用研究の統合を中心に研究している。
 
 [![Twitter URL](https://img.shields.io/badge/@DDEbert-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/DDEbert)
 
