@@ -1160,7 +1160,7 @@ _R_ の発生率比に基づくメタ分析を計算するためには、デー�
 \index{Hedges' \textit{g}}
 \index{Standardized Mean Difference}
 
-標準化平均差 (SMD) は、2群の連続したアウトカムデータがある場合に計算できる効果量である。しかし、標準化平均差は、研究のサンプルサイズが小さいとき、特に $n \leq$  20（@hedges1981distribution）のとき、**上方バイアス**を持つことが分かっている。このサンプルサイズが小さいというバイアスは、研究のサンプルサイズが小さい場合、SMD が系統的に真の効果量を過大評価することを意味する。
+標準化平均差 (SMD) は、2群の連続したアウトカムデータがある場合に計算できる効果量である。しかし、標準化平均差は、研究のサンプルサイズが小さいとき、特に $n \leq$  20（@hedges1981distribution）のとき、**上方バイアス** (upward bias) を持つことが分かっている。このサンプルサイズが小さいというバイアスは、研究のサンプルサイズが小さい場合、SMD が系統的に真の効果量を過大評価することを意味する。
 
 そこで、すべての研究の標準化平均差をスモールサンプルバイアスで補正し、Hedges' $g$ と呼ばれる効果量を算出することが賢明である。Hedges' $g$ はこの補正の考案者である Larry Hedges にちなんで名づけられることとした。未補正の SMD/Cohen's $d$ を Hedges' $g$ に変換する式は次のようになる。
 
@@ -1419,7 +1419,7 @@ se_r_xy_c
 
 Hunter and Schmidt の方法について詳しく知りたい方は、彼らの著書である **Methods of Meta-Analysis** [@hunter2004methods] がわかりやすく、包括的な概要を提供しているので、参照されたい。Borenstein et al. [-@borenstein2011introduction] の38章にも、短い紹介がある。
 
-Hunter and Schmidt の手法の多くは、[**{psychmeta}**](https://psychmeta.com/) [@psychmeta] と呼ばれる_R_パッケージにも実装されている。
+Hunter and Schmidt の手法の多くは、[**{psychmeta}**](https://psychmeta.com/) [@psychmeta] と呼ばれる _R_ パッケージにも実装されている。
 
 ```
 
@@ -1512,7 +1512,7 @@ $$\tag*{$\blacksquare$}$$
 
 \vspace{-2mm}
 
-5. 標準平均差 (Standardized Mean Difference, SMD) が1であることは何を表しているのか？
+5. 標準化平均差 (Standardized Mean Difference, SMD) が1であることは何を表しているのか？
 
 \vspace{-2mm}
 
