@@ -109,7 +109,7 @@ forest(m.gen,
 
 各研究のバイアスリスクを表示す列を追加することで、プロットを強化することが可能である。`m.gen` の生成に使用した `ThirdWave` データセットには、`RiskOfBias` という列があり、そこに各研究のバイアスリスク評価が保存されている。
 
-メタ分析の計算に `metagen` を使用した場合 (Chapter \@ref(pre-calculated-es)) 、この関数は自動的にこのデータを `m.gen` 内に保存した。したがって、 `leftcols`  引数を使用して、プロットに列を追加することが可能である。この結果、次のようなコードになる。
+メタ分析の計算に `metagen` を使用している場合 (Chapter \@ref(pre-calculated-es)) 、この関数は自動的にこのデータを `m.gen` 内に保存する。したがって、 `leftcols`  引数を使用して、プロットに列を追加することが可能である。この結果、次のようなコードになる。
 
 ```{r, fig.height=6, fig.width=9, eval=F, echo=F}
 forest.meta(m.gen, 
