@@ -548,7 +548,7 @@ decomp.design(m.netmeta)
 
 \index{Cochran's \textit{Q}}
 
-出力では、まず、このモデルにおけるデザイン内およびデザイン間の異質性/非整合性に対する各デザインの個々の寄与を示す $Q$ 値が示される。出力の重要な部分は、最後の部分（`Q statistic to assess consistency under the assumption of a full design-by-treatment interaction random effects model`）である。完全な design-by-treatment のランダム効果モデルを仮定すると、$Q$ の値がかなり減少し（以前は$Q=$ 101.83, $Q=$3.83）、デザイン間の矛盾が有意でなくなったことがわかる（$p=$ 0.9865）。 
+出力では、まず、このモデルにおけるデザイン内およびデザイン間の異質性/非整合性に対する各デザインの個々の寄与を示す $Q$ 値が示される。出力の重要な部分は、最後の部分（`Q statistic to assess consistency under the assumption of a full design-by-treatment interaction random effects model`）である。完全な design-by-treatment のランダム効果モデルを仮定すると、$Q$ の値がかなり減少し（以前は $Q=$ 101.83、今は $Q=$ 3.83）、デザイン間の矛盾が有意でなくなったことがわかる（$p=$ 0.9865）。 
 
 このことは、私たちのネットワークモデルにおける矛盾や異質性を説明するために、少なくとも部分的にランダム効果モデルが示される可能性をも示唆している。
 
