@@ -1,16 +1,16 @@
-# Citing this Guide {-}
+# 本書の引用 {-}
 
 ---
 
 <br></br>
 
-This suggested citation is:
+本書を引用する際は、:
 
 ```{block, type='boxempty'}
 **Harrer, M., Cuijpers, P., Furukawa, T.A., & Ebert, D.D.** (2021). _Doing Meta-Analysis with R: A Hands-On Guide_. Boca Raton, FL and London: Chapmann & Hall/CRC Press. ISBN 978-0-367-61007-4.
 ```
 
-Download the reference as [BibTeX](https://www.protectlab.org/meta-analysis-in-r/data/citation.bib) or [.ris](https://www.protectlab.org/meta-analysis-in-r/data/citation.ris).
+としていただきたい。参照情報は、 [BibTeX](https://www.protectlab.org/meta-analysis-in-r/data/citation.bib) または [.ris](https://www.protectlab.org/meta-analysis-in-r/data/citation.ris) でダウンロード可能。
 
 
 <br></br>

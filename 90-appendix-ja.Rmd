@@ -630,19 +630,19 @@ utils 4.0.3
 
 
 ```{block2, type='boxinfo'}
-Errata and remarks concerning the first edition print version of the book are displayed here.
+初版の印刷版に関する正誤表や備考を記載する。
 ```
 
-最終更新日 r format(Sys.time(), '%d %B, %Y')` である（訳注: 翻訳の更新日）。
+最終更新日 `r format(Sys.time(), '%d %B, %Y')` である（訳注: 翻訳の更新日）。
 
 
 ## Chapter 4.2  {-}
 
-最近、 **{meta}** の新しいバージョン(バージョン5.0-0)がリリースされた。この章では、非推奨のメッセージを避けるために、それに応じてコードを適応させることとした。
+最近、 **{meta}** の新しいバージョン(バージョン5.0-0)がリリースされた。この章では、非推奨のメッセージを避けるために、それに応じてコードを適応させた。
 
 - 引数  `comb.fixed`  と  `comb.random`  は、それぞれ  `fixed`  と  `random`  と呼ばれるようになった。
 
-- すべての研究を表示すには、 **{meta}**  メタ分析オブジェクトの  `summary`  メソッドを使用する必要がある。
+- すべての研究を表示すには、 **{meta}** メタ分析オブジェクトの  `summary`  メソッドを使用する必要がある。
 
 ## Chapter 7.3  {-}
 
@@ -658,9 +658,9 @@ Errata and remarks concerning the first edition print version of the book are di
 
 ## 12.2.2 章  {-}
 
-最近、 **{netmeta}** の新しいバージョン(バージョン2.0-0)がリリースされた。この章では、エラーメッセージを避けるために、それに応じてコードを適応させることとした。
+最近、**{netmeta}** の新しいバージョン(バージョン2.0-0)がリリースされた。この章では、エラーメッセージを避けるために、それに応じてコードを適応させた。
 
-- 最新版の **{netmeta}** では、 `rma.mv` に実装されているFisher scoring algorithmが収束しない問題が発生してきた。この問題は、2021年10月24日以前にインストールされたすべてのバージョンの **{dmetar}** に関連した。この問題を回避するには、最新バージョンの  **{dmetar}**  を再インストールしてみよう(https://dmetar.protectlab.org/#installation)。
+- 最新版の **{netmeta}** では、`rma.mv` に実装されているFisher scoring algorithmが収束しない問題が発生してきた。この問題は、2021年10月24日以前にインストールされたすべてのバージョンの **{dmetar}** に関連した。この問題を回避するには、最新バージョンの  **{dmetar}**  を再インストールしてみよう(https://dmetar.protectlab.org/#installation)。
 
 
 
