@@ -846,7 +846,7 @@ permutest(m.qual.rep)
 
 \index{Multi-Model Inference}
 
-私たちはすでに、**マルチ・モデル推論** と呼ばれる手順で、すべての可能な予測変数の組み合わせをモデル化することができることを述べることとした。これは、どの可能な予測変数の組み合わせが最良の適合を提供するか、そして、どの予測変数が全体として最も重要であるかを調査することができる。マルチモデル推論を行うには、 `multimodel.inference` 関数を使用する^[このトピックに関する詳細な情報は、Wolfgang Viechtbauerが **{metafor}** ドキュメントの一部として書いた、有益な[vignette](https://www.metafor-project.org/doku.php/tips:model_selection_with_glmulti_and_mumin)も参照してみよう。].
+私たちはすでに、**マルチ・モデル推論** と呼ばれる手順で、すべての可能な予測変数の組み合わせをモデル化することができることを述べることとした。これは、どの可能な予測変数の組み合わせが最良の適合を提供するか、そして、どの予測変数が全体として最も重要であるかを調査することができる。マルチモデル推論を行うには、 `multimodel.inference` 関数を使用する^[このトピックに関する詳細な情報は、Wolfgang Viechtbauer が **{metafor}** ドキュメントの一部として書いた [vignette](https://www.metafor-project.org/doku.php/tips:model_selection_with_glmulti_and_mumin) は、情報が多いので参照されたい。].
 
 ```{block, type='boxdmetar'}
 **"multimodel.inference" 関数**
