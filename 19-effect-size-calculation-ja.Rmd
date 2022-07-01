@@ -8,13 +8,13 @@
 
 \index{meta Package}
 
-メタ分析が頻繁に直面する問題は、適切な「生の」効果量データが、含まれるすべての研究から抽出できるとは限らないことである。`metacont` (Chapter \@ref(pooling-smd)) や `metabin` (Chapter \@ref(pooling-or-rr)) などの  **{meta}**  パッケージのほとんどの関数は、完全な生の効果量データが利用可能な場合にのみ使用することができる。 
+メタ分析が頻繁に直面する問題は、適切な「生の」効果量データが、含まれるすべての研究から抽出できるとは限らないことである。`metacont` (Chapter \@ref(pooling-smd)) や `metabin` (Chapter \@ref(pooling-or-rr)) などの  **{meta}** パッケージのほとんどの関数は、生の効果量データが完全に利用可能な場合にのみ使用することができる。 
 
-実際には、これは困難につながることも多い。出版された論文の中には、特に古いものでは、必要な（生の）効果量データを抽出できるような方法で結果を報告していないものがある。 $t$-検定, one-way ANOVA, $\chi^2$-検定 の結果は報告されていても、メタ分析に必要なグループごとの平均や標準偏差、研究条件におけるイベントの数が報告されていないことはよくあることである。 
+実際には、これは困難につながることも多い。出版された論文の中には、特に古いものでは、必要な（生の）効果量データを抽出できるような方法で結果を報告していないものがある。$t$-検定, one-way ANOVA, $\chi^2$-検定 の結果は報告されていても、メタ分析に必要なグループごとの平均や標準偏差、研究条件におけるイベント数が報告されていないことはよくあることである。 
 
 \index{esc Package}
 
-良いニュースは、報告された情報を望ましい効果量フォーマットに**変換**できる場合があるということである。これにより、 `metagen` を用いた**事前計算**データ（Chapter \@ref(pre-calculated-es)）によるメタ分析で、影響を受けた研究を含めることができるようになる。例えば、2標本の $t$-検定 の結果を標準化平均差とその標準誤差に変換し、  `metagen`  を用いて事前に計算されたSMDのメタ分析を行うことができる。 **{esc}**  パッケージ [@esc] には、このような変換を  _R_  で直接行うことができる便利な関数がいくつか用意されている。
+良いニュースは、報告された情報を望ましい効果量フォーマットに**変換**できる場合があるということである。これにより、`metagen` を用いた**事前計算**データ（Chapter \@ref(pre-calculated-es)）によるメタ分析で、影響を受けた研究を含めることができるようになる。例えば、2標本の $t$-検定 の結果を標準化平均差 (SMD) とその標準誤差に変換し、`metagen`  を用いて事前に計算された SMD のメタ分析を行うことができる。 **{esc}**  パッケージ [@esc] には、このような変換を _R_ 内で直接行うことができる便利な関数がいくつか用意されている。
 
 <br></br>
 
@@ -26,25 +26,25 @@
 \index{Standardized Mean Difference}
 \index{Hedges' \textit{g}}
 
-平均と**標準誤差**からSMDやHedgesの $g$  、平均の標準偏差はサンプルサイズの平方根を「因数分解」して標準誤差として定義されることを利用することができる [@thalheimer2002calculate]。
+平均と**標準誤差**から SMD や Hedges' $g$、平均の標準偏差はサンプルサイズの平方根を「割り算」して標準誤差として定義されることを利用することができる [@thalheimer2002calculate]。
 
 \begin{equation}
 \text{SD} =\text{SE}\sqrt{n}
 (\#eq:esc1)
 \end{equation}
 
-SMD や Hedges' $g$  は  `esc_mean_se`  関数を使って計算することができる。以下はその例である。
+SMD や Hedges' $g$ は `esc_mean_se`関数を使って計算することができる。以下はその例である。
 
 ```{r}
 library(esc)
 
-esc_mean_se(grp1m = 8.5,   # mean of group 1
-            grp1se = 1.5,  # standard error of group 1
-            grp1n = 50,    # sample in group 1
-            grp2m = 11,    # mean of group 2
-            grp2se = 1.8,  # standard error of group 2
-            grp2n = 60,    # sample in group 2
-            es.type = "d") # convert to SMD; use "g" for Hedges' g
+esc_mean_se(grp1m = 8.5,   # group 1 の平均
+            grp1se = 1.5,  # group 1 の標準誤差
+            grp1n = 50,    # group 1 のサンプル
+            grp2m = 11,    # group 2 の平均
+            grp2se = 1.8,  # group 2 の標準誤差
+            grp2n = 60,    # group 2 のサンプル
+            es.type = "d") # SMD に変換; Hedges' g を使う場合は "g"
 ```
 
 <br></br>
@@ -53,34 +53,34 @@ esc_mean_se(grp1m = 8.5,   # mean of group 1
 
 ---
 
-標準化または非標準化回帰係数から SMD、Hedges' $g$  または相関 $r$  を計算することができる [@lipsey2001practical].標準化されていない係数に対しては、 **{esc}**  の  `esc_B`  関数を使用することができる。以下はその例である。
+標準化または非標準化回帰係数から SMD、Hedges' $g$  または相関 $r$  を計算することができる [@lipsey2001practical]。標準化されていない係数に対しては、 **{esc}**  の  `esc_B`  関数を使用することができる。以下はその例である。
 
 \index{Correlation}
 
 ```{r}
 library(esc)
 
-esc_B(b = 3.3,       # unstandardized regression coefficient
-      sdy = 5,       # standard deviation of predicted variable y
-      grp1n = 100,   # sample size of the first group
-      grp2n = 150,   # sample size of the second group
-      es.type = "d") # convert to SMD; use "g" for Hedges' g
+esc_B(b = 3.3,       # 標準化されていない回帰係数
+      sdy = 5,       # 予測変数 y の標準偏差
+      grp1n = 100,   # group 1 のサンプルサイズ
+      grp2n = 150,   # group 2 のサンプルサイズ
+      es.type = "d") # SMD に変換; Hedges' g を使う場合は "g"
 ```
 
 \vspace{2mm}
 
 ```{r, eval=F}
-esc_B(b = 2.9,       # unstandardized regression coefficient
-      sdy = 4,       # standard deviation of the predicted variable y
-      grp1n = 50,    # sample size of the first group
-      grp2n = 50,    # sample size of the second group
-      es.type = "r") # convert to correlation
+esc_B(b = 2.9,       # 標準化されていない回帰係数
+      sdy = 4,       # 予測変数 y の標準偏差
+      grp1n = 50,    # group 1 のサンプルサイズ
+      grp2n = 50,    # group 2 のサンプルサイズ
+      es.type = "r") # 相関係数に変換
 ```
 
 ```
 ## Effect Size Calculation for Meta Analysis
 ## 
-##      Conversion: unstandardized regression coefficient 
+##      Conversion: un標準化されていない回帰係数 
 ##                  to effect size correlation
 ##     Effect Size:   0.3611
 ##  Standard Error:   0.1031
@@ -95,28 +95,28 @@ esc_B(b = 2.9,       # unstandardized regression coefficient
 
 \vspace{2mm}
 
-標準化された回帰係数は  `esc_beta`  を用いて変換することができる。
+標準化された回帰係数は `esc_beta` を用いて変換することができる。
 
 ```{r}
-esc_beta(beta = 0.32,   # standardized regression coefficient
-         sdy = 5,       # standard deviation of the predicted variable y
-         grp1n = 100,   # sample size of the first group
-         grp2n = 150,   # sample size of the second group
-         es.type = "d") # convert to SMD; use "g" for Hedges' g
+esc_beta(beta = 0.32,   # 標準化されていない回帰係数
+         sdy = 5,       # 予測変数 y の標準偏差
+         grp1n = 100,   # group 1 のサンプルサイズ
+         grp2n = 150,   # group 2 のサンプルサイズ
+         es.type = "d") # SMD に変換; Hedges' g を使う場合は "g"
 ```
 
 ```{r, eval= F}
-esc_beta(beta = 0.37,   # standardized regression coefficient
+esc_beta(beta = 0.37,   # 標準化されていない回帰係数
          sdy = 4,       # standard deviation of predicted variable y
-         grp1n = 50,    # sample size of the first group
-         grp2n = 50,    # sample size of the second group
-         es.type = "r") # convert to correlation
+         grp1n = 50,    # group 1 のサンプルサイズ
+         grp2n = 50,    # group 2 のサンプルサイズ
+         es.type = "r") # 相関係数に変換
 ```
 
 ```
 ## Effect Size Calculation for Meta Analysis
 ## 
-##      Conversion: standardized regression coefficient 
+##      Conversion: 標準化されていない回帰係数 
 ##                  to effect size correlation
 ##     Effect Size:   0.3668
 ##  Standard Error:   0.1033
@@ -138,7 +138,7 @@ esc_beta(beta = 0.37,   # standardized regression coefficient
 \index{Correlation}
 \index{Correlation, Point-Biserial}
 
-**同じ**大きさの群（$n_1=n_2$）の場合、以下の式で**点-双列**相関からSMDを導き出すことができる [@lipsey2001practical, chapter 3]。
+**同じ**大きさの群（$n_1=n_2$）の場合、以下の式で**点-双列**相関から SMD を導き出すことができる [@lipsey2001practical, chapter 3]。
 
 \begin{equation}
 r_{pb} = \frac{\text{SMD}}{\sqrt{\text{SMD}^2+4}} ~~~~~~~~
@@ -152,15 +152,15 @@ r_{pb} &= \frac{\text{SMD}}{\sqrt{\text{SMD}^2+\dfrac{(N^2-2N)}{n_1n_2}}} \notag
 \text{SMD} &= \dfrac{r_{pb}}{\sqrt{(1-r^2)\left(\frac{n_1}{N}\times\left(1-\frac{n_1}{N}\right)\right)}} (\#eq:esc3)
 \end{align}
 
- $r_{pb}$  を SMD や Hedges の $g$  に変換するには、  `esc_rpb`  関数を使用する。
+ $r_{pb}$  を SMD や Hedges' $g$ に変換するには、  `esc_rpb` 関数を使用する。
 
 ```{r}
 library(esc)
 
-esc_rpb(r = 0.25,      # point-biserial correlation
-        grp1n = 99,    # sample size of group 1
-        grp2n = 120,   # sample size of group 2
-        es.type = "d") # convert to SMD; use "g" for Hedges' g
+esc_rpb(r = 0.25,      # 点-双列相関
+        grp1n = 99,    # group 1 のサンプルサイズ
+        grp2n = 120,   # group 2 のサンプルサイズ
+        es.type = "d") # SMD に変換; Hedges' g を使う場合は "g"
 ```
 
 <br></br>
@@ -171,7 +171,7 @@ esc_rpb(r = 0.25,      # point-biserial correlation
 
 \index{Analysis of Variance}
 
-また、**2群**の一元配置の ANOVA の $F$ -値から SMD を導き出すこともできる。そのようなANOVAは、**自由度** を見ることで識別できる。2つのグループの一元配置ANOVAでは、自由度は常に1から始まるはずである（例： $F_{\text{1,147}}$ =5.31）。 
+また、**2群**の一元配置の ANOVA の $F$-値から SMD を導き出すこともできる。そのような ANOVA は、**自由度**を見ることで識別できる。2つのグループの一元配置ANOVAでは、自由度は常に1から始まるはずである（例： $F_{\text{1,147}}$ =5.31）。 
 
 変換に使う式は次のようなものである [@rosnow1996computing; @rosnow2000contrasts; @thalheimer2002calculate を参照]。
 
@@ -180,13 +180,13 @@ esc_rpb(r = 0.25,      # point-biserial correlation
 (\#eq:esc4)
 \end{equation}
 
- $F$ -value から SMD や Hedges' $g$  を計算するには、  `esc_f`  関数を使用する。以下はその例である。
+ $F$-値 から SMD や Hedges' $g$  を計算するには、  `esc_f` 関数を使用する。以下はその例である。
 
 ```{r}
-esc_f(f = 5.04,      # F value of the one-way anova
-      grp1n = 519,   # sample size of group 1 
-      grp2n = 528,   # sample size of group 2
-      es.type = "g") # convert to Hedges' g; use "d" for SMD
+esc_f(f = 5.04,      # one-way anova の F-値
+      grp1n = 519,   # group 1 のサンプルサイズ 
+      grp2n = 528,   # group 2 のサンプルサイズ
+      es.type = "g") # Hedges' g　に変換; SMD の場合は "d"
 ```
 
 <br></br>
@@ -204,13 +204,13 @@ esc_f(f = 5.04,      # F value of the one-way anova
 (\#eq:esc5)
 \end{equation}
 
- _R_  では、 `esc_t`  関数を使って $t$ - 値から SMD や Hedges の  `g`  を計算することができる。以下はその例である。
+ _R_  では、`esc_t` 関数を使って $t$-値から SMD や Hedges' `g` を計算することができる。以下はその例である。
 
 ```{r}
-esc_t(t = 3.3,     # t-value 
-      grp1n = 100, # sample size of group1
-      grp2n = 150, # sample size of group 2
-      es.type="d") # convert to SMD; use "g" for Hedges' g
+esc_t(t = 3.3,     # t-値
+      grp1n = 100, # group 1 のサンプルサイズ
+      grp2n = 150, # group 2 のサンプルサイズ
+      es.type="d") # SMD に変換; Hedges' g を使う場合は "g"
 ```
 
 <br></br>
@@ -223,7 +223,7 @@ esc_t(t = 3.3,     # t-value
 
 研究では、効果の大きさ（例えば、Cohen's $d$ 値）、その効果の $p$ -値のみを報告し、それ以上のことは報告しないことがある。しかし、メタ分析で結果をプールするためには、効果量の**精度**の指標、できれば標準誤差が必要である。
 
-そのような場合、効果量の $p$ -値から標準誤差を推定しなければならない。これは、Altman and Bland [-@altman2011obtain] による公式を用いれば、**差分**（すなわちSMD）または**比**（すなわちリスク比またはオッズ比）に基づく効果量に可能である。これらの公式は、 _R_ の  `se.from.p`  関数で実装されている。 
+そのような場合、効果量の $p$ -値から標準誤差を推定しなければならない。これは、Altman and Bland [-@altman2011obtain] による公式を用いれば、**差分**（すなわち SMD）または**比**（すなわちリスク比またはオッズ比）に基づく効果量に対して可能である。これらの公式は、 _R_ の  `se.from.p`  関数で実装されている。 
 
 \index{dmetar Package}
 
@@ -234,7 +234,7 @@ esc_t(t = 3.3,     # t-value
 
 `se.from.p` 関数は、**{dmetar}** パッケージに含まれている。**{dmetar}** がインストールされ、コンピュータに読み込まれると、この関数を使用できるようになる。もし、**{dmetar}** をインストールして**いない**場合は、以下の手順でインストールできる。
 
-1. 関数のソースコードにアクセスする [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R). 
+1. 関数のソースコードに [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R) でアクセスする。 
 2. ソースコード全体をコンソール（R Studio の左下ペイン）にコピー＆ペーストし、Enterキーを押して、 _R_ に関数を「学習」させる。
 ```
 
@@ -260,7 +260,7 @@ se.from.p(0.71,
  $N=$  200人の参加者が、OR=0.91、$p=$  0.38の効果量を報告した研究については、標準誤差はこのように計算される。
 
 ```{r, message=F, warning=F, eval=F}
-library(magrittr) # for pipe
+library(magrittr) # pipe を使う
 
 se.from.p(0.91, p = 0.38, N = 200,
           effect.size.type = "ratio") %>% t()
@@ -291,9 +291,9 @@ se.from.p(0.91, p = 0.38, N = 200,
 統計量 $\chi^2$ をオッズ比に変換するには、  `esc_chisq`  関数を使用する（d.f. = 1と仮定する；例： $\chi^2_1$  = 8.7 ）。以下はその例である。
 
 ```{r}
-esc_chisq(chisq = 7.9,        # chi-squared value
-          totaln = 100,       # total sample size
-          es.type = "cox.or") # convert to odds ratio
+esc_chisq(chisq = 7.9,        # カイ二乗値
+          totaln = 100,       # 全体のサンプルサイズ
+          es.type = "cox.or") # オッズ比へ変換
 ```
 
 <br></br>
@@ -304,11 +304,11 @@ esc_chisq(chisq = 7.9,        # chi-squared value
 
 \index{Number Needed To Treat}
 
-Cohen's $d$  や Hedges' $g$  のような効果量は、実用的な観点からは解釈が難しいことが多い。メタ分析で介入効果が $g=$  0.35であることを発見したとする。このような効果が何を意味するのか、患者、公務員、医療関係者、その他の利害関係者にどのように伝えればよいのだろうか。 
+Cohen's $d$  や Hedges' $g$  のような効果量は、実用的な観点からは解釈が難しいことが多い。メタ分析で介入効果が $g=$  0.35 であることを発見したとする。このような効果が何を意味するのか、患者、公務員、医療関係者、その他の利害関係者にどのように伝えればよいのだろうか。 
 
-また、他の人が結果を理解しやすいように、メタ分析ではしばしば**治療に必要な数** (Number Needed to Treat, NNT) を報告している。この指標は、医学研究において最も一般的に使用されている。これは、1つの**ネガティブな事象**（例：再発）を**予防**するため、あるいは1つの**ポジティブ**な事象（例：症状の寛解、反応）を**達成**するために、研究対象の治療を何人の患者が追加で受けなければならないかを意味した。例えば、NNT=3の場合、研究課題に応じて、追加で1件の再発を回避するために3人が治療を受けなければならない、あるいは、確実に1件の症状寛解を達成するために3人の患者が治療を受けなければならないと言うことができる。
+また、他の人が結果を理解しやすいように、メタ分析ではしばしば**治療に必要な数** (Number Needed to Treat, NNT) を報告している。この指標は、医学研究において最も一般的に使用されている。これは、1つの**ネガティブな事象**（例：再発）を**予防**するため、あるいは1つの**ポジティブ**な事象（例：症状の寛解、反応）を**達成**するために、研究対象の治療を何人の患者が追加で受けなければならないかを意味する。例えば、NNT = 3 の場合、研究課題に応じて、追加で1件の再発を回避するために3人が治療を受けなければならない、あるいは、確実に1件の症状寛解を達成するために3人の患者が治療を受けなければならないと言うことができる。
 
-二値効果量データを扱う場合、NNTの算出は比較的容易である。式は次のようになる。
+二値効果量データを扱う場合、NNT の算出は比較的容易である。式は次のようになる。
 
 \begin{equation}
 \text{NNT} = (p_{e_{\text{treat}}}-p_{e_{\text{control}}})^{-1}
@@ -321,9 +321,9 @@ Cohen's $d$  や Hedges' $g$  のような効果量は、実用的な観点か�
 
 \index{Area Under The Curve (AUC)}
 
-* 治療群の患者が対照群の患者より好ましいアウトカムを得る確率として定義される**曲線下面積**（AUC）からNNTを計算する**Kraemer and Kupfer** [-@kraemer2006size] による方法である。この方法は、余分な情報なしにSMDまたは $g$  から直接NNTを計算することができる。
+* 治療群の患者が対照群の患者より好ましいアウトカムを得る確率として定義される**曲線下面積**（AUC）からNNTを計算する **Kraemer and Kupfer** [-@kraemer2006size] による方法である。この方法は、余分な情報なしに SMD または $g$  から直接 NNT を計算することができる。
 
-* **Furukawa and Leucht** の方法は、CER またはその合理的な推定値を用いて SMD から NNT 値を計算するものである。古川氏の方法は、Kraemer &amp; Kupfer法 [@furukawa2011obtain] と比較して、真のNNT値を推定するのに優れていることが示されている。したがって、CERを合理的に推定できるのであれば、常に Furukawa 式が優先されるべきである。 
+* **Furukawa and Leucht** の方法は、CER またはその合理的な推定値を用いて SMD から NNT 値を計算するものである。古川氏の方法は、Kraemer &amp; Kupfer 法 [@furukawa2011obtain] と比較して、真の NNT 値を推定するのに優れていることが示されている。したがって、CER を合理的に推定できるのであれば、常に Furukawa 式が優先されるべきである。 
 
 効果量としてリスク比やオッズ比を使用する場合、NNT は  `nnt` 関数を使用して **{meta}** オブジェクトから直接計算することができる。`metabin` （Chapter \@ref(pooling-or-rr)）を使ってメタ分析を行った後、その結果を `nnt` 関数に代入するだけである。以下はその例である。
 
@@ -331,7 +331,7 @@ Cohen's $d$  や Hedges' $g$  のような効果量は、実用的な観点か�
 library(meta)
 data(Olkin1995)
 
-# Run meta-analysis with binary effect size data
+# 二値効果量データを使ってメタ分析を実行
 m.b <- metabin(ev.exp, n.exp, ev.cont, n.cont, 
                data = Olkin1995,
                sm = "RR")
@@ -340,9 +340,9 @@ nnt(m.b)
 
 \vspace{2mm}
 
-`nnt` 関数は、異なる CER を仮定した場合の治療に必要な数を提供する。3本の線は、このデータセットにおける最小、平均、最大の CERの結果を示している。CER の平均値は、通常報告される「典型的な」NNTである。 
+`nnt` 関数は、異なる CER を仮定した場合の治療に必要な数を提供する。3行あるのは、このデータセットにおける最小、平均、最大の CERの結果を示している。CER の平均値は、通常報告される「典型的な」NNTである。 
 
-また、要約指標  `sm`  が  `"RR"`  または  `"OR"`  であれば、  `nnt`  を  `metagen`  モデルで使用することも可能である。このようなモデルでは、  `nnt`  の  `p.c`  引数で想定される CER を指定する必要がある。以下は、Chapter \@ref(m-gen-bin)  で作成した  `m.gen_bin`  メタ分析オブジェクトを使用した例である。
+また、要約指標  `sm`  が  `"RR"`  または  `"OR"`  であれば、  `nnt`  を  `metagen`  モデルで使用することも可能である。このようなモデルでは、  `nnt`  の  `p.c`  引数で想定される CER を指定する必要がある。以下は、Chapter \@ref(m-gen-bin)  で作成した `m.gen_bin`  メタ分析オブジェクトを使用した例である。
 
 ```{r, echo=F}
 load("data/m.gen_bin.rda")
@@ -352,12 +352,12 @@ m.gen_bin$print.subgroup.name = FALSE
 
 
 ```{r}
-# Also show fixed-effect model results
+# 固定効果も出るの結果も示す
 m.gen_bin <- update.meta(m.gen_bin, 
                          fixed = TRUE)
 
 nnt(m.gen_bin, 
-    p.c = 0.1) # Use a CER of 0.1
+    p.c = 0.1) # CER 0.1 を使用
 ```
 
 \vspace{4mm}
@@ -375,13 +375,13 @@ nnt(m.gen_bin,
 
 \vspace{2mm}
 
-1. 関数のソースコードにアクセスする [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R). 
+1. 関数のソースコードに [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R) でアクセスする。
 2. ソースコード全体をコンソール（R Studio の左下ペイン）にコピー＆ペーストし、Enterキーを押して、 _R_ に関数を「学習」させる。
 
 ```
 
 
-Kraemer &amp; Kupfer 法を使うには、 `NNT` 関数に効果量（SMD または $g$  ）を与えるだけでよい。古川氏の方法は、 `CER` の値が与えられるとすぐに自動的に使用される。
+Kraemer &amp; Kupfer 法を使うには、 `NNT` 関数に効果量（SMD または $g$  ）を与えるだけでよい。Furukawa 法は、`CER` の値が与えられるとすぐに自動的に使用される。
 
 ```{r}
 NNT(d = 0.245)
@@ -395,7 +395,7 @@ NNT(d = 0.245, CER = 0.35)
 
 \vspace{2mm}
 
-一般的ではあるが、臨床試験の結果を伝えるために NNT を使用することは議論の余地がないわけではない。批判としては、一般人がしばしば誤解すること[他の効果量の指標に代わる「直感的な」指標とされているにもかかわらず、@christensen2006number]、研究者がしばしば NNT を不正確に計算すること [@mendes2017number] が挙げられる。
+一般的ではあるが、臨床試験の結果を伝えるために NNT を使用することは議論の余地がないわけではない。批判としては、一般人がしばしば誤解すること（他の効果量の指標に代わる「直感的な」指標とされているにもかかわらず @christensen2006number）、研究者がしばしば NNT を不正確に計算すること [@mendes2017number] が挙げられる。
 
 \vspace{2mm}
 
@@ -428,7 +428,7 @@ SD_{\text{pooled}} &= \sqrt{\frac{(n_1-1)SD^{2}_{1}+ (n_2-1)SD^{2}_{2}+\frac{n_1
 
 `pool.groups` 関数は、**{dmetar}** パッケージに含まれている。**{dmetar}** がインストールされ、コンピュータに読み込まれると、この関数を使用できるようになる。もし、**{dmetar}** をインストールして**いない**場合は、以下の手順でインストールできる。
 
-1. 関数のソースコードにアクセスする [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R). 
+1. 関数のソースコードに [オンライン](https://raw.githubusercontent.com/MathiasHarrer/dmetar/master/R/power.analysis.subgroup.R) でアクセスする。
 2. ソースコード全体をコンソール（R Studio の左下ペイン）にコピー＆ペーストし、Enterキーを押して、 _R_ に関数を「学習」させる。
 
 ```
@@ -439,12 +439,12 @@ SD_{\text{pooled}} &= \sqrt{\frac{(n_1-1)SD^{2}_{1}+ (n_2-1)SD^{2}_{2}+\frac{n_1
 ```{r}
 library(dmetar)
 
-pool.groups(n1 = 50,   # sample size group 1
-            n2 = 50,   # sample size group 2
-            m1 = 3.5,  # mean group 1
-            m2 = 4,    # mean group 2
-            sd1 = 3,   # sd group 1
-            sd2 = 3.8) # sd group2 
+pool.groups(n1 = 50,   # group 1 サンプルサイズ
+            n2 = 50,   # group 2 サンプルサイズ
+            m1 = 3.5,  # group 1 平均
+            m2 = 4,    # group 2 平均
+            sd1 = 3,   # group 1 標準偏差
+            sd2 = 3.8) # group 2 標準偏差
 ```
 
 
@@ -463,18 +463,18 @@ library(metafor)
 library(dmetar)
 data("Chernobyl")
 
-# Convert 'Chernobyl' data to 'escalc' object
-Chernobyl <- escalc(yi = z,           # Effect size
-                    sei = se.z,       # Standard error
+# 'Chernobyl' データを 'escalc' オブジェクトに変換
+Chernobyl <- escalc(yi = z,           # 効果量
+                    sei = se.z,       # 標準誤差
                     data = Chernobyl)
 
-# Aggregate effect sizes on study level
-# We assume a correlation of rho=0.6
+# 研究レベルで効果量を集約
+# 相関 rho=0.6 を仮定
 Chernobyl.agg <- aggregate(Chernobyl, 
                            cluster = author,
                            rho = 0.6)
 
-# Show aggregated results
+# 集約結果を表示
 Chernobyl.agg[,c("author", "yi", "vi")]
 
 ```
@@ -489,7 +489,7 @@ Chernobyl.agg[,c("author", "yi", "vi")]
 ## [...]
 ```
 
-なお、`aggregate` は集約された効果量  `yi`  とその**分散** `vi`  （標準誤差の平方根）を返す。
+なお、`aggregate` は集約された効果量 `yi` とその**分散** (variance) `vi`  （標準誤差の平方根）を返す。
 
 
 $$\tag*{$\blacksquare$}$$
