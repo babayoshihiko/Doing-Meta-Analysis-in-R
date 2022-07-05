@@ -435,9 +435,9 @@ new_rob1_data <- data_rob1
 # 最初のドメインの列名を変更
 colnames(new_rob1_data)[2] <- "これはテスト"
 
-# 要約棒グラフを作成; macOS では文字化けするためフォントして
-rob_summary(data = new_rob1_data, tool = "ROB1") 
-  + theme_classic(base_family = "Hiragino Kaku Gothic Pro W3")
+# 要約棒グラフを作成; macOS では文字化けするためフォント（ただし y 軸が追加されてしまう）
+rob_summary(data = new_rob1_data, tool = "ROB1") +
+  theme_classic(base_family = "Hiragino Kaku Gothic Pro W3")
 ```
 
 
