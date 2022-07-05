@@ -421,7 +421,7 @@ kableExtra::kable(
   kable_styling()
 ```
 
-ROB2 サンプルデータセットのドメイン列（列 2-6）には、_D1_～_D5_という任意の名前が付けられているが、これは ROB2 ガイダンスで与えられた正しいドメインタイトルに対応するようにツールで上書きされるためである。
+ROB2 サンプルデータセットのドメイン列（列 2-6）には、 _D1_ ～ _D5_ という任意の名前が付けられているが、これは ROB2 ガイダンスで与えられた正しいドメインタイトルに対応するようにツールで上書きされるためである。
 
 一方、ROB1 サンプルデータセットのドメイン列（列 2-8）は、`rob_summary` と  `rob_traffic_light` が生成する図に使用されるため、正しくラベル付けされていることがわかる。 
 
@@ -435,8 +435,8 @@ new_rob1_data <- data_rob1
 # 最初のドメインの列名を変更
 colnames(new_rob1_data)[2] <- "これはテスト"
 
-# 要約棒グラフを作成
-rob_summary(data = new_rob1_data, tool = "ROB1")
+# 要約棒グラフを作成; macOS では文字化けするためフォントして
+rob_summary(data = new_rob1_data, tool = "ROB1") + theme_classic(base_family = "Hiragino Kaku Gothic Pro W3")
 ```
 
 
