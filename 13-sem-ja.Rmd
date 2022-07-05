@@ -226,7 +226,7 @@ $\boldsymbol{r_k}$ が1つの研究に含まれる**複数の**相関を表す�
 
 \index{Weighted Least Squares (WLS)}
 
-次に、第二段階として、**加重最小二乗法**（ Chapter \@ref(metareg-model-fit)  参照）を用いて、指定した構造方程式モデルを当てはめる。指定したモデルの関数 $\rho(\hat\theta)$ は [@cheung2009two; @cheung2015meta, chapter 7.4.2] である。
+次に、第二段階として、**加重最小二乗法**（ Chapter \@ref(metareg-model-fit)  参照）を用いて、指定した構造方程式モデルを当てはめる。指定したモデル $\rho(\hat\theta)$ の関数は、以下の式で表される [@cheung2009two; @cheung2015meta, chapter 7.4.2]。
 
 
 \begin{equation}
@@ -836,13 +836,13 @@ $\boldsymbol{F}$ **行列**
 最後に、$\boldsymbol{F}$  行列を指定するのは簡単である。観測された変数の対角要素には 1 を記入し、それ以外は 0 を使用する。さらに、行列の少なくとも 1 つの要素が 0 でない行だけを選択する（つまり、最後の 2 行は 0 しか含まれていないので削除する）。
 
 ```{r}
-# Construct diagonal matrix
+# 対角行列を作成
 F1 <- Diag(c(1, 1, 1, 1, 1, 0, 0))
 
-# Only select non-null rows
+# ヌルでないだけを選択
 F1 <- F1[1:5,]
 
-# Specify row and column labels
+# 行ラベルと列ラベルの指定
 dimnames(F1)[[1]] <- dims[1:5]
 dimnames(F1)[[2]] <- dims
 
@@ -943,25 +943,28 @@ library(semPlot)
 
 \vspace{2mm}
 
-```{r, message=F, eval=F}
+```{r, message=F, eval=T}
 cfa.plot <- meta2semPlot(cfa2)
 ```
 
-そして、グラフを生成するために、**{semPlot}** の  `semPaths` 関数を使用することが可能である。この関数は多くのパラメータを持っており、コンソールに `?semPaths`  と入力し、Enterキーを押すことでアクセスすることが可能である。以下は私たちのコードと結果のプロットである。
+そして、グラフを生成するために、**{semPlot}** の  `semPaths` 関数を使用することが可能である。この関数は多くのパラメータを持っており、コンソールに `?semPaths`  と入力し、Enterキーを押すことでアクセスすることが可能である。以下がコードと結果のプロットである。
 
 \vspace{2mm}
 
 
 ```{r, fig.align="center", fig.width=4, fig.height=3, out.width="60%", eval=F}
-# Create Plot labels (left to right, bottom to top)
-labels <- c("Sleep\nQuality",
-            "Sleep\nLatency",
-            "Sleep\nEfficiency",
-            "Daytime\nDysfunction",
-            "Hyper-\nsomnia","Insomnia", 
-            "Lassitude")
+# macOS 用文字化け対策
+par(family= "HiraKakuProN-W3")
 
-# Plot
+# プロットラベルを作成（左から右、下から上）
+labels <- c("睡眠\nの質",
+            "睡眠\n潜時",
+            "睡眠\n効率",
+            "日中機\n能障害",
+            "過眠症","不眠", 
+            "倦怠感")
+
+# プロット
 semPaths(cfa.plot, 
          whatLabels = "est", 
          edge.color = "black", 
@@ -972,15 +975,15 @@ semPaths(cfa.plot,
 ```
 
 
-```{r, fig.align="center", fig.width=4, fig.height=3, out.width="60%", echo=F, eval=F}
-par(bg="#FFFEFA")
+```{r, fig.align="center", fig.width=4, fig.height=3, out.width="60%", echo=F}
+par(bg="#FFFEFA", family= "HiraKakuProN-W3")
 # Create Plot labels (left to right, bottom to top)
-labels <- c("Sleep\nQuality",
-            "Sleep\nLatency",
-            "Sleep\nEfficiency",
-            "Daytime\nDysfunction",
-            "Hyper-\nsomnia","Insomnia", 
-            "Lassitude")
+labels <- c("睡眠\nの質",
+            "睡眠\n潜時",
+            "睡眠\n効率",
+            "日中機\n能障害",
+            "過眠症","不眠", 
+            "倦怠感")
 
 # Plot
 semPaths(cfa.plot, 

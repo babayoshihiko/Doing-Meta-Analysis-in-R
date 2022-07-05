@@ -436,7 +436,8 @@ new_rob1_data <- data_rob1
 colnames(new_rob1_data)[2] <- "これはテスト"
 
 # 要約棒グラフを作成; macOS では文字化けするためフォントして
-rob_summary(data = new_rob1_data, tool = "ROB1") + theme_classic(base_family = "Hiragino Kaku Gothic Pro W3")
+rob_summary(data = new_rob1_data, tool = "ROB1") 
+  + theme_classic(base_family = "Hiragino Kaku Gothic Pro W3")
 ```
 
 
@@ -491,11 +492,11 @@ rob_summary(data_rob2, "ROB2") +
 rob_barplot <- rob_summary(data_rob2, "ROB2")
 
 # プロットを保存
-ggsave(plot = rob_barplot,        # Plot object to save
-       filename = "robplot2.png", # Destination file
-       width = 8,                 # Width of image (recommended)
-       height = 2.41,             # Height of image (recommended)
-       dpi = 1000)                # Resolution of image
+ggsave(plot = rob_barplot,        # 保存するオブジェクト
+       filename = "robplot2.png", # 保存先
+       width = 8,                 # 画像の幅（推奨値）
+       height = 2.41,             # 画像の高さ（推奨値）
+       dpi = 1000)                # 画像の解像度
 ```
 
 交通信号のプロットを保存する際も、やり方は同じである。しかし、`width` と `height` パラメータの最適な値は、含まれる研究の数や名前が変わると、プロットごとに異なるため、推奨値はない。
