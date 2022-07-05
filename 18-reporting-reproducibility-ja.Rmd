@@ -9,8 +9,8 @@
 
 
 
-<span class="firstcharacter">前</span>
-の章では、 _R_ でメタ分析を行うために使用できる様々なテクニック、アプローチ、戦略について説明してきた。しかし、統計解析の実行は、実際にはメタ分析「プロセス」全体のごく一部の割合を占めるに過ぎない。「野放し」では、よくあることである。
+<span class="firstcharacter">こ</span>
+れまでの章では、 _R_ でメタ分析を行うために使用できる様々なテクニック、アプローチ、戦略について説明してきた。しかし、統計解析の実行は、実際にはメタ分析「プロセス」全体のごく一部の割合を占めるに過ぎない。「現場」では、以下のような「事件」が発生する。
 
 * _R_ のコードにエラーが見つかったため、解析の一部を変更してやり直さなければならない。
 
@@ -143,7 +143,7 @@ knitr::include_graphics('images/rmd4_col.png')
 <br></br>
 
 
-## OSFレポジトリ {#osf}
+## OSF レポジトリ {#osf}
 
 ---
 
@@ -161,7 +161,7 @@ knitr::include_graphics('images/rmd4_col.png')
 ---
 
 
-OSFを使い始めるには、まず[ウェブサイト](https://osf.io/register)で個人アカウントを作成する必要がある。アカウントが作成されたら、 _R_ を使って直接リポジトリを操作できるように、**アクセストークン**を生成する必要がある。アクセストークンを取得するには、**Profile** &gt; **Settings** &gt; **Personal access tokens**に移動する必要がある。そこで、**Create token** をクリックする。
+OSF を使い始めるには、まず[ウェブサイト](https://osf.io/register)で個人アカウントを作成する必要がある。アカウントが作成されたら、 _R_ を使って直接リポジトリを操作できるように、**アクセストークン**を生成する必要がある。アクセストークンを取得するには、**Profile** &gt; **Settings** &gt; **Personal access tokens** に移動する必要がある。そこで、**Create token** をクリックする。
 
 \vspace{4mm}
 ```{r, message = F, out.width = '60%', echo = F, fig.align='center'}
@@ -171,7 +171,7 @@ knitr::include_graphics('images/osf1_col.png')
 \vspace{4mm}
 
 
-次に、**Scopes**の下にあるすべてのボックスにチェックを入れ、**Create token**を再度クリックする。すると、個人用のアクセストークンが表示されるはずである。このトークンをコピーして保存しておく。
+次に、**Scopes** の下にあるすべてのボックスにチェックを入れ、**Create token** を再度クリックする。すると、個人用のアクセストークンが表示されるはずである。このトークンをコピーして保存しておく。
 
 \vspace{4mm}
 ```{r, message = F, out.width = '60%', echo = F, fig.align='center'}
