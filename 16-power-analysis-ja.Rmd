@@ -254,7 +254,7 @@ Figure \@ref(fig:power) は、 真の効果量、研究数、研究間の異質�
 
 \vspace{2mm}
 
-```{r power,fig.width=5,fig.height=4, fig.align='center',echo=FALSE,fig.cap="Power of random-effects meta-analyses ($n$=50 in each study). Darker colors indicate higher between-study heterogeneity.", message=FALSE, warning=F, out.width="55%"}
+```{r power,fig.width=5,fig.height=4, fig.align='center',echo=FALSE,fig.cap="ランダム効果メタアナリシスの検出力（各研究 $n$=50）。色が濃いほど、研究間の異質性が高い。", message=FALSE, warning=F, out.width="55%"}
 library(ggplot2)
 library(reshape)
 source("data/power.analysis.random.R")
