@@ -17,7 +17,7 @@
 
 ---
 
-<img src="images/furukawa.jpg" width="130" align="right" alt="" class="cover" /> [**Toshi A. Furukawa**](http://ebmh.med.kyoto-u.ac.jp/professor.html) は、京都大学公衆衛生大学院のヘルスプロモーションと人間行動学の教授。研究統合とメタアナリシスの理論的側面と、エビデンスに基づく医療への応用の両方に焦点を当てた精力的な研究を行っている。
+<img src="images/furukawa.jpg" width="130" align="right" alt="" class="cover" /> [**Toshi A. Furukawa**](http://ebmh.med.kyoto-u.ac.jp/professor.html) （古川壽亮）は、京都大学公衆衛生大学院健康増進・行動学の教授。研究統合とメタアナリシスの理論的側面と、エビデンスに基づく医療への応用の両方に焦点を当てた精力的な研究を行っている。
 
 [![Twitter URL](https://img.shields.io/badge/@Toshi_FRKW-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/Toshi_FRKW)
 
@@ -28,5 +28,8 @@
 [![Twitter URL](https://img.shields.io/badge/@DDEbert-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/DDEbert)
 
 ---
+
+翻訳者：馬場美彦は、有限会社アウトソー、杏林大学医学部非常勤講師。博士（医学）。専門は地域包括ケア、まちづくり。高齢者介護の実践と研究を行なっている。
+
 
 <br></br>
