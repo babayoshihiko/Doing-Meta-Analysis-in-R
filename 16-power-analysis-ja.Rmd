@@ -1,6 +1,6 @@
 # (PART) 各種ツール  {-}
 
-# 検出力解析  {#power}
+# 検出力分析  {#power}
 
 ---
 
@@ -318,7 +318,7 @@ annotate("text", x = 6, y = 0.9, label = expression(theta==0.3),size=5, parse = 
 
 <br></br>
 
-## サブグループ解析  {#power-subgroup}
+## サブグループ分析  {#power-subgroup}
 
 ---
 
