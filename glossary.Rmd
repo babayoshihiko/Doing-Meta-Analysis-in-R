@@ -1,0 +1,30 @@
+---
+title: "Glossary for meta"
+author: "Yoshihiko Baba"
+date: "2022/7/10"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Glossary {-}
+
+## Common
+
+analysis: 分析 (eg meta-analysis, subgroup analysis, sensitivity analysis)
+
+meta-analysis: メタ分析
+
+effect size: 効果量
+
+## Chapter 5
+
+heterogeneity: 異質性
+
+## Chapter 8
+
+meta-regression: メタ回帰
+
+
