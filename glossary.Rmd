@@ -15,9 +15,26 @@ knitr::opts_chunk$set(echo = TRUE)
 
 analysis: 分析 (eg meta-analysis, subgroup analysis, sensitivity analysis)
 
-meta-analysis: メタ分析
+bias: バイアス
 
 effect size: 効果量
+
+evidence: エビデンス
+
+meta-analysis: メタ分析
+
+publication bias: 出版バイアス
+
+## Chapter 1
+
+narrative review: ナラティブレビュー
+
+systematic review: システマティックレビュー
+
+Individual Participant Data Meta-Analysis: 個別被験者データメタ分析
+
+Standardized Mean Differences: 標準化平均差
+
 
 ## Chapter 5
 
