@@ -135,8 +135,8 @@ knitr::include_graphics('images/subgroups_sep.png')
 ```
 
 
-\index{Mixed-Effects Model}
-\index{Meta-Regression}\index{メタ回帰}
+\index{Mixed-Effects Model}\index{混合効果モデル}
+\index{Meta-Regression}\index{メタ回帰}\index{メタ回帰}
 
 固定効果（複数）モデルは、ランダム効果（サブグループ内）と固定効果（サブグループは固定されていると仮定されているため）の両方を含むので、文献上では**混合効果モデル**としても知られている。Chapter \@ref(pooling-props) ですでにこの用語に触れている。たとえば、割合をプールするために使用できる異なるタイプの（一般化）混合効果モデルについて議論してきた。 
 

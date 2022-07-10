@@ -1447,7 +1447,7 @@ summary(m.mean)
 
 `metaprop` 関数は、割合のプールに使用することが可能である。Chapter \@ref(props)で、メタ分析を行う前に割合を logit 変換しておくとよいことを既に説明した。`sm = "PLOGIT"` を指定すると、 `metaprop` 関数が自動的にこれを行う。もし、生の比率をプールしたい場合は、 `sm = "PRAW"` を使用することができるが、これは推奨されていないことを覚えていただきたい。
 
-\index{Mixed-Effects Model}
+\index{Mixed-Effects Model}\index{混合効果モデル}
 
 `metaprop` が割合のプールを行うデフォルトの方法は、少々特殊である。logit 変換された値を使用する場合、この関数はプールのために逆分散法を使用せず、**一般化線形混合効果モデル** (generalized linear mixed-effects model, GLMM) を構築する。基本的には、この関数はロジスティック回帰モデルをデータに当てはめ、真の効果量が研究間で異なるという事実を説明するために、ランダム効果を含んでいる。
 

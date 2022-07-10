@@ -55,8 +55,8 @@ Standardized Mean Differences: 標準化平均差
 \index{Study Search}
 \index{Research Question}
 \index{PICO}
-\index{PRISMA Statement}
-\index{MARS Statement}
+\index{PRISMA Statement}\index{PRISMA 声明}
+\index{MARS Statement}\index{MARS 声明}
 \index{Cochrane, Handbook}
 \index{WEIRD Populations}
 \index{"File Drawer" Problem}
@@ -65,17 +65,17 @@ Standardized Mean Differences: 標準化平均差
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Power Analysis}\index{検出力分析}
 \index{Subgroup Analysis}\index{サブグループ解析}
-\index{Meta-Regression}
+\index{Meta-Regression}\index{メタ回帰}
 \index{Open Science Framework (OSF)}
 \index{Preprint}
 \index{Protocol}
-\index{PRISMA Statement}
+\index{PRISMA Statement}\index{PRISMA 声明}
 \index{Study Search}
-\index{PRISMA Statement}
+\index{PRISMA Statement}\index{PRISMA 声明}
 \index{Campbell Collaboration}
-\index{Risk of Bias}
+\index{Risk of Bias}\index{バイアスのリスク}
 \index{Cochrane, Risk of Bias Tool}
-\index{Risk of Bias}\index{バイアスリスク}
+\index{Risk of Bias}\index{バイアスのリスク}\index{バイアスリスク}
 \index{Cochrane, ROBINS-I Tool}
 
 Index 外
@@ -235,7 +235,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{dmetar Package}
 \index{Proportion}
 \index{Logit-Transformation}
-\index{Mixed-Effects Model}
+\index{Mixed-Effects Model}\index{混合効果モデル}
 \index{Maximum Likelihood}
 \index{dmetar Package}
 
@@ -285,7 +285,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Forest Plot}\index{フォレストプロット}
 \index{meta Package}
 \index{Logarithm, Natural}
-\index{Risk of Bias}
+\index{Risk of Bias}\index{バイアスのリスク}
 \index{Review Manager (RevMan)}
 \index{Drapery Plot}
 \index{P-Value}\index{P-値}
@@ -303,8 +303,8 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Cochran's \textit{Q}}
 \index{Fixed-Effects (Plural) Model}
 \index{Random-Effects Model}\index{ランダム効果モデル}
-\index{Mixed-Effects Model}
-\index{Meta-Regression}
+\index{Mixed-Effects Model}\index{混合効果モデル}
+\index{Meta-Regression}\index{メタ回帰}
 \index{Multilevel Meta-Analysis}
 \index{Power}\index{検出力}
 \index{Ecological Bias}
@@ -313,12 +313,12 @@ Individual Participant Data: 個別被験者データメタ分析
 ## Chapter 8
 
 \index{Subgroup Analysis}\index{サブグループ解析}
-\index{Meta-Regression}
+\index{Meta-Regression}\index{メタ回帰}
 \index{Sampling Error}\index{サンプル誤差}
-\index{Mixed-Effects Model}
+\index{Mixed-Effects Model}\index{混合効果モデル}
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Fixed-Effect}\index{固定効果モデル}
-\index{Mixed-Effects Model}
+\index{Mixed-Effects Model}\index{混合効果モデル}
 \index{Dummy Variable}
 \index{Weight}\index{重み}
 \index{Ordinary Least Squares (OLS)}
@@ -326,8 +326,8 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Wald-Type Test}
 \index{I$^2$, Higgins \& Thompson's}
 \index{Bubble Plot}
-\index{Risk of Bias}
-\index{Risk of Bias}
+\index{Risk of Bias}\index{バイアスのリスク}
+\index{Risk of Bias}\index{バイアスのリスク}
 \index{Interaction (Regression)}
 \index{Overfitting}
 \index{Ordinary Least Squares (OLS)}
@@ -387,7 +387,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Limit}
 \index{metasens Package}
 \index{Funnel Plot}\index{ファンネルプロット}
-\index{P-Curve}
+\index{P-Curve}\index{P-曲線}
 \index{P-Value}\index{P-値}
 \index{P-Hacking}
 \index{Questionable Research Practice (QRP)}
@@ -415,7 +415,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Three-Parameter Selection Model}
 \index{metafor Package}
 \index{PET-PEESE}
-\index{P-Curve}
+\index{P-Curve}\index{P-曲線}
 \index{Three-Parameter Selection Model}
 \index{Outlier}\index{外れ値}
 \index{Heterogeneity}\index{異質性}
@@ -521,9 +521,9 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Forest Plot}\index{フォレストプロット}
 \index{SUCRA Score}
 \index{dmetar Package}
-\index{Meta-Regression}
+\index{Meta-Regression}\index{メタ回帰}
 \index{gemtc Package}
-\index{Risk of Bias}
+\index{Risk of Bias}\index{バイアスのリスク}
 \index{Dummy Variable}
 \index{Akaike's Information Criterion}
 \index{WinBUGS}
