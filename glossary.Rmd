@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Common
 
-analysis: 分析 (eg meta-analysis, sensitivity analysis); 解析 (analysis plan, subgroup analysis)
+analysis: 分析 (analysis of variance, meta-analysis, power analysis, sensitivity analysis, unit of analysis); 解析 (analysis plan, subgroup analysis, survival analysis)
 
 bias: バイアス
 
@@ -25,6 +25,7 @@ meta-analysis: メタ分析
 
 publication bias: 出版バイアス
 
+
 ## Chapter 1
 
 narrative review: ナラティブレビュー
@@ -35,13 +36,669 @@ Individual Participant Data Meta-Analysis: 個別被験者データメタ分析
 
 Standardized Mean Differences: 標準化平均差
 
+\index{Review, Systematic}\index{レビュー, システマティック}
+\index{Review, Narrative}\index{レビュー, ナラティブ}
+
+
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{History of Meta-Analysis}
+今日、私たちは、Smith and Glass の研究が、対象研究のバイアス\index{バイアス}を制御しなかったために、心理療法の効果を過大評価した可能性があることを知っている [@cuijpers2019eysenck]。しかし、いくつかの心理療法が有効であるという主要な発見は、その後の数十年間で、他の無数のメタ分析によって裏付けらた。Eysenck の厳しい反応も、メタ分析がやがて様々な研究分野でよく使われる手法となったことを変えることはできなかった。
+\index{Cochrane}\index{コクラン}
+\index{Cochrane, Risk of Bias Tool}
+\index{Cochrane, Handbook}
+\index{Campbell Collaboration}
+\index{"Apples and Oranges" Problem}
+\index{"Garbage In, Garbage Out" Problem}
+\index{"File Drawer" Problem}
+\index{"Researcher Agenda" Problem}
+\index{Study Search}
+\index{Research Question}
+\index{PICO}
+\index{PRISMA Statement}
+\index{MARS Statement}
+\index{Cochrane, Handbook}
+\index{WEIRD Populations}
+\index{"File Drawer" Problem}
+\index{Analysis Plan}
+\index{Preregistration}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Power Analysis}\index{検出力分析}
+\index{Subgroup Analysis}
+\index{Meta-Regression}
+\index{Open Science Framework (OSF)}
+\index{Preprint}
+\index{Protocol}
+\index{PRISMA Statement}
+\index{Study Search}
+\index{PRISMA Statement}
+\index{Campbell Collaboration}
+\index{Risk of Bias}
+\index{Cochrane, Risk of Bias Tool}
+\index{Risk of Bias}\index{バイアスリスク}
+\index{Cochrane, ROBINS-I Tool}
+
+Index 外
+
+Individual Participant Data: 個別被験者データメタ分析
+
+## Chapter 2
+
+\index{R Studio}
+\index{Comprehensive _R_ Archive Network (CRAN)}
+\index{Package, _R_ }
+\index{Function, _R_ }
+\index{Function Argument}
+\index{tidyverse Package}
+\index{meta Package}
+\index{metafor Package}
+\index{dmetar Package}
+\index{Version, _R_ }
+\index{Data Frame}
+\index{openxlsx Package}
+\index{Pipe, _R_ }
+
+## Chapter 3
+
+\index{Mean, Arithmetic}\index{平均, 算術}
+\index{Correlation}\index{相関}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Sampling Error}\index{サンプル誤差}
+\index{Central Limit Theorem}\index{中心極限定理}
+\index{Mean, Arithmetic}\index{平均, 算術}
+\index{Proportion}\index{割合}
+\index{Odds}\index{オッズ}
+\index{Logit-Transformation}\index{Logit-変換}
+\index{Logarithm, Natural}\index{対数, 自然}
+\index{Correlation}\index{相関}
+\index{History of Meta-Analysis}\index{メタ分析の歴史}
+\index{Fisher's \textit{z}}
+\index{History of Meta-Analysis}\index{メタ分析の歴史}
+\index{Correlation}\index{相関}
+\index{Correlation, Point-Biserial}\index{相関, 点双列}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Pooled Standard Deviation}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Cohen's \textit{d}}
+\index{esc Package}
+\index{Hedges' \textit{g}}
+\index{Standardized Mean Difference}\index{標準化平均差}
+群内平均差の標準化版を計算したい場合は、より複雑になる。$\text{SMD}_{\text{within}}$ をどのように計算すべきかについて、完全なコンセンサスはない。[ブログ記事](http://jakewestfall.org/blog/index.php/2016/03/25/five-different-cohens-d-statistics-for-within-subject-designs/)で、Jake Westfall は少なくとも5つの異なる計算方法があることを指摘している。
+\index{Risk Ratio}\index{リスク比}
+\index{Log-Risk Ratio}\index{対数リスク比}
+\index{Zero Cell Problem}\index{ゼロセル問題}
+\index{Continuity Correction}\index{連続性補正}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
+\index{Odds Ratio}\index{オッズ}
+\index{Odds}\index{オッズ}\index{オッズ比}
+\index{Log-Odds Ratio}\index{対数オッズ比}
+\index{Zero Cell Problem}\index{ゼロセル問題}
+\index{Risk Ratio}\index{リスク比}
+\index{Incidence Rate Ratio}\index{発生率比}
+\index{Person-Time}\index{人-時間}
+\index{Survival Analysis}\index{生存解析}
+\index{Odds Ratio}\index{オッズ比}
+\index{Censoring}
+\index{Person-Time}\index{人-時間}
+\index{Log-Incidence Rate Ratio}\index{対数発生率比}
+\index{Hedges' \textit{g}}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{esc Package}
+\index{Unreliability Correction}
+\index{Attenuation}\index{減衰}
+\index{Hedges' \textit{g}}
+\index{Fisher's \textit{z}}
+\index{Range Restriction Correction}\index{範囲制限の補正}
+\index{Hedges' \textit{g}}
+\index{Fisher's \textit{z}}
+\index{Psychometric Meta-Analysis}\index{計量心理学的メタアナリシス}
+\index{Analysis of Variance}
+\index{Unit-of-Analysis Problem}\index{分析単位問題}
+\index{Double-Counting}\index{二重カウント}
+\index{Multilevel Meta-Analysis}\index{マルチレベルメタ分析}
+43x235x6x77:Doing-Meta-Analysis-in-R baba$ 
+
+
+
+## Chapter 4
+
+\index{meta Package}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{Sampling Error}\index{サンプル誤差}
+\index{Weight}
+\index{Inverse-Variance Weighting}
+\index{Mantel-Haenszel Method}
+\index{Peto Method}
+\index{dmetar Package}
+\index{esc Package}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Hedges' \textit{g}}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Heterogeneity}
+\index{Sampling Error}\index{サンプル誤差}
+\index{Exchangeability Assumption}
+\index{Heterogeneity}
+\index{Weight}
+\index{Inverse-Variance Weighting}
+\index{DerSimonian-Laird Estimator}
+\index{Restricted Maximum Likelihood Estimator}
+\index{Maximum Likelihood}
+\index{Sidik-Jonkman Estimator}
+\index{Review Manager (RevMan)}
+\index{Comprehensive Meta-Analysis (CMA)}
+\index{Paule-Mandel Estimator}
+\index{metafor Package}
+\index{Sidik-Jonkman Estimator}
+\index{Restricted Maximum Likelihood Estimator}
+\index{Knapp-Hartung Adjustment}
+\index{Wald-Type Test}
+\index{t-Distribution}
+\index{Heterogeneity}
+\index{meta Package}
+\index{Function Argument}
+\index{Position Matching}
+\index{Documentation, _R_}
+\index{Hedges' \textit{g}}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{dmetar Package}
+\index{Weight}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Glass' Delta}
+\index{Knapp-Hartung Adjustment}
+\index{Risk Ratio}
+\index{Odds Ratio}
+\index{Inverse-Variance Weighting}
+\index{Sparse Data}
+\index{Mantel-Haenszel Method}
+\index{Peto Method}
+\index{Peto Odds Ratio}
+\index{Continuity Correction}
+\index{Zero Cell Problem}
+\index{dmetar Package}
+\index{Paule-Mandel Estimator}
+\index{Mantel-Haenszel Method}
+\index{Exponentiation}
+\index{Logarithm, Natural}
+\index{Incidence Rate Ratio}
+\index{Person-Time}
+\index{Inverse-Variance Weighting}
+\index{Mantel-Haenszel Method}
+\index{Paule-Mandel Estimator}
+\index{Correlation}\index{相関}
+\index{Fisher's \textit{z}}
+\index{dmetar Package}
+\index{Restricted Maximum Likelihood Estimator}
+\index{Mean, Arithmetic}
+\index{dmetar Package}
+\index{Proportion}
+\index{Logit-Transformation}
+\index{Mixed-Effects Model}
+\index{Maximum Likelihood}
+\index{dmetar Package}
 
 ## Chapter 5
 
-heterogeneity: 異質性
+\index{Heterogeneity}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Cochran's \textit{Q}}
+\index{Inverse-Variance Weighting}
+\index{Sampling Error}\index{サンプル誤差}
+\index{Cochran's \textit{Q}}
+\index{meta Package}
+\index{DerSimonian-Laird Estimator}
+\index{I$^2$, Higgins \& Thompson's}
+\index{I$^2$, Higgins \& Thompson's}
+\index{Sampling Error}\index{サンプル誤差}
+\index{I$^2$, Higgins \& Thompson's}
+\index{Heterogeneity}
+\index{Prediction Interval}
+\index{Cochran's \textit{Q}}
+\index{I$^2$, Higgins \& Thompson's}
+\index{Outlier}
+\index{Influential Case}
+\index{dmetar Package}
+\index{Weight}
+\index{I$^2$, Higgins \& Thompson's}
+\index{Influential Case}
+\index{Leave-One-Out Method}
+\index{dmetar Package}
+\index{Leave-One-Out Method}
+\index{Sampling Error}\index{サンプル誤差}
+\index{Cook's Distance}
+\index{Cochran's \textit{Q}}
+\index{Leave-One-Out Method}
+\index{Forest Plot}
+\index{metafor Package}
+\index{Machine Learning}
+\index{dmetar Package}
+\index{Gaussian Mixture Model}
+\index{DBSCAN}
+\index{K-Means}
+\index{Cook's Distance}
+\index{Weight}
+
+## Chapter 6
+
+\index{Forest Plot}
+\index{meta Package}
+\index{Logarithm, Natural}
+\index{Risk of Bias}
+\index{Review Manager (RevMan)}
+\index{Drapery Plot}
+\index{P-Value}
+
+## Chapter 7
+
+\index{Outlier}
+\index{Influential Case}
+\index{Heterogeneity}
+\index{Subgroup Analysis}
+\index{Moderator Analysis}
+\index{Fixed-Effects (Plural) Model}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Heterogeneity}
+\index{Cochran's \textit{Q}}
+\index{Fixed-Effects (Plural) Model}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Mixed-Effects Model}
+\index{Meta-Regression}
+\index{Multilevel Meta-Analysis}
+\index{Power}
+\index{Ecological Bias}
+\index{meta Package}
 
 ## Chapter 8
 
-meta-regression: メタ回帰
+\index{Subgroup Analysis}
+\index{Meta-Regression}
+\index{Sampling Error}\index{サンプル誤差}
+\index{Mixed-Effects Model}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{Mixed-Effects Model}
+\index{Dummy Variable}
+\index{Weight}
+\index{Ordinary Least Squares (OLS)}
+\index{Weighted Least Squares (WLS)}
+\index{Wald-Type Test}
+\index{I$^2$, Higgins \& Thompson's}
+\index{Bubble Plot}
+\index{Risk of Bias}
+\index{Risk of Bias}
+\index{Interaction (Regression)}
+\index{Overfitting}
+\index{Ordinary Least Squares (OLS)}
+\index{Maximum Likelihood}
+\index{Parsimony}
+\index{Analysis Plan}
+\index{Permutation}
+\index{Multi-Collinearity}
+\index{Overfitting}
+\index{Step-Wise Regression}
+\index{Multi-Model Inference}
+\index{meta Package}
+\index{metafor Package}
+\index{dmetar Package}
+\index{Multi-Collinearity}
+\index{PerformanceAnalytics Package}
+\index{metafor Package}
+\index{Analysis of Variance}
+\index{Maximum Likelihood}
+\index{Restricted Maximum Likelihood Estimator}
+\index{Likelihood Ratio Test}
+\index{Akaike's Information Criterion}
+\index{Interaction (Regression)}
+\index{Permutation}
+\index{Multi-Model Inference}
+\index{Akaike's Information Criterion}
+
+## Chapter 9
+
+\index{Publication Bias}
+\index{File Drawer Problem}
+\index{Reporting Bias}
+\index{Citation Bias}
+\index{Time-Lag Bias}
+\index{Multiple Publication Bias}
+\index{Language Bias}
+\index{Outcome Reporting Bias}
+\index{Questionable Research Practice (QRP)}
+\index{P-Hacking}
+\index{HARKing}
+\index{Study Search}
+\index{Open Science Framework (OSF)}
+\index{Small-Study Effect}
+\index{File Drawer Problem}
+\index{Funnel Plot}
+\index{Fidelity, Treatment}
+\index{Egger's Test}
+\index{tidyverse Package}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Peter's Test}
+\index{Weighted Least Squares (WLS)}
+\index{Trim and Fill Method}
+\index{PET-PEESE}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Limit}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Limit}
+\index{metasens Package}
+\index{Funnel Plot}
+\index{P-Curve}
+\index{P-Value}
+\index{P-Hacking}
+\index{Questionable Research Practice (QRP)}
+\index{Small-Study Effect}
+\index{Trim and Fill Method}
+\index{Power}
+\index{Binomial Test}
+\index{Fisher's Method}
+\index{Stouffer's Method}
+\index{History of Meta-Analysis}
+\index{Power}
+\index{t-Distribution}
+\index{P-Hacking}
+\index{dmetar Package}
+\index{Outlier}
+\index{t-Distribution}
+\index{Non-Centrality Parameter}
+\index{Power}
+\index{Kolmogorov-Smirnov Test}
+\index{Cohen's \textit{d}}
+\index{Selection Model}
+\index{Step Function}
+\index{Weight}
+\index{Step Function}
+\index{Three-Parameter Selection Model}
+\index{metafor Package}
+\index{PET-PEESE}
+\index{P-Curve}
+\index{Three-Parameter Selection Model}
+\index{Outlier}
+\index{Heterogeneity}
+\index{I$^2$, Higgins \& Thompson's}
+
+## Chapter 10
+
+\index{Multilevel Meta-Analysis}
+\index{Sampling Error}\index{サンプル誤差}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Unit-of-Analysis Problem}
+\index{Cluster Effect}
+\index{meta Package}
+\index{metafor Package}
+\index{dmetar Package}
+\index{Fisher's \textit{z}}
+\index{esc Package}
+\index{I$^2$, Higgins \& Thompson's}
+\index{dmetar Package}
+\index{Occam's Razor}
+\index{Analysis of Variance}
+\index{Subgroup Analysis}
+\index{Moderator Analysis}
+
+## Chapter 11
+
+\index{Analysis of Variance}
+\index{Subgroup Analysis}
+\index{Structural Equation Model}
+\index{Multivariate Meta-Analysis}
+\index{Factor Analysis}
+\index{Path Diagram}
+\index{Maximum Likelihood}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{metaSEM Package}
+\index{Weighted Least Squares (WLS)}
+\index{Multivariate Meta-Analysis}
+\index{metaSEM Package}
+\index{dmetar Package}
+\index{Maximum Likelihood}
+\index{Wald-Type Test}
+\index{Prediction Interval}
+\index{Factor Analysis}
+\index{Root Mean Square Error of Approximation (RMSEA)}
+\index{Path Diagram}
+\index{semPlot Package}
+
+## Chapter 12
+
+\index{Mixed-Treatment Comparison Meta-Analysis}
+\index{Consistency}
+\index{Graph Theory}
+\index{Consistency}
+\index{推移性 Assumption}
+\index{Consistency}
+\index{推移性 Assumption}
+\index{Exchangeability Assumption}
+\index{Node Splitting}
+\index{Frequentist Statistics}
+\index{Bayesian Hierarchical Model}
+\index{netmeta Package}
+\index{Frequentist Statistics}
+\index{Graph Theory}
+\index{Consistency}
+\index{dmetar Package}
+\index{Consistency}
+\index{Heterogeneity}
+\index{Cochran's \textit{Q}}
+\index{Network Graph}
+\index{dmetar Package}
+\index{Mean Path Length}
+\index{Minimal Parallelism}
+\index{Surface Under the Cumulative Ranking (SUCRA) Score}
+\index{P-Score}
+\index{Forest Plot}
+\index{Consistency}
+\index{Node Splitting}
+\index{Funnel Plot}
+\index{Bayes' Theorem}
+\index{Frequentist Statistics}
+\index{Conditional Probability}
+\index{Posterior Distribution}
+\index{Prior Distribution}
+\index{Credible Interval}
+\index{Credible Interval}
+\index{Markov Chain Monte Carlo}
+\index{Gibbs Sampler}
+\index{Bayesian Hierarchical Model}
+\index{Uninformative Prior}
+\index{Prior Distribution}
+\index{gemtc Package}
+\index{Gibbs Sampler}
+\index{JAGS}
+\index{rjags Package}
+\index{dmetar Package}
+\index{Network Graph}
+\index{Markov Chain Monte Carlo}
+\index{Markov Chain Monte Carlo}
+\index{Potential Scale Reduction Factor}
+\index{Node Splitting}
+\index{Consistency}
+\index{Forest Plot}
+\index{SUCRA Score}
+\index{dmetar Package}
+\index{Meta-Regression}
+\index{gemtc Package}
+\index{Risk of Bias}
+\index{Dummy Variable}
+\index{Akaike's Information Criterion}
+\index{WinBUGS}
+
+## Chapter 13
+
+\index{Analysis of Variance}
+\index{Subgroup Analysis}
+\index{Structural Equation Model}
+\index{Multivariate Meta-Analysis}
+\index{Factor Analysis}
+\index{Path Diagram}
+\index{Maximum Likelihood}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{metaSEM Package}
+\index{Weighted Least Squares (WLS)}
+\index{Multivariate Meta-Analysis}
+\index{metaSEM Package}
+\index{dmetar Package}
+\index{Maximum Likelihood}
+\index{Wald-Type Test}
+\index{Prediction Interval}
+\index{Factor Analysis}
+\index{Root Mean Square Error of Approximation (RMSEA)}
+\index{Path Diagram}
+\index{semPlot Package}
+
+## Chapter 12
+
+\index{Mixed-Treatment Comparison Meta-Analysis}
+\index{Consistency}
+\index{Graph Theory}
+\index{Consistency}
+\index{推移性 Assumption}
+\index{Consistency}
+\index{推移性 Assumption}
+\index{Exchangeability Assumption}
+\index{Node Splitting}
+\index{Frequentist Statistics}
+\index{Bayesian Hierarchical Model}
+\index{netmeta Package}
+\index{Frequentist Statistics}
+\index{Graph Theory}
+\index{Consistency}
+\index{dmetar Package}
+\index{Consistency}
+\index{Heterogeneity}
+\index{Cochran's \textit{Q}}
+\index{Network Graph}
+\index{dmetar Package}
+\index{Mean Path Length}
+\index{Minimal Parallelism}
+\index{Surface Under the Cumulative Ranking (SUCRA) Score}
+\index{P-Score}
+\index{Forest Plot}
+\index{Consistency}
+\index{Node Splitting}
+\index{Funnel Plot}
+\index{Bayes' Theorem}
+\index{Frequentist Statistics}
+\index{Conditional Probability}
+\index{Posterior Distribution}
+\index{Prior Distribution}
+\index{Credible Interval}
+\index{Credible Interval}
+\index{Markov Chain Monte Carlo}
+\index{Gibbs Sampler}
+\index{Bayesian Hierarchical Model}
+\index{Uninformative Prior}
+\index{Prior Distribution}
+\index{gemtc Package}
+\index{Gibbs Sampler}
+\index{JAGS}
+\index{rjags Package}
+\index{dmetar Package}
+\index{Network Graph}
+\index{Markov Chain Monte Carlo}
+\index{Markov Chain Monte Carlo}
+\index{Potential Scale Reduction Factor}
+\index{Node Splitting}
+\index{Consistency}
+\index{Forest Plot}
+\index{SUCRA Score}
+\index{dmetar Package}
+\index{Meta-Regression}
+\index{gemtc Package}
+\index{Risk of Bias}
+\index{Dummy Variable}
+\index{Akaike's Information Criterion}
+\index{WinBUGS}
+
+## Chapter 13
+
+\index{gemtc Package}
+\index{Frequentist Statistics}
+\index{Bayesian Hierarchical Model}
+\index{Prior Distribution}
+\index{Markov Chain Monte Carlo}
+\index{Gibbs Sampler}
+\index{brms Package}
+\index{No-U-Turn Sampler (NUTS)}
+\index{meta Package}
+\index{metafor Package}
+\index{Posterior Distribution}
+\index{Uninformative Prior}
+\index{Weakly Informative Prior}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{extraDistr Package}
+\index{brms Package}
+\index{STAN}
+\index{Generalized Additive Model}
+\index{Markov Chain Monte Carlo}
+\index{Potential Scale Reduction Factor}
+\index{Credible Interval}
+\index{Posterior Distribution}
+\index{Empirical Cumulative Distribution Function (ECDF)}
+\index{Forest Plot}
+\index{tidybayes Package}
+
+## Chapter 14
+
+\index{Power Analysis}\index{検出力分析}
+\index{Potential Scale Reduction Factor}
+\index{Cochrane}
+\index{Power} 
+\index{Power Approach Paradox}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{Cumulative Distribution Function (CDF)}
+\index{dmetar Package}
+\index{Random-Effects Model}\index{ランダム効果モデル}
+\index{Subgroup Analysis}
+
+## Chapter 16
+
+\index{Markdown, _R_}
+\index{Open Science Framework (OSF)}
+\index{Project, _R_}
+\index{Markdown, _R_}
+\index{Open Science Framework (OSF)}
+\index{Preregistration}
+
+## Chapter 17
+
+\index{meta Package}
+\index{esc Package}
+\index{Mean, Arithmetic}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{Hedges' \textit{g}}
+\index{Correlation}\index{相関}
+\index{Correlation}\index{相関}
+\index{Correlation, Point-Biserial}
+\index{Analysis of Variance}
+\index{Standardized Mean Difference}\index{標準化平均差}
+\index{P-Value}
+\index{dmetar Package}
+\index{Odds Ratio}
+\index{Number Needed To Treat}\index{治療必要例数}
+\index{Area Under The Curve (AUC)}\index{曲線下面積}
+\index{dmetar Package}
+\index{Unit-of-Analysis Problem}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 

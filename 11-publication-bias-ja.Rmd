@@ -421,7 +421,7 @@ $~$            | `Intercept` | `ConfidenceInterval` | `t`        | `p`
 
 
 
-\index{Standardized Mean Difference}
+\index{Standardized Mean Difference}\index{標準化平均差}
 
 `m.gen` で使われている効果量の指標は、スモールサンプルバイアス補正 SMD (Hedges' $g$ ) である。SMD で Egger 検定を実行すると、偽陽性の結果が膨らむ可能性があると議論されている [@pustejovsky2019testing]。これは、研究の標準化平均差と標準誤差が独立していないためである。 
 
@@ -712,7 +712,7 @@ title("Funnel Plot (Trim & Fill Method) - Outliers Removed")
 ---
 
 \index{PET-PEESE}
-\index{Standardized Mean Difference}
+\index{Standardized Mean Difference}\index{標準化平均差}
 
 Duval &amp; Tweedieのトリム＆フィル法は比較的古く、間違いなく小規模研究の効果を調整する最も一般的な方法の1つである。しかし、前述したように完璧とは言い難いアプローチであり、プール効果のバイアス補正版を推定する唯一の方法というわけではない。近年、**PET-PEESE** [@stanley2014meta; @stanley2008meta] という手法が、特に SMD がアウトカムとして頻繁に使われる研究分野（例えば、心理学や教育研究）で、ますます人気が出てきている。これまでのすべての手法と同様に、PET-PEESE は、出版バイアスの潜在的な指標とみなされる小規模研究の効果に狙いを定めている。
 
@@ -783,7 +783,7 @@ PET と PEESE のどちらを使用するかは、PET 法で計算された切�
 dat.petpeese <- data.frame(TE = m.gen$TE)
 ```
 
-\index{Standardized Mean Difference}
+\index{Standardized Mean Difference}\index{標準化平均差}
 
 次に、効果量の標準誤差が必要である。PET-PEESE では、Pustejovsky and Rodgers [-@pustejovsky2019testing, Chapter \@ref(eggers-test) を参照] が提案した修正標準誤差 を使用するとよい^[James Pustejovsky もこの方法を[ブログ記事](https://www.jepusto.com/pet-peese-performance/)で推奨していて、この代替方法を「SPET-SPEESE」と呼んでいる]。 
 

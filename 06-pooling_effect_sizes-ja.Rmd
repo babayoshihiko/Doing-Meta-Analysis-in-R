@@ -18,8 +18,8 @@ _R_ で効果量をプールすることができるパッケージは数多く�
 
  **{meta}** パッケージでは、効果量がプールされる方法について、多くの詳細を微調整することが可能である。以前述べたように、メタ分析には多くの 「研究者の自由度」が伴う。適用できる統計手法やアプローチに関する選択肢は無数にあり、ある手法が他の手法より優れているかどうかは、しばしば文脈に依存する。
 
-\index{Fixed-Effect Model}
-\index{Random-Effects Model}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{Random-Effects Model}\index{ランダム効果モデル}
 
 したがって、 _R_ で分析を始める前に、メタ分析の統計的な前提条件と、その背後にある数学について基本的な理解を深める必要があるのである。メタ分析の背後にある「考え方」についても触れておくことも重要である。統計学では、この「考え方」は**モデル**と訳されるが、メタ分析のモデルがどのようなものかを見ていきる。
 
@@ -58,8 +58,8 @@ knitr::include_graphics('images/model_concept_sep.png')
 ### 固定効果モデルの場合 {#fem}
 
 
-\index{Fixed-Effect Model}
-\index{Sampling Error}
+\index{Fixed-Effect}\index{固定効果モデル}
+\index{Sampling Error}\index{サンプル誤差}
 
 固定効果モデルは、すべての効果量が単一の均質な集団に由来すると仮定している。これは、すべての研究が、同じ**真の**効果量を共有していることを述べている。この真の効果は、メタ分析で計算したい全体的な効果量で、$\theta$ と表記される。
 
@@ -169,7 +169,7 @@ w_k = \frac{1}{s^2_k}
 
 
 \index{esc Package}
-\index{Standardized Mean Difference}
+\index{Standardized Mean Difference}\index{標準化平均差}
 \index{Hedges' \textit{g}}
 
 `SuicidePrevention` のデータセットには、生の効果量が含まれているので、まず効果量を計算する必要がある。この例では、小サンプル調整済み標準化平均差（Hedges' $g$）を計算する。これを行うには、 **{esc}** パッケージの `esc_mean_sd` 関数を使用する（Chapter \@ref(b-group-smd)）。
@@ -242,7 +242,7 @@ pooled_effect
 ### ランダム効果モデル {#rem}
 
 
-\index{Random-Effects Model}
+\index{Random-Effects Model}\index{ランダム効果モデル}
 
 
 これまで見てきたように、固定効果モデルは、メタ分析データの成り立ちや、効果をプールする方法を概念化する一つの方法である。しかし、重要なのは、この方法が現実を適切に反映しているかということである。
@@ -259,7 +259,7 @@ pooled_effect
 
 その逆で、研究の効果量に本当の差がある理由は無数にあるのである。ランダム効果モデルは、このような懸念に対応するものである。このモデルは、私たちのデータの背後にある現実をよりよく反映するモデルを提供してくれる。
 
-\index{Sampling Error}
+\index{Sampling Error}\index{サンプル誤差}
 
 ランダム効果モデルでは、効果量が単一の均質な母集団から抽出された場合よりも分散を示すという事実を考慮したいと思われる [@hedges1998fixed]。したがって、個々の研究の効果は、サンプル誤差だけによる偏差ではなく、**別の**分散の原因があると仮定する。
 
@@ -533,7 +533,7 @@ _R_ 関数のもう一つの興味深い点は、ポジション・マッチン�
 それでは、メタ分析関数のツアーを `metagen` から始めよう。これまで学んだように、この関数は事前に計算された効果量のデータに使用することが可能である。最初の例では、この関数を使用して `ThirdWave` データセットのメタ分析を実行する。
 
 \index{Hedges' \textit{g}}
-\index{Standardized Mean Difference}
+\index{Standardized Mean Difference}\index{標準化平均差}
 
 このデータセットには、いわゆる "Third Wave" の心理療法が大学生の知覚ストレスに及ぼす影響を調べた研究が含まれている。各研究について、試験後における治療群と対照群の標準化平均差を計算し、小サンプル補正を適用する。したがって、このメタ分析で使用される効果量の指標は、Hedges' $g$である。それでは、データを見てみよう。
 
@@ -664,7 +664,7 @@ summary(m.gen)
 m.gen$TE.random
 ```
 
-\index{Fixed-Effect Model}
+\index{Fixed-Effect}\index{固定効果モデル}
 
 `fixed =  FALSE` を指定した場合でも、 **{meta}** の関数は常に内部で固定効果モデルの結果も計算している。そのため、固定効果モデルを仮定したプール効果にもアクセスすることが可能である。
 
@@ -702,7 +702,7 @@ save(m.gen, file = "path/to/my/meta-analysis.rda") # example path
 
 
 
-\index{Standardized Mean Difference}
+\index{Standardized Mean Difference}\index{標準化平均差}
 \index{Glass' Delta}
 
 2つの群の平均と標準偏差の形式で表される生の効果量データは、 `metacont` を使ってプールすることが可能である。この関数は、標準化された群間平均差と標準化されていない群間平均差の両方に使用することが可能である。これらは `sm = "SMD"` または `sm = "MD"` を指定することで得ることが可能である。それ以外では、7つの関数固有の引数を指定する必要がある。
@@ -1285,7 +1285,7 @@ summary(m.inc)
 
 
 
-\index{Correlation}
+\index{Correlation}\index{相関}\index{相関}
 \index{Fisher's \textit{z}}
 
 相関は `metacor` 関数を用いてプールすることができ、これは一般的な逆分散プーリング法を用いる。Chapter \@ref(pearson-cors) では、相関をプールする前に Fisher's $z$ 変形が必要であることを説明した。デフォルトでは、 `metacor` がこの変換を自動的に行ってくれる。したがって、この関数には、研究で報告されたオリジナルの未変換の相関を与えれば十分である。 `metacor` 関数には、関数固有の引数が2つだけある。

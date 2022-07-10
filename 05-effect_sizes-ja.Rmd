@@ -39,7 +39,7 @@ Chapter \@ref(what-are-mas) では、メタ分析を「複数の研究から得�
 
 本書で使用する用語では、効果量は2つの実体の間の関係を定量化する指標と定義される。これは、この関係の**方向**と**大きさ**を捉えたものである。関係性が同じ効果量として表現されていれば、それらを比較することが可能である。
 
-\index{Correlation}\index{相関}
+\index{Correlation}\index{相関}\index{相関}\index{相関}\index{相関}
 \index{Standardized Mean Difference}\index{標準化平均差}
 
 ここで強調したいのは、これは効果量の意味を定義するための**1つ**の方法に過ぎないということである。効果量の定義には幅があり、人によって使い方が異なる [@borenstein2011introduction, chapter 3]。研究者の中には、介入研究の結果に言及する際にのみ効果量を語る人もおり、それは治療群と対照群の差として表現される（Chapter \@ref(s-md) 参照）。この概念では、「効果量」とは、ある治療の効果とその大きさを指す。
@@ -327,7 +327,7 @@ SE_{p_{\text{logit}}} = \sqrt{\frac{1}{np}+\frac{1}{n(1-p)}}
 
 ---
 
-\index{Correlation}\index{相関}
+\index{Correlation}\index{相関}\index{相関}\index{相関}\index{相関}
 \index{History of Meta-Analysis}\index{メタ分析の歴史}
 
 相関とは、2つの変数間の**共分散**の大きさを表す効果量である。最も一般的なのは、2つの連続変数に対して計算できる**ピアソン積率相関** (Pearson Product-Moment Correlation)^[この相関は、メタ分析の歴史にも関わる有名な統計学者 Karl Pearson（Chapter \@ref(history) 参照）から名付けられた]であり、この積率相関は、例えば、メタ分析の研究者が2つの変数の間の**共分散**の量を表す効果量として用いることが可能である。積率相関は、例えば、メタ分析で関係の質と幸福度の関係を調べたいときに、効果量として使うことができる。
@@ -409,7 +409,7 @@ z
 
 ---
 
-\index{Correlation}\index{相関}
+\index{Correlation}\index{相関}\index{相関}\index{相関}\index{相関}
 \index{Correlation, Point-Biserial}\index{相関, 点双列}
 
 ピアソン積率相関は、2つの連続変数間の関係を記述する。一方の変数 $y$ だけが連続的で、もう一方の変数 $x$ が二値的（つまり、2つの値だけをとる）な場合、$x$ のグループ・メンバーシップから $y$ がどれだけ予測できるかを表す**点双列相関** (point-biserial correlation) を計算することができる。
@@ -878,7 +878,7 @@ _R_ でメタ分析を行う場合、通常、研究の対数リスク比を手�
 ---
 
 \index{Odds Ratio}\index{オッズ}
-\index{Odds}\index{オッズ比}
+\index{Odds}\index{オッズ}\index{オッズ比}
 
 リスク比（Chapter \@ref(rr)）と同様に、**オッズ比**も2群2値のアウトカムデータがある場合に計算することが可能である。前回の割合の章（Chapter \@ref(props)）で、オッズを「あるカテゴリーに該当する個数を、そのカテゴリーに該当しない個数で割ったもの」と定義したが、今回は「あるカテゴリーに該当する個数を、そのカテゴリーに該当しない個数で割ったもの」と定義する。
 
