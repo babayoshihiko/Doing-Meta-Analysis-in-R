@@ -339,7 +339,7 @@ PICO フレームワークはメタ分析の適格基準を指定する優れた
 
 ---
 
-\index{Analysis Plan}
+\index{Analysis Plan}\index{解析計画}
 \index{Preregistration}
 
 リサーチクエスチョンと適格基準を設定したら、**解析計画** [@pigott2020methodological; @tipton2019history] も書くのが賢明だろう。統計学では、**a priori** （先験的）と **post hoc** （事後）の分析に重要な区別がある。a priori 分析とは、**データを見る前に**指定される分析である。post hoc 分析あるいは探索的分析は、**データを見た後**、あるいはデータから示唆される結果に基づいて行われる。
@@ -352,8 +352,8 @@ _R_ を使う場合は、分析の各ステップを他の人が再実行でき�
 
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Power Analysis}\index{検出力分析}
-\index{Subgroup Analysis}
-\index{Meta-Regression}
+\index{Subgroup Analysis}\index{サブグループ解析}
+\index{Meta-Regression}\index{メタ回帰}
 
 解析計画には、必ず明記すべきことが何点かある。どのような情報を抽出するのか、含まれる研究ごとにどのような効果量指標を算出するのかを明確にしておく必要がある（Chapter \@ref(effects)）。また、各研究の結果をプールする際に、研究間のばらつきの大きさを考慮して、**固定効果モデル**と**ランダム効果モデル**のどちらを使用するかをあらかじめ決めておくとよいだろう（Chapter \@ref(pooling-es)参照）。また、メタ分析で統計的に有意な効果を得るために必要な研究数を決定するために、先験的な**検出力分析**も役に立つ（「ツール」の Chapter \@ref(power) 参照）。
 

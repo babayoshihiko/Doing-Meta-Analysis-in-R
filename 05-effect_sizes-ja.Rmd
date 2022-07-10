@@ -847,7 +847,7 @@ se_log_rr
 
 \index{Zero Cell Problem}\index{ゼロセル問題}
 \index{Continuity Correction}\index{連続性補正}
-\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}\index{Mantel-Haenszel 法}
 
 **ゼロセル**があると、リスク比の計算が難しくなる。実際には、$a$ または $c$ （あるいはその両方）がゼロであることがあり、これは治療群でも対照群でもイベントが記録されていないことを意味する。RRの計算式を見ると、なぜこれが問題なのかがよくわかる。$a$（治療群のイベント）がゼロなら、${p_{E}}_{\text{treat}}$ もゼロで、RR はゼロになる。$c$ がゼロの場合はさらに問題で、${p_{E}}_{\text{control}}$ がゼロということになり、**ゼロで割れない** ということがわかる。
 
@@ -877,8 +877,8 @@ _R_ でメタ分析を行う場合、通常、研究の対数リスク比を手�
 
 ---
 
-\index{Odds Ratio}\index{オッズ}
-\index{Odds}\index{オッズ}\index{オッズ比}
+\index{Odds Ratio}\index{オッズ比}
+\index{Odds}\index{オッズ}
 
 リスク比（Chapter \@ref(rr)）と同様に、**オッズ比**も2群2値のアウトカムデータがある場合に計算することが可能である。前回の割合の章（Chapter \@ref(props)）で、オッズを「あるカテゴリーに該当する個数を、そのカテゴリーに該当しない個数で割ったもの」と定義したが、今回は「あるカテゴリーに該当する個数を、そのカテゴリーに該当しない個数で割ったもの」と定義する。
 
@@ -980,7 +980,7 @@ _R_ のオッズ比のメタ分析を行うには、以下の列をデータセ�
 
 
 \index{Incidence Rate Ratio}\index{発生率比}
-\index{Person-Time}\index{人-時間}
+\index{Person-Time}\index{人-時間}\index{人-時間}
 
 効果量の推定に時間を組み込むために、**発生率比** (incidence rate ratio) を計算することができ、これは英語では単に **rate ratio** と呼ばれることもある。発生率比は、2つの**発生率**から構成されている。この発生率を計算するためには、まず**人-時間**の概念を理解する必要がある。
 
@@ -1016,7 +1016,7 @@ ggplot(data = df, aes(x = name, y = value)) +
 \index{Survival Analysis}\index{生存解析}
 \index{Odds Ratio}\index{オッズ比}
 \index{Censoring}
-\index{Person-Time}\index{人-時間}
+\index{Person-Time}\index{人-時間}\index{人-時間}
 
 今回の参加者のうち、最後まで研究に参加したのは、Victoria と Lea の2人だけであることがわかる。これは、彼らが10年間の観察期間中、イベントを経験しなかったからである。したがって、両者とも10年間は**アットリスク**であった。
 
@@ -1437,7 +1437,7 @@ Hunter and Schmidt の手法の多くは、[**{psychmeta}**](https://psychmeta.c
 
 ---
 
-\index{Analysis of Variance}
+\index{Analysis of Variance}\index{分散分析}
 
 前の章で効果量の計測方法について説明したとき、データセットの列として必要な変数の種類についても触れた。これらの変数は、 _R_ 関数が効果量を計算し、メタ分析を実行するために必要である。例えば、群間標準化平均差のメタ分析を計算するためには、両群の平均値、標準偏差、サンプルサイズを準備する必要がある。
 
@@ -1459,7 +1459,7 @@ Chapter \@ref(pre-calculated-es) では、 _R_ の特殊な関数である `meta
 
 ---
 
-\index{Unit-of-Analysis Problem}\index{分析単位問題}
+\index{Unit-of-Analysis Problem}\index{分析単位問題}\index{分析単位問題}
 
 メタ分析において、1つの研究が2つ以上の効果量に寄与することは珍しいことではない。特に、(1)ある研究が2つ以上のグループを含んでいる、(2)ある研究が2つ以上の道具を使って結果を測定している、などの場合がある。どちらの場合も問題がある。メタ分析において、研究が複数の効果量を寄与する場合、メタ分析における各効果量は**独立**であるという中核的な仮定の1つに違反した [@higgins2019cochrane, chapters 6.2 and 23; @borenstein2011introduction, chapter 25]。この仮定が満たされない場合、**分析単位** (unit of analysis) の問題を扱っていることになる。
 

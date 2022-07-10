@@ -60,11 +60,11 @@ Standardized Mean Differences: 標準化平均差
 \index{Cochrane, Handbook}
 \index{WEIRD Populations}
 \index{"File Drawer" Problem}
-\index{Analysis Plan}
+\index{Analysis Plan}\index{解析計画}
 \index{Preregistration}
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Power Analysis}\index{検出力分析}
-\index{Subgroup Analysis}
+\index{Subgroup Analysis}\index{サブグループ解析}
 \index{Meta-Regression}
 \index{Open Science Framework (OSF)}
 \index{Preprint}
@@ -128,18 +128,18 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Log-Risk Ratio}\index{対数リスク比}
 \index{Zero Cell Problem}\index{ゼロセル問題}
 \index{Continuity Correction}\index{連続性補正}
-\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
-\index{Odds Ratio}\index{オッズ}
-\index{Odds}\index{オッズ}\index{オッズ比}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}\index{Mantel-Haenszel 法}
+\index{Odds Ratio}\index{オッズ比}
+\index{Odds}\index{オッズ}
 \index{Log-Odds Ratio}\index{対数オッズ比}
 \index{Zero Cell Problem}\index{ゼロセル問題}
 \index{Risk Ratio}\index{リスク比}
 \index{Incidence Rate Ratio}\index{発生率比}
-\index{Person-Time}\index{人-時間}
+\index{Person-Time}\index{人-時間}\index{人-時間}
 \index{Survival Analysis}\index{生存解析}
 \index{Odds Ratio}\index{オッズ比}
 \index{Censoring}
-\index{Person-Time}\index{人-時間}
+\index{Person-Time}\index{人-時間}\index{人-時間}
 \index{Log-Incidence Rate Ratio}\index{対数発生率比}
 \index{Hedges' \textit{g}}
 \index{Standardized Mean Difference}\index{標準化平均差}
@@ -152,8 +152,8 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Hedges' \textit{g}}
 \index{Fisher's \textit{z}}
 \index{Psychometric Meta-Analysis}\index{計量心理学的メタアナリシス}
-\index{Analysis of Variance}
-\index{Unit-of-Analysis Problem}\index{分析単位問題}
+\index{Analysis of Variance}\index{分散分析}
+\index{Unit-of-Analysis Problem}\index{分析単位問題}\index{分析単位問題}
 \index{Double-Counting}\index{二重カウント}
 \index{Multilevel Meta-Analysis}\index{マルチレベルメタ分析}
 43x235x6x77:Doing-Meta-Analysis-in-R baba$ 
@@ -167,20 +167,20 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Fixed-Effect}\index{固定効果モデル}
 \index{Sampling Error}\index{サンプル誤差}
-\index{Weight}
+\index{Weight}\index{重み}
 \index{Inverse-Variance Weighting}
-\index{Mantel-Haenszel Method}
-\index{Peto Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
+\index{Peto 法}\index{Peto Method}
 \index{dmetar Package}
 \index{esc Package}
 \index{Standardized Mean Difference}\index{標準化平均差}
 \index{Hedges' \textit{g}}
 \index{Random-Effects Model}\index{ランダム効果モデル}
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 \index{Sampling Error}\index{サンプル誤差}
 \index{Exchangeability Assumption}
-\index{Heterogeneity}
-\index{Weight}
+\index{Heterogeneity}\index{異質性}
+\index{Weight}\index{重み}
 \index{Inverse-Variance Weighting}
 \index{DerSimonian-Laird Estimator}
 \index{Restricted Maximum Likelihood Estimator}
@@ -195,7 +195,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Knapp-Hartung Adjustment}
 \index{Wald-Type Test}
 \index{t-Distribution}
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 \index{meta Package}
 \index{Function Argument}
 \index{Position Matching}
@@ -203,29 +203,29 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Hedges' \textit{g}}
 \index{Standardized Mean Difference}\index{標準化平均差}
 \index{dmetar Package}
-\index{Weight}
+\index{Weight}\index{重み}
 \index{Fixed-Effect}\index{固定効果モデル}
 \index{Standardized Mean Difference}\index{標準化平均差}
 \index{Glass' Delta}
 \index{Knapp-Hartung Adjustment}
-\index{Risk Ratio}
-\index{Odds Ratio}
+\index{Risk Ratio}\index{リスク比}
+\index{Odds Ratio}\index{オッズ比}
 \index{Inverse-Variance Weighting}
 \index{Sparse Data}
-\index{Mantel-Haenszel Method}
-\index{Peto Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
+\index{Peto 法}\index{Peto Method}
 \index{Peto Odds Ratio}
 \index{Continuity Correction}
 \index{Zero Cell Problem}
 \index{dmetar Package}
 \index{Paule-Mandel Estimator}
-\index{Mantel-Haenszel Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 \index{Exponentiation}
 \index{Logarithm, Natural}
 \index{Incidence Rate Ratio}
-\index{Person-Time}
+\index{Person-Time}\index{人-時間}
 \index{Inverse-Variance Weighting}
-\index{Mantel-Haenszel Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 \index{Paule-Mandel Estimator}
 \index{Correlation}\index{相関}
 \index{Fisher's \textit{z}}
@@ -241,7 +241,7 @@ Individual Participant Data: 個別被験者データメタ分析
 
 ## Chapter 5
 
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Cochran's \textit{Q}}
 \index{Inverse-Variance Weighting}
@@ -253,14 +253,14 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{I$^2$, Higgins \& Thompson's}
 \index{Sampling Error}\index{サンプル誤差}
 \index{I$^2$, Higgins \& Thompson's}
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 \index{Prediction Interval}
 \index{Cochran's \textit{Q}}
 \index{I$^2$, Higgins \& Thompson's}
-\index{Outlier}
+\index{Outlier}\index{外れ値}
 \index{Influential Case}
 \index{dmetar Package}
-\index{Weight}
+\index{Weight}\index{重み}
 \index{I$^2$, Higgins \& Thompson's}
 \index{Influential Case}
 \index{Leave-One-Out Method}
@@ -270,7 +270,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Cook's Distance}
 \index{Cochran's \textit{Q}}
 \index{Leave-One-Out Method}
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 \index{metafor Package}
 \index{Machine Learning}
 \index{dmetar Package}
@@ -278,41 +278,41 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{DBSCAN}
 \index{K-Means}
 \index{Cook's Distance}
-\index{Weight}
+\index{Weight}\index{重み}
 
 ## Chapter 6
 
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 \index{meta Package}
 \index{Logarithm, Natural}
 \index{Risk of Bias}
 \index{Review Manager (RevMan)}
 \index{Drapery Plot}
-\index{P-Value}
+\index{P-Value}\index{P-値}
 
 ## Chapter 7
 
-\index{Outlier}
+\index{Outlier}\index{外れ値}
 \index{Influential Case}
-\index{Heterogeneity}
-\index{Subgroup Analysis}
+\index{Heterogeneity}\index{異質性}
+\index{Subgroup Analysis}\index{サブグループ解析}
 \index{Moderator Analysis}
 \index{Fixed-Effects (Plural) Model}
 \index{Random-Effects Model}\index{ランダム効果モデル}
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 \index{Cochran's \textit{Q}}
 \index{Fixed-Effects (Plural) Model}
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Mixed-Effects Model}
 \index{Meta-Regression}
 \index{Multilevel Meta-Analysis}
-\index{Power}
+\index{Power}\index{検出力}
 \index{Ecological Bias}
 \index{meta Package}
 
 ## Chapter 8
 
-\index{Subgroup Analysis}
+\index{Subgroup Analysis}\index{サブグループ解析}
 \index{Meta-Regression}
 \index{Sampling Error}\index{サンプル誤差}
 \index{Mixed-Effects Model}
@@ -320,7 +320,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Fixed-Effect}\index{固定効果モデル}
 \index{Mixed-Effects Model}
 \index{Dummy Variable}
-\index{Weight}
+\index{Weight}\index{重み}
 \index{Ordinary Least Squares (OLS)}
 \index{Weighted Least Squares (WLS)}
 \index{Wald-Type Test}
@@ -333,19 +333,19 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Ordinary Least Squares (OLS)}
 \index{Maximum Likelihood}
 \index{Parsimony}
-\index{Analysis Plan}
+\index{Analysis Plan}\index{解析計画}
 \index{Permutation}
-\index{Multi-Collinearity}
+\index{Multi-Collinearity}\index{多重共線性}
 \index{Overfitting}
 \index{Step-Wise Regression}
 \index{Multi-Model Inference}
 \index{meta Package}
 \index{metafor Package}
 \index{dmetar Package}
-\index{Multi-Collinearity}
+\index{Multi-Collinearity}\index{多重共線性}
 \index{PerformanceAnalytics Package}
 \index{metafor Package}
-\index{Analysis of Variance}
+\index{Analysis of Variance}\index{分散分析}
 \index{Maximum Likelihood}
 \index{Restricted Maximum Likelihood Estimator}
 \index{Likelihood Ratio Test}
@@ -357,9 +357,9 @@ Individual Participant Data: 個別被験者データメタ分析
 
 ## Chapter 9
 
-\index{Publication Bias}
+\index{Publication Bias}\index{出版バイアス}
 \index{File Drawer Problem}
-\index{Reporting Bias}
+\index{Reporting Bias}\index{報告バイアス}
 \index{Citation Bias}
 \index{Time-Lag Bias}
 \index{Multiple Publication Bias}
@@ -372,7 +372,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Open Science Framework (OSF)}
 \index{Small-Study Effect}
 \index{File Drawer Problem}
-\index{Funnel Plot}
+\index{Funnel Plot}\index{ファンネルプロット}
 \index{Fidelity, Treatment}
 \index{Egger's Test}
 \index{tidyverse Package}
@@ -386,39 +386,39 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Standardized Mean Difference}\index{標準化平均差}
 \index{Limit}
 \index{metasens Package}
-\index{Funnel Plot}
+\index{Funnel Plot}\index{ファンネルプロット}
 \index{P-Curve}
-\index{P-Value}
+\index{P-Value}\index{P-値}
 \index{P-Hacking}
 \index{Questionable Research Practice (QRP)}
 \index{Small-Study Effect}
 \index{Trim and Fill Method}
-\index{Power}
+\index{Power}\index{検出力}
 \index{Binomial Test}
 \index{Fisher's Method}
 \index{Stouffer's Method}
 \index{History of Meta-Analysis}
-\index{Power}
+\index{Power}\index{検出力}
 \index{t-Distribution}
 \index{P-Hacking}
 \index{dmetar Package}
-\index{Outlier}
+\index{Outlier}\index{外れ値}
 \index{t-Distribution}
 \index{Non-Centrality Parameter}
-\index{Power}
+\index{Power}\index{検出力}
 \index{Kolmogorov-Smirnov Test}
 \index{Cohen's \textit{d}}
 \index{Selection Model}
 \index{Step Function}
-\index{Weight}
+\index{Weight}\index{重み}
 \index{Step Function}
 \index{Three-Parameter Selection Model}
 \index{metafor Package}
 \index{PET-PEESE}
 \index{P-Curve}
 \index{Three-Parameter Selection Model}
-\index{Outlier}
-\index{Heterogeneity}
+\index{Outlier}\index{外れ値}
+\index{Heterogeneity}\index{異質性}
 \index{I$^2$, Higgins \& Thompson's}
 
 ## Chapter 10
@@ -426,7 +426,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Multilevel Meta-Analysis}
 \index{Sampling Error}\index{サンプル誤差}
 \index{Random-Effects Model}\index{ランダム効果モデル}
-\index{Unit-of-Analysis Problem}
+\index{Unit-of-Analysis Problem}\index{分析単位問題}
 \index{Cluster Effect}
 \index{meta Package}
 \index{metafor Package}
@@ -436,14 +436,14 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{I$^2$, Higgins \& Thompson's}
 \index{dmetar Package}
 \index{Occam's Razor}
-\index{Analysis of Variance}
-\index{Subgroup Analysis}
+\index{Analysis of Variance}\index{分散分析}
+\index{Subgroup Analysis}\index{サブグループ解析}
 \index{Moderator Analysis}
 
 ## Chapter 11
 
-\index{Analysis of Variance}
-\index{Subgroup Analysis}
+\index{Analysis of Variance}\index{分散分析}
+\index{Subgroup Analysis}\index{サブグループ解析}
 \index{Structural Equation Model}
 \index{Multivariate Meta-Analysis}
 \index{Factor Analysis}
@@ -468,22 +468,22 @@ Individual Participant Data: 個別被験者データメタ分析
 
 \index{Mixed-Treatment Comparison Meta-Analysis}
 \index{Consistency}
-\index{Graph Theory}
+\index{Graph Theory}\index{グラフ理論}
 \index{Consistency}
-\index{推移性 Assumption}
+\index{Transitivity Assumption}\index{推移性仮定}
 \index{Consistency}
-\index{推移性 Assumption}
+\index{Transitivity Assumption}\index{推移性仮定}
 \index{Exchangeability Assumption}
 \index{Node Splitting}
-\index{Frequentist Statistics}
+\index{Frequentist Statistics}\index{頻度主義統計学}
 \index{Bayesian Hierarchical Model}
 \index{netmeta Package}
-\index{Frequentist Statistics}
-\index{Graph Theory}
+\index{Frequentist Statistics}\index{頻度主義統計学}
+\index{Graph Theory}\index{グラフ理論}
 \index{Consistency}
 \index{dmetar Package}
 \index{Consistency}
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 \index{Cochran's \textit{Q}}
 \index{Network Graph}
 \index{dmetar Package}
@@ -491,12 +491,12 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Minimal Parallelism}
 \index{Surface Under the Cumulative Ranking (SUCRA) Score}
 \index{P-Score}
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 \index{Consistency}
 \index{Node Splitting}
-\index{Funnel Plot}
+\index{Funnel Plot}\index{ファンネルプロット}
 \index{Bayes' Theorem}
-\index{Frequentist Statistics}
+\index{Frequentist Statistics}\index{頻度主義統計学}
 \index{Conditional Probability}
 \index{Posterior Distribution}
 \index{Prior Distribution}
@@ -518,7 +518,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Potential Scale Reduction Factor}
 \index{Node Splitting}
 \index{Consistency}
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 \index{SUCRA Score}
 \index{dmetar Package}
 \index{Meta-Regression}
@@ -530,8 +530,8 @@ Individual Participant Data: 個別被験者データメタ分析
 
 ## Chapter 13
 
-\index{Analysis of Variance}
-\index{Subgroup Analysis}
+\index{Analysis of Variance}\index{分散分析}
+\index{Subgroup Analysis}\index{サブグループ解析}
 \index{Structural Equation Model}
 \index{Multivariate Meta-Analysis}
 \index{Factor Analysis}
@@ -552,74 +552,10 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Path Diagram}
 \index{semPlot Package}
 
-## Chapter 12
-
-\index{Mixed-Treatment Comparison Meta-Analysis}
-\index{Consistency}
-\index{Graph Theory}
-\index{Consistency}
-\index{推移性 Assumption}
-\index{Consistency}
-\index{推移性 Assumption}
-\index{Exchangeability Assumption}
-\index{Node Splitting}
-\index{Frequentist Statistics}
-\index{Bayesian Hierarchical Model}
-\index{netmeta Package}
-\index{Frequentist Statistics}
-\index{Graph Theory}
-\index{Consistency}
-\index{dmetar Package}
-\index{Consistency}
-\index{Heterogeneity}
-\index{Cochran's \textit{Q}}
-\index{Network Graph}
-\index{dmetar Package}
-\index{Mean Path Length}
-\index{Minimal Parallelism}
-\index{Surface Under the Cumulative Ranking (SUCRA) Score}
-\index{P-Score}
-\index{Forest Plot}
-\index{Consistency}
-\index{Node Splitting}
-\index{Funnel Plot}
-\index{Bayes' Theorem}
-\index{Frequentist Statistics}
-\index{Conditional Probability}
-\index{Posterior Distribution}
-\index{Prior Distribution}
-\index{Credible Interval}
-\index{Credible Interval}
-\index{Markov Chain Monte Carlo}
-\index{Gibbs Sampler}
-\index{Bayesian Hierarchical Model}
-\index{Uninformative Prior}
-\index{Prior Distribution}
-\index{gemtc Package}
-\index{Gibbs Sampler}
-\index{JAGS}
-\index{rjags Package}
-\index{dmetar Package}
-\index{Network Graph}
-\index{Markov Chain Monte Carlo}
-\index{Markov Chain Monte Carlo}
-\index{Potential Scale Reduction Factor}
-\index{Node Splitting}
-\index{Consistency}
-\index{Forest Plot}
-\index{SUCRA Score}
-\index{dmetar Package}
-\index{Meta-Regression}
-\index{gemtc Package}
-\index{Risk of Bias}
-\index{Dummy Variable}
-\index{Akaike's Information Criterion}
-\index{WinBUGS}
-
 ## Chapter 13
 
 \index{gemtc Package}
-\index{Frequentist Statistics}
+\index{Frequentist Statistics}\index{頻度主義統計学}
 \index{Bayesian Hierarchical Model}
 \index{Prior Distribution}
 \index{Markov Chain Monte Carlo}
@@ -641,7 +577,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Credible Interval}
 \index{Posterior Distribution}
 \index{Empirical Cumulative Distribution Function (ECDF)}
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 \index{tidybayes Package}
 
 ## Chapter 14
@@ -649,13 +585,17 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Power Analysis}\index{検出力分析}
 \index{Potential Scale Reduction Factor}
 \index{Cochrane}
-\index{Power} 
+\index{Power}\index{検出力} 
 \index{Power Approach Paradox}
 \index{Fixed-Effect}\index{固定効果モデル}
 \index{Cumulative Distribution Function (CDF)}
 \index{dmetar Package}
 \index{Random-Effects Model}\index{ランダム効果モデル}
-\index{Subgroup Analysis}
+\index{Subgroup Analysis}\index{サブグループ解析}
+
+## Chapter 15
+
+なし
 
 ## Chapter 16
 
@@ -676,15 +616,15 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Correlation}\index{相関}
 \index{Correlation}\index{相関}
 \index{Correlation, Point-Biserial}
-\index{Analysis of Variance}
+\index{Analysis of Variance}\index{分散分析}
 \index{Standardized Mean Difference}\index{標準化平均差}
-\index{P-Value}
+\index{P-Value}\index{P-値}
 \index{dmetar Package}
-\index{Odds Ratio}
+\index{Odds Ratio}\index{オッズ比}
 \index{Number Needed To Treat}\index{治療必要例数}
 \index{Area Under The Curve (AUC)}\index{曲線下面積}
 \index{dmetar Package}
-\index{Unit-of-Analysis Problem}
+\index{Unit-of-Analysis Problem}\index{分析単位問題}
 
 
 

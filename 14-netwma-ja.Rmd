@@ -43,7 +43,7 @@ library(OpenImageR)
 knitr::include_graphics('images/graph1_col_sep.png')
 ```
 
-\index{Graph Theory}
+\index{Graph Theory}\index{グラフ理論}
 
 このように治療法の比較を視覚的に表現したものを**グラフ**と呼ぶ。グラフは、異なるオブジェクトが互いにどのように関連しているかをモデル化するために使用される構造であり、このトピックに関する数学の分野として、**グラフ理論**が存在する。
 
@@ -95,7 +95,7 @@ knitr::include_graphics('images/graph3_col_sep.png')
 間接比較の分散を計算するために、直接比較の分散を **足し算** した。つまり、間接的な証拠から推定される効果量は、直接的な証拠に基づくものよりも常に大きな分散を持ち、したがって精度も低くなる [@dias2018network, Chapter 1]。これは極めて論理的である。数学的に推測しなければならない結果に比べ、観測データから推定された効果量には、はるかに高い信頼性を持つことができるのである。 
 
 \index{Consistency}
-\index{推移性 Assumption}
+\index{Transitivity Assumption}\index{推移性仮定}
 
 さらにもう1つの問題がある。直接比較から間接的な証拠を推定することができる先ほどの式 \@ref(eq:networkes) は、重要な前提条件である**推移性 (transivity)** の仮定が満たされた場合にのみ成立するのである。統計学的な観点からは、この仮定はネットワークの**一貫性 (consistency)** と訳される [@efthimiou2016getreal]。以下では、この2つの用語の意味と、それらがなぜ重要であるかを説明する。
 
@@ -112,7 +112,7 @@ knitr::include_graphics('images/graph3_col_sep.png')
 これはネットワークメタ分析モデル自体の問題ではない [@dias2018network, Chapter 1]。ネットワークメタ分析モデルが偏るのは、試験内の特定の比較の選択、または非選択が、その比較の真の効果に依存する場合のみである [@dias2013evidence]。この表現はかなり抽象的なので、少し詳しく説明しよう。
 
 \index{Consistency}
-\index{推移性 Assumption}
+\index{Transitivity Assumption}\index{推移性仮定}
 
 今述べた要件は、ネットワークメタ分析の**推移性**という仮定から導かれたものである。これがネットワークメタ分析に特有の仮定なのか、それとも従来の pairwise メタ分析の仮定を単に拡張したものなのかについては、文献上でも意見が分かれているようである。また、この意見の相違は、文献における用語の一貫性のない使い方にも一部起因している可能性がある [@dias2018network; @efthimiou2016getreal; @song2009methodological; @lu2009modeling]。
 
@@ -178,7 +178,7 @@ ggplot(data = data.frame(x = 0), mapping = aes(x = x)) +
 
 \vspace{4mm}
 
-\index{Frequentist Statistics}
+\index{Frequentist Statistics}\index{頻度主義統計学}
 \index{Bayesian Hierarchical Model}
 
 したがって、効率的かつ内部的に一貫性のある方法で、利用可能なすべてのネットワークデータをプールできる計算モデルが必要である。ネットワークメタ分析のために、いくつかの統計的アプローチが開発されている [@efthimiou2016getreal]。以下の章では、**頻度論的階層モデル** (frequentist hierarchical model) と**ベイズ階層モデル** (Bayesian hierarchical model) について説明し、それらがどのように _R_ に実装され得るかを説明する。
@@ -207,7 +207,7 @@ ggplot(data = data.frame(x = 0), mapping = aes(x = x)) +
 ---
 
 \index{netmeta Package}
-\index{Frequentist Statistics}
+\index{Frequentist Statistics}\index{頻度主義統計学}
 
 以下では、**{netmeta}** パッケージ [@nemeta]  を用いたネットワークメタ分析の実行方法を説明する。このパッケージは、**頻度論的** (frequentist) 枠組みでネットワークメタ分析モデルを推定することが可能である。**{netmeta}** で使用されている手法は、もともと電気ネットワーク用に開発されたグラフ理論的手法から派生したものである [@rucker2012network]。
 
@@ -290,7 +290,7 @@ ggplot(data = data.frame(x = 0), mapping = aes(x = x)) +
 
 全体として、たかだか $n-1$ 個の独立した治療比較が存在することになるが、私たちのモデルは常に $\boldsymbol{\theta}_{\text{treat}}$ の $n$ 個の治療の真の効果を推定しなければならない。したがって、この行列はフルランクではない。このように $\boldsymbol{X}$ がフルランクを持たないということは、**invertible**ではないということである。したがって、$\boldsymbol{\theta}_{\text{treat}}$ は（加重）最小二乗法を使って直接推定することができないのである。
 
-\index{Graph Theory}
+\index{Graph Theory}\index{グラフ理論}
 
 そこで、**{netmeta}** に実装されている**グラフ理論**のアプローチが解決策を提供する。このアプローチの背後にある退屈な数学的詳細については、**{netmeta}** パッケージが作業をこなしてくれるので、ここでは割愛する。この方法は、いわゆる **Moore-Penrose 擬似逆行列**を構築し、重み付き最小二乗法を用いてネットワークモデルの適合値を計算することができる、ということだけを述べておく。
 
@@ -506,7 +506,7 @@ summary(m.netmeta)
 そして、ネットワークメタ分析の核心である「治療推定値」にたどり着く。指定されたように、すべての治療の効果は、通常通りのケアとの比較で表示されているが、それが `cau` の効果が表示されていない理由である。その下に、このネットワークモデルにおける異質性/非整合性が非常に高く、$I^2=$ 89.6%であることを見ることができる。これは、固定効果モデルの選択がおそらく適切では**なかった**ことを示している（この点については後ほど触れる）。
 
 \index{Consistency}
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 
 出力の最後の部分（`Tests of heterogeneity`）は、ネットワークにおける総異質性を、2つのコンポーネントに分解している。すなわち、**デザイン内**の異質性、および**デザイン間**の不一致である。「デザイン」とは、例えばA $-$ B、A $-$ B $-$ Cのように、1つの試験に含まれる条件の選択と定義される。全く同じ条件を含む試験間で真の効果量の差がある場合、デザイン内異質性と呼ぶことができる。一方、デザイン間のばらつきは、私たちのネットワークの矛盾を反映している。デザイン内異質性、デザイン間不整合性ともに非常に有意である（$p$s < 0.001）。
 
@@ -736,7 +736,7 @@ netrank(m.netmeta, small.values = "good")
 
 とはいえ、ランキング[@mbuagbaw2017approaches]で最高スコアだからといって、ある治療法が「最善」であると自動的に結論づけるべきでは決してないだろう。このネットワークにおける**不確実性**をよりよく可視化する方法は、ある条件を比較群として使用したフォレストプロットを作成することである。
 
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 
 **{netmeta}** では、`forest` 関数を使用してこれを実現することができる。**{netmeta}**の `forest` 関数の動作は、Chapter \@ref(forest) で説明した **{meta}** パッケージの `forest` 関数と非常によく似ている。主な違いは、forestプロットで参照グループを `reference.group` 引数で指定する必要があることである。また、care us usual (`"cau"`) を使用する。
 
@@ -858,7 +858,7 @@ netsplit(m.netmeta) %>% forest()
 
 ---
 
-\index{Funnel Plot}
+\index{Funnel Plot}\index{ファンネルプロット}
 
 ネットワークメタ分析モデルで出版バイアスを評価することは困難である。Chapter \@ref(pub-bias) で紹介した手法の多くは、従来のメタ分析からネットワークメタ分析へ移行すると、そのまま適用することはできない。しかし、ネットワークメタ分析における出版バイアスのリスクを評価するために、**比較調整ファンネルプロット**が提案されており、特定の条件下では使用することがが可能である [@salanti2014evaluating]。このファンネルプロットは、出版バイアスがネットワークモデルにどのような影響を与えたかに関する**特定の**仮説がある場合に適用される。
 
@@ -942,7 +942,7 @@ funnel(m.netmeta,
 ---
 
 \index{Bayes' Theorem}
-\index{Frequentist Statistics}
+\index{Frequentist Statistics}\index{頻度主義統計学}
 \index{Conditional Probability}
 
 ベイズ推定は、頻度論的 (frequentist) 統計学とは別に、重要な統計学である。頻度論的統計学は、ほとんどの研究分野でより頻繁に使用されていると言ってよいでしょう。しかし、ベイズアプローチの方が実は古く、近年は研究者に取り上げられることが多くなっており [@marsman2017bayesian]、決して「無くなった」わけではない [@mcgrayne2011theory]。
@@ -1540,7 +1540,7 @@ summary(nodesplit)
 
 もう一つのアプローチは、研究の賢明な部分集合のみがネットワークに含まれる場合に、矛盾が持続するかどうかを確認することである。最後に、後述するネットワークメタ回帰を実行することによって、矛盾の理由を評価することも可能である。
 
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 
 ノードスプリットモデルに対して、`plot` 関数を用いてフォレストプロットを生成することも可能である。しかし、先に nodesplit オブジェクトを `summary` に代入後、フォレストプロットが生成される。
 
@@ -1673,7 +1673,7 @@ save(results, file = "results.csv")
 
 ---
 
-\index{Meta-Regression}
+\index{Meta-Regression}\index{メタ回帰}
 \index{gemtc Package}
 
 **{gemtc}** パッケージの大きな特徴は、**ネットワークメタ回帰**を行うことができる点である。従来のメタ回帰と同様に、この機能を使って、特定の研究特性がネットワークで発見された効果量の大きさに影響を与えるかどうかを判断することが可能である。また、矛盾を説明する可能性のある変数をチェックするのに便利なツールである。

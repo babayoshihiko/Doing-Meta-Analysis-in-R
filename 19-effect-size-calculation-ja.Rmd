@@ -169,7 +169,7 @@ esc_rpb(r = 0.25,      # 点-双列相関
 
 ---
 
-\index{Analysis of Variance}
+\index{Analysis of Variance}\index{分散分析}
 
 また、**2群**の一元配置の ANOVA の $F$-値から SMD を導き出すこともできる。そのような ANOVA は、**自由度**を見ることで識別できる。2つのグループの一元配置ANOVAでは、自由度は常に1から始まるはずである（例： $F_{\text{1,147}}$ =5.31）。 
 
@@ -219,7 +219,7 @@ esc_t(t = 3.3,     # t-値
 
 ---
 
-\index{P-Value}
+\index{P-Value}\index{P-値}
 
 研究では、効果の大きさ（例えば、Cohen's $d$ 値）、その効果の $p$ -値のみを報告し、それ以上のことは報告しないことがある。しかし、メタ分析で結果をプールするためには、効果量の**精度**の指標、できれば標準誤差が必要である。
 
@@ -286,7 +286,7 @@ se.from.p(0.91, p = 0.38, N = 200,
 
 ---
 
-\index{Odds Ratio}
+\index{Odds Ratio}\index{オッズ比}
 
 統計量 $\chi^2$ をオッズ比に変換するには、  `esc_chisq`  関数を使用する（d.f. = 1と仮定する；例： $\chi^2_1$  = 8.7 ）。以下はその例である。
 
@@ -409,7 +409,7 @@ NNT(d = 0.245, CER = 0.35)
 
 ---
 
-\index{Unit-of-Analysis Problem}
+\index{Unit-of-Analysis Problem}\index{分析単位問題}
 
 解析単位誤差（Chapter \@ref(unit-of-analysis)）を避けるために、（標準化）平均差を計算する前に、2つ以上の試験群の平均と標準偏差をプールする必要がある場合がある。2群の連続効果量データをプールするには、以下の式を用いることができる。
 

@@ -131,7 +131,7 @@ ggplot(data = res, aes(x = value, y = log(SE))) +
 
 この挙動は、固定効果モデルの式で予測することが可能である。標準誤差が小さい研究は、サンプル誤差が小さく、全体的な効果量の推定値が真実に近い可能性が高いことが分かっている。
 
-\index{Weight}
+\index{Weight}\index{重み}
 
 観測された効果量はすべて真の効果の推定量であるが、あるものは他のものよりも優れていることを見てきた。したがって、メタ分析で効果をプールする場合、より高い**精度**（すなわち、より小さい標準誤差）を持つ効果量に、より大きな**重み**を与える必要がある。固定効果モデルでプール効果量を計算する場合は、全研究の**加重平均**を使用する。
 
@@ -150,8 +150,8 @@ w_k = \frac{1}{s^2_k}
 (\#eq:pes3)
 \end{equation}
 \index{Inverse-Variance Weighting}
-\index{Mantel-Haenszel Method}
-\index{Peto Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
+\index{Peto 法}\index{Peto Method}
 
 
 この方法は、メタ分析で平均効果を計算する最も一般的な方法である。分散の逆数を使用するので、しばしば **逆分散重み付け** または単に **逆分散メタ分析** と呼ばれる。
@@ -249,7 +249,7 @@ pooled_effect
 
 固定効果モデルは、すべての研究が均質な母集団の一部であり、観察された効果の差の唯一の原因は研究のサンプリング・エラーであると仮定している。もし、サンプリング・エラーなしに各研究の効果量を計算するとしたら、すべての真の効果量は完全に同じになる。
 
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 
 この考え方を現実的に確認すると、固定効果モデルの仮定は、多くの実世界のアプリケーションにおいて単純すぎる可能性があることがわかる。メタ分析における研究が常に完全に均質であることは、単純に非現実的である。たとえ微妙な違いであっても、研究内容が異なることはよくある。興味のあるアウトカムは、異なる方法で測定されただろう。治療の種類や強さ、長さが全く同じでないこともある。研究の対象者が全く同じでなかっただろうし、使用した対照群に違いがあっただろう。
 
@@ -302,7 +302,7 @@ pooled_effect
 これはランダム効果モデルの**交換可能性**の仮定として知られている [@higgins2009re; @lunn2012bugs, chapter 10.1]。データを見る前に、ある研究 $k$ で $\zeta_k$ がどの程度大きいかを知ることができるものがない限り、すべての真の効果量は交換可能であると仮定される。  
 
 
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 
 ```{block2, type='boxinfo'}
 **どちらのモデルを使うべきか？**
@@ -335,7 +335,7 @@ knitr::include_graphics('images/rem_sep2.png')
 #### 研究間異質性の推定値 {#tau-estimators}
 
 
-\index{Weight}
+\index{Weight}\index{重み}
 
 
 ランダム効果モデルに関連する課題は、誤差 $\zeta_k$ を考慮に入れなければならないことである。これを行うには、真の効果量の分布の**分散** を推定する必要がある。この分散は、$\tau^2$（タウ２乗）として知られている。いったん $\tau^2$ の値がわかれば、各効果量の逆分散の重みを決定するときに、研究間の異質性を含めることが可能になる。
@@ -428,7 +428,7 @@ Langan ら [-@langan2019comparison] による最近のシミュレーション�
 
 Knapp-Hartung の調整は、研究間異質性の推定値の不確実性を対照しようとするものである。プール効果の有意性検定が通常、正規分布を仮定するのに対して（いわゆる **Wald型** 検定）、Knapp-Hartung 法は $t$ 分布に基づいている。Knapp-Hartung の調整はランダム効果モデルでのみ使用でき、通常、プール効果の信頼区間がわずかに大きくなる。
 
-\index{Heterogeneity}
+\index{Heterogeneity}\index{異質性}
 
 ```{block, type='boxreport'}
 **メタ分析においてモデルの種類を報告**
@@ -639,7 +639,7 @@ summary(m.gen)
 
 さあ、 _R_ を使った最初のメタ分析の結果である。解き明かすことがたくさんあるので、順を追って出力を見ていきよう。
 
-\index{Weight}
+\index{Weight}\index{重み}
 
 * 出力の最初の部分には、個々の研究、その効果量と信頼区間が含まれている。効果は事前に計算されているので、ここで見るべき新しいものはあまりない。`%W(random)` 列は、ランダム効果モデルが各研究に帰着させた重み（パーセント）を示している。メタ分析では、de Vibe の研究が7.3％と最も大きな重みを占めていることがわかる。最小の重みは Ratanasiripong による研究に与えられている。この研究の信頼区間を見ると、なぜこのような結果になったのかがわかる。プールされた効果の信頼区間は非常に広く、標準誤差が非常に大きく、したがってこの研究の効果量の推定はあまり正確ではないことを意味している。
 
@@ -781,8 +781,8 @@ summary(m.cont)
 
 
 
-\index{Risk Ratio}
-\index{Odds Ratio}
+\index{Risk Ratio}\index{リスク比}
+\index{Odds Ratio}\index{オッズ比}
 \index{Inverse-Variance Weighting}
 \index{Sparse Data}
 
@@ -799,7 +799,7 @@ Chapter \@ref(fem) と Chapter \@ref(tau-estimators) で取り上げた一般的
 
 
 
-\index{Mantel-Haenszel Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 
 このため、**Mantel-Haenszel** 法 [@mantel1959statistical; @robins1986general] は、二値アウトカム・データを持つ研究の重みを計算する代替手段としてよく使用されている。また、`metabin` で使用されるデフォルトのアプローチでもある。この方法は、研究の重みを決定するために、治療と対照群におけるイベントと非イベントの数を使用する。リスク比を計算するかオッズ比を計算するかで、異なる計算式がある。
 
@@ -823,7 +823,7 @@ w_k = \frac{b_kc_k}{n_k}
 
 
 
-\index{Peto Method}
+\index{Peto 法}\index{Peto Method}
 \index{Peto Odds Ratio}
 <br></br>
 
@@ -955,7 +955,7 @@ glimpse(DepressionMortality)
 ```
 
 \index{Paule-Mandel Estimator}
-\index{Mantel-Haenszel Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 
 この例では、Cuijpers and Smit が行ったように、効果量の指標としてリスク比を計算する。ランダム効果プールモデルを使用し、二値アウトカムデータを扱うので、$\tau^2$の Paule-Mandel 推定量を使用する。
 
@@ -1208,7 +1208,7 @@ summary(m.gen_bin)
 
 
 \index{Incidence Rate Ratio}
-\index{Person-Time}
+\index{Person-Time}\index{人-時間}
 
 発生率 (incidence rate) に基づく効果量（すなわち、発生率比、Chapter \@ref(irr)）は、 `metainc` 関数を使用してプールすることが可能である。この関数の引数は `metabin` と非常によく似ている。
 
@@ -1254,7 +1254,7 @@ data(EatingDisorderPrevention)
 glimpse(EatingDisorderPrevention)
 ```
 
-\index{Mantel-Haenszel Method}
+\index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 \index{Paule-Mandel Estimator}
 
 効果量のデータのプールには `metainc` を用い、効果量の指標は発生率比とする。プールには Mantel-Haenszel 法を用い、研究間異質性分散の計算には Paule-Mandel 推定量を用いている。

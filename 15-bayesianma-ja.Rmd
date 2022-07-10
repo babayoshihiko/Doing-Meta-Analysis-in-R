@@ -10,7 +10,7 @@
 れまでの章では、「マルチレベル」モデル（ Chapter \@ref(multilevel-ma)  ）、メタ分析的構造方程式モデリング（ Chapter \@ref(sem)  ）、ネットワークメタ分析（ Chapter \@ref(netwma)  ）など、メタ分析のやや高度な拡張を掘り下げてきた。さて、一歩下がって、もう一度「従来の」メタ分析を見直そう。ただし、今回はこれまでとは異なる角度で**ベイズメタ分析**を扱う。 
 
 \index{gemtc Package}
-\index{Frequentist Statistics}
+\index{Frequentist Statistics}\index{頻度主義統計学}
 
 すでに一つ前のネットワークメタ分析に関する章でベイズモデルを取り上げた。そこでは、ベイズの定理や事前分布の考え方など、ベイズ統計の背後にある主要な考え方について議論してきた（Chapter \@ref(bayesian-inference)  参照）。本章では、この知識をもとに、メタ分析を行うための「ベイズ的な方法」をより深く理解したい。例えば、ベイジアンネットワークのメタ分析モデルを設定するとき、**{gemtc}** パッケージは自動的に優先順位を指定したが、ここでは、これを自分たちで行っていきたい。 
 
@@ -455,7 +455,7 @@ smd.ecdf(0.3)
 
 ---
 
-\index{Forest Plot}
+\index{Forest Plot}\index{フォレストプロット}
 \index{tidybayes Package}
 
 これまで見てきたように、ベイズモデルによって、そのサンプル事後分布を抽出することが可能である。これは、モデルが与えられたときの特定の値の確率を直接評価するのに非常に役立つ。また、この機能を利用して、非常に有益で見栄えのする拡張**フォレストプロット**（Chapter \@ref(forest)）を作成することも可能である^[ここで紹介するコードの一部は、Matti Vuorre [-@vuorre2016bayesian] が書いた [blog post](https://mvuorre.github.io/posts/2016-09-29-bayesian-meta-analysis/) からインスピレーションを受けたものである]。 

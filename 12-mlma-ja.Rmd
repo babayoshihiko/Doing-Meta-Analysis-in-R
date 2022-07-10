@@ -84,7 +84,7 @@ knitr::include_graphics('images/multilevel-model_col_sep.png')
 
 このように、メタ分析には多階層構造が備わっていることがわかる。データを生成した特定のメカニズムをよりよく捉えるために、この構造をさらに拡張することが可能である。そこで、**３レベルモデル** [@cheung2014modeling; @assink2016fitting] の出番となる。
 
-\index{Unit-of-Analysis Problem}
+\index{Unit-of-Analysis Problem}\index{分析単位問題}
 
 統計的独立性は、メタ分析で効果量をプールするときの中心的な前提条件の一つである。効果量の間に依存関係がある（効果量に相関がある）場合、異質性を人為的に減少させ、その結果、偽陽性の結果につながる可能性がある。この問題は**解析単位エラー**として知られており、以前すでに取り上げた（Chapter \@ref(unit-of-analysis)  参照）。効果量の依存性は、様々な原因から生じる可能性がある [@cheung2014modeling]。
 
@@ -404,7 +404,7 @@ summary(l3.removed)
 ## [...]
 ```
 
-\index{Analysis of Variance}
+\index{Analysis of Variance}\index{分散分析}
 
 出力では、 `sigma^2.1` がゼロに設定されていることがわかる。全体の効果も変化している。しかし、この結果は3レベルモデルのものよりも良いのだろうか？これを評価するために、  `anova`  関数を使って両モデルを比較することが可能である。
 
@@ -435,7 +435,7 @@ anova(full.model, l3.removed)
 
 ---
 
-\index{Subgroup Analysis}
+\index{Subgroup Analysis}\index{サブグループ解析}
 \index{Moderator Analysis}
 
 ３レベルモデルが設定されると、全体効果の推定モデレータを評価することも可能になる。このガイドの前では、サブグループ解析が、ダミー・コード化された予測変数（ Chapter \@ref(the-metareg-model)  ）のメタ回帰モデルとして表現できることを発見してきた。同様にして、私たちは 「マルチレベル」モデルに回帰項を追加することができ、これは **３レベル混合効果モデル** につながる。
