@@ -1,4 +1,4 @@
-# バイアスプロットのリスク  {#risk-of-bias-plots}
+# バイアスリスクのプロット  {#risk-of-bias-plots}
 
 **Luke A. McGuinness による**
 
