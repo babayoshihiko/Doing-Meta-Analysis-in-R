@@ -36,7 +36,7 @@ favicon: "favicon.ico"
 
 ---
 
-<a href="https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074" target="_blank"><img src="images/cover.png" width="250" align="right" alt="" class="cover" /></a> Welcome to the online version of **"Doing Meta-Analysis with R: A Hands-On Guide"**. 
+<a href="https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074" target="_blank"><img src="images/cover.png" width="250" align="right" alt="" class="cover" /></a> オンライン版の **R によるメタ分析：**. 
 
 本書は、 _R_ でメタ分析を行う方法について、わかりやすく紹介するものである。メタ分析の基本的な手順として、アウトカム指標のプール、フォレストプロット、異質性診断、サブグループ解析、メタ回帰、出版バイアスの制御方法、バイアスリスク評価、プロットツールなどを網羅している。
 
