@@ -223,7 +223,7 @@ lines(seq(0, 100, 0.01), dchisq(seq(0, 100, 0.01), df = df),
 \index{DerSimonian-Laird Estimator}\index{DerSimonian-Laird 推定法}
 \index{I$^2$, Higgins \& Thompson's}
 
- **{Cochranの $Q$  は、非常に重要な統計量である。これは、Higgins and Thompsonの $I^2$  統計量や $H^2$  など、異質性を定量化する他の一般的な方法がこれに基づいていることが主な理由である。これらの尺度については、次のセクションで説明した。Cochranの $Q$  は、いくつかの異質性分散推定器でも使われており、$\tau^2$  を計算した。最も有名なのは DerSimonian-Laird 推定量^[The DerSimonian-Laird method estimates the heterogeneity variance using $\hat\tau^2 = \dfrac{Q-(K-1)}{\sum_{k=1}^{K}w_k-\frac{\sum_{k=1}^Kw^2_k}{\sum_{k=1}^Kw_k}}$。$Q<(K-1)$ のとき、$\hat\tau^2 := 0$ である。 Chapters \@ref(rem) and \@ref(tau-estimators) も参照]。 
+Cochran's $Q$ は、非常に重要な統計量である。これは、Higgins and Thompsonの $I^2$  統計量や $H^2$  など、異質性を定量化する他の一般的な方法がこれに基づいていることが主な理由である。これらの尺度については、次のセクションで説明した。Cochran's $Q$ は、$\tau^2$ を計算する異質性分散推定でも使われている。最も有名なのは DerSimonian-Laird 推定量である^[DerSimonian-Laird 法は、$\hat\tau^2 = \dfrac{Q-(K-1)}{\sum_{k=1}^{K}w_k-\frac{\sum_{k=1}^Kw^2_k}{\sum_{k=1}^Kw_k}}$ を使用して異質性分散を計算する。$Q<(K-1)$ のとき、$\hat\tau^2 := 0$。Chapter \@ref(rem) と Chapter \@ref(tau-estimators) も参照]。 
 
 ```{block, type='boximportant'}
 **Problems With $Q$ & the $Q$-Test**
