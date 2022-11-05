@@ -36,13 +36,13 @@ favicon: "favicon.ico"
 
 ---
 
-<a href="https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074" target="_blank"><img src="images/cover.png" width="250" align="right" alt="" class="cover" /></a> オンライン版の **R によるメタ分析：**. 
+<a href="https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074" target="_blank"><img src="images/cover.png" width="250" align="right" alt="" class="cover" /></a> オンライン版の **R によるメタ分析：ハンズオン**へようこそ。
 
 本書は、 _R_ でメタ分析を行う方法について、わかりやすく紹介するものである。メタ分析の基本的な手順として、アウトカム指標のプール、フォレストプロット、異質性診断、サブグループ解析、メタ回帰、出版バイアスの制御方法、バイアスリスク評価、プロットツールなどを網羅している。
 
 また、ネットワークメタ分析、マルチレベル（３レベル）メタ分析、ベイズメタ分析アプローチ、SEMメタ分析など、高度でありながら関連性の高いトピックも取り上げる。
 
-本書で扱うプログラミングや統計的背景は、**非専門家レベル**にとどめている。本書の**印刷版**は、[Chapman & Hall/CRC Press](https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074) (Taylor & Francis) から出版されている。
+本書で扱うプログラミングや統計的背景は、**専門家でなくても理解できるレベル**にとどめている。原著の**印刷版**は、[Chapman & Hall/CRC Press](https://www.routledge.com/Doing-Meta-Analysis-with-R-A-Hands-On-Guide/Harrer-Cuijpers-Furukawa-Ebert/p/book/9780367610074) (Taylor & Francis) から出版されている。
 
 
 <br></br>
@@ -67,7 +67,7 @@ favicon: "favicon.ico"
 
 * [**Luke A. McGuinness**](https://twitter.com/mcguinlu), University of Bristol: Chapter 15, Risk of Bias Plots.
 
-本書に貢献したい方は、**Mathias** (mathias.harrer@fau.de) にメールを送り、提案する追加事項を伝えていただきたい。
+本書に貢献したい方は、**Mathias** (mathias.harrer@fau.de) にメールを送り、提案事項を伝えていただきたい。
 
 <br></br>
 
