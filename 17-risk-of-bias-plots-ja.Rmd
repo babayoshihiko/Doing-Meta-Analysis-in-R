@@ -101,7 +101,7 @@ my_rob_data <- read.csv("robdata.csv", header = TRUE)
 
 **{robvis}** は、使用したバイアスリスク評価ツールに固有のテンプレート図を入力するために、提供されたデータを使用してバイアスリスク図を作成する。現在、**{robvis}** には、以下の3つのツールのテンプレートが含まれている。
 
-* **ROB2**、ランダム化比較試験のための新しい Cochrane の Risk Of Bias ツール。
+* **ROB2** は、ランダム化比較試験のための新しい Cochrane の Risk Of Bias ツール。
 * **ROBINS-I** は、Risk of Bias In Non-randomized Studies of Interventions（ランダム化されていない介入研究におけるバイアスのリスク）ツール。
 * **QUADAS-2** は、Quality and Applicability of Diagnostic Accuracy Studies, Version 2。
 
@@ -166,8 +166,8 @@ rob_summary(data = data_rob2,
 *  `tool`. 使用したバイアスリスク評価ツール。現在、RoB2.0 (`"ROB2"`)、`"ROBINS-I"`、`"QUADAS-2"` がサポートされている。
 *  `overall`. 図に全体の Risk of Bias を示す追加のバーを含めるかどうかのオプション。デフォルトは `FALSE` である。
 *  `weighted`. 棒グラフに重みをつけるかどうかを指定するオプション。デフォルトは  `TRUE` で、現在の Cochrane Collaboration のガイダンスに沿ったものである。
-*  `colour`. プロットの配色を指定するための引数である。デフォルトは  `"cochrane"`  で、どこにでもあるコクランカラーを使用する。また、色覚異常者に優しいパレットのプリセットオプションも利用でく ( `colour = "colorblind"` ).
-*  `quiet`. プロットを表示せず、静かに生成するための論理オプション。デフォルトは  `FALSE`。
+*  `colour`. プロットの配色を指定するための引数である。デフォルトは  `"cochrane"` で、普遍的なコクランカラーを使用する。また、色覚異常者に優しいパレットのプリセットオプションも利用できる（`colour = "colourblind"`）。
+*  `quiet`. プロットを表示せず、静かに生成するための論理オプション。デフォルトは `FALSE`。
 
 各引数の機能例を以下に示す。
 
@@ -177,7 +177,7 @@ rob_summary(data = data_rob2,
 
 ---
 
-`tool` は、使用するツールテンプレートを定義するための引数である。上の例では、ROB2テンプレートが使用されている。他の2つの主要なテンプレート、ROBINS-I と QUADAS-2 テンプレートは、以下に示されている。
+`tool` は、使用するツールテンプレートを定義するための引数である。上の例では、ROB2 テンプレートが使用されている。他の2つの主要なテンプレート、ROBINS-I と QUADAS-2 テンプレートは、以下に示されている。
 
 
 ```{r, fig.width=9, fig.height=3, fig.align='center', out.width='90%'}
@@ -196,7 +196,7 @@ rob_summary(data = data_quadas,
 
 ---
 
-デフォルトでは、全体の Risk of Bias 判定を表す追加のバーはプロットに含まれない。これを含めたい場合は、`overall = TRUE` と設定してみよう。例えば
+デフォルトでは、全体の Risk of Bias 判定を表す追加のバーはプロットに含まれない。これを含めたい場合は、`overall = TRUE` と設定する。例えば
 
 
 ```{r, fig.width=9, fig.height=2.5, fig.align='center', out.width='90%'}
@@ -207,7 +207,7 @@ rob_summary(data = data_rob2,
 
 <br></br>
 
-#### 重み付け棒グラフと非重み付け棒グラフ
+#### 重み付けのある棒グラフとない棒グラフ
 
 ---
 
@@ -234,12 +234,12 @@ rob_summary(data = data_rob2,
 ---
 
 ```{block2, type='boximportant'}
-**British English Spelling**
+**イギリス英語**
 
-Please note the non-US English spelling of **colour**!
+アメリカ英語ではなく、イギリス英語の **colour** であることに注意。
 ```
 
-両プロット関数の `colour` 引数は、2つの定義済みカラースキーム、`"cochrane"` (デフォルト) または `"colorblind"` から選択するか、あるいは **hex code** のベクトルを与えて自分自身のパレットを定義することが可能である。例えば、定義済みの  `"colorblind"` パレットを使用するには、以下のようにした。
+両プロット関数の `colour` 引数は、2つの定義済みカラースキーム、`"cochrane"`（デフォルト）または `"colourblind"` から選択するか、あるいは **hex code** のベクトルを与えて自分自身のパレットを定義することが可能である。例えば、定義済みの `"colourblind"` パレットを使用するため、以下のようにする。
 
 ```{r, fig.width=9, fig.height=2.5, fig.align='center', out.width='90%'}
 rob_summary(data = data_rob2, 
@@ -289,7 +289,7 @@ rob_traffic_light(data = data_rob2,
 
 *  `data`. 要約（ドメイン）レベルの risk-of-bias 評価を含むデータフレーム。最初の列は研究の詳細、2 番目の列は評価の最初のドメイン、最後の列は各研究に割り当てる重み付けを含む。この関数は、データに全体的なリスク・オブ・バイアスの列が含まれていることを想定している。例えば、ROB2.0のデータセットでは、8列（研究の詳細1、ドメインレベルの判断5、総合判断1、重み1、この順）となる。
 *  `tool`. 使用したバイアスリスク評価ツール。現在、RoB2.0 (`"ROB2"`)、`"ROBINS-I"`、`"QUADAS-2"` がサポートされている。
-*  `colour`. プロットの配色を指定するための引数である。デフォルトは `"cochrane"` で、どこにでもあるコクランカラーを使用する。また、色覚異常者に優しいパレット (`"colorblind"`)のプリセットオプションも利用できる。
+*  `colour`. プロットの配色を指定するための引数である。デフォルトは `"cochrane"` で、どこにでもあるコクランカラーを使用する。また、色覚異常者に優しいパレット (`"colourblind"`)のプリセットオプションも利用できる。
 *  `psize`.「交通信号」ポイントの大きさを変更するためのオプション。デフォルトは `20`。
 *  `quiet`. プロットを表示せず、静かに生成するための論理オプション。デフォルトは  `FALSE`。
 
@@ -329,9 +329,9 @@ rob_traffic_light(data = data_quadas,
 ```
 
 
-両プロット関数の `colour` 引数は、2つの定義済み配色 `"cochrane"` (デフォルト) と `"colorblind"` から選択することができる。
+両プロット関数の `colour` 引数は、2つの定義済み配色 `"cochrane"` (デフォルト) と `"colourblind"` から選択することができる。
 
-例えば、定義済みの  `"colorblind"`  パレットを使用する場合。
+例えば、定義済みの  `"colourblind"`  パレットを使用する場合。
 
 ```{r, fig.width=8, fig.height=9, fig.align='center', out.width='65%'}
 rob_traffic_light(data = data_rob2, 
@@ -357,7 +357,7 @@ rob_traffic_light(data = data_rob2,
 
 ---
 
-時折、多数のバイアスリスク評価を実施した場合、結果の交通信号プロットが長すぎて役に立たないことがある。このような場合には、`rob_traffic_light` 関数の `psize`  引数を小さくすることで対応でく（デフォルトは `20`）。例えば
+時折、多数のバイアスリスク評価を実施した場合、結果の交通信号プロットが長すぎて役に立たないことがある。このような場合には、`rob_traffic_light` 関数の `psize` 引数を小さくすることで対応できる（デフォルトは `20`）。例えば
 
 ```{r, fig.width=5.5, fig.height=13, fig.align='center', out.width='45%'}
 # Create bigger dataset (18 studies)
@@ -371,7 +371,7 @@ rob_traffic_light(data = new_rob2_data,
 ```
 <br></br>
 
-## "ROB1 "ジェネリックテンプレート  {#rob1-template}
+## "ROB1" ジェネリックテンプレート  {#rob1-template}
 
 ---
 
@@ -396,7 +396,7 @@ rob_traffic_light(data = new_rob2_data,
 
 ---
 
-前のセクションで挙げた他のツールでは、ドメインレベルのバイアスリスク判定を含む列の名称は重要ではない。例えば、 _D1_ 、 _D2_ 、 _D3_ などの名前が一般的である。しかし、 `"ROB1"` テンプレートを使用する場合は、この限りではない。
+前のセクションで挙げた他のツールでは、ドメインレベルのバイアスリスク判定を含む列の名称は重要ではない。例えば、 _D1_ 、 _D2_ 、 _D3_ などの名前が一般的である。しかし、`"ROB1"` テンプレートを使用する場合は、この限りではない。
 
 data_rob2 と data_rob1 の列見出しを比較する（ここでは比較しやすいように横向きで表示している）。
 
@@ -423,7 +423,7 @@ kableExtra::kable(
 
 ROB2 サンプルデータセットのドメイン列（列 2-6）には、 _D1_ ～ _D5_ という任意の名前が付けられているが、これは ROB2 ガイダンスで与えられた正しいドメインタイトルに対応するようにツールで上書きされるためである。
 
-一方、ROB1 サンプルデータセットのドメイン列（列 2-8）は、`rob_summary` と  `rob_traffic_light` が生成する図に使用されるため、正しくラベル付けされていることがわかる。 
+一方、ROB1 サンプルデータセットのドメイン列（列 2-8）は、`rob_summary` と `rob_traffic_light` が生成する図に使用されるため、正しくラベル付けされていることがわかる。 
 
 例として、"Random.sequence.generation" 列の名前を "これはテスト" に変更してみよう。`rob_summary` 図では、最初のバーのタイトルが変更され、`rob_traffic_light` 図では、この変更を反映してキャプションが更新されている。
 
@@ -508,7 +508,7 @@ ggsave(plot = rob_barplot,        # 保存するオブジェクト
 ---
 
 
-プロットは、ファイル名の拡張子を変えるだけで（例えば ".png" から ".pdf" に）、上記の関数を使って様々なフォーマットで保存することが可能である。使用可能なフォーマットは .png、.pdf、.tiff、.svg^[SVG は、**{svglite}** パッケージのインストールとロードを要する。`install.packages("svglite")` して  `library(svglite)` とする。] である。
+プロットは、ファイル名の拡張子を変えるだけで（例えば ".png" から ".pdf" に）、上記の関数を使って様々なフォーマットで保存することが可能である。使用可能なフォーマットは .png、.pdf、.tiff、.svg^[SVG は、**{svglite}** パッケージのインストールとロードを要する。`install.packages("svglite")` して `library(svglite)` とする。] である。
 
 
 例えば、上で作成した棒グラフ（`rob_barplot`）を PDF として保存するには、以下のようにする。

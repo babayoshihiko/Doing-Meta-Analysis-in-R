@@ -48,7 +48,7 @@ Standardized Mean Differences: 標準化平均差
 \index{Cochrane, Risk of Bias Tool}
 \index{Cochrane, Handbook}
 \index{Campbell Collaboration}
-\index{"Apples and Oranges" Problem}
+\index{"Apples and Oranges" Problem}\index{「りんごとオレンジ」問題}
 \index{"Garbage In, Garbage Out" Problem}
 \index{"File Drawer" Problem}
 \index{"Researcher Agenda" Problem}
@@ -68,14 +68,14 @@ Standardized Mean Differences: 標準化平均差
 \index{Meta-Regression}\index{メタ回帰}
 \index{Open Science Framework (OSF)}
 \index{Preprint}
-\index{Protocol}
+\index{Protocol}\index{プロトコル}
 \index{PRISMA Statement}\index{PRISMA 声明}
 \index{Study Search}
 \index{PRISMA Statement}\index{PRISMA 声明}
 \index{Campbell Collaboration}
-\index{Risk of Bias}\index{バイアスのリスク}
+\index{Risk of Bias}
 \index{Cochrane, Risk of Bias Tool}
-\index{Risk of Bias}\index{バイアスのリスク}\index{バイアスリスク}
+\index{Risk of Bias}\index{バイアスリスク}
 \index{Cochrane, ROBINS-I Tool}
 
 Index 外
@@ -168,7 +168,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Fixed-Effect}\index{固定効果モデル}
 \index{Sampling Error}\index{サンプル誤差}
 \index{Weight}\index{重み}
-\index{Inverse-Variance Weighting}
+\index{Inverse-Variance Weighting}\index{逆分散重み付け}
 \index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 \index{Peto 法}\index{Peto Method}
 \index{dmetar Package}
@@ -181,9 +181,9 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Exchangeability Assumption}
 \index{Heterogeneity}\index{異質性}
 \index{Weight}\index{重み}
-\index{Inverse-Variance Weighting}
-\index{DerSimonian-Laird Estimator}
-\index{Restricted Maximum Likelihood Estimator}
+\index{Inverse-Variance Weighting}\index{逆分散重み付け}
+\index{DerSimonian-Laird Estimator}\index{DerSimonian-Laird 推定法}
+\index{Restricted Maximum Likelihood Estimator}\index{制限付き最尤推定}
 \index{Maximum Likelihood}
 \index{Sidik-Jonkman Estimator}
 \index{Review Manager (RevMan)}
@@ -191,10 +191,10 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Paule-Mandel Estimator}
 \index{metafor Package}
 \index{Sidik-Jonkman Estimator}
-\index{Restricted Maximum Likelihood Estimator}
-\index{Knapp-Hartung Adjustment}
-\index{Wald-Type Test}
-\index{t-Distribution}
+\index{Restricted Maximum Likelihood Estimator}\index{制限付き最尤推定}
+\index{Knapp-Hartung Adjustment}\index{Knapp-Hartung 調整法}
+\index{Wald 型検定}
+\index{t-Distribution}\index{t-分布}
 \index{Heterogeneity}\index{異質性}
 \index{meta Package}
 \index{Function Argument}
@@ -207,10 +207,10 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Fixed-Effect}\index{固定効果モデル}
 \index{Standardized Mean Difference}\index{標準化平均差}
 \index{Glass' Delta}
-\index{Knapp-Hartung Adjustment}
+\index{Knapp-Hartung Adjustment}\index{Knapp-Hartung 調整法}
 \index{Risk Ratio}\index{リスク比}
 \index{Odds Ratio}\index{オッズ比}
-\index{Inverse-Variance Weighting}
+\index{Inverse-Variance Weighting}\index{逆分散重み付け}
 \index{Sparse Data}
 \index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 \index{Peto 法}\index{Peto Method}
@@ -224,13 +224,13 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Logarithm, Natural}
 \index{Incidence Rate Ratio}
 \index{Person-Time}\index{人-時間}
-\index{Inverse-Variance Weighting}
+\index{Inverse-Variance Weighting}\index{逆分散重み付け}
 \index{Mantel-Haenszel Method}\index{Mantel-Haenszel 法}
 \index{Paule-Mandel Estimator}
 \index{Correlation}\index{相関}
 \index{Fisher's \textit{z}}
 \index{dmetar Package}
-\index{Restricted Maximum Likelihood Estimator}
+\index{Restricted Maximum Likelihood Estimator}\index{制限付き最尤推定}
 \index{Mean, Arithmetic}
 \index{dmetar Package}
 \index{Proportion}
@@ -244,11 +244,11 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Heterogeneity}\index{異質性}
 \index{Random-Effects Model}\index{ランダム効果モデル}
 \index{Cochran's \textit{Q}}
-\index{Inverse-Variance Weighting}
+\index{Inverse-Variance Weighting}\index{逆分散重み付け}
 \index{Sampling Error}\index{サンプル誤差}
 \index{Cochran's \textit{Q}}
 \index{meta Package}
-\index{DerSimonian-Laird Estimator}
+\index{DerSimonian-Laird Estimator}\index{DerSimonian-Laird 推定法}
 \index{I$^2$, Higgins \& Thompson's}
 \index{I$^2$, Higgins \& Thompson's}
 \index{Sampling Error}\index{サンプル誤差}
@@ -285,7 +285,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Forest Plot}\index{フォレストプロット}
 \index{meta Package}
 \index{Logarithm, Natural}
-\index{Risk of Bias}\index{バイアスのリスク}
+\index{Risk of Bias}
 \index{Review Manager (RevMan)}
 \index{Drapery Plot}
 \index{P-Value}\index{P-値}
@@ -323,11 +323,11 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Weight}\index{重み}
 \index{Ordinary Least Squares (OLS)}
 \index{Weighted Least Squares (WLS)}
-\index{Wald-Type Test}
+\index{Wald 型検定}
 \index{I$^2$, Higgins \& Thompson's}
 \index{Bubble Plot}
-\index{Risk of Bias}\index{バイアスのリスク}
-\index{Risk of Bias}\index{バイアスのリスク}
+\index{Risk of Bias}
+\index{Risk of Bias}
 \index{Interaction (Regression)}
 \index{Overfitting}
 \index{Ordinary Least Squares (OLS)}
@@ -347,7 +347,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{metafor Package}
 \index{Analysis of Variance}\index{分散分析}
 \index{Maximum Likelihood}
-\index{Restricted Maximum Likelihood Estimator}
+\index{Restricted Maximum Likelihood Estimator}\index{制限付き最尤推定}
 \index{Likelihood Ratio Test}
 \index{Akaike's Information Criterion}
 \index{Interaction (Regression)}
@@ -399,11 +399,11 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{Stouffer's Method}
 \index{History of Meta-Analysis}
 \index{Power}\index{検出力}
-\index{t-Distribution}
+\index{t-Distribution}\index{t-分布}
 \index{P-Hacking}
 \index{dmetar Package}
 \index{Outlier}\index{外れ値}
-\index{t-Distribution}
+\index{t-Distribution}\index{t-分布}
 \index{Non-Centrality Parameter}
 \index{Power}\index{検出力}
 \index{Kolmogorov-Smirnov Test}
@@ -457,7 +457,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{metaSEM Package}
 \index{dmetar Package}
 \index{Maximum Likelihood}
-\index{Wald-Type Test}
+\index{Wald 型検定}
 \index{Prediction Interval}
 \index{Factor Analysis}
 \index{Root Mean Square Error of Approximation (RMSEA)}
@@ -523,7 +523,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{dmetar Package}
 \index{Meta-Regression}\index{メタ回帰}
 \index{gemtc Package}
-\index{Risk of Bias}\index{バイアスのリスク}
+\index{Risk of Bias}
 \index{Dummy Variable}
 \index{Akaike's Information Criterion}
 \index{WinBUGS}
@@ -545,7 +545,7 @@ Individual Participant Data: 個別被験者データメタ分析
 \index{metaSEM Package}
 \index{dmetar Package}
 \index{Maximum Likelihood}
-\index{Wald-Type Test}
+\index{Wald 型検定}
 \index{Prediction Interval}
 \index{Factor Analysis}
 \index{Root Mean Square Error of Approximation (RMSEA)}
