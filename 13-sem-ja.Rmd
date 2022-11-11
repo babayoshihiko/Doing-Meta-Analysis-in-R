@@ -738,11 +738,11 @@ dims <- c("Quality", "Latency", "Efficiency",
 
 
 ```{r, eval=F}
-# 列名と行名のベクトルを作成
+# 行と列の名称のベクトルを作成
 dims <- c("Quality", "Latency", "Efficiency", 
           "DTDysf", "HypSomnia", "f_Insomnia", "f_Lassitude")
 
-# 7x7 ゼロ行列を作成
+# 7x7 のゼロ行列を作成
 mat <- matrix(rep(0, 7*7), nrow = 7, ncol = 7)
 
 # 列名と行名をつける
