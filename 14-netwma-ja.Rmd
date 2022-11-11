@@ -576,13 +576,13 @@ load("data/m.netmeta.rda")
 ```
 
 ```{r}
-# Show treatment order (shortened labels)
+# 治療順序を表示（短いラベル）
 m.netmeta$trts
 ```
 
 
 ```{r, message=F, warning=F, eval=F}
-# Replace with full name (see treat1.long and treat2.long)
+# フルネームを置き換え（see treat1.long と treat2.long を参照）
 long.labels <- c("Care As Usual", "Group", 
                  "Guided Self-Help", 
                  "Individual", "Telephone", 
@@ -912,11 +912,11 @@ funnel(m.netmeta,
 しかし、このプロットは極めて対称的に見える。これは Egger の検定で確認されたが、有意ではないであった（$p=$ 0.402）。全体として、これは私たちのネットワークに小規模研究の効果があることを示すものではない。少なくとも、優れた効果を持つ「革新的な」治療法は、発表された文献の中に見つかる可能性が高いからである。
 
 ```{block, type='boxinfo'}
-**Network Meta-Analysis using {netmeta}: Concluding Remarks**
+**{netmeta} を使ったネットワークメタ分析：最後の要点**
 
 \vspace{2mm}
 
-この章は長い章であり、新しいトピックを大量にカバーしてきた。**{netmeta}** で使われている統計モデルの背後にあるコアなアイデアを示し、このアプローチでネットワークメタ分析モデルを適合させる方法、結果を可視化し解釈する方法、そして発見の妥当性を評価する方法について説明した。ネットワークメタ分析における（臨床）意思決定は、1つのテストやメトリックに基づくべきでないことは、十分に強調することができない。
+この章は長い章であり、新しいトピックを大量にカバーしてきた。**{netmeta}** で使われている統計モデルの背後にあるコアなアイデアを示し、このアプローチでネットワークメタ分析モデルを適合させる方法、結果を可視化し解釈する方法、そして発見の妥当性を評価する方法について説明した。ネットワークメタ分析における（臨床）意思決定は、1つのテストやメトリックに基づくべきでないことは、どれほど強調しても十分とはいえない。
 
 その代わりに、私たちは素直な目でモデルとその結果を探求し、見つけたパターンの一貫性をチェックし、推定値に関連する大きな不確実性を考慮に入れなければならないのである。
 
@@ -1246,7 +1246,7 @@ plot(network,
 
 ```{r, fig.width=10, fig.height=8, fig.align="center", out.width="55%", message=F, warning=F, eval=F}
 library(igraph)
-set.seed(12345) # set seed for reproducibility
+set.seed(12345) # 再現性のため seed を設定
 
 plot(network, 
      use.description = TRUE,            # Use full treatment names
@@ -1291,12 +1291,12 @@ plot(network,
 
 このように、`mtc.model` 関数を用いてモデルをコンパイルする際に指定しなければならない引数はごくわずかである。まず、前に作成した `mtc.network` オブジェクトを指定する。さらに、`linearModel` 引数を用いて、ランダム効果モデルか固定効果モデルのどちらを使用するかを決定しなければならない。頻度論的分析では、かなりの異質性と不整合が見られたため (Chapter \@ref(net-heat-plot) 参照)、`linearModel = "random"` を使用する。また、使用する**マルコフ連鎖**の数を指定する必要がある。ここでは、3から4の間の値が賢明で、`n.chain = 4` とする。
 
-さらに、オプションで `likelihood` と `link` という2つの引数を指定することが可能である。この2つの引数は、使用している効果量データの種類によって異なり、明示的に指定しない限りは **{gemtc}** によって自動的に推論される。我々は連続的な結果データ（SMDなど）に基づく効果量を扱っているので、「正規」 (normal) の尤度と 「同一」 (indetity) のリンクを仮定している。
+さらに、オプションで `likelihood` と `link` という2つの引数を指定することが可能である。この2つの引数は、使用している効果量データの種類によって異なり、明示的に指定しない限りは **{gemtc}** によって自動的に推測される。我々は連続的な結果データ（SMD など）に基づく効果量を扱っているので、「正規」 (normal) の尤度と 「同一」 (indetity) のリンクを仮定している。
 
-２値アウトカム（対数オッズ比など）を使用していた場合、適切な尤度 (likelyhood) とリンク (link) はそれぞれ `"binom"` （二項）と `"logit"` であったでろう。これに関する詳細は `mtc.model` のドキュメントに記載されている。しかし、前のステップでデータが正しく準備されている場合には、通常 `mtc.model` は自動的に正しい設定を選択する。
+２値アウトカム（対数オッズ比など）を使用していた場合、適切な尤度 (likelyhood) とリンク (link) はそれぞれ `"binom"` （二項）と `"logit"` である。これに関する詳細は `mtc.model` のドキュメントに記載されている。しかし、前のステップでデータが正しく準備されている場合には、通常 `mtc.model` は自動的に正しい設定を選択する。
 
 ```{r}
-# We give our compiled model the name `model`.
+# コンパイル済みモデルを "model" と命名
 model <- mtc.model(network,
                    likelihood = "normal",
                    link = "identity",

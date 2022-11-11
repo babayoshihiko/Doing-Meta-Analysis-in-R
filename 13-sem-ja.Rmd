@@ -700,10 +700,10 @@ load("data/cfa1.rda")
 
 
 ```{r}
-# Extract the fixed coefficients (correlations)
+# 固定係数（相関）を抽出
 fixed.coefs <- coef(cfa1, "fixed")
 
-# Make a symmetric matrix
+# 対称行列を作成
 fc.mat <- vec2symMat(fixed.coefs, diag = FALSE)
 
 # 列名と行名をつける
@@ -739,11 +739,11 @@ dims <- c("Quality", "Latency", "Efficiency",
 
 
 ```{r, eval=F}
-# Create vector of column/row names
+# 行と列の名称のベクトルを作成
 dims <- c("Quality", "Latency", "Efficiency", 
           "DTDysf", "HypSomnia", "f_Insomnia", "f_Lassitude")
 
-# Create 7x7 matrix of zeros
+# 7x7 のゼロ行列を作成
 mat <- matrix(rep(0, 7*7), nrow = 7, ncol = 7)
 
 # 列名と行名をつける
