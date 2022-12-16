@@ -1227,14 +1227,14 @@ summary(network)
 
 ```{r, fig.width=8, fig.height=8, fig.align="center", out.width="65%", message=F, warning=F, eval=F}
 plot(network, 
-     use.description = TRUE) # Use full treatment names
+     use.description = TRUE) # 完全な治療名を使用
 ```
 
 
 ```{r, fig.width=9, fig.height=8, fig.align="center", out.width="55%", message=F, warning=F, echo=F}
 par(bg="#FFFEFA")
 plot(network, 
-     use.description = TRUE) # Use full treatment names
+     use.description = TRUE) # 完全な治療名を使用
 ```
 
 \vspace{2mm}
@@ -1250,15 +1250,15 @@ library(igraph)
 set.seed(12345) # 再現性のため seed を設定
 
 plot(network, 
-     use.description = TRUE,            # Use full treatment names
-     vertex.color = "white",            # node color
-     vertex.label.color = "gray10",     # treatment label color
-     vertex.shape = "sphere",           # shape of the node
-     vertex.label.family = "Helvetica", # label font
-     vertex.size = 20,                  # size of the node
-     vertex.label.dist = 2,             # distance label-node center
-     vertex.label.cex = 1.5,            # node label size
-     edge.curved = 0.2,                 # edge curvature
+     use.description = TRUE,            # 完全な治療名を使用
+     vertex.color = "white",            # ノードの色
+     vertex.label.color = "gray10",     # treatment ラベルの色
+     vertex.shape = "sphere",           # ノードの形
+     vertex.label.family = "Helvetica", # ラベルのフォント
+     vertex.size = 20,                  # ノードの大きさ
+     vertex.label.dist = 2,             # ラベルとノード中心の距離
+     vertex.label.cex = 1.5,            # ノードラベルの大きさ
+     edge.curved = 0.2,                 # エッジのカーブ
      layout = layout.fruchterman.reingold)
 ```
 
@@ -1320,13 +1320,13 @@ model <- mtc.model(network,
 
 * マルコフ連鎖モンテカルロ法は、モデルパラメータの正確な推定値を得るために十分な時間実行する必要がある（すなわち、**収束**する必要がある）。
 
-これらの点を解決するために、マルコフ連鎖モンテカルロ法のアルゴリズムがモデル結果を推論するために反復する回数を**2つのフェーズ**に分割した：まず、**burn-in**反復回数（`n.adapt`）を定義し、その結果は破棄される。次のフェーズでは、モデルパラメータの推定に実際に使用するシミュレーションの反復回数(`n.iter`)を指定する。
+これらの点を解決するために、マルコフ連鎖モンテカルロ法のアルゴリズムがモデル結果を推論するために反復する回数を**2つのフェーズ**に分割した：まず、**burn-in**反復回数（`n.adapt`）を定義し、その結果は破棄される。次のフェーズでは、モデルパラメータの推定に実際に使用するシミュレーションの反復回数（`n.iter`）を指定する。
 
-通常、多くの反復計算を行うため、`thin`引数を指定することで、$i$番目の反復計算の値のみを抽出することもが可能である。これにより、必要なコンピュータのメモリを削減することが可能である。
+通常、多くの反復計算を行うため、`thin`引数を指定することで、$i$番目の反復計算の値のみを抽出することもできる。これにより、必要なコンピュータのメモリを削減することが可能である。
 
-シミュレーションは `mtc.run` 関数を用いて行うことが可能である。この例では、異なる設定で2回実行し、どちらがより効果的かを比較する。コンパイルした `model` オブジェクトを関数に与え、先ほど説明したパラメータを指定する必要がある。
+シミュレーションは `mtc.run` 関数を用いて行うことができる。この例では、異なる設定で2回実行し、どちらがより効果的かを比較する。コンパイルした `model` オブジェクトを関数に与え、先ほど説明したパラメータを指定する必要がある。
 
-まず、数回の繰り返しのシミュレーションをおこない、次に、大きな繰り返しのシミュレーションをおこないる。両方のオブジェクトをそれぞれ `mcmc1` と `mcmc2` という名前で保存する。ネットワークの大きさによっては、シミュレーションが終了するまでに時間がかかることがある。
+まず、数回の繰り返しのシミュレーションをおこない、次に、大きな繰り返しのシミュレーションをおこなう。両方のオブジェクトをそれぞれ `mcmc1` と `mcmc2` という名前で保存する。ネットワークの大きさによっては、シミュレーションが終了するまでに時間がかかることがある。
 
 \vspace{2mm}
 
@@ -1585,7 +1585,7 @@ plot(rank, beside=TRUE)
 
 ```{r, fig.width=7, fig.height=3, fig.align="center", out.width="80%", eval=F}
 forest(relative.effect(mcmc2, t1 = "cau"), 
-       use.description = TRUE, # Use long treatment names
+       use.description = TRUE, # 完全な治療名を使用
        xlim = c(-1.5, 0.5))
 ```
 
