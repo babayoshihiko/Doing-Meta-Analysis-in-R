@@ -8,13 +8,13 @@
 
 \index{meta Package}
 
-メタ分析が頻繁に直面する問題は、適切な「生の」効果量データが、含まれるすべての研究から抽出できるとは限らないことである。`metacont` (Chapter \@ref(pooling-smd)) や `metabin` (Chapter \@ref(pooling-or-rr)) などの  **{meta}** パッケージのほとんどの関数は、生の効果量データが完全に利用可能な場合にのみ使用することができる。 
+メタ分析が頻繁に直面する問題は、適切な「生の」効果量データが、含まれるすべての研究から抽出できるとは限らないことである。`metacont`（Chapter \@ref(pooling-smd)）や `metabin`（Chapter \@ref(pooling-or-rr)）などの **{meta}** パッケージのほとんどの関数は、生の効果量データが完全に利用可能な場合にのみ使用することができる。 
 
 実際には、これは困難につながることも多い。出版された論文の中には、特に古いものでは、必要な（生の）効果量データを抽出できるような方法で結果を報告していないものがある。$t$-検定、one-way ANOVA、$\chi^2$-検定 の結果は報告されていても、メタ分析に必要なグループごとの平均や標準偏差、研究条件におけるイベント数が報告されていないことはよくあることである。 
 
 \index{esc Package}
 
-幸いなことに、報告された情報を望ましい効果量フォーマットに**変換**できる場合がある。これにより、`metagen` を用いた**事前計算**データ（Chapter \@ref(pre-calculated-es)）によるメタ分析で、影響を受けた研究を含めることができるようになる。例えば、2標本の $t$-検定 の結果を標準化平均差 (SMD) とその標準誤差に変換し、`metagen` を用いて事前に計算された SMD のメタ分析を行うことができる。 **{esc}**  パッケージ [@esc] には、このような変換を _R_ 内で直接行うことができる便利な関数がいくつか用意されている。
+幸いなことに、報告された情報を望ましい効果量フォーマットに**変換**できる場合がある。これにより、`metagen` を用いた**事前計算**データ（Chapter \@ref(pre-calculated-es)）によるメタ分析で、影響を受けた研究を含めることができるようになる。例えば、2標本の $t$-検定 の結果を標準化平均差 (SMD) とその標準誤差に変換し、`metagen` を用いて事前に計算された SMD のメタ分析を行うことができる。**{esc}** パッケージ [@esc] には、このような変換を _R_ 内で直接行うことができる便利な関数がいくつか用意されている。
 
 <br></br>
 
@@ -80,7 +80,7 @@ esc_B(b = 2.9,       # 標準化されていない回帰係数
 ```
 ## Effect Size Calculation for Meta Analysis
 ## 
-##      Conversion: un標準化されていない回帰係数 
+##      Conversion: unstandardized regression coefficient 
 ##                  to effect size correlation
 ##     Effect Size:   0.3611
 ##  Standard Error:   0.1031
@@ -107,7 +107,7 @@ esc_beta(beta = 0.32,   # 標準化されていない回帰係数
 
 ```{r, eval= F}
 esc_beta(beta = 0.37,   # 標準化されていない回帰係数
-         sdy = 4,       # standard deviation of predicted variable y
+         sdy = 4,       # 予測変数 y の標準偏差
          grp1n = 50,    # group 1 のサンプルサイズ
          grp2n = 50,    # group 2 のサンプルサイズ
          es.type = "r") # 相関係数に変換
@@ -116,7 +116,7 @@ esc_beta(beta = 0.37,   # 標準化されていない回帰係数
 ```
 ## Effect Size Calculation for Meta Analysis
 ## 
-##      Conversion: 標準化されていない回帰係数 
+##      Conversion: standardized regression coefficient 
 ##                  to effect size correlation
 ##     Effect Size:   0.3668
 ##  Standard Error:   0.1033
@@ -152,7 +152,7 @@ r_{pb} &= \frac{\text{SMD}}{\sqrt{\text{SMD}^2+\dfrac{(N^2-2N)}{n_1n_2}}} \notag
 \text{SMD} &= \dfrac{r_{pb}}{\sqrt{(1-r^2)\left(\frac{n_1}{N}\times\left(1-\frac{n_1}{N}\right)\right)}} (\#eq:esc3)
 \end{align}
 
- $r_{pb}$  を SMD や Hedges' $g$ に変換するには、  `esc_rpb` 関数を使用する。
+$r_{pb}$ を SMD や Hedges' $g$ に変換するには、`esc_rpb` 関数を使用する。
 
 ```{r}
 library(esc)
@@ -180,7 +180,7 @@ esc_rpb(r = 0.25,      # 点-双列相関
 (\#eq:esc4)
 \end{equation}
 
- $F$-値 から SMD や Hedges' $g$  を計算するには、  `esc_f` 関数を使用する。以下はその例である。
+$F$-値 から SMD や Hedges' $g$ を計算するには、`esc_f` 関数を使用する。以下はその例である。
 
 ```{r}
 esc_f(f = 5.04,      # one-way anova の F-値
@@ -204,7 +204,7 @@ esc_f(f = 5.04,      # one-way anova の F-値
 (\#eq:esc5)
 \end{equation}
 
- _R_  では、`esc_t` 関数を使って $t$-値から SMD や Hedges' `g` を計算することができる。以下はその例である。
+_R_  では、`esc_t` 関数を使って $t$-値から SMD や Hedges' `g` を計算することができる。以下はその例である。
 
 ```{r}
 esc_t(t = 3.3,     # t-値
@@ -223,7 +223,7 @@ esc_t(t = 3.3,     # t-値
 
 研究では、効果の大きさ（例えば、Cohen's $d$ 値）、その効果の $p$ -値のみを報告し、それ以上のことは報告しないことがある。しかし、メタ分析で結果をプールするためには、効果量の**精度**の指標、できれば標準誤差が必要である。
 
-そのような場合、効果量の $p$ -値から標準誤差を推定しなければならない。これは、Altman and Bland [-@altman2011obtain] による公式を用いれば、**差分**（すなわち SMD）または**比**（すなわちリスク比またはオッズ比）に基づく効果量に対して可能である。これらの公式は、 _R_ の  `se.from.p`  関数で実装されている。 
+そのような場合、効果量の $p$ -値から標準誤差を推定しなければならない。これは、Altman and Bland [-@altman2011obtain] による公式を用いれば、**差分**（すなわち SMD）または**比**（すなわちリスク比またはオッズ比）に基づく効果量に対して可能である。これらの公式は、 _R_ の `se.from.p`  関数で実装されている。 
 
 \index{dmetar Package}
 
@@ -288,7 +288,7 @@ se.from.p(0.91, p = 0.38, N = 200,
 
 \index{Odds Ratio}\index{オッズ比}
 
-統計量 $\chi^2$ をオッズ比に変換するには、  `esc_chisq`  関数を使用する（d.f. = 1と仮定する；例： $\chi^2_1$  = 8.7 ）。以下はその例である。
+統計量 $\chi^2$ をオッズ比に変換するには、`esc_chisq`  関数を使用する（d.f. = 1と仮定する；例： $\chi^2_1$  = 8.7）。以下はその例である。
 
 ```{r}
 esc_chisq(chisq = 7.9,        # カイ二乗値
@@ -304,7 +304,7 @@ esc_chisq(chisq = 7.9,        # カイ二乗値
 
 \index{Number Needed To Treat}\index{治療必要例数}
 
-Cohen's $d$ や Hedges' $g$ のような効果量は、実用的な観点からは解釈が難しいことが多い。メタ分析で介入効果が $g=$  0.35 であることを発見したとする。このような効果が何を意味するのか、患者、公務員、医療関係者、その他の利害関係者にどのように伝えればよいのだろうか。 
+Cohen's $d$ や Hedges' $g$ のような効果量は、実用的な観点からは解釈が難しいことが多い。メタ分析で介入効果が $g=$ 0.35 であることを発見したとする。このような効果が何を意味するのか、患者、公務員、医療関係者、その他の利害関係者にどのように伝えればよいのだろうか。 
 
 また、他の人が結果を理解しやすいように、メタ分析ではしばしば**治療必要例数** (Number Needed to Treat, NNT) を報告している。この指標は、医学研究において最も一般的に使用されている。これは、1つの**ネガティブな事象**（例：再発）を**予防**するため、あるいは1つの**ポジティブ**な事象（例：症状の寛解、反応）を**達成**するために、研究対象の治療を何人の患者が追加で受けなければならないかを意味する。例えば、NNT = 3 の場合、研究課題に応じて、追加で1件の再発を回避するために3人が治療を受けなければならない、あるいは、確実に1件の症状寛解を達成するために3人の患者が治療を受けなければならないと言うことができる。
 
@@ -315,7 +315,7 @@ Cohen's $d$ や Hedges' $g$ のような効果量は、実用的な観点から�
 (\#eq:esc6)
 \end{equation}
 
-この式で、$p_{e_{\text{treat}}}$  と $p_{e_{\text{control}}}$  は、それぞれ治療群と対照群でイベントを経験した参加者の割合である。これらの割合は、リスク比（Chapter \@ref(rr)  ）を計算するのに使われる「リスク」と同じで、**実験群イベント率**（experimental group event rate, EER）および**対照群イベント率**（control group event rate, CER）としても知られている。この式から、NTT は（絶対）リスク差の逆数と表現することもできる。
+この式で、$p_{e_{\text{treat}}}$ と $p_{e_{\text{control}}}$ は、それぞれ治療群と対照群でイベントを経験した参加者の割合である。これらの割合は、リスク比（Chapter \@ref(rr)  ）を計算するのに使われる「リスク」と同じで、**実験群イベント率**（experimental group event rate, EER）および**対照群イベント率**（control group event rate, CER）としても知られている。この式から、NTT は（絶対）リスク差の逆数と表現することもできる。
 
 標準化平均差または Hedges' $g$ を NNT に変換するのはより複雑である。よく使われる方法は2つある。
 
@@ -323,7 +323,7 @@ Cohen's $d$ や Hedges' $g$ のような効果量は、実用的な観点から�
 
 * 治療群の患者が対照群の患者より好ましいアウトカムを得る確率として定義される**曲線下面積**（area under the curve, AUC）から NNT を計算する **Kraemer and Kupfer** [-@kraemer2006size] による方法である。この方法は、余分な情報がなくても SMD または $g$ から直接 NNT を計算することができる。
 
-* **Furukawa and Leucht** の方法は、CER またはその合理的な推定値を用いて SMD から NNT 値を計算するものである。古川氏の方法は、Kraemer &amp; Kupfer 法 [@furukawa2011obtain] と比較して、真の NNT 値を推定するのに優れていることが示されている。したがって、CER を合理的に推定できるのであれば、常に Furukawa 式が優先されるべきである。 
+* **Furukawa and Leucht** の方法は、CER またはその合理的な推定値を用いて SMD から NNT 値を計算するものである。Furukawa 法は、Kraemer &amp; Kupfer 法 [@furukawa2011obtain] と比較して、真の NNT 値を推定するのに優れていることが示されている。したがって、CER を合理的に推定できるのであれば、常に Furukawa 式が優先されるべきである。 
 
 効果量としてリスク比やオッズ比を使用する場合、NNT は `nnt` 関数を使用して **{meta}** オブジェクトから直接計算することができる。`metabin` （Chapter \@ref(pooling-or-rr)）を使ってメタ分析を行った後、その結果を `nnt` 関数に代入するだけである。以下はその例である。
 
@@ -352,7 +352,7 @@ m.gen_bin$print.subgroup.name = FALSE
 
 
 ```{r}
-# 固定効果も出るの結果も示す
+# 固定効果モデルの結果も示す
 m.gen_bin <- update.meta(m.gen_bin, 
                          fixed = TRUE)
 
@@ -364,7 +364,7 @@ nnt(m.gen_bin,
 
 \index{dmetar Package}
 
-標準化平均差または Hedges' $g$  は、 **{dmetar}** の  `NNT`  関数を使用して NNT に変換することができる。
+標準化平均差または Hedges' $g$ は、**{dmetar}** の `NNT` 関数を使用して NNT に変換することができる。
 
 ```{block, type='boxdmetar'}
 **"NNT" 関数**
@@ -381,7 +381,7 @@ nnt(m.gen_bin,
 ```
 
 
-Kraemer &amp; Kupfer 法を使うには、 `NNT` 関数に効果量（SMD または $g$  ）を与えるだけでよい。Furukawa 法は、`CER` の値が与えられるとすぐに自動的に使用される。
+Kraemer &amp; Kupfer 法を使うには、 `NNT` 関数に効果量（SMD または $g$）を与えるだけでよい。Furukawa 法は、`CER` の値が与えられるとすぐに自動的に使用される。
 
 ```{r}
 NNT(d = 0.245)
@@ -395,7 +395,7 @@ NNT(d = 0.245, CER = 0.35)
 
 \vspace{2mm}
 
-一般的ではあるが、臨床試験の結果を伝えるために NNT を使用することは議論の余地がないわけではない。批判としては、一般人がしばしば誤解すること（他の効果量の指標に代わる「直感的な」指標とされているにもかかわらず @christensen2006number）、研究者がよく NNT を不正確に計算すること [@mendes2017number] が挙げられる。
+NNT の使用は一般的ではあるが、臨床試験の結果を伝えるために NNT を使用することは議論の余地がないわけではない。批判としては、一般人がしばしば誤解すること（他の効果量の指標に代わる「直感的な」指標とされているにもかかわらず @christensen2006number）、研究者がよく NNT を不正確に計算することが挙げられる [@mendes2017number]。
 
 \vspace{2mm}
 
@@ -419,7 +419,7 @@ m_{\text{pooled}} &= \frac{n_1m_1+n_2m_2}{n_1+n_2} \\
 SD_{\text{pooled}} &= \sqrt{\frac{(n_1-1)SD^{2}_{1}+ (n_2-1)SD^{2}_{2}+\frac{n_1n_2}{n_1+n_2}(m^{2}_1+m^{2}_2-2m_1m_2)} {n_1+n_2-1}}
 \end{align}
 
-この式を _R_ で適用するには、 `pool.groups` 関数を使用する。
+この式を _R_ で適用するには、`pool.groups` 関数を使用する。
 
 ```{block, type='boxdmetar'}
 **"pool.groups" 関数**
@@ -454,9 +454,9 @@ pool.groups(n1 = 50,   # group 1 サンプルサイズ
 
 ---
 
- **{metafor}** の  `aggregate`  関数を使うと、例えば、同じ研究やクラスターの一部であるという理由で、いくつかの従属する **事前に計算された効果量** を一つの推定値に集約することが可能である。これは、**unit-of-analysis error** （ Chapter \@ref(unit-of-analysis)  参照）を回避する方法であるが、研究内相関の値を仮定する必要があり、これは通常未知である。効果量依存性を扱うもう一つの（そしてしばしば望ましい）方法は、（相関）階層モデルで、これは Chapter \@ref(multilevel-ma)  で説明されている。 
+**{metafor}** の `aggregate` 関数を使うと、例えば、同じ研究やクラスターの一部であるという理由で、いくつかの従属する **事前に計算された効果量** を一つの推定値に集約することが可能である。これは、**解析単位エラー** （Chapter \@ref(unit-of-analysis)  参照）を回避する方法であるが、研究内相関の値を仮定する必要があり、これは通常未知である。効果量依存性を扱うもう一つの（そしてしばしば望ましい）方法は、（相関）階層モデルで、これは Chapter \@ref(multilevel-ma)  で説明されている。 
 
-この例では、 `Chernobyl` データセット（Chapter \@ref(multilevel-R)  参照）の効果量を集約し、各研究が1つの効果量のみを提供するようにする。
+この例では、`Chernobyl` データセット（Chapter \@ref(multilevel-R)  参照）の効果量を集約し、各研究が1つの効果量のみを提供するようにする。
 
 ```{r, eval=F}
 library(metafor)

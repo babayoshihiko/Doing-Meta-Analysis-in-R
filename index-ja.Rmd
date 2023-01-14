@@ -67,7 +67,7 @@ favicon: "favicon.ico"
 
 * [**Luke A. McGuinness**](https://twitter.com/mcguinlu), University of Bristol: Chapter 15, Risk of Bias Plots.
 
-本書に貢献したい方は、**Mathias** (mathias.harrer@fau.de) にメールを送り、提案事項を伝えていただきたい。
+本書に貢献したい方は、**Mathias** (mathias.harrer@fau.de) に、メールで提案事項を伝えていただきたい。
 
 <br></br>
 
@@ -75,7 +75,7 @@ favicon: "favicon.ico"
 
 ---
 
-本書の原著を引用する際には、以下のようにされたい。
+本書の原著を引用する際には、以下のようにしていただきたい。
 
 ```{block, type='boxempty'}
 Harrer, M., Cuijpers, P., Furukawa, T.A., & Ebert, D.D. (2021). _Doing Meta-Analysis with R: A Hands-On Guide_. Boca Raton, FL and London: Chapman & Hall/CRC Press. ISBN 978-0-367-61007-4.
