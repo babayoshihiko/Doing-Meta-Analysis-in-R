@@ -58,7 +58,7 @@ knitr::include_graphics('images/graph2_col_sep.png')
 
 これで最初の小さなネットワークができあがる。グラフに2つの効果量推定値が含まれていることがよくわかる。A と B を比較した $\hat\theta_{i\text{,A,B}}$ と、C と B を比較した $\hat\theta_{j\text{,C,B}}$ である。これらの効果量は両方とも「実際の」試験で直接観察されているので、我々はその情報を**直接的証拠**と呼んでいる。したがって、これらの効果量を $\hat\theta^{\text{direct}}_{\text{B,A}}$ と $\hat\theta^{\text{direct}}_{\text{B,C}}$ で表記する。この表記で条件 B が最初に来るのは、**基準**グループと決めたからである。B を参照条件としたのは、両試験で対照群として用いられていたからである。
 
-新しいグラフでは、すべてのノード（条件）は、**直接的**か、**間接的**に接続されている。B 条件（対照群）は、他のすべてのノードに直接接続されている。B から他の2つのノード A、C に行くには、グラフ上で1つの「ステップ」しか必要ない：B $\rightarrow$ A, B $\rightarrow$ C。 一方、A と C は1つの直接接続しかなく、両方とも B に接続する：A $\rightarrow$ B と C $\rightarrow$ B。
+新しいグラフでは、すべてのノード（条件）は、**直接的**か、**間接的**に接続されている。B 条件（対照群）は、他のすべてのノードに直接接続されている。B から他の2つのノード A、C に行くには、グラフ上で1つの「ステップ」しか必要ない：B $\rightarrow$ A, B $\rightarrow$ C。一方、A と C は1つの直接接続しかなく、両方とも B に接続する：A $\rightarrow$ B と C $\rightarrow$ B。
 
 しかし、A と C の間には間接的なつながりがある。このつながりは、B が2つの条件 A $\rightarrow$ B と C $\rightarrow$ B の間のリンク、すなわち**ブリッジ**として機能するために存在する。その結果、ネットワークの構造から導き出される A と C の関係の**間接的な証拠**が存在する。
 
@@ -97,11 +97,11 @@ knitr::include_graphics('images/graph3_col_sep.png')
 \index{Consistency}
 \index{Transitivity Assumption}\index{推移性仮定}
 
-さらにもう1つの問題がある。直接比較から間接的な証拠を推定することができる先ほどの式 \@ref(eq:networkes) は、重要な前提条件である**推移性 (transivity)** の仮定が満たされた場合にのみ成立するのである。統計学的な観点からは、この仮定はネットワークの**一貫性 (consistency)** と訳される（訳注：Minds では「一貫性」、神田は「一致性」と訳している。このほか「整合性」と訳されることもある） [@efthimiou2016getreal]。以下では、この2つの用語の意味と、それらがなぜ重要であるかを説明する。
+さらにもう1つの問題がある。直接比較から間接的な証拠を推定することができる先ほどの式 \@ref(eq:networkes) は、重要な前提条件である**推移性 (transitivity)** の仮定が満たされた場合にのみ成立する（船尾と黒田は transitivity の訳に「類似性」をあてている）。統計学的な観点からは、この仮定はネットワークの**一貫性 (consistency)** と訳される（訳注：Minds では「一貫性」、神田と船尾と黒田は「一致性」と訳している。このほか「整合性」と訳されることもある） [@efthimiou2016getreal]。以下では、この2つの用語の意味と、それらがなぜ重要であるかを説明する。
 
 <br></br>
 
-### 推移性と一貫性 {#transivity-consistency}
+### 推移性と一貫性 {#transitivity-consistency}
 
 ---
 
@@ -1873,7 +1873,7 @@ $$\tag*{$\blacksquare$}$$
 
 \vspace{-2mm}
 
-4. 推移性 (transivity) と一貫性 (consistency) の関係は？
+4. 推移性 (transitivity) と一貫性 (consistency) の関係は？
 
 \vspace{-2mm}
 
