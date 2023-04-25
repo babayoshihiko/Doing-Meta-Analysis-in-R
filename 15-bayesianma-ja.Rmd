@@ -640,7 +640,7 @@ $$\tag*{$\blacksquare$}$$
 \vspace{4mm}
 
 
-**問題の解答は、本書の巻末 [Appendix A](#qanda13) にある。**
+**問題の解答は、本書の巻末 [Appendix A](https://bookdown.org/baba_yoshihiko/Doing_Meta_Analysis_in_R/qanda.html#qanda13) にある。**
 
 ```
 

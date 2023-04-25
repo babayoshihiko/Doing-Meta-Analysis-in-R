@@ -570,7 +570,8 @@ MVRegressionData[,c("reputation", "quality", "pubyear")] %>%
 library(PerformanceAnalytics)
 
 MVRegressionData[,c("reputation", "quality", "pubyear")] %>% 
-  chart.Correlation()
+  chart.Correlation() %>% 
+  suppressWarnings()
 ```
 
 変数は確かに相関しているが、おそらくそのうちの 1 つを除外するほどではないだろうということがわかる。
@@ -1010,7 +1011,7 @@ $$\tag*{$\blacksquare$}$$
 \vspace{4mm}
 
 
-**問題の解答は、本書の巻末 [Appendix A](#qanda8) にある。**
+**問題の解答は、本書の巻末 [Appendix A](https://bookdown.org/baba_yoshihiko/Doing_Meta_Analysis_in_R/qanda.html#qanda8) にある。**
 
 ```
 

@@ -249,6 +249,7 @@ update.meta(m.gen,
 ## 
 ##                         SMD           95%-CI    t  p-value
 ## Random effects model 0.5771 [0.3782; 0.7760] 6.12 < 0.0001
+## Prediction interval              [-0.0572; 1.2115]     
 ## 
 ## Quantifying heterogeneity:
 ##  tau^2 = 0.0820 [0.0295; 0.3533]; tau = 0.2863 [0.1717; 0.5944]
@@ -258,12 +259,12 @@ update.meta(m.gen,
 ##      Q d.f. p-value
 ##  45.50   17  0.0002
 ## 
-## Results for subgroups (random effects model):
+## Results for subgroups (random effects model (HK)):
 ##                     k    SMD           95%-CI  tau^2    tau     Q   I^2
 ## RiskOfBias = high   7 0.8126 [0.2835; 1.3417] 0.2423 0.4922 25.89 76.8%
 ## RiskOfBias = low   11 0.4300 [0.2770; 0.5830] 0.0099 0.0997 13.42 25.5%
 ## 
-## Test for subgroup differences (random effects model):
+## Test for subgroup differences (random effects model (HK)):
 ##                     Q d.f. p-value
 ## Between groups   2.84    1  0.0917
 ## 
@@ -271,7 +272,8 @@ update.meta(m.gen,
 ## - Inverse variance method
 ## - Restricted maximum-likelihood estimator for tau^2
 ## - Q-profile method for confidence interval of tau^2 and tau
-## - Hartung-Knapp adjustment for random effects model
+## - Hartung-Knapp (HK) adjustment for random effects model (df = 17)
+## - Prediction interval based on t-distribution (df = 16)
 ```
 
 
@@ -294,7 +296,7 @@ update.meta(m.gen, subgroup = RiskOfBias, tau.common = TRUE)
 ## RiskOfBias = high   7 0.7691 [0.2533; 1.2848] 0.0691 0.2630 25.89 76.8%
 ## RiskOfBias = low   11 0.4698 [0.3015; 0.6382] 0.0691 0.2630 13.42 25.5%
 ## 
-## Test for subgroup differences (random effects model):
+## Test for subgroup differences (random effects model (HK)):
 ##                    Q d.f. p-value
 ## Between groups  1.79    1  0.1814
 ## Within groups  39.31   16  0.0010
@@ -336,6 +338,8 @@ dat = data.frame(g = round(m.gen.sg$TE.random.w, 2),
                  ci.i2 = paste0(format(round(m.gen.sg$lower.I2.w, 2), nsmall=2), "-", round(m.gen.sg$upper.I2.w, 2)),
                  p.sg = c(" ", " "))
 
+dat$p = stringr::str_replace_all(dat$p, "\\<", "$<$")
+
 dat = rbind(c("", "", "", "", "", 0.092), dat)
 
 rownames(dat) = c("Risk of Bias", "- High", "- Low")
@@ -351,6 +355,11 @@ kable(dat, booktabs = T, digits = 2, escape = FALSE) %>%
 ```
 
 ```{block2, type='boxempty'}
+上の表で、第３列の $p$ 値はサブグループに特有の効果が有意であることを示している。これは、高バイアスと低バイアスのどちらでも発生する。また、$p_{\textsf{subgroup}}$ より小さい値は
+高リスクと低リスクの効果の<u>差</u>は有意ではないことを示している。
+
+サブグループに特有の $p$ 値を抽出するには、`update.meta` の結果をオブジェクトとして保存し、このオブジェクトから `pval.random.w` 要素を `$` 演算子を使って抽出する。
+
 複数のサブグループ解析が行われた場合は、表にさらに行を追加することができる。
 ```
 
@@ -386,7 +395,7 @@ $$\tag*{$\blacksquare$}$$
 \vspace{4mm}
 
 
-**問題の解答は、本書の巻末 [Appendix A](#qanda7) にある。**
+**問題の解答は、本書の巻末 [Appendix A](https://bookdown.org/baba_yoshihiko/Doing_Meta_Analysis_in_R/qanda.html#qanda7) にある。**
 
 ```
 

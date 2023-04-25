@@ -190,7 +190,7 @@ pdf(file = "forestplot.pdf", width = 8, height = 7)
 
 forest.meta(m.gen, 
             sortvar = TE,
-            predict = TRUE, 
+            prediction = TRUE, 
             print.tau2 = FALSE,
             leftlabs = c("Author", "g", "SE"))
 
@@ -206,7 +206,7 @@ png(file = "forestplot.png", width = 2800, height = 2400, res = 300)
 
 forest.meta(m.gen, 
             sortvar = TE,
-            predict = TRUE, 
+            prediction = TRUE, 
             print.tau2 = FALSE,
             leftlabs = c("Author", "g", "SE"))
 
@@ -222,7 +222,7 @@ svg(file = "forestplot.svg", width = 8, height = 7)
 
 forest.meta(m.gen, 
             sortvar = TE,
-            predict = TRUE, 
+            prediction = TRUE, 
             print.tau2 = FALSE,
             leftlabs = c("Author", "g", "SE"))
 
@@ -313,7 +313,7 @@ $$\tag*{$\blacksquare$}$$
 \vspace{4mm}
 
 
-**問題の解答は、本書の巻末 [Appendix A](#qanda6) にある。**
+**問題の解答は、本書の巻末 [Appendix A](https://bookdown.org/baba_yoshihiko/Doing_Meta_Analysis_in_R/qanda.html#qanda6) にある。**
 
 ```
 

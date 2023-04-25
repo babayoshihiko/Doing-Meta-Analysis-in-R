@@ -59,6 +59,19 @@ favicon: "favicon.ico"
 
 <br></br>
 
+## 本書の使い方 {-}
+
+---
+
+このチュートリアルは、本書の簡単な紹介とメタ分析を行う際の使い方を教えている。
+
+<center>
+<iframe width="580" height="327" style="border-radius: 5px 5px 5px 5px; box-shadow: 0 0.5rem 1rem rgba(0,0,0,.15);" src="https://www.youtube.com/embed/i1b5c-dVfkU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
+</iframe>
+</center>
+
+
+
 ## 貢献 {- #contributing}
 
 ---

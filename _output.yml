@@ -25,6 +25,8 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
 
+rmdja::pdf_book_ja: default
+
 bookdown::epub_book: default
 
 bookdown::bs4_book:
@@ -49,7 +51,8 @@ bookdown::bs4_book:
   includes:
     in_header: [style.html]
   favicon: "favicon.ico"
-
+  biblio-style: "apalike"
+  link-citations: true
 
 
 

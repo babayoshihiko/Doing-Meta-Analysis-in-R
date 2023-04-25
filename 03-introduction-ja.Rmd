@@ -16,9 +16,14 @@
 
 発表される研究成果の量は、ほぼ指数関数的に増加している。最大の書誌データベースの一つである [**PubMed**](pubmed.ncbi.nlm.nih.gov/) の各年度の索引論文数は、このことを模範的に象徴しているといえるだろう。20世紀の半ばまで、各年度の研究論文は数百件しか掲載されていなかった。それが、その後の数十年で大幅に増え、21世紀に入ってから急増している（Figure \@ref(fig:pubmed) 参照）。
 
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+F <- FALSE
+```
+
 ```{r pubmed, fig.cap='PubMed にインデックスされた論文数（年別）、1781年～2019年', echo=F, message=F, warning = FALSE, fig.align='center', fig.width=4.5, fig.height=3}
 library(ggplot2)
 options(scipen = 999)
+F <- FALSE
 
 read.csv("data/pubmed.csv", skip = 1)[-1,] -> pubmed
 
@@ -67,7 +72,7 @@ ggplot(pubmed, aes(x = Year, y = Count)) +
 ```{block, type='boxinfo'}
 **個別被験者データメタ分析** (Individual Participant Data Meta-Analysis)
 
-定義によっては、第4のタイプのエビデンス合成法、いわゆる**個別被験者データ** (Individual Participant Data, IPD) **メタ分析**も存在する [@riley2010meta]。従来、メタ分析は、発表された文献にある研究の**集計された**結果（例えば、平均と標準偏差、または割合）に基づいている。IPD メタ分析では、代わりにすべての研究の**オリジナル**データを収集し、1つの大きなデータセットにまとめる。
+定義によっては、第4のタイプのエビデンス合成法、いわゆる**個別被験者データ** (Individual Participant Data, IPD) **メタ分析**も存在する [@riley2010meta; @riley2021individual]。従来、メタ分析は、発表された文献にある研究の**集計された**結果（例えば、平均と標準偏差、または割合）に基づいている。IPD メタ分析では、代わりにすべての研究の**オリジナル**データを収集し、1つの大きなデータセットにまとめる。
 
 IPD メタ分析にはいくつかの利点がある。例えば、欠損データをインプットしたり、全ての研究に対して全く同じ方法で統計手法を適用することが可能である。さらに、関心のある結果に影響を与える変数の探索を容易にすることが可能である。従来のメタ分析では、いわゆる**研究レベル**の変数（例えば、発表年や研究で使用された集団など）のみを使用して、このようなことを行うことができることとする。しかし、結果の重要なモデレータとしての役割を果たすのは、しばしば**参加者レベル**の情報（例えば、個々の人の年齢や性別）である。このような変数は、IPD メタ分析を使ってのみ探索することが可能である。
 
@@ -108,11 +113,9 @@ knitr::include_graphics('images/eysenck_col.jpg')
 ```
 
 
-今日、私たちは、Smith and Glass の研究が、対象研究のバイアスを制御しなかったために、心理療法の効果を過大評価した可能性があることを知っている [@cuijpers2019eysenck]。しかし、いくつかの心理療法が有効であるという主要な発見は、その後の数十年間で、他の無数のメタ分析によって裏付けらた。Eysenck の厳しい反応も、メタ分析がやがて様々な研究分野でよく使われる手法となったことを変えることはできなかった。
+今日、私たちは、Smith and Glass の研究が、対象研究のバイアスを制御しなかったために、心理療法の効果を過大評価した可能性があることを知っている [@cuijpers2019eysenck]。しかし、いくつかの心理療法が有効であるという主要な発見は、その後の数十年間で、他の無数のメタ分析によって裏付けらた。Eysenck の厳しい反応も、メタ分析がやがて様々な研究分野でよく使われる手法となるということを変えることはできなかった。この時代のことは、"meta-analytic Big Bang" に詳しく書かれている [@shadish2015meta]。
 
-メタ分析の方法論は、当時から絶えず改良されてきた。Glass がメタ分析の手法を開発したのとほぼ同時期に、Hunter and Schmidt は、測定誤差の補正に重点を置いた独自のメタ分析手法を作り始めた [@schmidt1977development; @hunter2004methods]。
-
-メタ分析が初めて医学の世界に登場したのは、Peter Elwood や Archie Cochrane らがメタ分析を用いた画期的な業績からである。このメタ分析で、アスピリンには、わずかではあるが心臓発作の再発を防ぐ効果が統計的にも臨床的にもあることを示した [@peto1980aspirin; @elwood2006first; @o2007historical]。
+Glass がメタ分析の手法を開発したのとほぼ同時期に、Hunter and Schmidt は、測定誤差の補正に重点を置いた独自のメタ分析手法を作り始めた [@schmidt1977development; @hunter2004methods]。メタ分析が初めて医学の世界に登場したのは、Peter Elwood や Archie Cochrane らがメタ分析を用いた画期的な業績からである。このメタ分析で、アスピリンには、わずかではあるが心臓発作の再発を防ぐ効果が統計的にも臨床的にもあることを示した [@peto1980aspirin; @elwood2006first; @o2007historical]。
 
 80年代半ば、Rebecca DerSimonian and Nan Laird がランダム効果メタ分析を計算するアプローチを紹介し（Chapter \@ref(rem) 参照）、今日まで使用されている [@dersimonian1986meta]。その他にも数え切れないほどの技術革新があり、過去40年間にメタ分析手法の適用性、頑健性、汎用性を高めることに貢献してきた。  
 
@@ -425,20 +428,20 @@ bibdb$Website = NULL
 kableExtra::kable(bibdb,
                   longtable = T,
                   booktabs = T,
-                  caption = "関連する書誌データベースの一部。",
-                  font_size = 14) %>% 
+                  caption = "関連する書誌データベースの一部。"
+                  ) %>% 
   #kable_styling(latex_options = c("repeat_header"), font_size = 8) %>% 
   column_spec(1, width = "6cm") %>% 
   #column_spec(2, width = "5cm") %>% 
   #column_spec(3, width = "3cm") %>% 
   pack_rows("Core Database", 1, 6, latex_align = "c", latex_gap_space = "2em",
-            hline_after = T, indent = F, background = "#f2f1ed") %>% 
+            hline_after = T, indent = FALSE, background = "#f2f1ed") %>% 
   pack_rows("Citation Database", 7, 9, latex_align = "c", latex_gap_space = "2em",
-            hline_after = T, indent = F, background = "#f2f1ed") %>% 
+            hline_after = T, indent = FALSE, background = "#f2f1ed") %>% 
   pack_rows("Dissertations", 10, 10, latex_align = "c", latex_gap_space = "2em",
-            hline_after = T, indent = F, background = "#f2f1ed") %>% 
+            hline_after = T, indent = FALSE, background = "#f2f1ed") %>% 
   pack_rows("Study Registries", 11, 12, latex_align = "c", latex_gap_space = "2em",
-            hline_after = T, indent = F, background = "#f2f1ed") %>% 
+            hline_after = T, indent = FALSE, background = "#f2f1ed") %>% 
   row_spec(0, font_size = 17) %>% 
   kable_styling(bootstrap_options = c("hover"), font_size = 14)
 
@@ -583,7 +586,7 @@ $$\tag*{$\blacksquare$}$$
 
 
 
-**問題の解答は、本書の巻末 [Appendix A](#qanda1) にある。**
+**問題の解答は、本書の巻末 [Appendix A](https://bookdown.org/baba_yoshihiko/Doing_Meta_Analysis_in_R/qanda.html#qanda1) にある。**
 ```
 
 <br></br>
