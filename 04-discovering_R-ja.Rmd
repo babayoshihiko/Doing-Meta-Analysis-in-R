@@ -223,8 +223,8 @@ rbind(SuicidePrevention[1:5,], rep("...", 10)) -> SuicidePrevention
 
 colnames(SuicidePrevention) = c("Author", "N ", "Mean ", "SD", "N", "Mean", "SD ", "Year", "Age Group", "Control Group")
 
-kableExtra::kable(SuicidePrevention, "html", booktabs = T,
-                  caption = 'The suicide prevention dataset.',
+kableExtra::kable(SuicidePrevention, booktabs = T,
+                  caption = 'Suicide Prevention データセット',
                   linesep = "") %>% 
   kable_styling(bootstrap_options = c("striped", "condensed", "responsive", "hover"), font_size = 12) %>%
   add_header_above(c(" ", "Intervention Group" = 3, "Control Group" = 3, "Subgroups" = 3)) %>% 

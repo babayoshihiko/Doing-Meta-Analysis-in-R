@@ -464,7 +464,7 @@ dat[21,1] = "Small Sample Bias (\\@ref(hedges-g))"
 dat[22:24,1] = "Unreliability (\\@ref(unrealiable))"
 dat[25:27,1] = "Range Restriction (\\@ref(range))"
 
-kableExtra::kable(dat, "html",
+kableExtra::kable(dat, 
                   #longtable = TRUE,
                   escape = FALSE,
                   #booktabs = TRUE,
@@ -551,14 +551,14 @@ do.call(rbind, l) %>% as.data.frame() -> dat
 
 rownames(dat) = 1:nrow(dat)
 
-kableExtra::kable(dat, "html", 
+kableExtra::kable(dat, 
                   col.names = NULL, booktabs = TRUE,
                   longtable = T,
                   escape = FALSE, 
                   linesep = "") %>% 
   kable_classic(font_size = 14,
                 html_font = "Roboto", 
-                bootstrap_options = c("striped")) %>% 
+                latex_options = c("striped")) %>% 
   column_spec(1, width = "1cm") %>% 
   column_spec(2, width = "4cm") %>% 
   column_spec(3, width = "1cm") %>% 
@@ -567,18 +567,18 @@ kableExtra::kable(dat, "html",
 ```
 
 
-**注記**: ベクトルや行列は**太字**で表記される。例えば、メタ分析で観測された全ての効果量をベクトルで表すと $\boldsymbol{\hat\theta} = (\hat\theta_1, \hat\theta_2, \dots, \hat\theta_K)^\top$ となる。ここで $K$ はそ総研究数である。$\top$ 記号はベクトルが **transposed** であることを表している。これは、ベクトルの要素が水平方向ではなく、垂直方向に配置されていることを意味する。これは、ベクトルと別の行列を掛け合わせるなどの操作を行う際に必要な場合がある。
+**注記**: ベクトルや行列は**太字**で表記される。例えば、メタ分析で観測された全ての効果量をベクトルで表すと $\boldsymbol{\hat\theta} = (\hat\theta_1, \hat\theta_2, \dots, \hat\theta_K)^\top$ となる。ここで $K$ は総研究数である。$\top$ 記号はベクトルが **transposed** であることを表している。これは、ベクトルの要素が水平方向ではなく、垂直方向に配置されていることを意味する。これは、ベクトルと別の行列を掛け合わせるなどの操作を行う際に必要な場合がある。
 
 
 <br></br>
 
-#  _R_  &amp; パッケージ情報  {#attr}
+#  _R_ およびパッケージ情報  {#attr}
 
 ---
 
 <br></br>
 
-本書は、macOS Catalina 10.15.4 (Apple Darwin 17.0 64-bit x86-64) で動作する  _R_  バージョン 4.0.3 ("Bunny-Wunnies Freak Out", 2020-10-10) を使ってコンパイルされている。本書では、以下のパッケージバージョンを使用している。（訳注: 翻訳は、macOS および Windows の _R_ 3.6 から 4.3 で検証した。）
+本書は、macOS Catalina 10.15.4 (Apple Darwin 17.0 64-bit x86-64) で動作する _R_  バージョン 4.0.3 ("Bunny-Wunnies Freak Out", 2020-10-10) を使ってコンパイルされている。本書では、以下のパッケージバージョンを使用している。（訳注: 翻訳は、macOS および Windows の _R_ 3.6 から 4.3 で検証した。）
 
 \vspace{4mm}
 
@@ -617,7 +617,7 @@ utils 4.0.3
 
 <br></br>
 
-** 属性**
+**属性**
 
 Figure \@ref(fig:eysenck) :Sirswindon at [英語版ウィキペディア](https://commons.wikimedia.org/wiki/File:Hans.Eysenck.jpg), [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0)。Wikimedia Commons 経由。オリジナルから脱色している。 
 
